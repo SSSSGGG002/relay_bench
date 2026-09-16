@@ -158,6 +158,11 @@ python3 compare.py --baseline zhipu-official   # 与官方逐项比对 COMPARE.m
                                                         |
                                  /opt/relay-bench  <--- pull --ff-only（网页按钮）
 
+当前实际配置（2026-09-16）：
+
+    origin = ssh://root@123.56.102.125/opt/relay-bench.git
+    服务器工作副本 = /opt/relay-bench（RELAY_BENCH_DIR）
+
 一次性配置：在服务器上跑 `relay-collab/deploy/relay-bench-git-origin.sh`，
 按提示从 Mac `git push -u origin main`，再跑一次同一个脚本即可。脚本可重复执行，
 不会碰 `.venv/`、`results/`、`logs/` 这些未跟踪文件；如果服务器上**被跟踪**的文件
