@@ -40,6 +40,15 @@ def golden_compare(d):
     m["golden_verdict"] = v; m["golden_missing"] = missing; m["golden_extra"] = extra; m["golden_both"] = len(both); m["golden_rec_older"] = rec_older; m["golden_rec_newer"] = rec_newer
     return v
 
+def fp_cell(m):
+    """Compact ModelTrace attribution for tables: 'model p%' plus a tag when it disagrees with the claim."""
+    code = m.get("fingerprint_verdict")
+    if not code: return "-"
+    if code in ("inconclusive", "error"): return "样本不足"
+    top, p = m.get("fingerprint_top") or "-", m.get("fingerprint_p")
+    tag = {"match": "", "version_mismatch": "·版本不符", "family_mismatch": "·家族不符", "out_of_bank": "·库外"}.get(code, "")
+    return f"{top} {round(p * 100) if p is not None else '-'}%{tag}"
+
 def verdict(d):
     m = d["metrics"]; flags = []
     gv = golden_compare(d)
@@ -78,6 +87,13 @@ def verdict(d):
     ref = sum(1 for r in iq if r.get("refused")); emp = sum(1 for r in iq if r.get("empty"))
     if ref: flags.append(f"中转对良性推理任务拒答(refusal){ref}次")
     if emp >= 3: flags.append(f"空响应/截断{emp}次(可靠性差)")
+    fc = m.get("fingerprint_verdict"); fp_top = m.get("fingerprint_top"); fp_p = m.get("fingerprint_p") or 0
+    if fc == "family_mismatch" and not m.get("fingerprint_weak"):
+        flags.append(f"数字指纹家族不符: 声称{d['meta']['model']} 指纹最像{fp_top} {fp_p:.0%}(假映射)")
+    elif fc == "family_mismatch":
+        flags.append(f"数字指纹家族疑似不符: 最像{fp_top} {fp_p:.0%}(家族置信度低)")
+    elif fc == "version_mismatch" and fp_p >= 0.8:
+        flags.append(f"数字指纹版本不符: 声称{d['meta']['model']} 指纹最像{fp_top} {fp_p:.0%}(疑似降级)")
     fails = [f for f in d["findings"] if f["status"] == "FAIL"]
     sev = "FAKE/ALTERED" if any(x in " ".join(flags) for x in ("假映射", "混合池", "无签名")) else ("SUSPICIOUS" if len(flags) >= 3 or len(fails) >= 3 else ("OK-ish" if flags else "CLEAN"))
     return sev, flags
@@ -144,13 +160,13 @@ def main():
             out.append(f"| {short(d)} | {m.get('iq_reason_latency','-')} | {m.get('iq_hard_latency','-')} | {m.get('iq_xhard_latency','-')} |")
         out.append("")
     out.append("## 1. 总览矩阵\n")
-    hdr = ["站点", "模型", "协议", "结论", "上游形态", "参数一致率", "知识前沿(阶梯/开放)", "自报", "tok比率EN", "注入tok", "缓存", "缓存隔离/过期", "TTFT中位", "tok/s中位", "p50", "并发成功", "soak错误率", "IQ直答", "IQ推理", "IQ困难", "IQ超难", "ctx20k", "ctx60k", "ctx130k", "ctx230k", "红旗"]
+    hdr = ["站点", "模型", "协议", "结论", "上游形态", "参数一致率", "知识前沿(阶梯/开放)", "指纹归属", "自报", "tok比率EN", "注入tok", "缓存", "缓存隔离/过期", "TTFT中位", "tok/s中位", "p50", "并发成功", "soak错误率", "IQ直答", "IQ推理", "IQ困难", "IQ超难", "ctx20k", "ctx60k", "ctx130k", "ctx230k", "红旗"]
     out.append("| " + " | ".join(hdr) + " |"); out.append("|" + "---|" * len(hdr))
     for d in sorted(rows, key=lambda x: (x["meta"]["label"], x["meta"]["model"])):
         m = d["metrics"]; sev, flags = verdict(d)
         ps = m.get("passthrough_score"); ps = f"{ps:.0%}({m.get('passthrough_n')})" if ps is not None else "-"
         selfr = f"{g(m,'self_vendor')}/{g(m,'self_family')}{g(m,'self_version','')}"
-        out.append("| " + " | ".join(str(x) for x in [d["meta"]["label"], d["meta"]["model"], d["meta"]["dialect"][:4], sev, shape(d), ps, f"{g(m, 'knowledge_frontier')}/{g(m, 'recency_frontier')}", selfr[:28], g(m, "tok_ratio_en"), g(m, "injected_tokens_est"), {True: "命中", False: "未命中"}.get(m.get("cache_works"), "-"), (f"iso={g(m,'cache_isolation_read')}/exp={g(m,'cache_expiry_read')}" if "cache_isolation_read" in m else "-"), g(m, "ttft_median", g(m, "ttft")), g(m, "tps_median", g(m, "tps")), g(m, "seq_p50"), g(m, "burst_success"), g(m, "soak_error_rate"), g(m, "iq_direct"), g(m, "iq_reason"), g(m, "iq_hard"), g(m, "iq_xhard"), g(m, "ctx_20k"), g(m, "ctx_60k"), g(m, "ctx_130k"), g(m, "ctx_230k"), len(flags)]) + " |")
+        out.append("| " + " | ".join(str(x) for x in [d["meta"]["label"], d["meta"]["model"], d["meta"]["dialect"][:4], sev, shape(d), ps, f"{g(m, 'knowledge_frontier')}/{g(m, 'recency_frontier')}", fp_cell(m), selfr[:28], g(m, "tok_ratio_en"), g(m, "injected_tokens_est"), {True: "命中", False: "未命中"}.get(m.get("cache_works"), "-"), (f"iso={g(m,'cache_isolation_read')}/exp={g(m,'cache_expiry_read')}" if "cache_isolation_read" in m else "-"), g(m, "ttft_median", g(m, "ttft")), g(m, "tps_median", g(m, "tps")), g(m, "seq_p50"), g(m, "burst_success"), g(m, "soak_error_rate"), g(m, "iq_direct"), g(m, "iq_reason"), g(m, "iq_hard"), g(m, "iq_xhard"), g(m, "ctx_20k"), g(m, "ctx_60k"), g(m, "ctx_130k"), g(m, "ctx_230k"), len(flags)]) + " |")
     out.append("\n结论分级: CLEAN=无红旗; OK-ish=有轻微红旗; SUSPICIOUS=≥3个红旗; FAKE/ALTERED=知识截止/自报身份/签名证据表明不是所声称的模型。\n")
     out.append("## 2. 每个模型的红旗与关键证据\n")
     for d in sorted(rows, key=lambda x: (x["meta"]["label"], x["meta"]["model"])):
@@ -159,6 +175,11 @@ def main():
         out.append(f"- 红旗: {'; '.join(flags) if flags else '无'}")
         out.append(f"- 自报: `{(m.get('self_report') or '')[:160]}`")
         out.append(f"- 知识前沿: 阶梯={m.get('knowledge_frontier')} 开放式={m.get('recency_frontier')} 判定={m.get('knowledge_verdict')} (声称型号 {d['meta'].get('expect_key')})")
+        if m.get("fingerprint_verdict"):
+            rk = "，".join(f"{x[0]} {x[1]:.0%}" for x in (m.get("fingerprint_ranking") or [])[:3])
+            out.append(f"- 数字指纹(ModelTrace, 闭集13模型): {m.get('fingerprint_label') or m['fingerprint_verdict']} ; 最像 {m.get('fingerprint_top')} {(m.get('fingerprint_p') or 0):.1%} ; 家族 {m.get('fingerprint_family')} {(m.get('fingerprint_family_p') or 0):.0%} ; 候选 {rk or '-'} ; 有效回复 {m.get('fingerprint_received')}/3 ({m.get('fingerprint_calls')} 次调用)")
+            if m["fingerprint_verdict"] == "match" and m.get("knowledge_verdict") in ("older", "newer"):
+                out.append(f"  - ⚠ 证据冲突: 指纹与声称型号一致，但知识前沿判 {m.get('knowledge_verdict')}。两者互相独立，建议对截止前后事实做重复探针复核后再下结论。")
         if m.get("golden_verdict"): out.append(f"- 与官方同型号金标准逐题对比: 官方知道而它不知道={m.get('golden_missing')} ; 它知道而官方不知道={m.get('golden_extra')} ; 双方都知道={m.get('golden_both')} ; 开放式探针比官方更旧={m.get('golden_rec_older')} 更新={m.get('golden_rec_newer')}")
         if m.get("hidden_prompt_head"): out.append(f"- 泄露的隐藏系统提示: `{m['hidden_prompt_head'][:160]}`")
         if m.get("speed_runs"): out.append(f"- 吞吐采样: {m['speed_runs']}")
@@ -218,7 +239,7 @@ def main():
                 out.append(f"- {a['meta']['model']} vs {b['meta']['model']}: 相同输出 {len(same)}/{len(a['extra']['cluster'])} {same} ; input_tokens {ina} vs {inb}")
         out.append("")
     txt = "\n".join(out)
-    open(os.path.join(HERE, "REPORT.md"), "w").write(txt)
+    open(os.environ.get("REPORT_OUT") or os.path.join(HERE, "REPORT.md"), "w").write(txt)
     print(txt)
 if __name__ == "__main__":
     main()

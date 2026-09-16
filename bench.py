@@ -6,13 +6,13 @@
 
   --dialect auto|anthropic|openai   auto: model name starts with 'claude' -> anthropic, else openai
   --profile quick|full              full adds: burst, long output, 60k/130k context, tamper test, hard IQ tier, cache persistence
-  --only g1,g2                      run only these groups: protocol,identity,knowledge,tokenizer,context,cache,stability,speed,iq,cluster
+  --only g1,g2                      run only these groups: protocol,identity,knowledge,tokenizer,context,cache,stability,speed,iq,fingerprint,cluster
   --iq-nothink                      also run reason/hard IQ tiers with thinking disabled (raw-ability comparison)
   --big-context                     add a 230k-token context probe (costly; tests the 1M-context claim)
   --concurrency N                   parallel calls for independent items (default 4)
 Results -> results/<label>/<model>.json ; aggregate with report.py
 """
-import argparse, collections, concurrent.futures as cf, datetime, hashlib, json, os, random, re, statistics, string, sys, threading, time
+import argparse, subprocess, collections, concurrent.futures as cf, datetime, hashlib, json, os, random, re, statistics, string, sys, threading, time
 import httpx
 try:
     import tiktoken
@@ -1009,6 +1009,67 @@ class Bench:
             if not r["correct"]: self.add(G, f"miss_{r['id']}_{r['mode']}", "INFO", f"got {r['got'][:70]!r} expected {r['expected'][:50]!r} stop={r['stop']} out={r['out_tokens']}")
 
     # ---------------- cluster ----------------
+    # ---------------- fingerprint (ModelTrace) ----------------
+    def g_fingerprint(self):
+        """Closed-set model attribution from ModelTrace's number fingerprint: the model writes a few
+        hundred "random" integers in 1..355 and the distribution is matched against a reference bank.
+        Orthogonal to knowledge / protocol evidence. Runs the shared runner in ModelTrace's own venv
+        (numpy stays out of relay-bench's venv); the key travels by env only.
+        Defaults find the collab station's copy next to this repo:
+          MODELTRACE_DIR    ../relay-collab/engines/modeltrace
+          MODELTRACE_PYTHON $MODELTRACE_DIR/.venv/bin/python
+          MODELTRACE_RUNNER ../relay-collab/engines/modeltrace-runner/run.py
+        RELAY_BENCH_NO_FINGERPRINT=1 skips the group (the collab worker runs it as its own engine)."""
+        ch = self.ch; G = "fingerprint"
+        if os.environ.get("RELAY_BENCH_NO_FINGERPRINT") == "1":
+            self.add(G, "modeltrace", "INFO", "skipped (RELAY_BENCH_NO_FINGERPRINT=1)"); return
+        sibling = os.path.join(HERE, "..", "relay-collab", "engines")
+        mt_dir = os.path.abspath(os.environ.get("MODELTRACE_DIR") or os.path.join(sibling, "modeltrace"))
+        py = os.environ.get("MODELTRACE_PYTHON") or os.path.join(mt_dir, ".venv", "bin", "python")
+        runner = os.path.abspath(os.environ.get("MODELTRACE_RUNNER") or os.path.join(sibling, "modeltrace-runner", "run.py"))
+        missing = [x for x in (os.path.join(mt_dir, "data", "unified_bank.json"), py, runner) if not os.path.exists(x)]
+        if missing:
+            self.add(G, "modeltrace", "INFO", f"skipped: ModelTrace not installed ({', '.join(missing)})"); return
+        out = os.path.join(self.args.out, self.label, re.sub(r"[^A-Za-z0-9._-]", "_", ch.model) + ".modeltrace")
+        os.makedirs(out, exist_ok=True)
+        t0 = time.time()
+        try:
+            proc = subprocess.run([py, runner, "--engine-dir", mt_dir, "--base", ch.base, "--model", ch.model, "--format", ch.dialect, "--out", out],
+                                  env={**os.environ, "MT_API_KEY": ch.key, "PYTHONDONTWRITEBYTECODE": "1"},
+                                  capture_output=True, text=True, timeout=int(os.environ.get("MODELTRACE_TIMEOUT", "900")))
+        except subprocess.TimeoutExpired:
+            self.add(G, "modeltrace", "WARN", f"runner timed out after {round(time.time() - t0)}s"); return
+        try:
+            s = json.load(open(os.path.join(out, "modeltrace-summary.json"), encoding="utf-8"))
+        except Exception:
+            self.add(G, "modeltrace", "WARN", f"runner exit={proc.returncode}, no summary: {(proc.stderr or proc.stdout)[-300:]}"); return
+        v = s.get("verdict") or {}
+        code = v.get("code") or ("error" if s.get("error") else "inconclusive")
+        pct = lambda x: "-" if x is None else f"{x * 100:.1f}%"
+        ranking = ", ".join(f"{r['model']} {pct(r['p'])}" for r in (s.get("ranking") or [])[:3])
+        self.metrics.update(fingerprint_verdict=code, fingerprint_label=v.get("label"), fingerprint_weak=bool(v.get("weak")),
+                            fingerprint_top=s.get("top_model"), fingerprint_p=s.get("top_probability"),
+                            fingerprint_family=s.get("family"), fingerprint_family_p=s.get("family_probability"),
+                            fingerprint_ranking=[[r["model"], r["p"]] for r in (s.get("ranking") or [])[:5]],
+                            fingerprint_received=s.get("received"), fingerprint_calls=s.get("attempted"), fingerprint_seconds=s.get("seconds"))
+        try:
+            full = json.load(open(os.path.join(out, "modeltrace.json"), encoding="utf-8"))
+            self.extra["fingerprint"] = {k: full.get(k) for k in ("verdict", "ranking", "attempts", "bank", "received", "target", "errors")}
+        except Exception:
+            pass
+        head = f"claimed {ch.model} -> {s.get('top_model') or '-'} {pct(s.get('top_probability'))} ; family {s.get('family_name') or '-'} {pct(s.get('family_probability'))} ; replies {s.get('received', 0)}/{s.get('target', 3)} in {s.get('attempted', 0)} calls, {s.get('seconds', '-')}s ; top3: {ranking or '-'}"
+        if code == "match":
+            self.add(G, "attribution", "PASS", f"指纹一致: {head}")
+        elif code == "version_mismatch":
+            self.add(G, "attribution", "WARN", f"同家族·版本不符: {head}")
+        elif code == "family_mismatch":
+            self.add(G, "attribution", "WARN" if v.get("weak") else "FAIL", f"家族不符: {head}")
+        elif code == "out_of_bank":
+            self.add(G, "attribution", "INFO", f"库外型号(只能判断家族，不判断版本): {head}")
+        else:
+            why = s.get("error") or "; ".join((s.get("errors") or [])[-3:]) or f"exit={proc.returncode}"
+            self.add(G, "attribution", "WARN", f"样本不足，不给归属: replies {s.get('received', 0)}/{s.get('target', 3)} ; {why[:240]}")
+
     def g_cluster(self):
         ch = self.ch; G = "cluster"
         ps = {"c1": "List the first 15 prime numbers, comma-separated, nothing else.",
@@ -1046,8 +1107,8 @@ class Bench:
     # ---------------- driver ----------------
     def run(self, groups):
         order = [("protocol", self.g_protocol), ("identity", self.g_identity), ("knowledge", self.g_knowledge), ("tokenizer", self.g_tokenizer),
-                 ("context", self.g_context), ("cache", self.g_cache), ("stability", self.g_stability), ("speed", self.g_speed), ("iq", self.g_iq), ("cluster", self.g_cluster), ("soak", self.g_soak)]
-        if self.profile == "screen" and not groups: groups = ["protocol", "identity", "knowledge", "iq", "speed"]
+                 ("context", self.g_context), ("cache", self.g_cache), ("stability", self.g_stability), ("speed", self.g_speed), ("iq", self.g_iq), ("fingerprint", self.g_fingerprint), ("cluster", self.g_cluster), ("soak", self.g_soak)]
+        if self.profile == "screen" and not groups: groups = ["protocol", "identity", "knowledge", "iq", "speed", "fingerprint"]
         for name, fn in order:
             if groups and name not in groups: continue
             print(f"--- {self.label}/{self.ch.model} :: {name}", flush=True)
