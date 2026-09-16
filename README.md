@@ -189,3 +189,40 @@ greedy/final 生成的 `REPORT*.md`、`COMPARE*.md`、`OPS*.md`、`GREEDY*.md`�
 
 **注意**：`git pull --ff-only` 要求服务器那份没有本地改动。以后不要直接编辑
 `/opt/relay-bench` 下被跟踪的文件，否则按钮会报 pull 失败——改在 Mac 上、推上去。
+
+## 8. 数字指纹归属（ModelTrace）—— 2026-09-17 新增
+
+`bench.py` 新增 `fingerprint` 组，screen / quick / full 默认都跑，也可单独 `--only fingerprint`。
+原理：让模型连续给出几百个 1–355 的「随机」整数，按取值分布和 ModelTrace 指纹库比对，
+给出**最像哪个具体模型**及概率。它是和知识前沿、协议特征互相独立的一条证据，
+能分开「知识都判 older」但背后模型不同的渠道（apizn Kiro opus-5 → opus-5 100%，dragonapi Kiro opus-5 → haiku-4-5 95%）。
+
+```bash
+python bench.py --label <站> --base <url> --key <key> --models claude-opus-5,claude-sonnet-5 --only fingerprint
+```
+
+- 每个模型 3 条有效回复（最多试 6 次），约 50–100 秒。runner 调用不计入 `meta.calls`，次数见 `metrics.fingerprint_calls`。
+- 依赖协作站旁边装好的引擎，默认路径 `../relay-collab/engines/modeltrace`（`.venv` 里有 numpy）和
+  `../relay-collab/engines/modeltrace-runner/run.py`；可用 `MODELTRACE_DIR` / `MODELTRACE_PYTHON` / `MODELTRACE_RUNNER` 覆盖。
+  没装时这一组记 INFO 跳过，不影响其他组。relay-bench 自己的 venv 不需要 numpy。
+- `RELAY_BENCH_NO_FINGERPRINT=1` 跳过这一组。协作站 worker 会设置它，因为站里把指纹作为独立引擎单独跑。
+- 结果：`metrics.fingerprint_*`、`extra.fingerprint`（含每次请求解析出多少数字和回复开头），
+  原始产物在 `results/<label>/<model>.modeltrace/`。
+
+**REPORT.md**：总览表多了「指纹归属」列（`型号 概率·标签`），每个模型的详情里列出候选排名。红旗规则比较保守：
+
+| 指纹判定 | finding | 红旗 |
+|---|---|---|
+| 指纹一致 | PASS | 无。和知识前沿结论冲突时另起一行提示「证据冲突」，**不会**撤销其他红旗 |
+| 同家族·版本不符 | WARN | 概率 ≥80% 记一条普通红旗「(疑似降级)」，单独不判 FAKE |
+| 家族不符（家族概率 ≥90%） | FAIL | 「(假映射)」→ FAKE/ALTERED |
+| 家族不符（置信度低） | WARN | 普通红旗 |
+| 库外型号 / 样本不足 | INFO / WARN | 无 |
+
+**局限**：闭集，只能在库里 13 个模型中选（gpt-5.4/5.5/5.6-sol/terra/luna/6-astra，claude-haiku-4-5/sonnet-4-6/sonnet-5/opus-4-6/4-7/4-8/opus-5）；
+**没有 fable、3.7 Sonnet、Sonnet 4.5 和国模**。所以某个名字被判「一致」，不能排除它其实是库里没有的相近型号
+（例如 Sonnet 4.5 冒充 Sonnet 5）。库的参考数据也是作者经中转采集的。
+同一渠道从不同出口测，可能打到不同后端（见鑫旺），报告里请注明出口。
+
+`REPORT_OUT=/path/REPORT.md python report.py <results>` 可以把报告写到别处，不覆盖仓库根目录共享的 REPORT.md。
+测试：`python test_fingerprint.py`（假 runner 覆盖全部判定 + 本地假中转端到端，不联网、不花钱）。
