@@ -144,3 +144,43 @@ python3 compare.py --baseline zhipu-official   # 与官方逐项比对 COMPARE.m
 | `RELAY_IQ_BANK=suite/iq.v3.json python3 bench.py ...` | 固定智力题库（v3 = 原 33 题；`iq_full.json` = 40 题含 X8–X14） | |
 
 注意：智谱官方本身的三个特性不能当造假证据——低强度思考偶发空正文、"现任教宗"答案摇摆（pool_mix 会 FAIL）、贪心解码非确定（自身一致性仅 ≈0.19）。
+
+## 7. 版本管理与协作站「Pull & Reload」—— 2026-09-16 新增
+
+协作站「设置」页上 relay-bench 的 **Pull & Reload** 执行的是
+`git pull --ff-only`（见 relay-collab `src/app/api/engines/reload/route.ts`），
+所以 `RELAY_BENCH_DIR` 必须是一个 git 工作副本。
+
+远端用的是**同一台服务器上的裸仓库** `/opt/relay-bench.git`：服务器那次 pull 是本地
+文件系统操作，不走网络、不需要凭据，也就不会卡在交互式认证上。
+
+    Mac ~/cctest/relay-bench  --push over ssh-->  /opt/relay-bench.git (裸)
+                                                        |
+                                 /opt/relay-bench  <--- pull --ff-only（网页按钮）
+
+一次性配置：在服务器上跑 `relay-collab/deploy/relay-bench-git-origin.sh`，
+按提示从 Mac `git push -u origin main`，再跑一次同一个脚本即可。脚本可重复执行，
+不会碰 `.venv/`、`results/`、`logs/` 这些未跟踪文件；如果服务器上**被跟踪**的文件
+与仓库不一致，它会打印 diff 然后停下，不覆盖（要覆盖得显式加 `--force`，会先备份）。
+
+日常改动流程：
+
+```bash
+cd ~/cctest/relay-bench
+# 改 bench.py / suite/*.json …
+git commit -am "..."
+git push
+# 然后在协作站「设置」页点 relay-bench 的 Pull & Reload
+```
+
+CLI 引擎是每次跑测试时新起子进程，所以拉完不用重启 Web 或 Worker。
+
+**只跟踪引擎本身**：各 `*.py`、`suite/`（题库 / knowledge / golden 基线）、`proxy/`，
+共 27 个文件约 436K。`results*/`、`logs/`、`site/`、各类备份，以及 report/compare/ops/
+greedy/final 生成的 `REPORT*.md`、`COMPARE*.md`、`OPS*.md`、`GREEDY*.md`、`FINAL*.md`
+都在 `.gitignore` 里——这些脚本会原地覆盖同名文件，跟着版本走只会天天冲突，而且
+服务器并不需要另一台机器的跑测结果。要把报告也纳入版本管理，删掉 `.gitignore`
+里对应几行即可。
+
+**注意**：`git pull --ff-only` 要求服务器那份没有本地改动。以后不要直接编辑
+`/opt/relay-bench` 下被跟踪的文件，否则按钮会报 pull 失败——改在 Mac 上、推上去。
