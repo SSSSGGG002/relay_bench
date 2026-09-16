@@ -1,0 +1,32 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# Run outputs and evidence — local to each machine, regenerated every run.
+# The server only needs the engine code, not another machine's results.
+results/
+results-*/
+logs/
+site/
+*.partial.json
+
+# Generated reports (report.py / compare.py / ops.py / greedy.py / final.py
+# overwrite these in place, so they churn constantly)
+REPORT*.md
+COMPARE*.md
+OPS*.md
+GREEDY*.md
+FINAL*.md
+
+# Ad-hoc backups
+backup-*/
+suite/.bak/
+*.bak
+*.bak-*
+*.pre-*
+
+# Never commit credentials
+.env
+.env.*
+*.key

@@ -1,0 +1,569 @@
+{
+ "_doc": "Knowledge-cutoff ladder. Each item: date (YYYY-MM of the event), question, accept regexes (case-insensitive). Model answers UNKNOWN when it does not know. Sources verified 2026-09-09 (Wikipedia / official docs / major news).",
+ "items": [
+  {
+   "id": "K00",
+   "date": "2024-11",
+   "control": true,
+   "q": "Who won the 2024 United States presidential election?",
+   "accept": [
+    "trump"
+   ]
+  },
+  {
+   "id": "K01",
+   "date": "2025-05",
+   "q": "Who was elected pope in May 2025, and what papal name did he take?",
+   "accept": [
+    "leo\\s*(xiv|14)",
+    "prevost"
+   ]
+  },
+  {
+   "id": "K02",
+   "date": "2025-06",
+   "q": "In which month and year was the Nintendo Switch 2 released to the public?",
+   "accept": [
+    "jun\\w*\\s*,?\\s*2025",
+    "2025-06",
+    "2025/06"
+   ]
+  },
+  {
+   "id": "K03",
+   "date": "2025-08",
+   "q": "What was the name of the flagship OpenAI model released on August 7, 2025?",
+   "accept": [
+    "gpt[\\s-]?5(?!\\.\\d|\\d)"
+   ]
+  },
+  {
+   "id": "K04",
+   "date": "2025-10",
+   "q": "Who won the 2025 Nobel Prize in Physics? Name at least one laureate.",
+   "accept": [
+    "clarke",
+    "devoret",
+    "martinis"
+   ]
+  },
+  {
+   "id": "K05",
+   "date": "2025-10",
+   "q": "Who won the 2025 Nobel Prize in Literature?",
+   "accept": [
+    "krasznahorkai"
+   ]
+  },
+  {
+   "id": "K06",
+   "date": "2025-11",
+   "q": "Which team won the 2025 MLB World Series, and which team did they defeat in the series?",
+   "accept": [
+    "blue\\s*jays",
+    "toronto"
+   ]
+  },
+  {
+   "id": "K07",
+   "date": "2025-11",
+   "q": "Who won the November 2025 New York City mayoral election?",
+   "accept": [
+    "mamdani"
+   ]
+  },
+  {
+   "id": "K08",
+   "date": "2025-12",
+   "q": "What was the name of the OpenAI model released on December 11, 2025?",
+   "accept": [
+    "gpt[\\s-]?5\\.2"
+   ]
+  },
+  {
+   "id": "K09",
+   "date": "2025-12",
+   "q": "Who or what was named TIME magazine's 2025 Person of the Year?",
+   "accept": [
+    "architects\\s+of\\s+ai"
+   ]
+  },
+  {
+   "id": "K10",
+   "date": "2026-01",
+   "q": "Who won the men's singles title at the 2026 Australian Open?",
+   "accept": [
+    "alcaraz"
+   ]
+  },
+  {
+   "id": "K11",
+   "date": "2026-02",
+   "q": "Which team won Super Bowl LX (played February 8, 2026)?",
+   "accept": [
+    "seahawks",
+    "seattle"
+   ]
+  },
+  {
+   "id": "K12",
+   "date": "2026-02",
+   "q": "Which Anthropic model was released on February 5, 2026?",
+   "accept": [
+    "opus\\s*4\\.6"
+   ]
+  },
+  {
+   "id": "K13",
+   "date": "2026-03",
+   "q": "Which film won Best Picture at the 98th Academy Awards in March 2026?",
+   "accept": [
+    "one\\s+battle\\s+after\\s+another"
+   ]
+  },
+  {
+   "id": "K14",
+   "date": "2026-03",
+   "q": "Who was elected Supreme Leader of Iran in March 2026?",
+   "accept": [
+    "mojtaba"
+   ]
+  },
+  {
+   "id": "K15",
+   "date": "2026-04",
+   "q": "Which OpenAI model was released on April 24, 2026?",
+   "accept": [
+    "gpt[\\s-]?5\\.5"
+   ]
+  },
+  {
+   "id": "K16",
+   "date": "2026-05",
+   "q": "Which country won the Eurovision Song Contest 2026?",
+   "accept": [
+    "bulgaria"
+   ]
+  },
+  {
+   "id": "K17",
+   "date": "2026-05",
+   "q": "Which Anthropic model was released on May 28, 2026?",
+   "accept": [
+    "opus\\s*4\\.8"
+   ]
+  },
+  {
+   "id": "K18",
+   "date": "2026-06",
+   "q": "Which team won the 2026 NBA Finals?",
+   "accept": [
+    "knicks"
+   ]
+  },
+  {
+   "id": "K19",
+   "date": "2026-06",
+   "q": "Which team won the 2026 Stanley Cup?",
+   "accept": [
+    "hurricanes",
+    "carolina"
+   ]
+  },
+  {
+   "id": "K20",
+   "date": "2026-07",
+   "q": "Which country won the 2026 FIFA World Cup?",
+   "accept": [
+    "spain"
+   ]
+  },
+  {
+   "id": "K21",
+   "date": "2026-07",
+   "q": "What are the names of the three variants of GPT-5.6 that OpenAI released in July 2026?",
+   "accept": [
+    "luna",
+    "terra"
+   ]
+  },
+  {
+   "id": "K22",
+   "date": "2026-07",
+   "q": "Which Anthropic model was released on July 24, 2026?",
+   "accept": [
+    "opus\\s*5(?!\\.\\d|\\d)"
+   ]
+  },
+  {
+   "id": "K23",
+   "date": "2026-09",
+   "q": "Which Anthropic model was released on September 1, 2026?",
+   "accept": [
+    "fable\\s*5\\.1"
+   ]
+  }
+ ],
+ "model_cutoffs": {
+  "_doc": "reliable cutoff / training cutoff (YYYY-MM) from official docs; used to judge whether a knowledge frontier is consistent with the claimed model",
+  "claude-fable-5-1": [
+   "2026-06",
+   "2026-06"
+  ],
+  "claude-fable-5": [
+   "2026-01",
+   "2026-01"
+  ],
+  "claude-opus-5": [
+   "2026-05",
+   "2026-05"
+  ],
+  "claude-opus-4-8": [
+   "2026-01",
+   "2026-01"
+  ],
+  "claude-opus-4-7": [
+   "2026-01",
+   "2026-01"
+  ],
+  "claude-opus-4-6": [
+   "2025-05",
+   "2025-08"
+  ],
+  "claude-opus-4-5": [
+   "2025-05",
+   "2025-08"
+  ],
+  "claude-opus-4-1": [
+   "2025-01",
+   "2025-03"
+  ],
+  "claude-sonnet-5": [
+   "2026-01",
+   "2026-01"
+  ],
+  "claude-sonnet-4-6": [
+   "2025-08",
+   "2026-01"
+  ],
+  "claude-sonnet-4-5": [
+   "2025-01",
+   "2025-07"
+  ],
+  "claude-haiku-4-5": [
+   "2025-02",
+   "2025-07"
+  ],
+  "gpt-6-astra": [
+   "2026-04",
+   "2026-04"
+  ],
+  "gpt-5.6-sol": [
+   "2026-02",
+   "2026-02"
+  ],
+  "gpt-5.6-terra": [
+   "2026-02",
+   "2026-02"
+  ],
+  "gpt-5.6-luna": [
+   "2026-02",
+   "2026-02"
+  ],
+  "gpt-5.6": [
+   "2026-02",
+   "2026-02"
+  ],
+  "gpt-5.5": [
+   "2025-12",
+   "2025-12"
+  ],
+  "gpt-5.4": [
+   "2025-08",
+   "2025-08"
+  ],
+  "gpt-5.4-mini": [
+   "2025-08",
+   "2025-08"
+  ],
+  "gpt-5.3-codex-spark": [
+   "2025-08",
+   "2025-08"
+  ],
+  "gpt-5.3-codex": [
+   "2025-08",
+   "2025-08"
+  ],
+  "gpt-5.2": [
+   "2025-08",
+   "2025-08"
+  ],
+  "gpt-5.1": [
+   "2024-09",
+   "2024-09"
+  ],
+  "gpt-5": [
+   "2024-09",
+   "2024-09"
+  ],
+  "glm-5.3-flash": [
+   "2025-12",
+   "2026-01"
+  ],
+  "glm-5.3": [
+   "2025-12",
+   "2026-01"
+  ],
+  "_note_glm": "glm-5.3(-flash) cutoff is NOT documented by Zhipu; values are the frontier measured on the official API 2026-09-10 (ladder 2025-12, open-ended 2026-01; self-reports 2024-10)"
+ },
+ "recency": [
+  {
+   "id": "C1",
+   "q": "Who is the current pope?",
+   "eras": [
+    [
+     "2025-05",
+     "leo|prevost"
+    ],
+    [
+     "2013-03",
+     "francis|bergoglio"
+    ]
+   ]
+  },
+  {
+   "id": "C2",
+   "q": "Who is the current Prime Minister of Japan?",
+   "eras": [
+    [
+     "2025-10",
+     "takaichi"
+    ],
+    [
+     "2024-10",
+     "ishiba"
+    ],
+    [
+     "2021-10",
+     "kishida"
+    ]
+   ]
+  },
+  {
+   "id": "C3",
+   "q": "Who is the current mayor of New York City?",
+   "eras": [
+    [
+     "2026-01",
+     "mamdani"
+    ],
+    [
+     "2022-01",
+     "adams"
+    ]
+   ]
+  },
+  {
+   "id": "C4",
+   "q": "Who is the current Supreme Leader of Iran?",
+   "eras": [
+    [
+     "2026-03",
+     "mojtaba"
+    ],
+    [
+     "1989-06",
+     "khamenei"
+    ]
+   ]
+  },
+  {
+   "id": "C5",
+   "q": "Which team won the most recent Super Bowl that you know of, and in which year?",
+   "eras": [
+    [
+     "2026-02",
+     "seahawks|seattle"
+    ],
+    [
+     "2025-02",
+     "eagles|philadelphia"
+    ],
+    [
+     "2024-02",
+     "chiefs|kansas"
+    ],
+    [
+     "2000-01",
+     "."
+    ]
+   ]
+  },
+  {
+   "id": "C6",
+   "q": "Which country won the most recent men's FIFA World Cup that you know of, and in which year?",
+   "eras": [
+    [
+     "2026-07",
+     "spain"
+    ],
+    [
+     "2022-12",
+     "argentina"
+    ]
+   ]
+  },
+  {
+   "id": "C7",
+   "q": "Who is the most recent Nobel Prize in Literature laureate that you know of, and for which year?",
+   "eras": [
+    [
+     "2025-10",
+     "krasznahorkai"
+    ],
+    [
+     "2024-10",
+     "han\\s*kang"
+    ],
+    [
+     "2023-10",
+     "fosse"
+    ],
+    [
+     "2000-01",
+     "."
+    ]
+   ]
+  },
+  {
+   "id": "C8",
+   "q": "What is the most recent Claude model from Anthropic that you know of? Give its exact name and version.",
+   "eras": [
+    [
+     "2026-09",
+     "fable\\s*5\\.1"
+    ],
+    [
+     "2026-07",
+     "opus\\s*5(?!\\.\\d|\\d)"
+    ],
+    [
+     "2026-06",
+     "sonnet\\s*5(?!\\.\\d|\\d)|fable\\s*5(?!\\.\\d|\\d)|mythos"
+    ],
+    [
+     "2026-05",
+     "opus\\s*4\\.8"
+    ],
+    [
+     "2026-04",
+     "opus\\s*4\\.7"
+    ],
+    [
+     "2026-02",
+     "4\\.6"
+    ],
+    [
+     "2025-11",
+     "opus\\s*4\\.5"
+    ],
+    [
+     "2025-10",
+     "haiku\\s*4\\.5"
+    ],
+    [
+     "2025-09",
+     "sonnet\\s*4\\.5"
+    ],
+    [
+     "2025-08",
+     "opus\\s*4\\.1"
+    ],
+    [
+     "2025-05",
+     "opus\\s*4(?!\\.\\d|\\d)|sonnet\\s*4(?!\\.\\d|\\d)|claude\\s*4(?!\\.\\d|\\d)"
+    ],
+    [
+     "2025-02",
+     "3\\.7"
+    ],
+    [
+     "2024-10",
+     "3\\.5"
+    ],
+    [
+     "2000-01",
+     "."
+    ]
+   ]
+  },
+  {
+   "id": "C9",
+   "q": "What is the most recent GPT model from OpenAI that you know of? Give its exact name and version.",
+   "eras": [
+    [
+     "2026-09",
+     "gpt[\\s-]?6"
+    ],
+    [
+     "2026-07",
+     "gpt[\\s-]?5\\.6"
+    ],
+    [
+     "2026-04",
+     "gpt[\\s-]?5\\.5"
+    ],
+    [
+     "2026-03",
+     "gpt[\\s-]?5\\.4"
+    ],
+    [
+     "2026-02",
+     "gpt[\\s-]?5\\.3"
+    ],
+    [
+     "2025-12",
+     "gpt[\\s-]?5\\.2"
+    ],
+    [
+     "2025-11",
+     "gpt[\\s-]?5\\.1"
+    ],
+    [
+     "2025-08",
+     "gpt[\\s-]?5(?!\\.\\d|\\d)"
+    ],
+    [
+     "2025-04",
+     "gpt[\\s-]?4\\.1|\\bo3\\b|\\bo4"
+    ],
+    [
+     "2025-02",
+     "gpt[\\s-]?4\\.5"
+    ],
+    [
+     "2024-05",
+     "gpt[\\s-]?4o"
+    ],
+    [
+     "2000-01",
+     "."
+    ]
+   ]
+  },
+  {
+   "id": "C10",
+   "q": "Who is the current President of the United States?",
+   "eras": [
+    [
+     "2025-01",
+     "trump"
+    ],
+    [
+     "2021-01",
+     "biden"
+    ]
+   ]
+  }
+ ]
+}

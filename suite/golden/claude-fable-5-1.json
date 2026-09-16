@@ -1,0 +1,233 @@
+{
+ "model": "claude-fable-5-1",
+ "source": "official api via claude -p (subscription); Claude Code base system prompt present",
+ "ladder": [
+  {
+   "id": "K00",
+   "date": "2024-11",
+   "control": true,
+   "cls": "CORRECT",
+   "answer": "Donald Trump won, defeating Kamala Harris."
+  },
+  {
+   "id": "K01",
+   "date": "2025-05",
+   "control": false,
+   "cls": "CORRECT",
+   "answer": "Robert Francis Prevost was elected pope on May 8, 2025, taking the name Leo XIV."
+  },
+  {
+   "id": "K02",
+   "date": "2025-06",
+   "control": false,
+   "cls": "CORRECT",
+   "answer": "June 2025 (released June 5, 2025)."
+  },
+  {
+   "id": "K03",
+   "date": "2025-08",
+   "control": false,
+   "cls": "CORRECT",
+   "answer": "GPT-5."
+  },
+  {
+   "id": "K04",
+   "date": "2025-10",
+   "control": false,
+   "cls": "CORRECT",
+   "answer": "John Clarke, Michel Devoret, and John Martinis, for macroscopic quantum tunneling in circuits."
+  },
+  {
+   "id": "K05",
+   "date": "2025-10",
+   "control": false,
+   "cls": "CORRECT",
+   "answer": "László Krasznahorkai, the Hungarian novelist, won the 2025 Nobel Prize in Literature."
+  },
+  {
+   "id": "K06",
+   "date": "2025-11",
+   "control": false,
+   "cls": "CORRECT",
+   "answer": "Los Angeles Dodgers won, defeating the Toronto Blue Jays in seven games."
+  },
+  {
+   "id": "K07",
+   "date": "2025-11",
+   "control": false,
+   "cls": "CORRECT",
+   "answer": "Zohran Mamdani won, defeating Andrew Cuomo (independent) and Curtis Sliwa."
+  },
+  {
+   "id": "K08",
+   "date": "2025-12",
+   "control": false,
+   "cls": "CORRECT",
+   "answer": "GPT-5.2, released December 11, 2025."
+  },
+  {
+   "id": "K09",
+   "date": "2025-12",
+   "control": false,
+   "cls": "CORRECT",
+   "answer": "TIME's 2025 Person of the Year was \"The Architects of AI\" (AI leaders)."
+  },
+  {
+   "id": "K10",
+   "date": "2026-01",
+   "control": false,
+   "cls": "WRONG",
+   "answer": "Novak Djokovic won the 2026 Australian Open men's singles title."
+  },
+  {
+   "id": "K11",
+   "date": "2026-02",
+   "control": false,
+   "cls": "CORRECT",
+   "answer": "Seattle Seahawks defeated the New England Patriots, 29–13."
+  },
+  {
+   "id": "K12",
+   "date": "2026-02",
+   "control": false,
+   "cls": "CORRECT",
+   "answer": "Claude Opus 4.6 was released on February 5, 2026."
+  },
+  {
+   "id": "K13",
+   "date": "2026-03",
+   "control": false,
+   "cls": "CORRECT",
+   "answer": "\"One Battle After Another\" won Best Picture at the 98th Academy Awards."
+  },
+  {
+   "id": "K14",
+   "date": "2026-03",
+   "control": false,
+   "cls": "CORRECT",
+   "answer": "Mojtaba Khamenei, chosen by the Assembly of Experts after Ali Khamenei's death."
+  },
+  {
+   "id": "K15",
+   "date": "2026-04",
+   "control": false,
+   "cls": "UNKNOWN",
+   "answer": "UNKNOWN"
+  },
+  {
+   "id": "K16",
+   "date": "2026-05",
+   "control": false,
+   "cls": "WRONG",
+   "answer": "Austria hosted in Vienna; the winner was Sweden's entry, to my best recollection."
+  },
+  {
+   "id": "K17",
+   "date": "2026-05",
+   "control": false,
+   "cls": "UNKNOWN",
+   "answer": "UNKNOWN"
+  },
+  {
+   "id": "K18",
+   "date": "2026-06",
+   "control": false,
+   "cls": "UNKNOWN",
+   "answer": "UNKNOWN"
+  },
+  {
+   "id": "K19",
+   "date": "2026-06",
+   "control": false,
+   "cls": "UNKNOWN",
+   "answer": "UNKNOWN"
+  },
+  {
+   "id": "K20",
+   "date": "2026-07",
+   "control": false,
+   "cls": "UNKNOWN",
+   "answer": "UNKNOWN"
+  },
+  {
+   "id": "K21",
+   "date": "2026-07",
+   "control": false,
+   "cls": "UNKNOWN",
+   "answer": "UNKNOWN"
+  },
+  {
+   "id": "K22",
+   "date": "2026-07",
+   "control": false,
+   "cls": "UNKNOWN",
+   "answer": "UNKNOWN"
+  },
+  {
+   "id": "K23",
+   "date": "2026-09",
+   "control": false,
+   "cls": "UNKNOWN",
+   "answer": "UNKNOWN"
+  }
+ ],
+ "recency": [
+  {
+   "id": "C1",
+   "answer": "Pope Leo XIV (Robert Francis Prevost), elected May 8, 2025, succeeding Pope Francis.",
+   "era": "2025-05"
+  },
+  {
+   "id": "C2",
+   "answer": "Sanae Takaichi, who became Prime Minister of Japan in October 2025.",
+   "era": "2025-10"
+  },
+  {
+   "id": "C3",
+   "answer": "Zohran Mamdani, who took office as mayor of New York City on January 1, 2026.",
+   "era": "2026-01"
+  },
+  {
+   "id": "C4",
+   "answer": "Ayatollah Ali Khamenei has been Iran's Supreme Leader since 1989, as of my knowledge.",
+   "era": "1989-06"
+  },
+  {
+   "id": "C5",
+   "answer": "Seattle Seahawks won Super Bowl LX in February 2026, defeating the New England Patriots.",
+   "era": "2026-02"
+  },
+  {
+   "id": "C6",
+   "answer": "Argentina won the most recent men's FIFA World Cup I know of, in 2022 (Qatar).",
+   "era": "2022-12"
+  },
+  {
+   "id": "C7",
+   "answer": "Han Kang, awarded the Nobel Prize in Literature for 2024 (announced October 2024). László Krasznahorkai won for 2025.",
+   "era": "2025-10"
+  },
+  {
+   "id": "C8",
+   "answer": "Claude Fable 5.1 (model ID claude-fable-5-1), the newest Claude 5 family model I know of.",
+   "era": "2026-09"
+  },
+  {
+   "id": "C9",
+   "answer": "GPT-5.5, released by OpenAI in spring 2026, is the most recent GPT model I know of.",
+   "era": "2026-04"
+  },
+  {
+   "id": "C10",
+   "answer": "Donald Trump, serving his second term since January 20, 2025.",
+   "era": "2025-01"
+  }
+ ],
+ "pool_mix": [
+  "2025-05",
+  "2025-05",
+  "2025-05"
+ ],
+ "ladder_frontier": "2026-03",
+ "recency_frontier": "2026-09"
+}

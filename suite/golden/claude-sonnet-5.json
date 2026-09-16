@@ -1,0 +1,233 @@
+{
+ "model": "claude-sonnet-5",
+ "source": "official api via claude -p (subscription); Claude Code base system prompt present",
+ "ladder": [
+  {
+   "id": "K00",
+   "date": "2024-11",
+   "control": true,
+   "cls": "CORRECT",
+   "answer": "Donald Trump won the 2024 U.S. presidential election, defeating Kamala Harris."
+  },
+  {
+   "id": "K01",
+   "date": "2025-05",
+   "control": false,
+   "cls": "CORRECT",
+   "answer": "Robert Francis Prevost, an American, was elected pope and took the name Leo XIV."
+  },
+  {
+   "id": "K02",
+   "date": "2025-06",
+   "control": false,
+   "cls": "CORRECT",
+   "answer": "June 2025."
+  },
+  {
+   "id": "K03",
+   "date": "2025-08",
+   "control": false,
+   "cls": "CORRECT",
+   "answer": "GPT-5"
+  },
+  {
+   "id": "K04",
+   "date": "2025-10",
+   "control": false,
+   "cls": "CORRECT",
+   "answer": "John Clarkson, Michel Devoret, and John Martinis, for work on macroscopic quantum tunneling and energy quantization in e"
+  },
+  {
+   "id": "K05",
+   "date": "2025-10",
+   "control": false,
+   "cls": "CORRECT",
+   "answer": "László Krasznahorkai won the 2025 Nobel Prize in Literature."
+  },
+  {
+   "id": "K06",
+   "date": "2025-11",
+   "control": false,
+   "cls": "CORRECT",
+   "answer": "Los Angeles Dodgers defeated the Toronto Blue Jays in the 2025 World Series."
+  },
+  {
+   "id": "K07",
+   "date": "2025-11",
+   "control": false,
+   "cls": "CORRECT",
+   "answer": "Zohran Mamdani won the November 2025 NYC mayoral election."
+  },
+  {
+   "id": "K08",
+   "date": "2025-12",
+   "control": false,
+   "cls": "UNKNOWN",
+   "answer": "UNKNOWN"
+  },
+  {
+   "id": "K09",
+   "date": "2025-12",
+   "control": false,
+   "cls": "UNKNOWN",
+   "answer": "UNKNOWN"
+  },
+  {
+   "id": "K10",
+   "date": "2026-01",
+   "control": false,
+   "cls": "UNKNOWN",
+   "answer": "UNKNOWN"
+  },
+  {
+   "id": "K11",
+   "date": "2026-02",
+   "control": false,
+   "cls": "UNKNOWN",
+   "answer": "UNKNOWN"
+  },
+  {
+   "id": "K12",
+   "date": "2026-02",
+   "control": false,
+   "cls": "UNKNOWN",
+   "answer": "UNKNOWN"
+  },
+  {
+   "id": "K13",
+   "date": "2026-03",
+   "control": false,
+   "cls": "UNKNOWN",
+   "answer": "UNKNOWN"
+  },
+  {
+   "id": "K14",
+   "date": "2026-03",
+   "control": false,
+   "cls": "UNKNOWN",
+   "answer": "UNKNOWN"
+  },
+  {
+   "id": "K15",
+   "date": "2026-04",
+   "control": false,
+   "cls": "UNKNOWN",
+   "answer": "UNKNOWN"
+  },
+  {
+   "id": "K16",
+   "date": "2026-05",
+   "control": false,
+   "cls": "UNKNOWN",
+   "answer": "UNKNOWN"
+  },
+  {
+   "id": "K17",
+   "date": "2026-05",
+   "control": false,
+   "cls": "UNKNOWN",
+   "answer": "UNKNOWN"
+  },
+  {
+   "id": "K18",
+   "date": "2026-06",
+   "control": false,
+   "cls": "UNKNOWN",
+   "answer": "UNKNOWN"
+  },
+  {
+   "id": "K19",
+   "date": "2026-06",
+   "control": false,
+   "cls": "UNKNOWN",
+   "answer": "UNKNOWN"
+  },
+  {
+   "id": "K20",
+   "date": "2026-07",
+   "control": false,
+   "cls": "UNKNOWN",
+   "answer": "UNKNOWN"
+  },
+  {
+   "id": "K21",
+   "date": "2026-07",
+   "control": false,
+   "cls": "UNKNOWN",
+   "answer": "UNKNOWN"
+  },
+  {
+   "id": "K22",
+   "date": "2026-07",
+   "control": false,
+   "cls": "UNKNOWN",
+   "answer": "UNKNOWN"
+  },
+  {
+   "id": "K23",
+   "date": "2026-09",
+   "control": false,
+   "cls": "UNKNOWN",
+   "answer": "UNKNOWN"
+  }
+ ],
+ "recency": [
+  {
+   "id": "C1",
+   "answer": "Pope Leo XIV.",
+   "era": "2025-05"
+  },
+  {
+   "id": "C2",
+   "answer": "Shigeru Ishiba.",
+   "era": "2024-10"
+  },
+  {
+   "id": "C3",
+   "answer": "Eric Adams (as of my knowledge cutoff, though Zohran Mamdani won the 2025 Democratic primary and could have taken office",
+   "era": "2026-01"
+  },
+  {
+   "id": "C4",
+   "answer": "Ali Khamenei.",
+   "era": "1989-06"
+  },
+  {
+   "id": "C5",
+   "answer": "Philadelphia Eagles won Super Bowl LIX in February 2025.",
+   "era": "2025-02"
+  },
+  {
+   "id": "C6",
+   "answer": "Argentina won the 2022 FIFA World Cup.",
+   "era": "2022-12"
+  },
+  {
+   "id": "C7",
+   "answer": "László Krasznahorkai, 2025.",
+   "era": "2025-10"
+  },
+  {
+   "id": "C8",
+   "answer": "Sonnet 5 (model ID: claude-sonnet-5).",
+   "era": "2026-06"
+  },
+  {
+   "id": "C9",
+   "answer": "GPT-5.1",
+   "era": "2025-11"
+  },
+  {
+   "id": "C10",
+   "answer": "Donald Trump.",
+   "era": "2025-01"
+  }
+ ],
+ "pool_mix": [
+  "2025-05",
+  "2025-05",
+  "2025-05"
+ ],
+ "ladder_frontier": "2025-11",
+ "recency_frontier": "2026-06"
+}

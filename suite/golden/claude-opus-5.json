@@ -1,0 +1,233 @@
+{
+ "model": "claude-opus-5",
+ "source": "official api via claude -p (subscription); Claude Code base system prompt present",
+ "ladder": [
+  {
+   "id": "K00",
+   "date": "2024-11",
+   "control": true,
+   "cls": "CORRECT",
+   "answer": "Donald Trump won, defeating Kamala Harris and returning to the presidency."
+  },
+  {
+   "id": "K01",
+   "date": "2025-05",
+   "control": false,
+   "cls": "CORRECT",
+   "answer": "Robert Prevost, an American cardinal, was elected and took the name Leo XIV."
+  },
+  {
+   "id": "K02",
+   "date": "2025-06",
+   "control": false,
+   "cls": "CORRECT",
+   "answer": "June 2025."
+  },
+  {
+   "id": "K03",
+   "date": "2025-08",
+   "control": false,
+   "cls": "CORRECT",
+   "answer": "GPT-5, OpenAI's flagship model released August 7, 2025."
+  },
+  {
+   "id": "K04",
+   "date": "2025-10",
+   "control": false,
+   "cls": "CORRECT",
+   "answer": "John Clarke, Michel Devoret, and John Martinis — for macroscopic quantum tunnelling in circuits."
+  },
+  {
+   "id": "K05",
+   "date": "2025-10",
+   "control": false,
+   "cls": "CORRECT",
+   "answer": "László Krasznahorkai, the Hungarian novelist, won the 2025 Nobel Prize in Literature."
+  },
+  {
+   "id": "K06",
+   "date": "2025-11",
+   "control": false,
+   "cls": "CORRECT",
+   "answer": "The Los Angeles Dodgers beat the Toronto Blue Jays in seven games."
+  },
+  {
+   "id": "K07",
+   "date": "2025-11",
+   "control": false,
+   "cls": "CORRECT",
+   "answer": "Zohran Mamdani, the Democratic nominee, won, defeating Andrew Cuomo and Curtis Sliwa."
+  },
+  {
+   "id": "K08",
+   "date": "2025-12",
+   "control": false,
+   "cls": "UNKNOWN",
+   "answer": "UNKNOWN"
+  },
+  {
+   "id": "K09",
+   "date": "2025-12",
+   "control": false,
+   "cls": "UNKNOWN",
+   "answer": "UNKNOWN"
+  },
+  {
+   "id": "K10",
+   "date": "2026-01",
+   "control": false,
+   "cls": "UNKNOWN",
+   "answer": "UNKNOWN"
+  },
+  {
+   "id": "K11",
+   "date": "2026-02",
+   "control": false,
+   "cls": "UNKNOWN",
+   "answer": "UNKNOWN"
+  },
+  {
+   "id": "K12",
+   "date": "2026-02",
+   "control": false,
+   "cls": "UNKNOWN",
+   "answer": "UNKNOWN"
+  },
+  {
+   "id": "K13",
+   "date": "2026-03",
+   "control": false,
+   "cls": "UNKNOWN",
+   "answer": "UNKNOWN"
+  },
+  {
+   "id": "K14",
+   "date": "2026-03",
+   "control": false,
+   "cls": "UNKNOWN",
+   "answer": "UNKNOWN"
+  },
+  {
+   "id": "K15",
+   "date": "2026-04",
+   "control": false,
+   "cls": "UNKNOWN",
+   "answer": "UNKNOWN"
+  },
+  {
+   "id": "K16",
+   "date": "2026-05",
+   "control": false,
+   "cls": "UNKNOWN",
+   "answer": "UNKNOWN"
+  },
+  {
+   "id": "K17",
+   "date": "2026-05",
+   "control": false,
+   "cls": "UNKNOWN",
+   "answer": "UNKNOWN"
+  },
+  {
+   "id": "K18",
+   "date": "2026-06",
+   "control": false,
+   "cls": "UNKNOWN",
+   "answer": "UNKNOWN"
+  },
+  {
+   "id": "K19",
+   "date": "2026-06",
+   "control": false,
+   "cls": "UNKNOWN",
+   "answer": "UNKNOWN"
+  },
+  {
+   "id": "K20",
+   "date": "2026-07",
+   "control": false,
+   "cls": "UNKNOWN",
+   "answer": "UNKNOWN"
+  },
+  {
+   "id": "K21",
+   "date": "2026-07",
+   "control": false,
+   "cls": "UNKNOWN",
+   "answer": "UNKNOWN"
+  },
+  {
+   "id": "K22",
+   "date": "2026-07",
+   "control": false,
+   "cls": "UNKNOWN",
+   "answer": "UNKNOWN"
+  },
+  {
+   "id": "K23",
+   "date": "2026-09",
+   "control": false,
+   "cls": "UNKNOWN",
+   "answer": "UNKNOWN"
+  }
+ ],
+ "recency": [
+  {
+   "id": "C1",
+   "answer": "Pope Leo XIV, elected May 2025, succeeding Pope Francis.",
+   "era": "2025-05"
+  },
+  {
+   "id": "C2",
+   "answer": "Sanae Takaichi, who became Japan's first female Prime Minister in October 2025.",
+   "era": "2025-10"
+  },
+  {
+   "id": "C3",
+   "answer": "Zohran Mamdani, who won the November 2025 election and took office January 2026.",
+   "era": "2026-01"
+  },
+  {
+   "id": "C4",
+   "answer": "Ali Khamenei has been Iran's Supreme Leader since 1989.",
+   "era": "1989-06"
+  },
+  {
+   "id": "C5",
+   "answer": "The Philadelphia Eagles won Super Bowl LIX in February 2025, defeating the Kansas City Chiefs 40-22.",
+   "era": "2025-02"
+  },
+  {
+   "id": "C6",
+   "answer": "Argentina, in 2022 (beating France on penalties in Qatar).",
+   "era": "2022-12"
+  },
+  {
+   "id": "C7",
+   "answer": "Hungarian writer László Krasznahorkai won the 2025 Nobel Prize in Literature.",
+   "era": "2025-10"
+  },
+  {
+   "id": "C8",
+   "answer": "Claude Opus 5 (claude-opus-5) — the model I'm running as, alongside Sonnet 5 and Fable 5.1.",
+   "era": "2026-09"
+  },
+  {
+   "id": "C9",
+   "answer": "GPT-5.1 (including GPT-5.1 Codex / Instant / Thinking variants), released by OpenAI in November 2025.",
+   "era": "2025-11"
+  },
+  {
+   "id": "C10",
+   "answer": "Donald Trump — inaugurated January 2025 for a second term, per my knowledge as of May 2026.",
+   "era": "2025-01"
+  }
+ ],
+ "pool_mix": [
+  "2025-05",
+  "2025-05",
+  "2025-05"
+ ],
+ "ladder_frontier": "2025-11",
+ "recency_frontier": "2026-09"
+}

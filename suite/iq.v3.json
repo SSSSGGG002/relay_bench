@@ -1,0 +1,240 @@
+{
+ "seed": 20260909,
+ "items": [
+  {
+   "id": "D1",
+   "cat": "arithmetic",
+   "q": "Compute 2483 × 2085.",
+   "ans": "5177055",
+   "tier": "direct"
+  },
+  {
+   "id": "D2",
+   "cat": "counting",
+   "q": "How many times does the letter 'e' (case-insensitive) appear in the following text?\n\n\"dream island garden ember apple copper ribbon tunnel apple quiet ribbon walnut lantern ember timber canyon castle dream copper rocket umbrella breeze\"",
+   "ans": "21",
+   "tier": "direct"
+  },
+  {
+   "id": "D3",
+   "cat": "string",
+   "q": "Reverse this string exactly: gas75rvhnths7",
+   "ans": "7shtnhvr57sag",
+   "tier": "direct"
+  },
+  {
+   "id": "D4",
+   "cat": "arithmetic",
+   "q": "Sum these numbers: 991, 649, 600, 303, 853, 767, 346, 163, 276, 162, 565, 416",
+   "ans": "6091",
+   "tier": "direct"
+  },
+  {
+   "id": "D5",
+   "cat": "sorting",
+   "q": "Sort these numbers in descending order, comma-separated: 716, 728, 671, 595, 895, 932, 863, 109, 141, 904",
+   "ans": "932, 904, 895, 863, 728, 716, 671, 595, 141, 109",
+   "tier": "direct"
+  },
+  {
+   "id": "D6",
+   "cat": "calendar",
+   "q": "What day of the week is 2085-03-28 in the Gregorian calendar? Output only the weekday name.",
+   "ans": "Wednesday",
+   "tier": "direct"
+  },
+  {
+   "id": "D7",
+   "cat": "counting",
+   "q": "How many of these words are palindromes? level, marble, window, silver, redder, kayak, garden, pencil, table, rocket, orbit, planet",
+   "ans": "3",
+   "tier": "direct"
+  },
+  {
+   "id": "D8",
+   "cat": "base",
+   "q": "Convert hexadecimal 0x4C948 to decimal.",
+   "ans": "313672",
+   "tier": "direct"
+  },
+  {
+   "id": "R1",
+   "cat": "simulation",
+   "q": "A register machine has registers r0..r3, all initially 0. Instructions (lines are 1-indexed):\nSET r, v  -> r = v;  ADD r, v -> r = r + v;  ADDR r, s -> r = r + s (s is a register);\nMUL r, v -> r = r * v;  MOD r, v -> r = r mod v;  DEC r -> r = r - 1;\nJNZ r, L -> if r != 0 jump to line L, else continue;  HALT -> stop.\nProgram:\n1: SET r0, 10\n2: SET r1, 1\n3: SET r2, 6\n4: MUL r1, 5\n5: MOD r1, 61\n6: ADDR r2, r1\n7: ADDR r3, r2\n8: DEC r0\n9: JNZ r0, 4\n10: MOD r3, 1000\n11: HALT\n\nRun it to completion. Give the final register values as JSON {\"r0\":..,\"r1\":..,\"r2\":..,\"r3\":..}.",
+   "ans": "{\"r0\": 0, \"r1\": 13, \"r2\": 204, \"r3\": 966}",
+   "kind": "json",
+   "tier": "reason"
+  },
+  {
+   "id": "R2",
+   "cat": "simulation",
+   "q": "An elementary cellular automaton with Wolfram rule 184 runs on a ring of 16 cells (cell 0's left neighbour is cell 15). Initial state (cell 0 to cell 15): 1000011010111001. Apply the rule synchronously for exactly 8 steps. Give the final state as a 16-character string of 0s and 1s.",
+   "ans": "1010101010101010",
+   "tier": "reason"
+  },
+  {
+   "id": "R3",
+   "cat": "string",
+   "q": "Start with the string: sgjdxghj9udf\nApply these operations in order:\n1. move the first two characters to the end\n2. delete every vowel (a,e,i,o,u in either case)\n3. keep only characters at even 0-based indices\n4. append the length of the current string as decimal digits\n5. apply ROT13 to letters (digits unchanged)\n6. swap each adjacent pair of characters (positions 0<->1, 2<->3, ...; an unpaired last char stays)\n7. reverse the string\nWhat is the final string?",
+   "ans": "6stu9wk",
+   "tier": "reason"
+  },
+  {
+   "id": "R4",
+   "cat": "simulation",
+   "q": "26 people numbered 1..26 stand in a circle. Starting the count at person 1, every 6-th person is eliminated (person 6 goes first), counting continues from the next person after each elimination. Which number is the last survivor?",
+   "ans": "10",
+   "tier": "reason"
+  },
+  {
+   "id": "R5",
+   "cat": "graph",
+   "q": "Directed weighted graph on nodes A..H. Edges as from->to(weight): A->B(7), B->C(8), B->E(6), B->G(8), C->A(6), C->D(8), C->F(3), C->H(1), D->C(1), D->E(9), D->F(8), E->D(8), E->F(2), E->H(3), F->A(6), F->G(9), G->A(5), G->E(5), G->H(5), H->A(1), H->D(6), H->F(5). Find the shortest-path distance from A to H and the number of distinct shortest paths from A to H. Answer as 'distance,count'.",
+   "ans": "16,2",
+   "tier": "reason"
+  },
+  {
+   "id": "R6",
+   "cat": "counting",
+   "q": "How many 5-digit positive integers have strictly increasing digits (each digit larger than the one to its left, no digit 0) and a digit sum divisible by 3?",
+   "ans": "42",
+   "tier": "reason"
+  },
+  {
+   "id": "R7",
+   "cat": "number",
+   "q": "Compute 13^1643 mod 1000 (the last three digits of 13^1643). Give the number without leading zeros.",
+   "ans": "397",
+   "tier": "reason"
+  },
+  {
+   "id": "R8",
+   "cat": "sql",
+   "q": "Tables:\ndepartments(id, name): (1, 'Sales'), (2, 'Engineering'), (3, 'Support'), (4, 'Finance')\nemployees(id, name, dept_id, salary, hired):\n(1, 'Ana', 4, 60000, '2023-12-19')\n(2, 'Ben', 2, 101000, '2020-12-21')\n(3, 'Cleo', 3, 41000, '2018-06-07')\n(4, 'Dev', 3, 46000, '2017-12-16')\n(5, 'Eli', 1, 123000, '2019-12-21')\n(6, 'Fay', 4, 60000, '2024-03-25')\n(7, 'Gus', 2, 147000, '2020-10-04')\n(8, 'Hana', 1, 152000, '2018-08-27')\n(9, 'Ivo', 1, 105000, '2023-10-16')\n(10, 'Jun', 3, 150000, '2018-07-12')\n(11, 'Kai', 4, 137000, '2018-09-04')\n(12, 'Lou', 3, 127000, '2019-10-19')\n\nQuery:\nSELECT d.name, COUNT(*) AS c, MAX(e.salary) AS mx FROM employees e JOIN departments d ON e.dept_id = d.id WHERE e.hired >= '2020-01-01' GROUP BY d.name HAVING COUNT(*) >= 2 ORDER BY mx DESC, d.name ASC\n\nGive the exact result rows as a JSON array of arrays, e.g. [[\"Sales\", 3, 120000], ...]. Use [] if empty.",
+   "ans": "[[\"Engineering\", 2, 147000], [\"Finance\", 2, 60000]]",
+   "kind": "json",
+   "tier": "reason"
+  },
+  {
+   "id": "R9",
+   "cat": "code",
+   "q": "What exactly does this Python 3 program print (single line)?\n\n```python\ndef f(x, acc=[]):\n    acc.append(x)\n    return sum(acc)\nr = [f(i) for i in range(1, 4+1)]\nfs = [lambda y, i=i: y*i for i in range(3)]\ng = [lambda y: y+i for i in range(3)]\na = [5]*3; a[0] += 1\ns = \"{:>5}|{:<3}|{:.2f}\".format(25, \"ab\", 5.207)\nprint(r[-1], [h(2) for h in fs], [h(1) for h in g], a, s, 7//-2, -7%3, 2**3**2 % 1000, sep=\" ; \")\n```",
+   "ans": "10 ; [0, 2, 4] ; [3, 3, 3] ; [6, 5, 5] ;    25|ab |5.21 ; -4 ; 2 ; 512",
+   "tier": "reason"
+  },
+  {
+   "id": "R10",
+   "cat": "event-loop",
+   "q": "In Node.js 22 (same semantics as a modern browser for this code), what is the exact order of console.log output? Answer as a JSON array of strings.\n\n```js\nconsole.log('H');\nsetTimeout(() => { console.log('G'); Promise.resolve().then(() => console.log('B')); }, 0);\nconst p = Promise.resolve().then(() => { console.log('J'); return { then(res) { console.log('K'); res(); } }; });\np.then(() => console.log('E'));\nqueueMicrotask(() => { console.log('A'); queueMicrotask(() => console.log('F')); });\n(async () => { await null; console.log('C'); await p; console.log('D'); })();\nconsole.log('Z');\n```",
+   "ans": "[\"H\", \"Z\", \"J\", \"A\", \"C\", \"K\", \"F\", \"E\", \"D\", \"G\", \"B\"]",
+   "kind": "json",
+   "tier": "reason"
+  },
+  {
+   "id": "R11",
+   "cat": "logic",
+   "q": "On an island every person is a knight (always tells the truth) or a knave (always lies). Five people: Ada, Bo, Cy, Di, Ed.\nAda says: \"Cy is a knave.\"\nBo says: \"I am the same type as Ed.\"\nCy says: \"At least one of Ada and Di is a knave.\"\nDi says: \"Bo and Ed are both knights.\"\nEd says: \"Di is a knave.\"\nWho are the knights? List their names in alphabetical order, comma-separated, or NONE.",
+   "ans": "Cy, Ed",
+   "tier": "reason"
+  },
+  {
+   "id": "R12",
+   "cat": "number",
+   "q": "Define a(1)=12, a(2)=42, and for n>=3: a(n) = (2*a(n-1) + 3*a(n-2) + n) mod 1000. What is a(40)?",
+   "ans": "712",
+   "tier": "reason"
+  },
+  {
+   "id": "H1",
+   "cat": "logic",
+   "q": "Four houses in a row numbered 1 (leftmost) to 4 (rightmost). Each house has a distinct color (red, blue, green, white), pet (dog, cat, fish, bird) and drink (tea, milk, juice, water).\nClues:\n- The green house's owner drinks water.\n- The person who drinks juice lives immediately to the left of the person with the bird.\n- The person who drinks tea lives immediately to the left of the person with the cat.\n- House 2 is green.\n- The dog owner lives next to the green house.\n- The person with the fish drinks tea.\n- The person who drinks water lives immediately to the left of the person with the dog.\n- House 1 is red.\n- The green house is immediately to the left of the white house.\nIn which house number is the dog?",
+   "ans": "3",
+   "tier": "hard"
+  },
+  {
+   "id": "H2",
+   "cat": "counting",
+   "q": "On a 5×5 chessboard (rows 1-5, columns 1-5) the cells [(1, 2), (2, 2), (2, 5), (3, 4), (4, 1)] (row, column) are blocked and cannot hold a piece. In how many ways can you place 3 identical rooks on unblocked cells so that no two share a row or a column?",
+   "ans": "307",
+   "tier": "hard"
+  },
+  {
+   "id": "H3",
+   "cat": "simulation",
+   "q": "A single clerk serves customers first-come-first-served. Arrival times (minutes): [16, 17, 26, 33, 38, 41, 46, 52, 54, 59]. Service times in the same order: [12, 11, 2, 2, 10, 3, 2, 4, 4, 10]. Service starts immediately if the clerk is free, otherwise the customer waits. What is the total waiting time (sum over all customers, in minutes) before service starts?",
+   "ans": "80",
+   "tier": "hard"
+  },
+  {
+   "id": "H4",
+   "cat": "counting",
+   "q": "Tasks A..H must each run once, one at a time. Constraints (X before Y): A before G; A before H; C before B; D before H; E before G; G before H. Additionally D and G must not be adjacent in the schedule. How many valid orderings exist?",
+   "ans": "924",
+   "tier": "hard"
+  },
+  {
+   "id": "H5",
+   "cat": "search",
+   "q": "Cryptarithm: UUHJ + LKDJ = UDDLD. Each letter stands for a distinct digit 0-9, no number has a leading zero, and the solution is unique. What number does UDDLD represent?",
+   "ans": "10080",
+   "tier": "hard"
+  },
+  {
+   "id": "H6",
+   "cat": "counting",
+   "q": "Undirected graph on vertices A..G with edges: AB, AD, AE, AF, BC, BD, BF, CE, CF, DF, DG, EF, EG, FG. How many Hamiltonian paths (visiting every vertex exactly once) start at vertex A? Count each sequence of vertices once.",
+   "ans": "52",
+   "tier": "hard"
+  },
+  {
+   "id": "X1",
+   "cat": "simulation",
+   "q": "Same register machine as before: registers r0..r3 start at 0; SET r,v; ADD r,v; ADDR r,s (r += register s); MUL r,v; MOD r,v; DEC r; JNZ r,L (jump to line L if r != 0); HALT. Lines are 1-indexed.\nProgram:\n1: SET r0, 6\n2: SET r3, 0\n3: SET r1, 4\n4: SET r2, 6\n5: MUL r2, 4\n6: MOD r2, 107\n7: ADDR r3, r2\n8: DEC r1\n9: JNZ r1, 5\n10: ADDR r3, r0\n11: DEC r0\n12: JNZ r0, 3\n13: MOD r3, 10000\n14: HALT\n\nRun it to completion (it contains a nested loop). Give the final registers as JSON {\"r0\":..,\"r1\":..,\"r2\":..,\"r3\":..}.",
+   "ans": "{\"r0\": 0, \"r1\": 0, \"r2\": 38, \"r3\": 1347}",
+   "kind": "json",
+   "tier": "xhard"
+  },
+  {
+   "id": "X2",
+   "cat": "simulation",
+   "q": "A deterministic automaton has states A,B,C,D (start state A) and input symbols x,y,z. Transition table (state: symbol->next):\nA: x->D, y->D, z->A\nB: x->B, y->A, z->C\nC: x->A, y->D, z->A\nD: x->B, y->D, z->D\nProcess the input string zzzzxxyzyyyyxyyzxzzyyyyzzxxzyyxxyzxz one symbol at a time. Report the final state and how many times the automaton entered state C during processing (count each transition into C, including staying in C). Answer as 'STATE,count'.",
+   "ans": "D,2",
+   "tier": "xhard"
+  },
+  {
+   "id": "X3",
+   "cat": "probability",
+   "q": "You repeatedly roll a fair 6-sided die (faces 1..6) and keep a running total, stopping as soon as the total is at least 9. What is the expected number of rolls? Give the exact value as a reduced fraction p/q (or an integer).",
+   "ans": "5111617/1679616",
+   "tier": "xhard"
+  },
+  {
+   "id": "X4",
+   "cat": "counting",
+   "q": "How many binary strings of length 20 contain exactly 12 ones and have no run of three or more identical consecutive bits (no '000' and no '111')?",
+   "ans": "1391",
+   "tier": "xhard"
+  },
+  {
+   "id": "X5",
+   "cat": "optimization",
+   "q": "0/1 knapsack. Items: item1: weight 4, value 12; item2: weight 12, value 47; item3: weight 12, value 15; item4: weight 4, value 23; item5: weight 11, value 46; item6: weight 14, value 38; item7: weight 13, value 41; item8: weight 11, value 52; item9: weight 13, value 47. Capacity 35 (total weight must be <= 35). What is the maximum total value, and how many distinct subsets of items achieve that maximum? Answer as 'value,count'.",
+   "ans": "145,2",
+   "tier": "xhard"
+  },
+  {
+   "id": "X6",
+   "cat": "bits",
+   "q": "Start with the 16-bit value 0x7637. Apply in order:\n1. add 0x1357 modulo 2^16\n2. reverse the order of all 16 bits\n3. rotate left by 3 within 16 bits\n4. rotate right by 5 within 16 bits\n5. swap the high and low bytes\n6. clear every bit whose position (0 = least significant) is a multiple of 3\nGive the final 16-bit value in hexadecimal (4 uppercase hex digits, e.g. 0x1A2B).",
+   "ans": "0x6414",
+   "tier": "xhard"
+  },
+  {
+   "id": "X7",
+   "cat": "optimization",
+   "q": "Seven jobs run one after another on a single machine starting at time 0, no idle time: J1: duration 4, deadline 15; J2: duration 5, deadline 28; J3: duration 4, deadline 26; J4: duration 2, deadline 30; J5: duration 9, deadline 9; J6: duration 7, deadline 18; J7: duration 4, deadline 8. A job is late if it finishes after its deadline. What is the minimum possible number of late jobs, and how many of the 7! orderings achieve that minimum? Answer as 'late,orderings'.",
+   "ans": "1,26",
+   "tier": "xhard"
+  }
+ ]
+}
