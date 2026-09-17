@@ -205,6 +205,7 @@ python bench.py --label <站> --base <url> --key <key> --models claude-opus-5,cl
 - 依赖协作站旁边装好的引擎，默认路径 `../relay-collab/engines/modeltrace`（`.venv` 里有 numpy）和
   `../relay-collab/engines/modeltrace-runner/run.py`；可用 `MODELTRACE_DIR` / `MODELTRACE_PYTHON` / `MODELTRACE_RUNNER` 覆盖。
   没装时这一组记 INFO 跳过，不影响其他组。relay-bench 自己的 venv 不需要 numpy。
+- 只对 GPT / Claude 型号跑（按型号名 `claude*` / `gpt*` / `o<数字>` 判断）。GLM、DeepSeek、Kimi 等国模自动 INFO 跳过，不发请求：库里没有这些家族，闭集分类器照样会报出某个 GPT/Claude，白花 3–6 次调用还会误导。
 - `RELAY_BENCH_NO_FINGERPRINT=1` 跳过这一组。协作站 worker 会设置它，因为站里把指纹作为独立引擎单独跑。
 - 结果：`metrics.fingerprint_*`、`extra.fingerprint`（含每次请求解析出多少数字和回复开头），
   原始产物在 `results/<label>/<model>.modeltrace/`。

@@ -1023,6 +1023,10 @@ class Bench:
         ch = self.ch; G = "fingerprint"
         if os.environ.get("RELAY_BENCH_NO_FINGERPRINT") == "1":
             self.add(G, "modeltrace", "INFO", "skipped (RELAY_BENCH_NO_FINGERPRINT=1)"); return
+        # The bank holds only GPT and Claude models. A closed-set classifier still names *some* GPT or
+        # Claude for glm / deepseek / kimi, so running it there costs 3-6 calls and prints a misleading line.
+        if not re.match(r"^(claude|gpt|o\d)", ch.model.strip().lower().split("/")[-1]):
+            self.add(G, "modeltrace", "INFO", f"skipped: ModelTrace's bank only has GPT and Claude models, {ch.model} cannot be attributed"); return
         sibling = os.path.join(HERE, "..", "relay-collab", "engines")
         mt_dir = os.path.abspath(os.environ.get("MODELTRACE_DIR") or os.path.join(sibling, "modeltrace"))
         py = os.environ.get("MODELTRACE_PYTHON") or os.path.join(mt_dir, ".venv", "bin", "python")

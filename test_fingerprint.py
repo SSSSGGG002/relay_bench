@@ -5,7 +5,7 @@
 No network and no API spend: a fake runner covers every verdict; the end-to-end case uses the
 real runner + ModelTrace maths against a local fake relay (skipped if ModelTrace is not installed).
 """
-import http.server, importlib, json, os, random, subprocess, sys, tempfile, threading, types, unittest, warnings
+import http.server, importlib, json, os, random, re, subprocess, sys, tempfile, threading, types, unittest, warnings
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
@@ -120,6 +120,18 @@ class Group(unittest.TestCase):
         os.environ["MODELTRACE_DIR"] = os.path.join(self.tmp, "nope")
         b = self.run_group(summary("match", "claude-opus-5", 0.99))
         self.assertEqual(self.status(b), ["INFO"]); self.assertIn("not installed", b.findings[-1]["detail"])
+
+    def test_models_outside_the_bank_families_are_skipped_without_calls(self):
+        for model, dialect in (("glm-5.3-flash", "openai"), ("DeepSeek-V4.1-Flash", "openai"), ("kimi-k3", "openai")):
+            b = self.run_group(summary("out_of_bank", "gpt-5.4", 0.6), model=model, dialect=dialect)
+            self.assertEqual(self.status(b), ["INFO"], model)
+            self.assertIn("only has GPT and Claude", b.findings[-1]["detail"])
+            self.assertNotIn("fingerprint_verdict", b.metrics)
+            self.assertFalse(os.path.exists(os.path.join(self.tmp, "fp-test", re.sub(r"[^A-Za-z0-9._-]", "_", model) + ".modeltrace", "seen.json")),
+                             f"{model}: the runner must not be started")
+        for model in ("gpt-6-astra", "claude-opus-5", "anthropic/claude-sonnet-5", "o3"):
+            b = self.run_group(summary("match", model, 0.99), model=model)
+            self.assertIn("fingerprint_verdict", b.metrics, model)
 
     def test_conflict_with_knowledge_is_called_out_in_the_report(self):
         b = self.run_group(summary("match", "claude-opus-5", 0.99))
