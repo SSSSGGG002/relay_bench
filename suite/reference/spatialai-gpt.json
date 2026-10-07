@@ -336,6 +336,34 @@
      "cost": 0.024395,
      "actual_cost": 0.00707455
     }
+   },
+   "soak": {
+    "soak": {
+     "n": 180,
+     "ok": 179,
+     "err_rate": 0.006,
+     "empty": 0,
+     "errs": {
+      "429:{\"error\":{\"code\":\"gateway_queue_full\",\"message\":\"Too many pe": 1
+     },
+     "ttft_p50": 3.253,
+     "ttft_p90": 4.204,
+     "ttft_p99": 5.605,
+     "el_p50": 3.383,
+     "el_p90": 4.495,
+     "el_p99": 6.793,
+     "el_max": 7.862,
+     "chunks_p50": 1
+    },
+    "_billed": {
+     "requests": 181,
+     "input_tokens": 2129,
+     "cache_read_tokens": 0,
+     "cache_creation_tokens": 0,
+     "output_tokens": 8120,
+     "cost": 0.254245,
+     "actual_cost": 0.07373105
+    }
    }
   },
   "gpt-5.6-terra": {
@@ -663,6 +691,35 @@
      "output_tokens": 600,
      "cost": 0.00984,
      "actual_cost": 0.0028536
+    }
+   },
+   "soak": {
+    "soak": {
+     "n": 180,
+     "ok": 178,
+     "err_rate": 0.011,
+     "empty": 0,
+     "errs": {
+      "429:{\"error\":{\"code\":\"gateway_queue_full\",\"message\":\"Too many pe": 1,
+      "0:ConnectError: [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurr": 1
+     },
+     "ttft_p50": 3.442,
+     "ttft_p90": 4.327,
+     "ttft_p99": 6.97,
+     "el_p50": 3.49,
+     "el_p90": 4.475,
+     "el_p99": 7.002,
+     "el_max": 9.458,
+     "chunks_p50": 1
+    },
+    "_billed": {
+     "requests": 180,
+     "input_tokens": 2118,
+     "cache_read_tokens": 0,
+     "cache_creation_tokens": 0,
+     "output_tokens": 6339,
+     "cost": 0.080304,
+     "actual_cost": 0.02328816
     }
    }
   },
@@ -992,6 +1049,35 @@
      "cost": 0.0432,
      "actual_cost": 0.012528
     }
+   },
+   "soak": {
+    "soak": {
+     "n": 180,
+     "ok": 178,
+     "err_rate": 0.011,
+     "empty": 0,
+     "errs": {
+      "429:{\"error\":{\"code\":\"gateway_queue_full\",\"message\":\"Too many pe": 1,
+      "0:ConnectError: [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurr": 1
+     },
+     "ttft_p50": 3.914,
+     "ttft_p90": 5.736,
+     "ttft_p99": 9.485,
+     "el_p50": 3.96,
+     "el_p90": 6.159,
+     "el_p99": 9.726,
+     "el_max": 12.126,
+     "chunks_p50": 1
+    },
+    "_billed": {
+     "requests": 334,
+     "input_tokens": 191490,
+     "cache_read_tokens": 371712,
+     "cache_creation_tokens": 0,
+     "output_tokens": 7404,
+     "cost": 2.656812,
+     "actual_cost": 0.77047548
+    }
    }
   }
  },
@@ -1015,9 +1101,9 @@
   "ids": "chat/completions 的 id 是 resp_…（Responses 转换），usage 无 *_details"
  },
  "latency_2026_10_07_mac_clash": {
-  "gpt-5.6-sol": "顺序 60：首 token p50 1.47 / p99 28.8 s；30 并发×2：59/60（1 次 429 gateway_queue_full），p50 5.05 / p99 51.6 s",
-  "gpt-5.6-terra": "顺序 60：p50 1.67 / p99 30.6 s；30 并发×2：60/60，p50 8.7 / p90 26.5 / p99 28.6 s",
-  "gpt-6-astra": "顺序 60：p50 1.99 / p99 9.3 s；30 并发×2：60/60，p50 5.9 / p99 11.7 s（三个里最稳）"
+  "gpt-5.6-sol": "顺序 60：首 token p50 1.47 / p99 28.8 s；30 并发×2：59/60（1 次 429 gateway_queue_full），p50 5.05 / p99 51.6 s；soak 30 min：179/180，首 token p50 3.253 / p99 5.605 s，总耗时 p99 6.793 s，实扣 $0.07373105",
+  "gpt-5.6-terra": "顺序 60：p50 1.67 / p99 30.6 s；30 并发×2：60/60，p50 8.7 / p90 26.5 / p99 28.6 s；soak 30 min：178/180，首 token p50 3.442 / p99 6.97 s，总耗时 p99 7.002 s，实扣 $0.02328816",
+  "gpt-6-astra": "顺序 60：p50 1.99 / p99 9.3 s；30 并发×2：60/60，p50 5.9 / p99 11.7 s（三个里最稳）；soak 30 min：178/180，首 token p50 3.914 / p99 9.485 s，总耗时 p99 9.726 s，实扣 $0.77047548"
  },
  "caveats": [
   "路线 Mac + Clash 代理；Mac 直连该域名证书不匹配（DNS 污染），必须走代理。延迟只做同路线比较，要和别家比需同日同路线重测",
