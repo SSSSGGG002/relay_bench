@@ -1077,7 +1077,8 @@
      "output_tokens": 7404,
      "cost": 2.656812,
      "actual_cost": 0.77047548
-    }
+    },
+    "_billed_contaminated": true
    }
   }
  },
@@ -1103,13 +1104,14 @@
  "latency_2026_10_07_mac_clash": {
   "gpt-5.6-sol": "顺序 60：首 token p50 1.47 / p99 28.8 s；30 并发×2：59/60（1 次 429 gateway_queue_full），p50 5.05 / p99 51.6 s；soak 30 min：179/180，首 token p50 3.253 / p99 5.605 s，总耗时 p99 6.793 s，实扣 $0.07373105",
   "gpt-5.6-terra": "顺序 60：p50 1.67 / p99 30.6 s；30 并发×2：60/60，p50 8.7 / p90 26.5 / p99 28.6 s；soak 30 min：178/180，首 token p50 3.442 / p99 6.97 s，总耗时 p99 7.002 s，实扣 $0.02328816",
-  "gpt-6-astra": "顺序 60：p50 1.99 / p99 9.3 s；30 并发×2：60/60，p50 5.9 / p99 11.7 s（三个里最稳）；soak 30 min：178/180，首 token p50 3.914 / p99 9.485 s，总耗时 p99 9.726 s，实扣 $0.77047548"
+  "gpt-6-astra": "顺序 60：p50 1.99 / p99 9.3 s；30 并发×2：60/60，p50 5.9 / p99 11.7 s（三个里最稳）；soak 30 min：178/180，首 token p50 3.914 / p99 9.485 s，总耗时 p99 9.726 s，实扣作废（同时段有别的请求共用这把 key：astra 记了 334 次，本测试只发 180 次）"
  },
  "caveats": [
   "路线 Mac + Clash 代理；Mac 直连该域名证书不匹配（DNS 污染），必须走代理。延迟只做同路线比较，要和别家比需同日同路线重测",
   "sol/terra 的 p99 约 30 s 来自少数请求卡 28–33 s，不是普遍慢；p50 都在 2 s 内",
   "未测智力（用户另有方法）",
-  "号池是 Codex 订阅，和猫肥同一种上游；注入是否计费只在 responses 接口发生"
+  "号池是 Codex 订阅，和猫肥同一种上游；注入是否计费只在 responses 接口发生",
+  "soak 期间（10-07 11:24–11:54 北京时间）有别的客户端在用这把 key（astra 多出 154 次请求，另有 gpt-6-sol / gpt-6.1-sol 调用），astra soak 的计费不可用；soak 之前各段请求数逐段对上、余额差分吻合，不受影响"
  ],
  "how_to_use": "新 GPT 站：RB_KEY=... python3 gptcheck.py run --label <站>-<日期> --base <url> --sections inject,params,cache,ttl,session [--proxy]，再按模型逐个跑 --sections lat，最后单独 --sections soak；report 后和本文件逐项比（注入是否计费、chat/responses 缓存、TTL、p50/p99、一套负载实扣 $）"
 }

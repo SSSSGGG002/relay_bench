@@ -271,7 +271,7 @@ GPT 中转多数是 Codex 订阅号池：每个请求会被塞进 4k 多 token �
 | soak 30 min（每 10 s 一次） | 179/180，首 token p50 3.25 / p99 5.6 s | 178/180，3.44 / 6.97 s | 178/180，3.91 / 9.49 s |
 | 一套负载实扣（站内 $） | 0.2494 | 0.0886 | 0.4816 |
 
-实扣统一是名义价格的 0.29 倍。余额差分 $0.8196 等于各段 actual_cost 合计（不含 soak）。soak 的失败是每个模型各 1 次 429 `gateway_queue_full`，terra/astra 另各有 1 次本机 Clash 的 SSL EOF；长窗口下 sol/terra 没有再出现 30 s 卡顿，p99 在 7 s 以内。
+实扣统一是名义价格的 0.29 倍。余额差分 $0.8196 等于各段 actual_cost 合计（不含 soak）。soak 的失败是每个模型各 1 次 429 `gateway_queue_full`，terra/astra 另各有 1 次本机 Clash 的 SSL EOF；长窗口下 sol/terra 没有再出现 30 s 卡顿，p99 在 7 s 以内。soak 期间有别的客户端共用这把 key（astra 多出 154 次请求），astra soak 的计费作废，延迟数据仍可用。
 
 ```bash
 RB_KEY=sk-... python3 gptcheck.py run --label <站>-<日期> --base https://<站> --sections inject,params,cache,ttl,session [--proxy]
