@@ -17,7 +17,7 @@
 
 | 被测模型 | 必须对比的基线 | 用的脚本 | 规则来源 |
 |---|---|---|---|
-| Claude（opus-5 / sonnet-5 / fable-5-1 / opus-5-5 …） | `suite/golden/` 官方 + `suite/reference/ikuncode-kiro.json` | `bench.py` + `report.py`，参考站漂移用 `refcheck.py` | 09-25：新站报告必须有 ikuncode 对比节 |
+| Claude（只测 opus-5-5 / opus-5 / sonnet-5） | `suite/golden/` 官方 + `suite/reference/ikuncode-kiro.json`；计费比 `ikuncode-ccrev-cost.json` | `bench.py` + `report.py`，参考站漂移用 `refcheck.py`，计费用 `costcheck.py --ref` | 09-25：新站报告必须有 ikuncode 对比节 |
 | GLM（glm-5.3-flash 等） | `zhipu-official-glm53flash.json` + `ikuncode-glm53flash*.json` | `glmsuite.py run/summarize/compare` | 09-25：GLM 一律对比官方 + ikuncode 冻结基线 |
 | DeepSeek（deepseek-v4-flash） | `ikuncode-dsv4flash.json` | `glmsuite.py`（`--model deepseek-v4-flash`） | 10-02：ds v4-flash 对比冻结的 ikuncode 基线 |
 
@@ -58,6 +58,7 @@
 | `ikuncode-glm53flash.json` | glm-5.3-flash | 09-25 | 北京阿里云直连 | "好的 GLM 中转"的标尺：智谱后端，跨账号缓存双向命中 |
 | `ikuncode-glm53flash-20261002.json` | glm-5.3-flash | 10-02 | Mac + Clash TUN | ikuncode **漂移后**的快照：接入层换成 OpenRouter 风格网关、多供应商轮换。智力只跑 9 题，完整分沿用 09-25 的 51/54 |
 | `ikuncode-dsv4flash.json` | deepseek-v4-flash | 10-02 | Mac + Clash TUN | deepseek-official 分组，回显 deepseek-v4-flash-0731 |
+| `ikuncode-ccrev-cost.json` | claude-opus-5-5 / opus-5 / sonnet-5 | 10-07 | Mac 直连 | **计费基线**：cc逆向分组固定负载的实扣金额（costcheck v1），按站点公式诚实计费 |
 
 所有参考站的 IQ 题库都是 `suite/iq.ref-20260924.json`，md5 `ad1f46e9f80233a7264d9f01196c9993`（和当前 `suite/iq.json` 一样）。
 
@@ -157,7 +158,52 @@
 | 假流式 | 每 chunk token 数、TTFT 后是否一次吐完 | 每 chunk 远大于 1，或 TTFT 15–18 s 后一次吐完（ikuncode Kiro）= 上游非流式 |
 | 限流 | 并发时的 429 / 1302 | 官方智谱 key 30 并发触发 1302 账户限速，是账户档位，不算服务故障 |
 
-### 3.7 参考站核心数值速查
+### 3.7 实际花费（固定负载实扣对账）—— 2026-10-07 新增
+
+倍率低不等于便宜：有的站每个请求注入几千 token 的隐藏提示，再把输入固定拆成 70–80%「缓存命中」，账面倍率很低，实际扣费却不低。所以各站之间比价格，要比**跑完同一套负载实际扣了多少钱**，不比倍率。
+
+工具 `costcheck.py`：每个模型发同一套确定性负载，按响应头 `x-oneapi-request-id` 把每次调用和站点逐条账单（new-api `/api/log/token`）对上，汇总实扣金额。
+
+| 段 | 内容 | 看什么 |
+|---|---|---|
+| `inject` | "Reply with exactly: OK" × 3 | 计费输入减去实际发送量 = 每个请求被注入多少 token |
+| `fresh` | 约 3k 和 12k o200k token 的全新文档各 1 次，不带 cache_control | 全新文档不可能命中缓存：报了 cache_read = 缓存是拆分出来的。两点斜率 = 站点分词比（相对 o200k） |
+| `session` | Claude Code 式：CC 身份 + 约 12k token 文档带 cache_control，5 轮对话，历史累积 | 真实 agent 场景下的缓存和计费 |
+| `iq` | 8 道 screen 智力题，默认思考，max_tokens 16000 | 「跑这些题实际花多少钱」，顺带出智力分 |
+
+输出指标：
+
+- **实扣 $**：站内美元（quota ÷ 500000）。乘上你自己的充值价（元 / 站内美元）就是实际花费，报告表里留了填价格的列。
+- **理想 $**：用站点自己公布的公式，算实际发送的内容应该扣多少（无注入；会话里系统文档写一次、之后都读缓存；输出 token 用站点报告的数）。
+- **实扣/理想**：≈1 说明按标价诚实计费；明显大于 1 说明注入或缓存拆分在加价，倍率要乘上这个系数再比。
+- **每请求注入 token**、**分词比**、**新文档的 cache_read**、**报告缓存命中率**、智力分、错误数。
+- 站点总用量 `/v1/dashboard/billing/usage` 的前后差值（单位是站内美分，已换算成美元）做交叉核对；同一把 key 同时有别的使用时会偏大。
+
+```bash
+RB_KEY=sk-... python3 costcheck.py --label <站>-<分组>-<日期> --base https://<站> \
+    --models claude-opus-5-5,claude-opus-5,claude-sonnet-5 --direct --route "<路线>"
+python3 costcheck.py --report results/costcheck/<label>.json [--ref <参考>]           # 重出表格
+python3 costcheck.py --report results/costcheck/<label>.json --freeze suite/reference/<名字>-cost.json   # 冻结成计费基线
+```
+
+分词比没法独立核实，因为没有官方计数做对照。负载内容在各站完全相同（只有开头一行 nonce 不同），所以同一模型在两个站的分词比可以直接比，高出很多（比如 1.2 对 2.0）的那家就是在虚报 token。
+
+**计费基线 ikuncode cc逆向（2026-10-07，`suite/reference/ikuncode-ccrev-cost.json`）**：
+
+| 模型 | 跑完一套实扣（站内 $） | 理想 $ | 实扣/理想 | 报告缓存命中 | 每请求注入 | 分词比 | 新文档 cache_read | IQ |
+|---|---|---|---|---|---|---|---|---|
+| claude-opus-5-5 | 0.1375 | 0.1322 | 1.04× | 63% | 68 | 1.19 | 0 / 0 | 8/8 |
+| claude-opus-5 | 0.1908 | 0.1831 | 1.04× | 63% | 68 | 1.19 | 0 / 0 | 7/8 |
+| claude-sonnet-5 | 0.0942 | 0.0911 | 1.03× | 63% | 68 | 1.19 | 0 / 0 | 7/8 |
+
+站点定价：扣费 = (输入 + 缓存读×0.1〔opus-5-5 是 0.05〕+ 缓存写×1.25 + 输出×5) × 模型倍率（opus-5-5 2 / opus-5 2.5 / sonnet-5 1）× 分组倍率 0.5，站内 $ = quota ÷ 500000。历史 448 条和本次 54 条账单逐条复算，0 条不符。新站和它比时，两边各乘自己的充值价再比「跑完一套实扣」。
+
+```bash
+RB_KEY=sk-... python3 costcheck.py --label <站>-<分组>-<日期> --base https://<站> \
+    --models claude-opus-5-5,claude-opus-5,claude-sonnet-5 --ref suite/reference/ikuncode-ccrev-cost.json
+```
+
+### 3.8 参考站核心数值速查
 
 延迟单位秒，均为冻结时那一次的路线，**只用于同路线横向参考，不当常量**。
 

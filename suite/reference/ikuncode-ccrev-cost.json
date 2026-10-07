@@ -1,0 +1,250 @@
+{
+ "name": "ikuncode-ccrev-cost",
+ "kind": "claude-cost",
+ "workload": "costcheck-v1",
+ "base": "https://api.ikuncode.cc",
+ "key_hint": "sk-Rmr…gw5M",
+ "measured_at": "2026-10-06 22:27 -0400",
+ "route": "Mac 直连（2026-10-07 北京时间）",
+ "source": "results/costcheck/ikun-ccrev-20261007.json",
+ "quota_per_usd": 500000,
+ "usage_delta": 0.4225,
+ "models": [
+  {
+   "model": "claude-sonnet-5",
+   "usd": 0.094158,
+   "ideal_usd": 0.09105850982222222,
+   "inflation": 1.034038446091739,
+   "hit": 0.6271445489235503,
+   "inject": 68.04555555555555,
+   "slope": 1.1908888888888889,
+   "fresh_cache_read": [
+    0,
+    0
+   ],
+   "iq": "7/8",
+   "errors": 0,
+   "groups": [
+    "cc逆向"
+   ],
+   "channels": [
+    156
+   ],
+   "ratio": {
+    "m": 1,
+    "c": 5,
+    "cr": 0.1,
+    "cw": 1.25,
+    "g": 0.5
+   },
+   "sections": {
+    "inject": {
+     "n": 3,
+     "quota": 120,
+     "ideal": 16.431666666666665,
+     "sent": 17.863333333333333,
+     "p": 222,
+     "cr": 0,
+     "cw": 0,
+     "c": 3
+    },
+    "fresh": {
+     "n": 2,
+     "quota": 9307,
+     "ideal": 9487.27511111111,
+     "sent": 17939.55022222222,
+     "p": 17578,
+     "cr": 0,
+     "cw": 0,
+     "c": 207
+    },
+    "session": {
+     "n": 5,
+     "quota": 15234,
+     "ideal": 13839.263133333334,
+     "sent": 73283.72955555556,
+     "p": 1947,
+     "cr": 61960,
+     "cw": 15399,
+     "c": 615
+    },
+    "iq": {
+     "n": 8,
+     "quota": 22418,
+     "ideal": 22186.285,
+     "sent": 1232.5699999999997,
+     "p": 1691,
+     "cr": 0,
+     "cw": 0,
+     "c": 8628
+    }
+   }
+  },
+  {
+   "model": "claude-opus-5-5",
+   "usd": 0.13753,
+   "ideal_usd": 0.13218872397777776,
+   "inflation": 1.0404064421040948,
+   "hit": 0.631282759741579,
+   "inject": 68.04555555555555,
+   "slope": 1.1908888888888889,
+   "fresh_cache_read": [
+    0,
+    0
+   ],
+   "iq": "8/8",
+   "errors": 0,
+   "groups": [
+    "cc逆向"
+   ],
+   "channels": [
+    156
+   ],
+   "ratio": {
+    "m": 2,
+    "c": 5,
+    "cr": 0.05,
+    "cw": 1.25,
+    "g": 0.5
+   },
+   "sections": {
+    "inject": {
+     "n": 3,
+     "quota": 237,
+     "ideal": 32.86333333333333,
+     "sent": 17.863333333333333,
+     "p": 222,
+     "cr": 0,
+     "cw": 0,
+     "c": 3
+    },
+    "fresh": {
+     "n": 2,
+     "quota": 18775,
+     "ideal": 19139.313777777777,
+     "sent": 17944.313777777777,
+     "p": 17580,
+     "cr": 0,
+     "cw": 0,
+     "c": 239
+    },
+    "session": {
+     "n": 5,
+     "quota": 27544,
+     "ideal": 25074.614877777774,
+     "sent": 72812.13755555556,
+     "p": 1502,
+     "cr": 62146,
+     "cw": 15400,
+     "c": 737
+    },
+    "iq": {
+     "n": 8,
+     "quota": 22209,
+     "ideal": 21847.569999999996,
+     "sent": 1232.5699999999997,
+     "p": 1594,
+     "cr": 0,
+     "cw": 0,
+     "c": 4123
+    }
+   }
+  },
+  {
+   "model": "claude-opus-5",
+   "usd": 0.190762,
+   "ideal_usd": 0.18309204577777777,
+   "inflation": 1.0418912475942914,
+   "hit": 0.6280903881588272,
+   "inject": 68.04555555555555,
+   "slope": 1.1908888888888889,
+   "fresh_cache_read": [
+    0,
+    0
+   ],
+   "iq": "7/8",
+   "errors": 0,
+   "groups": [
+    "cc逆向"
+   ],
+   "channels": [
+    156
+   ],
+   "ratio": {
+    "m": 2.5,
+    "c": 5,
+    "cr": 0.1,
+    "cw": 1.25,
+    "g": 0.5
+   },
+   "sections": {
+    "inject": {
+     "n": 3,
+     "quota": 297,
+     "ideal": 41.079166666666666,
+     "sent": 17.863333333333333,
+     "p": 222,
+     "cr": 0,
+     "cw": 0,
+     "c": 3
+    },
+    "fresh": {
+     "n": 2,
+     "quota": 23670,
+     "ideal": 24124.437777777777,
+     "sent": 17939.55022222222,
+     "p": 17576,
+     "cr": 0,
+     "cw": 0,
+     "c": 272
+    },
+    "session": {
+     "n": 5,
+     "quota": 39937,
+     "ideal": 36358.54344444444,
+     "sent": 73278.966,
+     "p": 1943,
+     "cr": 62039,
+     "cw": 15398,
+     "c": 911
+    },
+    "iq": {
+     "n": 8,
+     "quota": 31477,
+     "ideal": 31021.962499999998,
+     "sent": 1232.5699999999997,
+     "p": 1596,
+     "cr": 0,
+     "cw": 0,
+     "c": 4717
+    }
+   }
+  }
+ ],
+ "group": "cc逆向（站点标注：低价 kiro/cursor 渠道），渠道 156",
+ "pricing": {
+  "source": "GET /api/pricing（公开）+ 逐条账单 other 字段，2026-10-07",
+  "formula": "quota = (input + cache_read×cache_ratio + cache_write×1.25 + output×5) × model_ratio × group_ratio；$ = quota / 500000",
+  "model_ratio": {
+   "claude-opus-5-5": 2,
+   "claude-opus-5": 2.5,
+   "claude-sonnet-5": 1
+  },
+  "cache_ratio": {
+   "claude-opus-5-5": 0.05,
+   "claude-opus-5": 0.1,
+   "claude-sonnet-5": 0.1
+  },
+  "group_ratio": "页面标 cc逆向 0.4，这把 key 实际按 user_group_ratio 0.5 扣",
+  "check": "历史 448 条 + 本次 54 条账单按公式逐条复算，0 条不符"
+ },
+ "what_it_is": "按站点公式诚实计费的 Claude 渠道：每个请求只多 68 token（协议转换级别，不是号池隐藏提示）；全新文档 cache_read=0；会话第 1 轮写缓存、第 2–5 轮读缓存，报告命中率 63% 来自真实前缀复用而不是固定拆分；实扣/理想 1.03–1.04×。",
+ "caveats": [
+  "三个模型的计费 token 完全相同（同一文档 17576–17580、OK 均 74），分词比 1.19：token 是中转按同一个分词器自己算的，不是上游各模型的原生计数",
+  "缓存命中时首 token 没有变快（12k 前缀 2–7 s 不变），上游是否真的缓存无法证明；但缓存读按 0.1/0.05 计价，对用户是有利的方向",
+  "输出 token 无法独立核实，理想值沿用站点报告的输出数",
+  "智力 8 道 screen 题：opus-5-5 8/8、opus-5 7/8、sonnet-5 7/8（单次）",
+  "路线 Mac 直连；金额不随路线变化，延迟不在本基线里"
+ ],
+ "how_to_use": "新站跑同一负载：RB_KEY=... python3 costcheck.py --label <站>-<分组>-<日期> --base <url> --models claude-opus-5-5,claude-opus-5,claude-sonnet-5 --ref suite/reference/ikuncode-ccrev-cost.json；两边各乘自己的充值价（元/站内$）比实际花费。负载版本 workload 必须相同。"
+}
