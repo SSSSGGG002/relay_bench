@@ -1,5 +1,7 @@
 # relay-bench：中转站真假 / 协议 / 上下文 / 缓存 / 速度 / 智力 一体化测试方案
 
+> 基线（官方金标准、冻结参考站、题库）和全部测试指标的汇总见 [docs/BASELINES.md](docs/BASELINES.md)。
+
 目标：用**造假者改不了的证据**判断一个 API 中转站（new-api / one-api 之类）背后到底是什么模型、请求有没有被改写、上下文有没有被截、缓存有没有生效、速度和稳定性如何。
 同时支持 Anthropic Messages 协议（`claude-*`）和 OpenAI Chat Completions 协议（`gpt-*` 等），一套命令跑完，`report.py` 出对比矩阵。
 
@@ -227,3 +229,63 @@ python bench.py --label <站> --base <url> --key <key> --models claude-opus-5,cl
 
 `REPORT_OUT=/path/REPORT.md python report.py <results>` 可以把报告写到别处，不覆盖仓库根目录共享的 REPORT.md。
 测试：`python test_fingerprint.py`（假 runner 覆盖全部判定 + 本地假中转端到端，不联网、不花钱）。
+
+## 参考站（冻结基线）与 refcheck.py
+中转站之间横向对比时，不必每次重跑参考站。`suite/reference/<name>.json` 冻结了参考站的全量结果：IQ 逐题、知识、上下文、缓存行为、号池指纹，以及带日期和路线的延迟。IQ 题库固定为 `suite/iq.ref-20260924.json`（md5 ad1f46e9…，与 `suite/iq.json` 在 09-24 时一致）。
+复用前先跑漂移检查：
+
+    RB_KEY=<参考站 key> python3 refcheck.py suite/reference/ikuncode-kiro.json --direct          # 约 5-15 分钟
+    RB_KEY=<参考站 key> python3 refcheck.py suite/reference/ikuncode-kiro.json --direct --quick  # 只查指纹和知识，约 1 分钟
+
+- 输出 SAME：直接复用冻结的 IQ / 知识 / 上下文。输出 DRIFT：参考站换了池或模型，先重测。结果存到 `results/refcheck/`。
+- 延迟、稳定性、缓存不当作常量复用：它们随路线和时段变化。09-24 走 Mac/Clash 测 ikuncode，30 并发有一半 TLS 失败；09-25 从北京直连是 120/120。所以新站一律在北京服务器 `/root/bltest` 上用 `lat.py` / `soak.py` 测，需要时当天顺手给参考站也跑一遍（约 10 分钟）。
+- ikuncode 的 sonnet-5 实际是 Sonnet 4.5。作为参考，它代表"Kiro 池里最好的 Sonnet 档"，不代表真 Sonnet 5；真模型的标尺仍然是 `suite/golden/`（官方）和历史真 Opus 5 / Sonnet 5 的约 95%。
+
+## 9. GLM 中转横向基准 glmsuite.py —— 2026-09-25 新增
+测 GLM（glm-5.3-flash 等）中转站用 `glmsuite.py`。它和 `bench.py` 的区别：一次运行把**新站、官方、参考站放在同一时段、同一台机器上交错测**，每一次调用都落盘（`results/glmsuite/<run>/<group>.jsonl`），最后 `summarize` 出 `summary.json` / `SUMMARY.md`。
+官方和 ikuncode 两家已冻结成参考基线：`suite/reference/zhipu-official-glm53flash.json`、`suite/reference/ikuncode-glm53flash.json`。
+
+```bash
+# 在北京服务器上跑（/root/glmtest；key 只放在服务器的 glmenv.sh，测完删掉）
+export KEY_OFFICIAL=<智谱官方 key> KEY_NEWSTA=sk-... KEY_IKUNCODE=sk-...   # --ch <label> 的 key 读环境变量 KEY_<LABEL>
+CH="--ch official=https://open.bigmodel.cn/api/paas/v4 --anth official=https://open.bigmodel.cn/api/anthropic \
+    --ch newsta=https://<新站>/v1 --anth newsta=https://<新站> \
+    --ch ikuncode=https://api.ikuncode.cc/v1 --anth ikuncode=https://api.ikuncode.cc"
+python3 glmsuite.py run --run <名字> $CH --groups fp,inject,leak,params,think,know,anth,billing   # ~15 分钟
+python3 glmsuite.py run --run <名字> $CH --groups iq            # 27 题 × 2 遍，~50 分钟（和上面并行跑）
+python3 glmsuite.py run --run <名字> $CH --groups xcache,cache,cachehit,ctx   # 跨账号缓存 / TTL / 长上下文
+python3 glmsuite.py run --run <名字> $CH --groups lat           # 智力题跑完后再跑：顺序 60 + 30 并发 × 2
+python3 glmsuite.py run --run <名字> $CH --groups speed,anthq
+python3 glmsuite.py run --run <名字> $CH --groups soak --soak-min 30    # 单独跑，别和别的负载叠加
+python3 glmsuite.py summarize --run <名字>
+python3 glmsuite.py compare --run <名字> --label newsta --ref suite/reference/zhipu-official-glm53flash.json --ref suite/reference/ikuncode-glm53flash.json
+```
+
+2026-09-27 起新增的选项（测 ooioo 时加的）：
+
+- `--chmodel 标签=模型`：同一次运行里各通道用不同模型，比如 GLM 和 DeepSeek 一起测延迟和 soak。
+- `--lat-serial a,b,c --lat-gap 2`：共用一个账号限速的通道，顺序延迟一个接一个测，并且每次调用至少间隔 2 秒。ooioo 每用户 80 次/分钟，多个渠道同时测会被站点限流，数据作废。
+- `--iq-body '{"reasoning_effort":"max"}' --iq-tag effmax [--iq-rep-offset 1]`：同一题库换参数再测一遍，结果按 tag 分开统计；`--iq-rep-offset` 用来补跑中断的轮次。
+- `--price-body '{}'`：计费差分用的请求参数。共用一把 key 的通道必须分开跑，而且跑的时候不能有别的请求。
+- `--xcache-relays 标签,标签`：只测指定中转的跨账号缓存。
+- `--ctx-ratio-for 标签=比例`：给不同分词器的通道分别设置每字符 token 数。
+- 新组 `logs`：读 new-api 的逐条账单 `/api/log/token?key=`（只返回最近 1000 条，按 request_id 去重），`summarize` 会核对计费公式并统计上游渠道。
+- 新组 `vision`：三色条纹图片识别，检查多模态是否透传。
+- `think` 组加了"关思考"的两个变体。判断关思考是否生效，要同时看 completion_tokens 和首个正文时间，不能只看 reasoning_content 是否为空。
+- DeepSeek 格式的 usage（`prompt_cache_hit_tokens`）也会计入 cached。
+
+只想省事、不重测参考站时：先 `KEY_REF=<key> python3 glmsuite.py refcheck suite/reference/<名字>.json` 查漂移（指纹、分词增量、参数状态码、智力漂移题），SAME 就复用冻结的智力/知识/协议结论。延迟、稳定性、缓存 TTL 依赖路线和时段，不当常量复用；要比 p50/p99，就在同一台机器上、同一时段，给官方也跑一遍 `lat` 和 `soak`（官方 key 30 并发会触发 1302 账户限速，这是账户档位，单独列出）。
+
+各组测什么、怎么判：
+
+| 组 | 看什么 | 判读要点 |
+|---|---|---|
+| `xcache` | 官方 key 写入的隐式缓存，中转能不能读到；中转写入的，官方能不能读到 | **身份的决定性证据**：智谱隐式缓存跨账号全局共享，双向命中 = 同一后端。对照组用新文档，必须是 0 |
+| `inject` / `leak` | "Reply with exactly: OK" 的 prompt_tokens（官方 17）、中英数字代码四段文本的分词增量、原样回显、隐藏指令问答与复述 | 分词增量逐位等于官方 = 没有额外 token；官方自己也会复述 "You are an AI assistant accessed via an API."、约七成回答"有系统指令"，只有超出官方分布的内容才算注入 |
+| `params` | 关思考、effort 各档、max_tokens 999999 / 16、max_completion_tokens、temperature 5 / 1.5、stop、JSON 模式、工具调用 id | 官方：关思考 / effort none / 999999 → 400（1210）；temperature 5 → 200；只认 max_tokens；stop 在计数题上返回空正文；同步工具 id `call_-<int64>` |
+| `think` / `anthq` | 默认思考深度（写代码题官方 7–20k 字符）、effort 阶梯、Anthropic 口是否一样思考 | 某个入口默认几乎不思考 = 请求被改成低 effort，难题会掉分 |
+| `cache` / `cachehit` | 同一 system 文档重复发、换问题、多轮、空闲 5–420 s 后是否还命中 | 智谱缓存按整条消息做前缀；命中不降首字延迟，只降价 |
+| `ctx` | 2 万 / 6 万 / 13 万 / 20 万 token 自然文本三根针（每家加独立前缀，避免吃到别家写入的全局缓存），可选极限探针 | 官方 glm-5.3-flash 接受 53 万 token 输入 |
+| `lat` / `soak` | 首 token（思考或正文）、首个正文 token、总耗时的 p50/p90/p99，错误、空回复、挂起，id 族 | p99 至少要 60 个样本；soak 30 分钟每 10 秒一次 ≈ 180 个样本 |
+| `speed` | 约 600 词长回答的 tok/s（含思考 token）、每个 chunk 的 token 数 | 每 chunk 远大于 1 = 中转攒包或假流式 |
+| `iq` | `suite/iq.ref-20260924.json` 27 题 × 2，max_tokens 32000，默认思考，流式 | 官方有几题会想满 32k 被截断（记 L）；不认 max_tokens 的中转会多想，分数要结合截断数看 |

@@ -1,0 +1,191 @@
+# 测试基线与测试指标（整理于 2026-10-06）
+
+这份文档把 relay-bench 里所有**基线**（拿来对照的标尺）和**指标**（每项测什么、怎么判）集中列出来。
+怎么跑的细节见 [README](../README.md)，Fable 的题目原文见 [Fable测试题库-20260922.md](Fable测试题库-20260922.md)。
+
+---
+
+## 1. 基线分三层
+
+| 层 | 位置 | 是什么 | 怎么用 |
+|---|---|---|---|
+| 官方金标准 | `suite/golden/<model>.json` | 订阅直连官方（`golden.py` → `claude -p`）跑出来的知识阶梯 + 开放式探针答案 | `report.py` 按**声称型号**自动逐题对比，判断知识是否比官方旧或新 |
+| 冻结参考站 | `suite/reference/<name>.json` | 某个参考站一次完整测试的冻结结果：指纹、IQ 逐题、知识、上下文、缓存、带日期和路线的延迟 | 新站和它横向比；**复用前必须先跑 refcheck**，SAME 才能复用 |
+| 固定题库 | `suite/iq*.json`、`suite/knowledge.json`、`suite/corpus/natural.txt` | 智力题（答案由代码生成）、知识阶梯、长上下文用的自然文本 | 题库换了，分数就不能和旧基线比，所以参考站都钉死题库 md5 |
+
+### 1.1 选哪个基线（用户规定）
+
+| 被测模型 | 必须对比的基线 | 用的脚本 | 规则来源 |
+|---|---|---|---|
+| Claude（opus-5 / sonnet-5 / fable-5-1 / opus-5-5 …） | `suite/golden/` 官方 + `suite/reference/ikuncode-kiro.json` | `bench.py` + `report.py`，参考站漂移用 `refcheck.py` | 09-25：新站报告必须有 ikuncode 对比节 |
+| GLM（glm-5.3-flash 等） | `zhipu-official-glm53flash.json` + `ikuncode-glm53flash*.json` | `glmsuite.py run/summarize/compare` | 09-25：GLM 一律对比官方 + ikuncode 冻结基线 |
+| DeepSeek（deepseek-v4-flash） | `ikuncode-dsv4flash.json` | `glmsuite.py`（`--model deepseek-v4-flash`） | 10-02：ds v4-flash 对比冻结的 ikuncode 基线 |
+
+三条共同规则：
+
+1. **先 refcheck**：SAME → 复用冻结的智力 / 知识 / 分词 / 参数指纹；DRIFT → 先重测参考站。
+2. **延迟、稳定性、缓存 TTL 不复用**：这些随路线和时段变化。要比 p50/p99，就在同一台机器、同一时段，给参考站也跑一遍 `lat` / `soak`。
+3. 用北京服务器（123.56.102.125）测之前先跟用户打招呼；key 放自己子目录，测完删掉。
+
+---
+
+## 2. 基线清单
+
+### 2.1 官方金标准 `suite/golden/`
+
+24 题知识阶梯（K00–K23，2024-11 → 2026-09 逐月事实）+ 10 题开放式探针（C1–C10）+ 3 次号池混合检查。
+
+| 文件 | 采集日期 | 阶梯分类 | 阶梯前沿 | 开放式前沿 | 状态 |
+|---|---|---|---|---|---|
+| `claude-opus-5.json` | 2026-09-10 | 8 对 / 16 UNKNOWN | 2025-11 | 2026-09 | 可用 |
+| `claude-sonnet-5.json` | 2026-09-10 | 8 对 / 16 UNKNOWN | 2025-11 | 2026-06 | 可用 |
+| `claude-fable-5-1.json` | 2026-09-10 | 14 对 / 2 错 / 8 UNKNOWN | 2026-03 | 2026-09 | 可用 |
+| `claude-opus-5-5.json` | 2026-09-25 | 24 题全空 | — | — | **无效，未入库**（采集时订阅 OAuth 已过期，答案全是空串）。重登订阅后用 `golden.py claude-opus-5-5` 重采 |
+
+判读要点：
+
+- 官方模型对标称截止前 4–6 个月的事大多答 UNKNOWN（官方 Opus 5 标称 2026-05，可靠记忆只到 2025-11），所以**不拿标称截止日期硬比**，只拿官方同型号的实测答案逐题比。
+- 官方知道而中转不知道 = 疑似降级；中转知道而官方不知道 = 映射到别的模型或注入了信息。
+- 决定性题目每题重复 3 次以上，官方稳定答对、中转稳定 UNKNOWN 才算定案。
+- C8（"你知道的最新 Claude 型号"）被 Claude Code 自带的型号列表污染，`report.py` 对比时跳过。
+
+### 2.2 冻结参考站 `suite/reference/`
+
+| 文件 | 模型 | 冻结时间 | 路线 | 代表什么 |
+|---|---|---|---|---|
+| `ikuncode-kiro.json` | claude-opus-5 / claude-sonnet-5 | 09-24（IQ/知识/缓存/上下文）+ 09-25（北京延迟） | Mac + 北京直连 | Kiro 池里最好的档：opus-5 = 真 Opus 4.6/5 档；sonnet-5 = **Sonnet 4.5 冒名**，代表"Kiro 池最好的 Sonnet 档"，不代表真 Sonnet 5 |
+| `zhipu-official-glm53flash.json` | glm-5.3-flash | 09-25 | 北京阿里云直连 | **官方标尺**（智谱开放平台 paas/v4 + anthropic） |
+| `ikuncode-glm53flash.json` | glm-5.3-flash | 09-25 | 北京阿里云直连 | "好的 GLM 中转"的标尺：智谱后端，跨账号缓存双向命中 |
+| `ikuncode-glm53flash-20261002.json` | glm-5.3-flash | 10-02 | Mac + Clash TUN | ikuncode **漂移后**的快照：接入层换成 OpenRouter 风格网关、多供应商轮换。智力只跑 9 题，完整分沿用 09-25 的 51/54 |
+| `ikuncode-dsv4flash.json` | deepseek-v4-flash | 10-02 | Mac + Clash TUN | deepseek-official 分组，回显 deepseek-v4-flash-0731 |
+
+所有参考站的 IQ 题库都是 `suite/iq.ref-20260924.json`，md5 `ad1f46e9f80233a7264d9f01196c9993`（和当前 `suite/iq.json` 一样）。
+
+### 2.3 题库 `suite/`
+
+| 文件 | 内容 | 备注 |
+|---|---|---|
+| `iq.json` | 当前智力题库，27 题：R2–R10（reason 6）、H1–H7（hard 7）、X1–X14（xhard 14），seed 20260909 | `bench.py` 默认题库 |
+| `iq.ref-20260924.json` | `iq.json` 在 09-24 的钉死副本 | 参考站和 `glmsuite.py` 固定用它 |
+| `iq_keep.json` | bench 保留的 26 题（去掉 H7） | 控制 `bench.py` 实际出哪些题 |
+| `iq_screen.json` | screen 档 8 题：R7 R10 R3 R4 R9 H2 H3 X14 | 前沿接近全对、降级货明显失分、单题 30 s 内 |
+| `iq_full.json` | 完整题库 41 题（含已删的 D 直答档和 R1/R5/R6/R8/R11/R12） | 只做存档和重新筛题 |
+| `iq.v1/v2/v3.json` | 历史版本（26 / 26 / 33 题） | 旧报告的分数基于这些，不能和 v3 之后直接比 |
+| `knowledge.json` | 24 题知识阶梯 + 10 题开放式探针 + 各型号官方截止表 | 事实 09-09 按维基/官方公告核过；每隔几个月要补新事实 |
+| `corpus/natural.txt` | 约 70 万字符的自然文本（历史报告拼接） | `glmsuite.py ctx` 组的针测语料；合成文本在部分池会空回复，所以针测用自然文本 |
+| `gpt_manual_probe.md` | GPT 渠道手工探针 | |
+
+---
+
+## 3. 测试指标
+
+### 3.1 身份（定性结论，优先级最高）
+
+| 指标 | 测法 | 判读 |
+|---|---|---|
+| 知识阶梯前沿 | 24 题逐月事实，答不上答 UNKNOWN；Claude 关思考、`max_tokens 500` | 和金标准逐题比，见 2.1。**唯一无法通过改写请求伪造的指纹** |
+| 开放式年代探针 | 现任教宗、日本首相、纽约市长、最新 Claude/GPT/GLM 型号、诺贝尔文学奖 | 必须给答案，不受"不知道就答 UNKNOWN"压制。答方济各 / 石破 = 2025-05 以前的模型 |
+| 自报厂商 / 型号 / 截止 | 直接问 | **只作参考，不作 FAKE 证据**：真 Fable 5.1 在 Kiro 风格提示下会自称 Sonnet 4.5 |
+| 隐藏系统提示 | 让模型复述收到的系统提示；5-token 请求的 input_tokens | 抓出 "You are Kiro / Claude Code / Codex"；Kiro 池 6.1–6.5k token 隐藏提示计为 cache_read。GLM 官方自己也会复述 "You are an AI assistant accessed via an API."，这句不算注入 |
+| 签名验证 | thinking 块 `signature` 篡改后重放 | 只有 Anthropic 后端能验签；无签名 = 不是官方 API 出来的 |
+| 号池混合 | 按响应 id 分族统计（`msg_011C…` / `msg_pre_…` / `msg_<32hex>` / 随机 id） | 混池不要求平均，每族单独出结论 |
+| ModelTrace 指纹 | 几百个 1–355 随机整数的分布比对 | 闭集 13 个模型，没有 fable / 3.7 Sonnet / Sonnet 4.5 / 国模；家族不符且 ≥90% 才判假映射 |
+| 跨账号缓存（GLM） | 官方 key 写入隐式缓存，中转读；反过来再测 | **GLM 身份的决定性证据**：智谱隐式缓存全局共享，双向命中 = 同一后端；对照组用新文档必须 0 |
+
+### 3.2 协议与参数透传
+
+| 指标 | 官方行为（基线） | 异常含义 |
+|---|---|---|
+| 响应 id 格式 | Anthropic `msg_01`+22 位；OpenAI `chatcmpl-`；智谱 14 位时间戳+16 hex；DeepSeek uuid | 被重新生成 = 有适配层；`toolu_bdrk_` = Bedrock |
+| usage 字段集合 | 见各参考站 `fingerprint.usage_keys` | 多出 `credit_usage` / `cost` / `is_byok` = 计费或网关层 |
+| 参数严格性 | Claude 5 系列 temperature/top_k/budget_tokens/prefill 必 400；智谱关思考 / effort none / max_tokens 999999 → 400（1210），temperature 5 → 200 | 全部 200 = 请求被改写后转发 |
+| `stop_sequences` / `max_tokens` 是否生效 | 生效 | 不生效直接影响账单和程序正确性（ikuncode Kiro 就不生效） |
+| 默认思考 | Opus 5 / Sonnet 5 / Fable 默认思考；智谱默认完整思考（写代码题 14–20k 字符） | 某入口默认几乎不思考 = 被改成低 effort，难题会掉分 |
+| 分词增量 | GLM 官方：zh 1050 / digits 801 / en 301 / code 595 / +system 7；DeepSeek（ikuncode）：zh 1020 / digits 801 / en 293 / code 601 / system 6；"Reply with exactly: OK" 官方 GLM 17、DeepSeek 88 | 逐位一致 = 没有额外 token；比率乱飞 = usage 是编的 |
+| Anthropic 口转换 | 有 `ping` 事件、thinking 带签名 | new-api 转换常见：非流式丢 thinking、effort 参数被忽略、count_tokens 404 |
+
+### 3.3 智力
+
+| 指标 | 测法 | 判读 |
+|---|---|---|
+| IQ 总分 | `bench.py`：26 题单次；`glmsuite.py`：27 题 × 2 遍，max_tokens 32000，默认思考，流式 | 只当**地板检查**：前沿之间拉不开，前沿和降级货拉得开 |
+| 分档 | reason / hard / xhard | xhard 负责前沿之间的顶端分辨 |
+| 截断数（L） | 想满 max_tokens 被截断 | 官方 GLM 有 5 次截断；不认 max_tokens 的中转会多想，分数要连截断数看 |
+| 关思考 IQ | `--iq-body '{"reasoning_effort":"none"}'` 等 | 先确认关思考真的生效（看 completion_tokens 和首正文时间，不只看 reasoning_content 是否为空） |
+| 区分题（drift 集） | 冻结参考里每题都对、耗时 < 150 s 的 10–12 题 | refcheck 用；允许最多掉 2 题 |
+
+历史分档参考（`suite/iq.json` 27 题题库，出处是本地报告，未入库）：
+
+| 渠道 | 实际模型 | IQ | Kiro 区分题 12 题 |
+|---|---|---|---|
+| ikuncode opus-5 | Opus 4.6/5 档 | 25/26 | 12/12 |
+| ikuncode sonnet-5 | Sonnet 4.5 | 23/27 | 11/12 |
+| rsiai opus-5 / opus-5-5 | Opus 4.6/5 档 / 2026 前沿档 | — | 11/12 / 12/12 |
+| cheaprouter fable-5-1 | 模板压制的 Fable 级 | — | 9/12 |
+| ahg opus-5（三池混） | 半数 2024 老模型 | — | 2/12 |
+| buliangren / junliai | 3.7 Sonnet（Kiro / R24 池） | 14–15/27 | 0/12 |
+
+真 Opus 5 / Sonnet 5 历史上约 95%。GLM：官方 47/54，ikuncode 51/54。DeepSeek ikuncode：开思考 49/54，关思考 30/54。
+
+### 3.4 上下文
+
+| 指标 | 测法 | 判读 |
+|---|---|---|
+| 三针召回 | 10% / 50% / 90% 深度三根针；bench 20k/60k/130k/230k，glmsuite 20k/60k/130k/190k + 可选极限 | 截断、丢中段、1M 是否真实（200K 模型 230k 必报错） |
+| usage 线性 | input_tokens 是否随长度线性增长 | 不线性 = 截断后照原长计费，或 usage 是编的 |
+| 自然文本 vs 合成文本 | 两种都测 | ikuncode sonnet-5 合成文本 ≥60k 空回复，自然文本 130k 正常 |
+| 长上下文下规则遵守 / 多轮记忆 | 60k 处的 system 规则；20 轮历史 | 丢 system / 截历史 |
+| 参考值 | 官方 glm-5.3-flash 接受 53 万 token 输入（478k 三针全中）；ikuncode Kiro opus-5 230k 3/3 | |
+
+### 3.5 缓存
+
+| 指标 | 测法 | 判读 |
+|---|---|---|
+| 命中率 | 同一前缀连打；**前缀至少 10k token**（3.5k 探针在 ikuncode opus-5-5 上误报 0 命中，门槛约 4096） | 账号池轮询不同账号 → 永远不命中，一直付全价 |
+| 真假命中 | 命中数和 TTFT 一起看；换同样大小的新前缀必须不命中 | 新前缀也报命中 / 命中比例恒定（Kiro 池 ≈92%、rsiai 15/85 拆分）= 固定拆分的假命中 |
+| TTL | 空闲 5 s – 600 s 后重打（`--gaps` / `--ttl`） | 官方 GLM 5–7 分钟内基本命中、10 分钟失效；ikuncode GLM 09-25 ≤3 分钟 100%，10-02 只剩约四成 |
+| 计费核对 | 余额差分或 new-api `/api/log/token?key=` 逐条账单 | 缓存读不打折、token 虚高、截断照全额扣，都要用实扣金额核对，不能只看 usage |
+
+### 3.6 延迟、稳定性、速度
+
+| 指标 | 测法 | 判读 |
+|---|---|---|
+| 首 token / 首正文 / 总耗时 p50 p90 p99 | glmsuite `lat`：顺序 60 次 + 30 并发 × 2 波；北京服务器 `lat.py` | p99 至少要 60 个样本；Kiro 池 p99 8–23 s 算抖 |
+| 错误率 / 空回复 / 挂起 | 同上，外加 soak | 区分站点错误和本机路线错误（Mac + Clash 下约 5% SSL EOF 是本机问题） |
+| soak | 每 10 秒一次，30 分钟 ≈ 180 样本 | 单独跑，别和别的负载叠加 |
+| 吞吐 tok/s | 约 600 词长回答 × 3 取中位 | 参考：官方 GLM 51、ikuncode GLM 43、ikuncode DeepSeek 84 |
+| 假流式 | 每 chunk token 数、TTFT 后是否一次吐完 | 每 chunk 远大于 1，或 TTFT 15–18 s 后一次吐完（ikuncode Kiro）= 上游非流式 |
+| 限流 | 并发时的 429 / 1302 | 官方智谱 key 30 并发触发 1302 账户限速，是账户档位，不算服务故障 |
+
+### 3.7 参考站核心数值速查
+
+延迟单位秒，均为冻结时那一次的路线，**只用于同路线横向参考，不当常量**。
+
+| 参考 | IQ | 顺序首 token p50 / p99 | 30 并发首 token p50 / p99 | soak 30 min | tok/s | 缓存 burst |
+|---|---|---|---|---|---|---|
+| 智谱官方 glm-5.3-flash（北京） | 47/54 | 0.54 / 1.46 | 0.68 / 1.70（25/60 被 1302 限速） | 180/180，p99 2.17 | 51.0 | 7/8 |
+| ikuncode glm-5.3-flash 09-25（北京） | 51/54 | 2.09 / 3.53 | 3.53 / 14.2 | 180/180，p99 5.0 | 42.7 | 14/14 |
+| ikuncode glm-5.3-flash 10-02（Mac） | 7/9（沿用 51/54） | 1.83 / 8.21 | 3.60 / 8.17 | — | — | 3/5 |
+| ikuncode deepseek-v4-flash 10-02（Mac） | 49/54（关思考 30/54） | 2.56 / 5.23 | 5.00 / 8.88 | 171/180，p99 8.03 | 83.9 | 13/14 |
+| ikuncode Kiro opus-5 09-25（北京，lat.py 口径） | 25/26 | 2.87 / 5.65 | 3.36 / 6.46 | — | 假流式 | 固定拆分 |
+| ikuncode Kiro sonnet-5 09-25（北京，lat.py 口径） | 23/27 | 2.93 / 10.09 | 3.43 / 5.18 | 158/159，p99 26.06 | 假流式 | 固定拆分 |
+
+---
+
+## 4. 已知问题
+
+- `suite/golden/claude-opus-5-5.json` 是空采集，已在 `.gitignore` 里排除。本机这份还在，`report.py` 会拿它对比声称 opus-5-5 的渠道，结果会被误判成"知道得比官方多"。重采前建议先挪开它。
+- ikuncode GLM 已漂移：用 09-25 那份做 refcheck 会 DRIFT（关思考和 max_tokens 999999 现在都 200）。新站和 ikuncode GLM 比时，协议和缓存看 10-02 快照，完整智力分沿用 09-25。
+- 2026-10-02 的两份参考是 Mac + Clash TUN 路线，延迟和 soak 数字带本机 SSL EOF 噪声。
+- `lat.py` / `soak.py` 在北京服务器 `/root/bltest`，不在这个仓库里。
+
+## 5. 新增或更新基线
+
+```bash
+# 官方金标准（需要本机 Claude Code 登录订阅）
+python3 golden.py claude-opus-5-5
+# GLM / DeepSeek 参考站：先完整跑一轮 glmsuite，再冻结某个通道
+python3 glmsuite.py freeze --run <run> --label <通道标签> --name <参考名> --note "<日期、路线、同窗口对照>" --annotate <手写说明.json>
+```
+
+冻结后检查三件事：`iq_bank.md5` 和当前题库一致；`source.route` 写清路线；`caveats` 写明哪些数不能复用。
