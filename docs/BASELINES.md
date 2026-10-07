@@ -17,7 +17,7 @@
 
 | 被测模型 | 必须对比的基线 | 用的脚本 | 规则来源 |
 |---|---|---|---|
-| Claude（只测 opus-5-5 / opus-5 / sonnet-5） | `suite/golden/` 官方 + `suite/reference/ikuncode-kiro.json`；计费比 `ikuncode-ccrev-cost.json`；注入/缓存比 `ikuncode-ccrev-injcache.json` | `bench.py` + `report.py`，参考站漂移用 `refcheck.py`，计费用 `costcheck.py --ref`，注入/缓存用 `injcache.py` | 09-25：新站报告必须有 ikuncode 对比节 |
+| Claude（只测 opus-5-5 / opus-5 / sonnet-5） | `suite/golden/` 官方 + `suite/reference/ikuncode-kiro.json`（opus-5 / sonnet-5）+ `ikuncode-opus55.json`（opus-5-5）；计费比 `ikuncode-ccrev-cost.json`；注入/缓存比 `ikuncode-ccrev-injcache.json` | `bench.py` + `report.py`，参考站漂移用 `refcheck.py`，计费用 `costcheck.py --ref`，注入/缓存用 `injcache.py` | 09-25：新站报告必须有 ikuncode 对比节 |
 | GLM（glm-5.3-flash 等） | `zhipu-official-glm53flash.json` + `ikuncode-glm53flash*.json` | `glmsuite.py run/summarize/compare` | 09-25：GLM 一律对比官方 + ikuncode 冻结基线 |
 | DeepSeek（deepseek-v4-flash） | `ikuncode-dsv4flash.json` | `glmsuite.py`（`--model deepseek-v4-flash`） | 10-02：ds v4-flash 对比冻结的 ikuncode 基线 |
 | GPT（只测 gpt-5.6-sol / gpt-5.6-terra / gpt-6-astra） | `spatialai-gpt.json` | `gptcheck.py`（注入 / 参数 / 缓存 / TTL / 会话实扣 / 延迟 / soak，不测智力） | 10-07：GPT 基线用 spatialai，智力用户另有方法 |
@@ -59,6 +59,7 @@
 | `ikuncode-glm53flash.json` | glm-5.3-flash | 09-25 | 北京阿里云直连 | "好的 GLM 中转"的标尺：智谱后端，跨账号缓存双向命中 |
 | `ikuncode-glm53flash-20261002.json` | glm-5.3-flash | 10-02 | Mac + Clash TUN | ikuncode **漂移后**的快照：接入层换成 OpenRouter 风格网关、多供应商轮换。智力只跑 9 题，完整分沿用 09-25 的 51/54 |
 | `ikuncode-dsv4flash.json` | deepseek-v4-flash | 10-02 | Mac + Clash TUN | deepseek-official 分组，回显 deepseek-v4-flash-0731 |
+| `ikuncode-opus55.json` | claude-opus-5-5 | 10-07（IQ/知识/上下文/协议/延迟）+ 09-26（北京延迟、soak） | Mac + Clash 代理；09-26 北京直连 | cc逆向分组 Kiro 通道上的 2026 前沿档：IQ 27/27、区分题 12/12、知识到 2026-03、55 万 token 3 针全中。refcheck 可直接用。10-07 起接入层漂移：自动缓存取消、token 计数约 ×1.35 |
 | `ikuncode-ccrev-cost.json` | claude-opus-5-5 / opus-5 / sonnet-5 / sonnet-5-5 | 10-07 | Mac 直连 | **计费基线**：cc逆向分组固定负载的实扣金额（costcheck v1），按站点公式诚实计费 |
 | `ikuncode-ccrev-injcache.json` | claude-sonnet-5-5 / opus-5-5 / sonnet-5 | 10-07 | Mac 直连（TTL 补测走代理） | **注入与缓存基线**：cc逆向分组其实也是 Kiro 池；隐藏提示词存在但不计费，缓存是中转模拟的、规则对用户公道（见 3.5.1） |
 | `spatialai-gpt.json` | gpt-5.6-sol / gpt-5.6-terra / gpt-6-astra | 10-07 | Mac + Clash 代理 | **GPT 基线**：真 OpenAI Codex 号池；注入、缓存、TTL、会话实扣、p50/p99（gptcheck v1） |
@@ -124,6 +125,7 @@
 |---|---|---|---|
 | ikuncode opus-5 | Opus 4.6/5 档 | 25/26 | 12/12 |
 | ikuncode sonnet-5 | Sonnet 4.5 | 23/27 | 11/12 |
+| ikuncode opus-5-5（09-26、10-07 两次） | 2026 前沿档，与 Opus 5.5 相符 | 27/27 | 12/12 |
 | rsiai opus-5 / opus-5-5 | Opus 4.6/5 档 / 2026 前沿档 | — | 11/12 / 12/12 |
 | cheaprouter fable-5-1 | 模板压制的 Fable 级 | — | 9/12 |
 | ahg opus-5（三池混） | 半数 2024 老模型 | — | 2/12 |
@@ -291,6 +293,8 @@ python3 gptcheck.py report --label <站>-<日期>
 | ikuncode glm-5.3-flash 10-02（Mac） | 7/9（沿用 51/54） | 1.83 / 8.21 | 3.60 / 8.17 | — | — | 3/5 |
 | ikuncode deepseek-v4-flash 10-02（Mac） | 49/54（关思考 30/54） | 2.56 / 5.23 | 5.00 / 8.88 | 171/180，p99 8.03 | 83.9 | 13/14 |
 | ikuncode Kiro opus-5 09-25（北京，lat.py 口径） | 25/26 | 2.87 / 5.65 | 3.36 / 6.46 | — | 假流式 | 固定拆分 |
+| ikuncode opus-5-5 09-26（北京，lat.py 口径） | 27/27 | 1.94 / 4.80 | 2.77 / 6.08 | 180/180，p99 7.81 | 62–69 | 自动缓存 99.8% |
+| ikuncode opus-5-5 10-07（Mac + Clash 代理，lat.py 口径） | 27/27 | 3.98 / 11.27 | 5.26 / 10.64 | — | 41–52 | 只认 cache_control，读 99.3–99.9% |
 | ikuncode Kiro sonnet-5 09-25（北京，lat.py 口径） | 23/27 | 2.93 / 10.09 | 3.43 / 5.18 | 158/159，p99 26.06 | 假流式 | 固定拆分 |
 
 ---

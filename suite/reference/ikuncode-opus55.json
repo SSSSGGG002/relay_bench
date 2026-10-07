@@ -1,0 +1,278 @@
+{
+ "name": "ikuncode-opus55",
+ "base": "https://api.ikuncode.cc",
+ "key_hint": "sk-Rmr…gw5M（09-26 用同分组 K2 sk-F9c3…）",
+ "group_channel": "cc逆向·156（×0.5）",
+ "frozen_at": "2026-10-07",
+ "source": {
+  "2026-10-07": [
+   "results/ikun-o55-1007/",
+   "results/ikun-o55-k3-1007/claude-opus-5-5.tokenizer-iq.json",
+   "results/injcache/ikun-ccrev-opus55-20261007.json",
+   "results/costcheck/ikun-ccrev-20261007.json"
+  ],
+  "2026-09-26": [
+   "results/ikun-o55/",
+   "REPORT-ikuncode-o55-20260926.md"
+  ]
+ },
+ "route": "10-07 全部 Mac + 本机 Clash 代理（直连当日解析到 141.11.77.46，证书不符）；09-26 延迟/soak 北京直连，其余 Mac 直连",
+ "what_it_is": "Kiro 通道上的 2026 新一代前沿模型（知识到 2026-03、IQ 27/27、1M 上下文），与 Opus 5.5 相符；Opus 5.5 的 400 参数指纹被 Kiro 通道吞掉，无法用 API 行为证明。可作为『好的 opus-5-5 中转』标尺，不是官方标尺",
+ "iq_bank": {
+  "path": "suite/iq.json",
+  "md5": "ad1f46e9f80233a7264d9f01196c9993",
+  "pinned_copy": "suite/iq.ref-20260924.json",
+  "max_tokens": 16000,
+  "mode": "default thinking, single attempt"
+ },
+ "fingerprint": {
+  "id_regex": "msg_[0-9]{13}",
+  "id_note": "非流式 msg_<毫秒时间戳>；流式 msg_<uuid>",
+  "usage_keys": [
+   "cache_creation_input_tokens",
+   "cache_read_input_tokens",
+   "input_tokens",
+   "output_tokens"
+  ],
+  "usage_ranges": {
+   "input_tokens": [
+    60,
+    90
+   ]
+  }
+ },
+ "drift": {
+  "items": [
+   "R3",
+   "R10",
+   "H2",
+   "H4",
+   "H6",
+   "H7",
+   "X3",
+   "X4",
+   "X6",
+   "X7",
+   "X12",
+   "X13"
+  ],
+  "max_drop": 2,
+  "why": "同 ikuncode-kiro.json 的 12 道区分题"
+ },
+ "models": {
+  "claude-opus-5-5": {
+   "iq": {
+    "score": "27/27",
+    "distinguishing": "12/12",
+    "per_item": {
+     "R2": true,
+     "R3": true,
+     "R4": true,
+     "R7": true,
+     "R9": true,
+     "R10": true,
+     "H1": true,
+     "H2": true,
+     "H3": true,
+     "H4": true,
+     "H5": true,
+     "H6": true,
+     "H7": true,
+     "X1": true,
+     "X2": true,
+     "X3": true,
+     "X4": true,
+     "X5": true,
+     "X6": true,
+     "X7": true,
+     "X8": true,
+     "X9": true,
+     "X10": true,
+     "X11": true,
+     "X12": true,
+     "X13": true,
+     "X14": true
+    },
+    "latency_mean_s": {
+     "reason": 16.7,
+     "hard": 25.1,
+     "xhard": 20.6
+    },
+    "history": {
+     "2026-09-26": "27/27（K1、K2 都满分）"
+    }
+   },
+   "knowledge_probe": {
+    "q": "From memory only (no tools), give your single best guess even if unsure, one line: who is the current Pope, and who is the current Prime Minister of Japan?",
+    "must_contain": [
+     "Leo"
+    ],
+    "must_not": [
+     "Francis"
+    ]
+   },
+   "knowledge": {
+    "ladder_last_correct": "2026-03（K12 Opus 4.6、K13 奥斯卡 3/4、K14 Mojtaba），2026-04 起全 UNKNOWN",
+    "open_questions": "Leo XIV / 高市早苗 / Mamdani / Trump；开放自述『最新 Claude 是 Opus 4.5』『最新 GPT 是 5.1』『伊朗领袖 Ali Khamenei』—— 与 09-26 相同，属于开放题保守作答，不是知识退化",
+    "same_as_0926": true
+   },
+   "context_natural": {
+    "needles": "3 根，10%/50%/90%",
+    "2026-10-07": [
+     [
+      240000,
+      72936,
+      "3/3"
+     ],
+     [
+      520000,
+      162318,
+      "3/3"
+     ],
+     [
+      1000000,
+      192541,
+      "3/3"
+     ],
+     [
+      2200000,
+      551902,
+      "3/3 86 s"
+     ]
+    ],
+    "2026-09-26": [
+     [
+      240000,
+      54873,
+      "3/3"
+     ],
+     [
+      520000,
+      116804,
+      "3/3"
+     ],
+     [
+      1000000,
+      228681,
+      "3/3"
+     ],
+     [
+      2200000,
+      527116,
+      "3/3 43.7 s"
+     ]
+    ],
+    "note": "[字符数, 计费 input, 命中]；100 万字符这一档本次只报 19.3 万 token（不成比例偏低）但三针都找到"
+   },
+   "tokenizer": {
+    "2026-10-07": {
+     "en_ratio": 1.333,
+     "zh_ratio": 1.698
+    },
+    "2026-09-26": {
+     "en_ratio": 0.983,
+     "zh_ratio": 1.252
+    },
+    "note": "相对 o200k；10-07 起计数约是 09-26 的 1.35 倍（同样的文本计费 token 变多）"
+   },
+   "protocol": {
+    "stop_sequences": "不生效",
+    "max_tokens": "不生效（设小值仍输出 466）；999999 → 200",
+    "count_tokens": "404",
+    "models_get": "model_not_found（列表里有）",
+    "opus55_400_fingerprints": "强制 tool_choice / thinking disabled / budget / temperature / top_k / prefill / computer_20251124 / mid-conversation system 全部 200，被 Kiro 通道吞掉，不能当身份证据",
+    "thinking": "自适应：简单题不出 thinking 块，难题出明文短块，无签名；effort 参数生效（max 输出明显变长）"
+   },
+   "throughput": {
+    "2026-10-07 Mac 代理": {
+     "tps": [
+      41.0,
+      52.3,
+      47.1
+     ],
+     "ttft": [
+      19.19,
+      21.52,
+      15.6
+     ]
+    },
+    "2026-09-26 Mac 直连": "62–69 tok/s，首字 5–18 s",
+    "note": "真流式"
+   },
+   "latency": {
+    "2026-10-07 Mac(Clash 代理) seq60": {
+     "ttft_p50": 3.98,
+     "ttft_p90": 7.68,
+     "ttft_p95": 8.99,
+     "ttft_p99": 11.27,
+     "ttft_max": 24.81,
+     "ok": "60/60"
+    },
+    "2026-10-07 Mac(Clash 代理) conc30x2": {
+     "ttft_p50": 5.26,
+     "ttft_p90": 7.56,
+     "ttft_p95": 9.45,
+     "ttft_p99": 10.64,
+     "ttft_max": 11.71,
+     "ok": "60/60"
+    },
+    "2026-09-26 Beijing-direct seq60": {
+     "ttft_p50": 1.94,
+     "ttft_p90": 3.67,
+     "ttft_p95": 4.45,
+     "ttft_p99": 4.8,
+     "ttft_max": 5.18,
+     "ok": "60/60"
+    },
+    "2026-09-26 Beijing-direct conc30x2": {
+     "ttft_p50": 2.77,
+     "ttft_p95": 4.06,
+     "ttft_p99": 6.08,
+     "ttft_max": 6.14,
+     "ok": "60/60"
+    },
+    "2026-09-26 Beijing-direct soak30min": {
+     "ttft_p50": 2.66,
+     "ttft_p90": 4.68,
+     "ttft_p95": 5.62,
+     "ttft_p99": 7.81,
+     "ttft_max": 18.11,
+     "ok": "180/180"
+    }
+   },
+   "cache": {
+    "2026-10-07": "只认 cache_control：带则首发写入、之后读 99.3–99.9%；不带 6k/12k/25k 一律 0 命中；多轮每轮 99.6–99.9%；3k 起即可命中，360 s 后失效；read≠write（模拟缓存，见 ikuncode-ccrev-injcache.json）",
+    "2026-09-26": "不带 cache_control 也自动缓存（99.8%），门槛约 4096 token，K1/K2 跨 key 共享",
+    "billing": "写 ×1.25、读 ×0.05；账单与 usage 逐条一致"
+   },
+   "injection": {
+    "2026-10-07": "OK 计费 input 77（发 5），≈72 不计费的协议开销；自称 Kiro by AWS，拒谈 system/工具",
+    "2026-09-26": "OK 计 19 token"
+   },
+   "cost": "costcheck-v1 每套 $0.1375，实扣/理想 1.04×（ikuncode-ccrev-cost.json）"
+  }
+ },
+ "drift_history": [
+  {
+   "at": "2026-10-07",
+   "vs": "2026-09-26",
+   "route": "Mac proxy",
+   "same": [
+    "IQ 27/27、区分题 12/12",
+    "知识阶梯到 2026-03，开放题答案一致",
+    "1M 上下文 55 万 token 3/3",
+    "id 格式 msg_<ms 时间戳>",
+    "stop/max_tokens 不生效、400 指纹全吞"
+   ],
+   "changed": [
+    "自动缓存取消：不带 cache_control 0 命中（09-26 99.8%）",
+    "最小可缓存长度 4096 → 3k 以下",
+    "OK 计费 input 19 → 77",
+    "分词计数约 ×1.35（EN 0.98→1.33，ZH 1.25→1.70）",
+    "吞吐 62–69 → 41–52 tok/s（路线不同，Mac 代理）"
+   ],
+   "verdict": "模型层 SAME，接入/计费层 DRIFT（缓存与 token 计数规则改了）"
+  }
+ ],
+ "how_to_use": "新站对比 opus-5-5 前先跑 `RB_KEY=… python3 refcheck.py suite/reference/ikuncode-opus55.json`（直连不通时去掉 --direct）。智力/知识/上下文可复用；延迟只存档，新站必须同路线当天测；缓存/注入对照 ikuncode-ccrev-injcache.json，计费对照 ikuncode-ccrev-cost.json。"
+}
