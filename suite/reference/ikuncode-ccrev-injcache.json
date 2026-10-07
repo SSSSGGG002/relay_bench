@@ -1,0 +1,466 @@
+{
+ "name": "ikuncode-ccrev-injcache",
+ "kind": "claude-inject-cache",
+ "probe": "injcache.py（同脚本、同参数对比；--ttl 360）；汇总 python3 injcache.py --summary <json...>",
+ "base": "https://api.ikuncode.cc",
+ "key_hint": "sk-Rmr…gw5M",
+ "group_channel": "cc逆向·156（×0.5）",
+ "model": "claude-sonnet-5-5 / claude-opus-5-5 / claude-sonnet-5",
+ "measured_at": "2026-10-07 北京时间（sonnet-5-5 10:55–11:20；opus-5-5、sonnet-5 11:40–12:40，TTL 一项 12:45 补测）",
+ "route": "Mac 直连；opus-5-5 / sonnet-5 的 TTL 补测走本机 Clash 代理（直连此时解析到 141.11.77.46，证书主机名不符）",
+ "source": [
+  "results/injcache/ikun-ccrev-s55-20261007.json",
+  "results/injcache/ikun-ccrev-opus55-20261007.json",
+  "results/injcache/ikun-ccrev-sonnet-5-20261007.json"
+ ],
+ "what_it_is": "分组叫 cc逆向，但三个模型都自称 Kiro（ACP client），实为 Kiro 号池；缓存数字由中转站自己模拟，不是上游真缓存",
+ "injection": {
+  "ok_billed_input": [
+   69,
+   74,
+   74
+  ],
+  "ok_sent_o200k": 5,
+  "billed_overhead_tokens": "sonnet-5-5 ≈64、opus-5-5 / sonnet-5 ≈72（协议转换量级，Kiro 隐藏提示词本身不计费）",
+  "hidden_prompt_present": true,
+  "evidence": [
+   "who → 「I'm Kiro … made by AWS … running inside Kiro itself, connected through an ACP client」",
+   "要求复述上文 / 列工具 / 说明限制 → 一律「I can't discuss that」，承认有指令但拒绝描述",
+   "带 canary system 再问复述 → 同样拒绝（不回显用户 system）",
+   "日期 → 「不在上下文里，可以查系统时钟」；知识截止 → 不确认",
+   "每次都返回 thinking 块（简单问题也有）",
+   "opus-5-5 / sonnet-5 同样自称 Kiro by AWS、拒谈上文和工具；两者自称知识到 early 2025；opus-5-5 承认有 system prompt 且被要求不透露"
+  ],
+  "count_tokens": "404（/v1/messages/count_tokens 不存在）",
+  "sys2k_delta_billed": 2061,
+  "per_model": {
+   "claude-sonnet-5-5": {
+    "ok_billed_input": [
+     69,
+     74,
+     74
+    ],
+    "overhead": 64,
+    "sys2k_billed_vs_sent": [
+     2130,
+     2019
+    ]
+   },
+   "claude-opus-5-5": {
+    "ok_billed_input": [
+     77,
+     77,
+     77
+    ],
+    "overhead": 72,
+    "sys2k_billed_vs_sent": [
+     2551,
+     2022
+    ]
+   },
+   "claude-sonnet-5": {
+    "ok_billed_input": [
+     77,
+     77,
+     77
+    ],
+    "overhead": 72,
+    "sys2k_billed_vs_sent": [
+     2824,
+     2018
+    ]
+   }
+  }
+ },
+ "cache": {
+  "verdict": "三个模型同一套模拟规则：必须带 cache_control、首发记 write、第二次起记 read、3k 起就命中、360 s 后失效；read 与 write 常常对不上、同一前缀总 token 逐次变、命中不降 TTFT。按 0.1（opus-5-5 0.05）计费，对用户有利",
+  "needs_cache_control": true,
+  "auto_cache_without_cache_control": "12k/25k 两次都 0 命中（全额 input）",
+  "fresh_doc_cache_read": 0,
+  "first_call": "全部记 cache_creation（×1.25）",
+  "hit_on_2nd_call": "3k/5k/12k/25k/50k 全部命中，最小 3k 也命中（门槛 < 3k）",
+  "same_prefix_total_changes": "同一前缀 input+read+write 总数逐次不同（真上游缓存 read 必须等于 write）",
+  "multi_turn": "只命中 system 那段（12549 恒定），历史不进缓存 —— 和断点只打在 system 上的官方语义一致",
+  "ttl": "360 s 后重发 → 0 命中、重新写入 14764（又一个不同的数）；≈ 官方 5 分钟 ephemeral",
+  "ttft_note": "命中不稳定变快（12k 反而更慢），基础首字就 4–11 s，与上游没有真缓存一致",
+  "billing": "账单 prompt/cache_read/cache_write 与 usage 逐条相同；quota = (in + 1.25·cw + 0.1·cr + 5·out) × 0.5，可核对",
+  "per_model": {
+   "claude-sonnet-5-5": {
+    "cache": {
+     "3k": {
+      "write": 3303,
+      "first_read": 0,
+      "reads": [
+       3303
+      ],
+      "totals": [
+       3382,
+       3382
+      ],
+      "ttft": [
+       12.97,
+       5.03
+      ]
+     },
+     "5k": {
+      "write": 6414,
+      "first_read": 0,
+      "reads": [
+       6700
+      ],
+      "totals": [
+       6493,
+       6782
+      ],
+      "ttft": [
+       5.49,
+       4.81
+      ]
+     },
+     "12k": {
+      "write": 15567,
+      "first_read": 0,
+      "reads": [
+       15306,
+       15306
+      ],
+      "totals": [
+       15648,
+       15386,
+       15386
+      ],
+      "ttft": [
+       10.5,
+       14.0,
+       14.91
+      ]
+     },
+     "25k": {
+      "write": 28145,
+      "first_read": 0,
+      "reads": [
+       28145,
+       29989
+      ],
+      "totals": [
+       28225,
+       28225,
+       30074
+      ],
+      "ttft": [
+       21.35,
+       11.37,
+       9.42
+      ]
+     },
+     "50k": {
+      "write": 63438,
+      "first_read": 0,
+      "reads": [
+       63438,
+       63438
+      ],
+      "totals": [
+       63523,
+       63523,
+       63523
+      ],
+      "ttft": [
+       12.5,
+       10.0,
+       9.19
+      ]
+     }
+    },
+    "auto_cache_reads": {
+     "12k": [
+      0,
+      0
+     ],
+     "25k": [
+      0,
+      0
+     ]
+    },
+    "turns": [
+     [
+      0,
+      13791
+     ],
+     [
+      12549,
+      0
+     ],
+     [
+      12549,
+      0
+     ],
+     [
+      12549,
+      0
+     ]
+    ],
+    "ttl": {
+     "tag": "C-ttl360s",
+     "read": 0,
+     "write": 14764
+    },
+    "read_equals_write": false,
+    "bills": "32/32 条账单与 usage 一致（共 32 次调用）"
+   },
+   "claude-opus-5-5": {
+    "cache": {
+     "3k": {
+      "write": 3148,
+      "first_read": 0,
+      "reads": [
+       3286
+      ],
+      "totals": [
+       3223,
+       3364
+      ],
+      "ttft": [
+       7.05,
+       7.74
+      ]
+     },
+     "5k": {
+      "write": 5707,
+      "first_read": 0,
+      "reads": [
+       5707
+      ],
+      "totals": [
+       5785,
+       5785
+      ],
+      "ttft": [
+       6.64,
+       6.39
+      ]
+     },
+     "12k": {
+      "write": 13584,
+      "first_read": 0,
+      "reads": [
+       13534,
+       13534
+      ],
+      "totals": [
+       13665,
+       13615,
+       13615
+      ],
+      "ttft": [
+       9.13,
+       6.36,
+       13.74
+      ]
+     },
+     "25k": {
+      "write": 28589,
+      "first_read": 0,
+      "reads": [
+       28589,
+       29216
+      ],
+      "totals": [
+       28670,
+       28670,
+       29298
+      ],
+      "ttft": [
+       18.2,
+       9.87,
+       7.04
+      ]
+     },
+     "50k": {
+      "write": 65172,
+      "first_read": 0,
+      "reads": [
+       65172,
+       65172
+      ],
+      "totals": [
+       65254,
+       65254,
+       65254
+      ],
+      "ttft": [
+       8.14,
+       8.34,
+       18.39
+      ]
+     }
+    },
+    "auto_cache_reads": {
+     "12k": [
+      0,
+      0
+     ],
+     "25k": [
+      0,
+      0
+     ]
+    },
+    "turns": [
+     [
+      0,
+      15129
+     ],
+     [
+      14496,
+      0
+     ],
+     [
+      14496,
+      0
+     ],
+     [
+      14496,
+      0
+     ]
+    ],
+    "ttl": {
+     "tag": "C-ttl360s",
+     "read": 0,
+     "write": 12501
+    },
+    "read_equals_write": false,
+    "bills": "34/34 条账单与 usage 一致（共 34 次调用）"
+   },
+   "claude-sonnet-5": {
+    "cache": {
+     "3k": {
+      "write": 3977,
+      "first_read": 0,
+      "reads": [
+       3977
+      ],
+      "totals": [
+       4059,
+       4059
+      ],
+      "ttft": [
+       4.93,
+       4.35
+      ]
+     },
+     "5k": {
+      "write": 6686,
+      "first_read": 0,
+      "reads": [
+       6686
+      ],
+      "totals": [
+       6768,
+       6768
+      ],
+      "ttft": [
+       4.85,
+       2.34
+      ]
+     },
+     "12k": {
+      "write": 15873,
+      "first_read": 0,
+      "reads": [
+       15873,
+       15873
+      ],
+      "totals": [
+       15956,
+       15956,
+       15956
+      ],
+      "ttft": [
+       3.96,
+       3.92,
+       3.78
+      ]
+     },
+     "25k": {
+      "write": 28562,
+      "first_read": 0,
+      "reads": [
+       27902,
+       27800
+      ],
+      "totals": [
+       28645,
+       27983,
+       27881
+      ],
+      "ttft": [
+       7.8,
+       4.75,
+       10.27
+      ]
+     },
+     "50k": {
+      "write": 64860,
+      "first_read": 0,
+      "reads": [
+       64860,
+       64860
+      ],
+      "totals": [
+       64941,
+       64941,
+       64941
+      ],
+      "ttft": [
+       5.01,
+       15.16,
+       8.74
+      ]
+     }
+    },
+    "auto_cache_reads": {
+     "12k": [
+      0,
+      0
+     ],
+     "25k": [
+      0,
+      0
+     ]
+    },
+    "turns": [
+     [
+      0,
+      15355
+     ],
+     [
+      15599,
+      0
+     ],
+     [
+      16245,
+      0
+     ],
+     [
+      15685,
+      0
+     ]
+    ],
+    "ttl": {
+     "tag": "C-ttl360s",
+     "read": 0,
+     "write": 12499
+    },
+    "read_equals_write": false,
+    "bills": "34/34 条账单与 usage 一致（共 34 次调用）"
+   }
+  }
+ },
+ "cost_workload": "costcheck-v1 每套实扣（站内 $）：sonnet-5-5 0.0688 / sonnet-5 0.0942 / opus-5-5 0.1375 / opus-5 0.1908，实扣/理想 1.02–1.04×（见 ikuncode-ccrev-cost.json）",
+ "how_to_compare": [
+  "新站跑：RB_KEY=... .venv/bin/python injcache.py --label <站>-s55 --base <url> --model <对应模型> [--direct]",
+  "注入：OK 计费 input 减 5 ≈ 隐藏注入计费量；ikuncode ≈ 64（隐藏 prompt 存在但不计费）。几千 = 隐藏 prompt 被计费",
+  "缓存：看①新文档首次 cache_read 是否为 0 ②无 cache_control 是否也报命中（ikuncode 不报）③ read 是否等于 write ④ 6 分钟后是否失效 ⑤ 命中是否按 0.1 计费",
+  "Kiro 渠道缓存都是中转自己定的，不能当真缓存比较，只比『规则是否对用户公道、计费是否一致』"
+ ]
+}

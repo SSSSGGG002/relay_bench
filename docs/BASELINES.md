@@ -17,7 +17,7 @@
 
 | 被测模型 | 必须对比的基线 | 用的脚本 | 规则来源 |
 |---|---|---|---|
-| Claude（只测 opus-5-5 / opus-5 / sonnet-5） | `suite/golden/` 官方 + `suite/reference/ikuncode-kiro.json`；计费比 `ikuncode-ccrev-cost.json` | `bench.py` + `report.py`，参考站漂移用 `refcheck.py`，计费用 `costcheck.py --ref` | 09-25：新站报告必须有 ikuncode 对比节 |
+| Claude（只测 opus-5-5 / opus-5 / sonnet-5） | `suite/golden/` 官方 + `suite/reference/ikuncode-kiro.json`；计费比 `ikuncode-ccrev-cost.json`；注入/缓存比 `ikuncode-ccrev-injcache.json` | `bench.py` + `report.py`，参考站漂移用 `refcheck.py`，计费用 `costcheck.py --ref`，注入/缓存用 `injcache.py` | 09-25：新站报告必须有 ikuncode 对比节 |
 | GLM（glm-5.3-flash 等） | `zhipu-official-glm53flash.json` + `ikuncode-glm53flash*.json` | `glmsuite.py run/summarize/compare` | 09-25：GLM 一律对比官方 + ikuncode 冻结基线 |
 | DeepSeek（deepseek-v4-flash） | `ikuncode-dsv4flash.json` | `glmsuite.py`（`--model deepseek-v4-flash`） | 10-02：ds v4-flash 对比冻结的 ikuncode 基线 |
 | GPT（只测 gpt-5.6-sol / gpt-5.6-terra / gpt-6-astra） | `spatialai-gpt.json` | `gptcheck.py`（注入 / 参数 / 缓存 / TTL / 会话实扣 / 延迟 / soak，不测智力） | 10-07：GPT 基线用 spatialai，智力用户另有方法 |
@@ -59,7 +59,8 @@
 | `ikuncode-glm53flash.json` | glm-5.3-flash | 09-25 | 北京阿里云直连 | "好的 GLM 中转"的标尺：智谱后端，跨账号缓存双向命中 |
 | `ikuncode-glm53flash-20261002.json` | glm-5.3-flash | 10-02 | Mac + Clash TUN | ikuncode **漂移后**的快照：接入层换成 OpenRouter 风格网关、多供应商轮换。智力只跑 9 题，完整分沿用 09-25 的 51/54 |
 | `ikuncode-dsv4flash.json` | deepseek-v4-flash | 10-02 | Mac + Clash TUN | deepseek-official 分组，回显 deepseek-v4-flash-0731 |
-| `ikuncode-ccrev-cost.json` | claude-opus-5-5 / opus-5 / sonnet-5 | 10-07 | Mac 直连 | **计费基线**：cc逆向分组固定负载的实扣金额（costcheck v1），按站点公式诚实计费 |
+| `ikuncode-ccrev-cost.json` | claude-opus-5-5 / opus-5 / sonnet-5 / sonnet-5-5 | 10-07 | Mac 直连 | **计费基线**：cc逆向分组固定负载的实扣金额（costcheck v1），按站点公式诚实计费 |
+| `ikuncode-ccrev-injcache.json` | claude-sonnet-5-5 / opus-5-5 / sonnet-5 | 10-07 | Mac 直连（TTL 补测走代理） | **注入与缓存基线**：cc逆向分组其实也是 Kiro 池；隐藏提示词存在但不计费，缓存是中转模拟的、规则对用户公道（见 3.5.1） |
 | `spatialai-gpt.json` | gpt-5.6-sol / gpt-5.6-terra / gpt-6-astra | 10-07 | Mac + Clash 代理 | **GPT 基线**：真 OpenAI Codex 号池；注入、缓存、TTL、会话实扣、p50/p99（gptcheck v1） |
 
 所有参考站的 IQ 题库都是 `suite/iq.ref-20260924.json`，md5 `ad1f46e9f80233a7264d9f01196c9993`（和当前 `suite/iq.json` 一样）。
@@ -149,6 +150,38 @@
 | TTL | 空闲 5 s – 600 s 后重打（`--gaps` / `--ttl`） | 官方 GLM 5–7 分钟内基本命中、10 分钟失效；ikuncode GLM 09-25 ≤3 分钟 100%，10-02 只剩约四成 |
 | 计费核对 | 余额差分或 new-api `/api/log/token?key=` 逐条账单 | 缓存读不打折、token 虚高、截断照全额扣，都要用实扣金额核对，不能只看 usage |
 
+### 3.5.1 注入与缓存探针 `injcache.py` —— 2026-10-07 新增
+
+Kiro 类渠道上游不提供缓存，usage 里的缓存数字是中转站自己算的，所以不能只看「命中率」，要看中转定的规则对用户是否公道、计费是否和 usage 一致。
+
+| 段 | 内容 | 看什么 |
+|---|---|---|
+| I-base / I-sys2k | OK ×3；再加一段 2k token system | OK 计费 input − 5 = 每请求注入计费量；几十是协议转换，几千是隐藏提示词被计费 |
+| I-ask | 你是谁 / 复述上文 / 列工具 / 日期与知识截止 / 受何限制；再带 canary system 复述 | 号池身份、隐藏提示词是否存在、是否回显用户 system |
+| C-size | 12k / 25k / 50k 新前缀带 cache_control，同问题 ×2 + 换问题 ×1 | 首次 read 必须为 0；read 应等于 write；换问题 read 不应变；TTFT 是否下降 |
+| C-auto | 12k / 25k 不带 cache_control ×2 | 不带也报命中 = 自动缓存或拆分 |
+| C-small | 3k / 5k | 最小可缓存长度 |
+| C-turn | 12k system + 4 轮 | 历史是否进缓存 |
+| C-ttl | 360 s 后重发 12k 前缀 | 是否还算命中 |
+| 账单 | `/api/log/token` 按 request id 逐条对 | usage 与实扣 token 是否一致 |
+
+```bash
+RB_KEY=sk-... .venv/bin/python injcache.py --label <站>-<模型>-<日期> --base https://<站> --model <模型> [--direct]
+.venv/bin/python injcache.py --summary results/injcache/<a>.json [<b>.json ...]      # 汇总表
+# 某一步网络失败时只补 TTL 并重新挂账单：
+.venv/bin/python injcache.py --label x --base https://<站> --model <模型> --skip I,C --merge-into results/injcache/<a>.json
+```
+
+**基线 ikuncode cc逆向（2026-10-07，`suite/reference/ikuncode-ccrev-injcache.json`）**：三个模型都自称「Kiro … made by AWS … connected through an ACP client」，拒谈上文、工具和规则（「I can't discuss that」），不回显用户 system。
+
+| 模型 | OK 计费 input | 注入≈ | 2k system 计费/发送 | 不带 cache_control | 新前缀首次 read | 最小命中 | read=write | 多轮 read | 360 s 后 | 账单一致 |
+|---|---|---|---|---|---|---|---|---|---|---|
+| claude-sonnet-5-5 | 69 / 74 / 74 | 64 | 2130 / 2019 | 0 命中 | 0 | 3k | 否（15567→15306、6414→6700） | 12549 恒定 | 失效，重写 | 32/32 |
+| claude-opus-5-5 | 77 ×3 | 72 | 2551 / 2022 | 0 命中 | 0 | 3k | 否（3148→3286、28589→29216） | 14496 恒定 | 失效，重写 | 34/34 |
+| claude-sonnet-5 | 77 ×3 | 72 | 2824 / 2018 | 0 命中 | 0 | 3k | 否（28562→27902/27800） | 15599 / 16245 / 15685 | 失效，重写 | 34/34 |
+
+结论：隐藏提示词存在但不计费；缓存是中转模拟的，但规则贴近官方（要 cache_control、5 分钟 TTL、只缓存断点前的部分），新前缀不报假命中，缓存读按 0.1（opus-5-5 0.05）计价，对用户有利。read 和 write 对不上、同一前缀总 token 逐次变、命中后首字不变快，说明数字不是上游真值。新站对照时重点看：新前缀首次是否就报 read、不带 cache_control 是否也报命中、6 分钟后是否仍算命中、注入是否计费。
+
 ### 3.6 延迟、稳定性、速度
 
 | 指标 | 测法 | 判读 |
@@ -197,6 +230,7 @@ python3 costcheck.py --report results/costcheck/<label>.json --freeze suite/refe
 | claude-opus-5-5 | 0.1375 | 0.1322 | 1.04× | 63% | 68 | 1.19 | 0 / 0 | 8/8 |
 | claude-opus-5 | 0.1908 | 0.1831 | 1.04× | 63% | 68 | 1.19 | 0 / 0 | 7/8 |
 | claude-sonnet-5 | 0.0942 | 0.0911 | 1.03× | 63% | 68 | 1.19 | 0 / 0 | 7/8 |
+| claude-sonnet-5-5（10-07 单独一轮） | 0.0688 | 0.0671 | 1.02× | 64% | 63 | 1.19 | 0 / 0 | 8/8 |
 
 站点定价：扣费 = (输入 + 缓存读×0.1〔opus-5-5 是 0.05〕+ 缓存写×1.25 + 输出×5) × 模型倍率（opus-5-5 2 / opus-5 2.5 / sonnet-5 1）× 分组倍率 0.5，站内 $ = quota ÷ 500000。历史 448 条和本次 54 条账单逐条复算，0 条不符。新站和它比时，两边各乘自己的充值价再比「跑完一套实扣」。
 

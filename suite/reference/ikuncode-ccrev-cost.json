@@ -219,6 +219,78 @@
      "c": 4717
     }
    }
+  },
+  {
+   "model": "claude-sonnet-5-5",
+   "usd": 0.068762,
+   "ideal_usd": 0.06714836144444444,
+   "inflation": 1.0240309446253668,
+   "hit": 0.6446799482744686,
+   "inject": 63.04111111111111,
+   "slope": 1.1917777777777778,
+   "fresh_cache_read": [
+    0,
+    0
+   ],
+   "iq": "8/8",
+   "errors": 0,
+   "groups": [
+    "cc逆向"
+   ],
+   "channels": [
+    156
+   ],
+   "ratio": {
+    "m": 1,
+    "c": 5,
+    "cr": 0.1,
+    "cw": 1.25,
+    "g": 0.5
+   },
+   "sections": {
+    "inject": {
+     "n": 3,
+     "quota": 111,
+     "ideal": 16.438333333333333,
+     "sent": 17.87666666666667,
+     "p": 207,
+     "cr": 0,
+     "cw": 0,
+     "c": 3
+    },
+    "fresh": {
+     "n": 2,
+     "quota": 9517,
+     "ideal": 9697.545555555556,
+     "sent": 17960.091111111113,
+     "p": 17598,
+     "cr": 0,
+     "cw": 0,
+     "c": 287
+    },
+    "session": {
+     "n": 5,
+     "quota": 14740,
+     "ideal": 14023.451833333334,
+     "sent": 72847.41666666667,
+     "p": 1482,
+     "cr": 63813,
+     "cw": 14302,
+     "c": 748
+    },
+    "iq": {
+     "n": 8,
+     "quota": 10013,
+     "ideal": 9836.744999999999,
+     "sent": 1233.4900000000002,
+     "p": 1582,
+     "cr": 0,
+     "cw": 0,
+     "c": 3688
+    }
+   },
+   "measured_at": "2026-10-06 22:55 -0400",
+   "source": "results/costcheck/ikun-ccrev-s55-20261007.json"
   }
  ],
  "group": "cc逆向（站点标注：低价 kiro/cursor 渠道），渠道 156",
@@ -246,5 +318,8 @@
   "智力 8 道 screen 题：opus-5-5 8/8、opus-5 7/8、sonnet-5 7/8（单次）",
   "路线 Mac 直连；金额不随路线变化，延迟不在本基线里"
  ],
- "how_to_use": "新站跑同一负载：RB_KEY=... python3 costcheck.py --label <站>-<分组>-<日期> --base <url> --models claude-opus-5-5,claude-opus-5,claude-sonnet-5 --ref suite/reference/ikuncode-ccrev-cost.json；两边各乘自己的充值价（元/站内$）比实际花费。负载版本 workload 必须相同。"
+ "how_to_use": "新站跑同一负载：RB_KEY=... python3 costcheck.py --label <站>-<分组>-<日期> --base <url> --models claude-opus-5-5,claude-opus-5,claude-sonnet-5 --ref suite/reference/ikuncode-ccrev-cost.json；两边各乘自己的充值价（元/站内$）比实际花费。负载版本 workload 必须相同。",
+ "notes": [
+  "2026-10-07 补 claude-sonnet-5-5（同 key、同分组 cc逆向·156，单独一轮，见该行 measured_at/source）"
+ ]
 }
