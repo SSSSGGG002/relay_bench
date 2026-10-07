@@ -9,7 +9,7 @@
  "source": {
   "run": "jl0925",
   "dir": "results/glmsuite/jl0925",
-  "route": "北京阿里云直连 123.56.102.125"
+  "route": "北京阿里云直连"
  },
  "note": "2026-09-25 23:05 – 09-26 01:23 北京时间，北京阿里云直连，与 junliai / ikuncode 同窗口交错测",
  "iq_bank": {

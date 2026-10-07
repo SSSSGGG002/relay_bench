@@ -162,7 +162,7 @@ python3 compare.py --baseline zhipu-official   # 与官方逐项比对 COMPARE.m
 
 当前实际配置（2026-09-16）：
 
-    origin = ssh://root@123.56.102.125/opt/relay-bench.git
+    origin = ssh://root@<北京服务器>/opt/relay-bench.git
     服务器工作副本 = /opt/relay-bench（RELAY_BENCH_DIR）
 
 一次性配置：在服务器上跑 `relay-collab/deploy/relay-bench-git-origin.sh`，
