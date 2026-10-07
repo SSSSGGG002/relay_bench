@@ -30,3 +30,9 @@ suite/.bak/
 .env
 .env.*
 *.key
+
+# macOS
+.DS_Store
+
+# Empty golden capture (subscription OAuth had expired on 09-25); re-capture before tracking
+suite/golden/claude-opus-5-5.json

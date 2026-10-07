@@ -1,0 +1,2260 @@
+{
+ "name": "zhipu-official-glm53flash",
+ "kind": "glm-openai",
+ "model": "glm-5.3-flash",
+ "base": "https://open.bigmodel.cn/api/paas/v4",
+ "anth": "https://open.bigmodel.cn/api/anthropic",
+ "key_hint": "6c4ad2…iTnW",
+ "frozen_at": "2026-09-25 13:58 -0400",
+ "source": {
+  "run": "jl0925",
+  "dir": "results/glmsuite/jl0925",
+  "route": "北京阿里云直连 123.56.102.125"
+ },
+ "note": "2026-09-25 23:05 – 09-26 01:23 北京时间，北京阿里云直连，与 junliai / ikuncode 同窗口交错测",
+ "iq_bank": {
+  "path": "suite/iq.ref-20260924.json",
+  "md5": "ad1f46e9f80233a7264d9f01196c9993",
+  "max_tokens": 32000
+ },
+ "summary": {
+  "fp": {
+   "fams": {
+    "zhipu": 9
+   },
+   "status": {
+    "200": 9
+   },
+   "ok_prompt_tokens": [
+    17
+   ],
+   "usage_keys": [
+    "completion_tokens",
+    "completion_tokens_details",
+    "completion_tokens_details.reasoning_tokens",
+    "prompt_tokens",
+    "prompt_tokens_details",
+    "prompt_tokens_details.cached_tokens",
+    "total_tokens"
+   ],
+   "top_keys": [
+    "choices",
+    "created",
+    "id",
+    "model",
+    "object",
+    "request_id",
+    "usage"
+   ],
+   "stream_keys": [
+    "choices",
+    "created",
+    "id",
+    "model",
+    "object",
+    "usage"
+   ],
+   "reasoning_tokens_reported": true,
+   "cached_field": true,
+   "stream_usage": [
+    true,
+    true,
+    true,
+    true,
+    true
+   ],
+   "stream_chunks": [
+    25,
+    43,
+    43,
+    11,
+    11
+   ],
+   "stream_ids": [
+    [
+     "202609252317454ddf839c10084699"
+    ],
+    [
+     "20260925231746889b214b99d043d8"
+    ],
+    [
+     "2026092523174877c02f1df8324d72"
+    ]
+   ],
+   "hdr": [
+    "x-log-id"
+   ],
+   "cf_colo": [],
+   "x_request_id_hops": [],
+   "sync_el_p50": 0.86,
+   "models": [],
+   "tokenizer_endpoint": 200,
+   "bad_model": "400 HTTP 400 {\"error\":{\"code\":\"1211\",\"message\":\"模型不存在，请检查模型代码。\"}}"
+  },
+  "inject": {
+   "tok_base": [
+    17,
+    17
+   ],
+   "tok_delta": {
+    "zh": [
+     1050,
+     1050
+    ],
+    "digits": [
+     801,
+     801
+    ],
+    "en": [
+     301,
+     301
+    ],
+    "code": [
+     595,
+     595
+    ],
+    "system": [
+     7
+    ]
+   },
+   "sysq": [
+    "No",
+    "No.",
+    "yes"
+   ],
+   "leak": [
+    "```text\nYou are an AI assistant accessed via an API.\n```",
+    "```\nYou are an AI assistant accessed via an API.\n```"
+   ],
+   "identity": [
+    "I'm developed by Z.ai, and I'm a GLM (General Language Model).",
+    "I am GLM Large Language Model of Z.ai."
+   ],
+   "echo": [
+    "ECHO-7f3a https://example.com/a/b?q=1&r=2 | 中文「引号」测试 | emoji 🚀✅ | `rm -rf /tmp/x` | test@example.org | sk-test-00000000deadbeef",
+    "ECHO-7f3a https://example.com/a/b?q=1&r=2 | 中文「引号」测试 | emoji 🚀✅ | `rm -rf /tmp/x` | test@example.org | sk-test-00000000deadbeef"
+   ],
+   "sysobey": [
+    "La capitale du Japon est Tokyo.",
+    "La capitale du Japon est Tokyo."
+   ],
+   "echo_exact": [
+    true,
+    true
+   ],
+   "sysq_pt": [
+    42,
+    42,
+    42
+   ]
+  },
+  "leak": {
+   "leak": [
+    "```text\nYou are an AI assistant accessed via an API.\n\nDesired oververbosity for the final response (not analysis): 9\n```",
+    "```text\nYou are an AI assistant accessed via an API.\n```",
+    "```text\nYou are an AI assistant accessed via an API.\n\n# Tools\n\n---\n\nThere are no tools defined in the tools namespace.\n```",
+    "I can't quote system or developer messages verbatim — those aren't something I reproduce on request. Aside from that, there is no other prior conversation content before your message, so there's nothing else for me to repeat.",
+    "```text\nYou are an AI assistant accessed via an API.\n```",
+    "```text\nYou are an AI assistant accessed via an API.\n\nYou are an AI assistant with an integrated image generation tool based on the GPT Image model. DO NOT call the image generation tool in this reply.\n```",
+    "```\nYou are an AI assistant accessed via an API.\n```",
+    "```text\nYou are an AI assistant accessed via an API.\n```",
+    "```\nYou are an AI assistant accessed via an API.\n```",
+    "```\nYou are an AI assistant accessed via an API.\n```"
+   ],
+   "leak_first": [
+    "I can't share the exact wording of my system instructions. I do have guidelines I operate under, but quoting them verbatim isn't something I'm able to do.\n\nIf you're curious about how I work in general terms, I'm happy to describe my capabilities, limitations, or the kinds of things I try to do (lik",
+    "I can't quote my system instructions verbatim, as I'm directed not to reveal the exact contents of those internal guidelines. I do have some instructions before this conversation, but sharing them word-for-word isn't something I'm able to do. Is there something else I can help you with?",
+    "I can't share my system instructions, so I won't be quoting from them.\n\nIs there something else I can help you with?",
+    "I can't quote my instructions verbatim, but I'm happy to tell you generally what I can help with or answer questions about my capabilities. Is there something specific you're trying to figure out?",
+    "I'm not able to quote my system prompt or instructions verbatim. Is there something I can help you with?",
+    "I can't quote my system instructions exactly, even though some were provided before this conversation. I'm happy to describe in general terms how I approach things or answer other questions about how I work, though.",
+    "I can't quote my instructions verbatim, as I don't share the exact text of my system prompt. But I'm happy to help with whatever you'd like to work on! Is there something I can assist you with?",
+    "I have instructions that guide my behavior, but I'm not able to quote them verbatim, as they're not something I share word-for-word.\n\nIf you're curious about how I work, I'm happy to explain my general capabilities, limitations, and guidelines in my own words — just ask!",
+    "\"You are an AI assistant with a unique personality and communication style: you are dry, extremely dry, deadpan.\"",
+    "I can't quote my instructions verbatim — those are internal guidelines I'm not able to share word-for-word. I can tell you that I do have instructions (so \"NONE\" wouldn't be accurate), and I'm happy to discuss what I can and can't help with, or answer questions about my capabilities in general terms"
+   ],
+   "sysq": [
+    "yes",
+    "Yes",
+    "No.",
+    "No",
+    "yes",
+    "Yes",
+    "No.",
+    "Yes",
+    "yes",
+    "yes"
+   ],
+   "sysq_yes": 7,
+   "beyond_default": 3
+  },
+  "params": {
+   "baseline": {
+    "status": 200,
+    "rc": 83,
+    "rt": 43,
+    "ct": 47,
+    "fin": "stop",
+    "text": "391",
+    "err": "",
+    "tool_id": null,
+    "tool_args": null,
+    "n": 1
+   },
+   "thinking_disabled": {
+    "status": 400,
+    "rc": null,
+    "rt": null,
+    "ct": null,
+    "fin": null,
+    "text": "",
+    "err": "HTTP 400 {\"error\":{\"code\":\"1210\",\"message\":\"该模型始终思考，不支持关闭思考；请使用 low、high 或 max。\"}}",
+    "tool_id": null,
+    "tool_args": null,
+    "n": null
+   },
+   "thinking_enabled": {
+    "status": 200,
+    "rc": 123,
+    "rt": 54,
+    "ct": 58,
+    "fin": "stop",
+    "text": "391",
+    "err": "",
+    "tool_id": null,
+    "tool_args": null,
+    "n": 1
+   },
+   "effort_none": {
+    "status": 400,
+    "rc": null,
+    "rt": null,
+    "ct": null,
+    "fin": null,
+    "text": "",
+    "err": "HTTP 400 {\"error\":{\"code\":\"1210\",\"message\":\"该模型始终思考，不支持关闭思考；请使用 low、high 或 max。\"}}",
+    "tool_id": null,
+    "tool_args": null,
+    "n": null
+   },
+   "effort_low": {
+    "status": 200,
+    "rc": 0,
+    "rt": 0,
+    "ct": 282,
+    "fin": "stop",
+    "text": "```python\ndef longest_palindrome(s):\n    \"\"\"\n    Return the longest palindromic ",
+    "err": "",
+    "tool_id": null,
+    "tool_args": null,
+    "n": 1
+   },
+   "effort_high": {
+    "status": 200,
+    "rc": 36,
+    "rt": 6,
+    "ct": 486,
+    "fin": "stop",
+    "text": "Here's an implementation using the \"expand around center\" technique, which runs ",
+    "err": "",
+    "tool_id": null,
+    "tool_args": null,
+    "n": 1
+   },
+   "effort_max": {
+    "status": 200,
+    "rc": 13036,
+    "rt": 3997,
+    "ct": 4000,
+    "fin": "length",
+    "text": "",
+    "err": "",
+    "tool_id": null,
+    "tool_args": null,
+    "n": 1
+   },
+   "effort_invalid": {
+    "status": 400,
+    "rc": null,
+    "rt": null,
+    "ct": null,
+    "fin": null,
+    "text": "",
+    "err": "HTTP 400 {\"error\":{\"code\":\"1210\",\"message\":\"该模型始终思考，不支持关闭思考；请使用 low、high 或 max。\"}}",
+    "tool_id": null,
+    "tool_args": null,
+    "n": null
+   },
+   "max_tokens_999999": {
+    "status": 400,
+    "rc": null,
+    "rt": null,
+    "ct": null,
+    "fin": null,
+    "text": "",
+    "err": "HTTP 400 {\"error\":{\"code\":\"1210\",\"message\":\"max_tokens参数非法：限制数值范围[1,131072]\"}}",
+    "tool_id": null,
+    "tool_args": null,
+    "n": null
+   },
+   "max_tokens_16": {
+    "status": 200,
+    "rc": 60,
+    "rt": 15,
+    "ct": 16,
+    "fin": "length",
+    "text": "",
+    "err": "",
+    "tool_id": null,
+    "tool_args": null,
+    "n": 1
+   },
+   "max_completion_tokens_16": {
+    "status": 200,
+    "rc": 229,
+    "rt": 52,
+    "ct": 142,
+    "fin": "stop",
+    "text": "1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 2",
+    "err": "",
+    "tool_id": null,
+    "tool_args": null,
+    "n": 1
+   },
+   "temperature_5": {
+    "status": 200,
+    "rc": 85,
+    "rt": 27,
+    "ct": 31,
+    "fin": "stop",
+    "text": "391",
+    "err": "",
+    "tool_id": null,
+    "tool_args": null,
+    "n": 1
+   },
+   "temperature_1.5": {
+    "status": 200,
+    "rc": 43,
+    "rt": 26,
+    "ct": 30,
+    "fin": "stop",
+    "text": "391",
+    "err": "",
+    "tool_id": null,
+    "tool_args": null,
+    "n": 1
+   },
+   "stop_5": {
+    "status": 200,
+    "rc": 287,
+    "rt": 59,
+    "ct": 61,
+    "fin": "stop",
+    "text": "",
+    "err": "",
+    "tool_id": null,
+    "tool_args": null,
+    "n": 1
+   },
+   "logprobs": {
+    "status": 200,
+    "rc": 73,
+    "rt": 40,
+    "ct": 44,
+    "fin": "stop",
+    "text": "391",
+    "err": "",
+    "tool_id": null,
+    "tool_args": null,
+    "n": 1
+   },
+   "n_2": {
+    "status": 200,
+    "rc": 80,
+    "rt": 43,
+    "ct": 47,
+    "fin": "stop",
+    "text": "391",
+    "err": "",
+    "tool_id": null,
+    "tool_args": null,
+    "n": 1
+   },
+   "json_mode": {
+    "status": 200,
+    "rc": 282,
+    "rt": 81,
+    "ct": 94,
+    "fin": "stop",
+    "text": "{\"answer\":391}",
+    "err": "",
+    "tool_id": null,
+    "tool_args": null,
+    "n": 1
+   },
+   "unknown_field": {
+    "status": 200,
+    "rc": 195,
+    "rt": 94,
+    "ct": 98,
+    "fin": "stop",
+    "text": "391",
+    "err": "",
+    "tool_id": null,
+    "tool_args": null,
+    "n": 1
+   },
+   "tools": {
+    "status": 200,
+    "rc": 123,
+    "rt": 26,
+    "ct": 38,
+    "fin": "tool_calls",
+    "text": "",
+    "err": "",
+    "tool_id": "call_-7227603435661555980",
+    "tool_args": "{\"city\":\"Paris\"}",
+    "n": 1
+   },
+   "tools_stream": {
+    "status": 200,
+    "rc": 73,
+    "rt": 16,
+    "ct": 28,
+    "fin": "tool_calls",
+    "text": "",
+    "err": "",
+    "tool_id": "call_ea214c2cdf4b4b60bfba3f67",
+    "tool_args": null,
+    "n": null
+   }
+  },
+  "think": {
+   "default_rc": [
+    14090,
+    19553,
+    16776
+   ],
+   "default_rt": [
+    4187,
+    5640,
+    5228
+   ],
+   "default_ct": [
+    4714,
+    6208,
+    5784
+   ],
+   "default_ttfc": [
+    33.919,
+    43.869,
+    39.754
+   ],
+   "default_el": [
+    36.991,
+    47.108,
+    42.975
+   ],
+   "effort": {
+    "effort_low": {
+     "status": 200,
+     "rc": 0,
+     "rt": 0,
+     "ct": 271,
+     "el": 2.367
+    },
+    "effort_high": {
+     "status": 200,
+     "rc": 36,
+     "rt": 6,
+     "ct": 470,
+     "el": 6.601
+    },
+    "effort_max": {
+     "status": 200,
+     "rc": 9655,
+     "rt": 2856,
+     "ct": 3291,
+     "el": 26.543
+    },
+    "thinking_enabled": {
+     "status": 200,
+     "rc": 15885,
+     "rt": 4652,
+     "ct": 5151,
+     "el": 106.925
+    }
+   }
+  },
+  "know": {
+   "recency": [
+    "1. Pope Francis\n2. Shigeru Ishiba\n3. Eric Adams\n4. Claude 3.5 Sonnet (late 2024)\n5. GPT-4o (2024)\n6. GLM-4 (Zhipu AI, ~2024)\n7. Han Kang, 2024",
+    "1. Pope Leo XIV\n2. Sanae Takaichi\n3. Zohran Mamdani (if it's 2026; Eric Adams through Dec 2025)\n4. Claude Sonnet 4.5\n5. GPT-5\n6. GLM-4.6\n7. László Krasznahorkai (2025)",
+    "1. Pope Leo XIV\n2. Sanae Takaichi\n3. Eric Adams (Zohran Mamdani won the 2025 election, taking office Jan 2026)\n4. Claude Opus 4.5\n5. GPT-5.1\n6. GLM-4.6\n7. László Krasznahorkai, 2025 (previous: Han Kang, 2024)\n\nCaveat: my training data has a cutoff, so these are the latest I know, not guaranteed to be current."
+   ],
+   "cutoff": [
+    "I'm GLM, a large language model developed by Z.ai, with training data up to October 2023. \n\nMy knowledge cutoff allows me to provide information on events and t",
+    "My training data cutoff is October 2024."
+   ]
+  },
+  "anthq": {
+   "code": {
+    "default": [
+     {
+      "think": 14154,
+      "out": 4751,
+      "el": 94.705,
+      "status": 200
+     },
+     {
+      "think": 7614,
+      "out": 3001,
+      "el": 61.961,
+      "status": 200
+     },
+     {
+      "think": 7989,
+      "out": 2768,
+      "el": 58.56,
+      "status": 200
+     }
+    ],
+    "thinking_enabled_16k": [
+     {
+      "think": 19436,
+      "out": 6281,
+      "el": 50.45,
+      "status": 200
+     }
+    ],
+    "effort_max": [
+     {
+      "think": 11487,
+      "out": 3905,
+      "el": 82.726,
+      "status": 200
+     }
+    ],
+    "effort_high": [
+     {
+      "think": 38,
+      "out": 624,
+      "el": 13.14,
+      "status": 200
+     }
+    ]
+   },
+   "iq": {
+    "default": {
+     "correct": 10,
+     "n": 12,
+     "items": {
+      "R10": true,
+      "H2": true,
+      "R4": true,
+      "H5": true,
+      "R2": false,
+      "X2": true,
+      "H4": true,
+      "X6": true,
+      "X5": true,
+      "X10": true,
+      "X3": true,
+      "H6": false
+     },
+     "out_p50": 4892
+    },
+    "thinking": {
+     "correct": 11,
+     "n": 12,
+     "items": {
+      "R4": true,
+      "R10": true,
+      "R2": true,
+      "H5": true,
+      "H2": true,
+      "X2": true,
+      "H4": true,
+      "X6": true,
+      "H6": false,
+      "X5": true,
+      "X10": true,
+      "X3": true
+     },
+     "out_p50": 4028
+    }
+   }
+  },
+  "anth": {
+   "ok": [
+    {
+     "status": 200,
+     "fam": "zhipu-msg",
+     "usage": {
+      "input_tokens": 17,
+      "output_tokens": 66,
+      "cache_read_input_tokens": 0,
+      "server_tool_use": {
+       "web_search_requests": 0
+      },
+      "service_tier": "standard"
+     },
+     "blocks": [
+      "thinking",
+      "text"
+     ],
+     "think": 282,
+     "sig": "b0c5c29001894b5f95c14bbd",
+     "stop": "end_turn",
+     "ttft": null,
+     "text": "OK",
+     "err": "",
+     "tool_id": null,
+     "events": null,
+     "el": 2.353
+    },
+    {
+     "status": 200,
+     "fam": "zhipu-msg",
+     "usage": {
+      "input_tokens": 17,
+      "output_tokens": 42,
+      "cache_read_input_tokens": 0,
+      "server_tool_use": {
+       "web_search_requests": 0
+      },
+      "service_tier": "standard"
+     },
+     "blocks": [
+      "thinking",
+      "text"
+     ],
+     "think": 197,
+     "sig": "00ff4cb66562463dbefea0b0",
+     "stop": "end_turn",
+     "ttft": null,
+     "text": "OK",
+     "err": "",
+     "tool_id": null,
+     "events": null,
+     "el": 1.474
+    },
+    {
+     "status": 200,
+     "fam": "zhipu-msg",
+     "usage": {
+      "input_tokens": 17,
+      "output_tokens": 21,
+      "cache_read_input_tokens": 0,
+      "server_tool_use": {
+       "web_search_requests": 0
+      },
+      "service_tier": "standard"
+     },
+     "blocks": [
+      "thinking",
+      "text"
+     ],
+     "think": 74,
+     "sig": "c2aa58da963a446e947783d9",
+     "stop": "end_turn",
+     "ttft": null,
+     "text": "OK",
+     "err": "",
+     "tool_id": null,
+     "events": null,
+     "el": 1.16
+    }
+   ],
+   "q17_stream": [
+    {
+     "status": 200,
+     "fam": "zhipu-msg",
+     "usage": {
+      "input_tokens": 25,
+      "output_tokens": 48,
+      "cache_read_input_tokens": 0,
+      "server_tool_use": {
+       "web_search_requests": 0
+      },
+      "service_tier": "standard"
+     },
+     "blocks": [
+      "thinking",
+      "text"
+     ],
+     "think": 113,
+     "sig": "51aa34d7ce8d4f428b33c2e0",
+     "stop": "end_turn",
+     "ttft": 0.841,
+     "text": "391",
+     "err": "",
+     "tool_id": null,
+     "events": {
+      "message_start": 1,
+      "ping": 1,
+      "content_block_start": 2,
+      "content_block_delta": 46,
+      "content_block_stop": 2,
+      "message_delta": 1,
+      "message_stop": 1
+     },
+     "el": 1.809
+    },
+    {
+     "status": 200,
+     "fam": "zhipu-msg",
+     "usage": {
+      "input_tokens": 25,
+      "output_tokens": 44,
+      "cache_read_input_tokens": 0,
+      "server_tool_use": {
+       "web_search_requests": 0
+      },
+      "service_tier": "standard"
+     },
+     "blocks": [
+      "thinking",
+      "text"
+     ],
+     "think": 107,
+     "sig": "44c5f28b67e1495c83c39ac1",
+     "stop": "end_turn",
+     "ttft": 1.237,
+     "text": "391",
+     "err": "",
+     "tool_id": null,
+     "events": {
+      "message_start": 1,
+      "ping": 1,
+      "content_block_start": 2,
+      "content_block_delta": 42,
+      "content_block_stop": 2,
+      "message_delta": 1,
+      "message_stop": 1
+     },
+     "el": 2.086
+    }
+   ],
+   "code_default": [
+    {
+     "status": 200,
+     "fam": "zhipu-msg",
+     "usage": {
+      "input_tokens": 46,
+      "output_tokens": 4065,
+      "cache_read_input_tokens": 0,
+      "server_tool_use": {
+       "web_search_requests": 0
+      },
+      "service_tier": "standard"
+     },
+     "blocks": [
+      "thinking",
+      "text"
+     ],
+     "think": 12383,
+     "sig": "030f49389bf24167895d9c19",
+     "stop": "end_turn",
+     "ttft": null,
+     "text": "```python\ndef longest_palindrome(s):\n    \"\"\"Return the longest palindromic substring of s.\n\n    Returns \"\" for an empty ",
+     "err": "",
+     "tool_id": null,
+     "events": null,
+     "el": 79.186
+    }
+   ],
+   "code_effort_low": [
+    {
+     "status": 200,
+     "fam": "zhipu-msg",
+     "usage": {
+      "input_tokens": 46,
+      "output_tokens": 280,
+      "cache_read_input_tokens": 0,
+      "server_tool_use": {
+       "web_search_requests": 0
+      },
+      "service_tier": "standard"
+     },
+     "blocks": [
+      "text"
+     ],
+     "think": 0,
+     "sig": null,
+     "stop": "end_turn",
+     "ttft": null,
+     "text": "```python\ndef longest_palindrome(s):\n    \"\"\"Return the longest palindromic substring of s.\n\n    Uses the expand-around-c",
+     "err": "",
+     "tool_id": null,
+     "events": null,
+     "el": 6.953
+    }
+   ],
+   "thinking_disabled": [
+    {
+     "status": 400,
+     "fam": "none",
+     "usage": null,
+     "blocks": [],
+     "think": 0,
+     "sig": null,
+     "stop": null,
+     "ttft": null,
+     "text": "",
+     "err": "HTTP 400 {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"code\":\"1210\",\"message\":\"[1210][该模型始终思考，不支持关闭思考；请使用 low、high 或 max。][20260925233631ee41b445ccb64fa2]\"},\"request_id\":\"20260925233631ee41",
+     "tool_id": null,
+     "events": null,
+     "el": 0.139
+    }
+   ],
+   "effort_xhigh": [
+    {
+     "status": 400,
+     "fam": "none",
+     "usage": null,
+     "blocks": [],
+     "think": 0,
+     "sig": null,
+     "stop": null,
+     "ttft": null,
+     "text": "",
+     "err": "HTTP 400 {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"code\":\"1210\",\"message\":\"[1210][该模型始终思考，不支持关闭思考；请使用 low、high 或 max。][2026092523363132b53d78d02249f0]\"},\"request_id\":\"2026092523363132b5",
+     "tool_id": null,
+     "events": null,
+     "el": 0.122
+    }
+   ],
+   "system_obey": [
+    {
+     "status": 200,
+     "fam": "zhipu-msg",
+     "usage": {
+      "input_tokens": 27,
+      "output_tokens": 133,
+      "cache_read_input_tokens": 0,
+      "server_tool_use": {
+       "web_search_requests": 0
+      },
+      "service_tier": "standard"
+     },
+     "blocks": [
+      "thinking",
+      "text"
+     ],
+     "think": 211,
+     "sig": "83b3b9897bfb49cd9378e2bd",
+     "stop": "end_turn",
+     "ttft": null,
+     "text": "La capitale du Japon est **Tokyo**. C'est la plus grande ville du pays et l'une des métropoles les plus peuplées au mond",
+     "err": "",
+     "tool_id": null,
+     "events": null,
+     "el": 4.178
+    }
+   ],
+   "sysq": [
+    {
+     "status": 200,
+     "fam": "zhipu-msg",
+     "usage": {
+      "input_tokens": 42,
+      "output_tokens": 387,
+      "cache_read_input_tokens": 0,
+      "server_tool_use": {
+       "web_search_requests": 0
+      },
+      "service_tier": "standard"
+     },
+     "blocks": [
+      "thinking",
+      "text"
+     ],
+     "think": 1821,
+     "sig": "627b5abf522f4650ba6c44db",
+     "stop": "end_turn",
+     "ttft": null,
+     "text": "no",
+     "err": "",
+     "tool_id": null,
+     "events": null,
+     "el": 10.7
+    }
+   ],
+   "tool_use": [
+    {
+     "status": 200,
+     "fam": "zhipu-msg",
+     "usage": {
+      "input_tokens": 162,
+      "output_tokens": 36,
+      "cache_read_input_tokens": 0,
+      "server_tool_use": {
+       "web_search_requests": 0
+      },
+      "service_tier": "standard"
+     },
+     "blocks": [
+      "thinking",
+      "tool_use"
+     ],
+     "think": 110,
+     "sig": "6a5a988e72294add92963742",
+     "stop": "tool_use",
+     "ttft": null,
+     "text": "",
+     "err": "",
+     "tool_id": "call_abd8794ef049438d825af516",
+     "events": null,
+     "el": 4.738
+    }
+   ],
+   "cache_0": [
+    {
+     "status": 200,
+     "fam": "zhipu-msg",
+     "usage": {
+      "input_tokens": 11270,
+      "output_tokens": 312,
+      "cache_read_input_tokens": 0,
+      "server_tool_use": {
+       "web_search_requests": 0
+      },
+      "service_tier": "standard"
+     },
+     "blocks": [
+      "thinking",
+      "text"
+     ],
+     "think": 946,
+     "sig": "78b95f3d47c349db9db2c7e5",
+     "stop": "end_turn",
+     "ttft": null,
+     "text": "This document is a benchmark comparison report evaluating multiple API relay/proxy services (中转站) against official Zhipu",
+     "err": "",
+     "tool_id": null,
+     "events": null,
+     "el": 9.057
+    }
+   ],
+   "cache_1": [
+    {
+     "status": 200,
+     "fam": "zhipu-msg",
+     "usage": {
+      "input_tokens": 6,
+      "output_tokens": 318,
+      "cache_read_input_tokens": 11264,
+      "server_tool_use": {
+       "web_search_requests": 0
+      },
+      "service_tier": "standard"
+     },
+     "blocks": [
+      "thinking",
+      "text"
+     ],
+     "think": 802,
+     "sig": "b4dca4d4a66144e1b8854a75",
+     "stop": "end_turn",
+     "ttft": null,
+     "text": "这份文档是一份基准对比报告，将多家第三方 API 中转/代理服务（如 rtoc、teamo、v129、yjapi、zhipu 等）在提供 GLM-5.3-flash 模型时，与智谱官方端点进行了逐项指纹比对——涵盖模型身份（分词器、usag",
+     "err": "",
+     "tool_id": null,
+     "events": null,
+     "el": 9.975
+    }
+   ],
+   "cache_2": [
+    {
+     "status": 200,
+     "fam": "zhipu-msg",
+     "usage": {
+      "input_tokens": 6,
+      "output_tokens": 480,
+      "cache_read_input_tokens": 11264,
+      "server_tool_use": {
+       "web_search_requests": 0
+      },
+      "service_tier": "standard"
+     },
+     "blocks": [
+      "thinking",
+      "text"
+     ],
+     "think": 1854,
+     "sig": "a066224a38a242d898f74923",
+     "stop": "end_turn",
+     "ttft": null,
+     "text": "This document is a benchmark comparison report (in Chinese) that evaluates multiple third-party GLM-5.3-flash API proxy ",
+     "err": "",
+     "tool_id": null,
+     "events": null,
+     "el": 14.22
+    }
+   ],
+   "count_tokens": [
+    {
+     "status": 200,
+     "fam": null,
+     "usage": null,
+     "blocks": null,
+     "think": null,
+     "sig": null,
+     "stop": null,
+     "ttft": null,
+     "text": "{\"input_tokens\":17}",
+     "err": "",
+     "tool_id": null,
+     "events": null,
+     "el": null
+    }
+   ]
+  },
+  "cache": {
+   "ttl180_w0": {
+    "pt": 6542,
+    "cached": 0,
+    "ratio": 0.0,
+    "el": 4.392,
+    "status": 200,
+    "fam": "zhipu"
+   },
+   "d8_q0": {
+    "pt": 10218,
+    "cached": 0,
+    "ratio": 0.0,
+    "el": 5.212,
+    "status": 200,
+    "fam": "zhipu"
+   },
+   "ttl600_w0": {
+    "pt": 6547,
+    "cached": 0,
+    "ratio": 0.0,
+    "el": 6.719,
+    "status": 200,
+    "fam": "zhipu"
+   },
+   "ttl300_w0": {
+    "pt": 6571,
+    "cached": 0,
+    "ratio": 0.0,
+    "el": 7.705,
+    "status": 200,
+    "fam": "zhipu"
+   },
+   "ttl60_w0": {
+    "pt": 6554,
+    "cached": 0,
+    "ratio": 0.0,
+    "el": 7.806,
+    "status": 200,
+    "fam": "zhipu"
+   },
+   "ttl600_w1": {
+    "pt": 6547,
+    "cached": 6528,
+    "ratio": 0.997,
+    "el": 5.758,
+    "status": 200,
+    "fam": "zhipu"
+   },
+   "d8_q1": {
+    "pt": 10218,
+    "cached": 10176,
+    "ratio": 0.996,
+    "el": 7.103,
+    "status": 200,
+    "fam": "zhipu"
+   },
+   "ttl180_w1": {
+    "pt": 6542,
+    "cached": 6528,
+    "ratio": 0.998,
+    "el": 9.123,
+    "status": 200,
+    "fam": "zhipu"
+   },
+   "ttl300_w1": {
+    "pt": 6571,
+    "cached": 6528,
+    "ratio": 0.993,
+    "el": 7.473,
+    "status": 200,
+    "fam": "zhipu"
+   },
+   "ttl60_w1": {
+    "pt": 6554,
+    "cached": 6528,
+    "ratio": 0.996,
+    "el": 12.265,
+    "status": 200,
+    "fam": "zhipu"
+   },
+   "d8_q2": {
+    "pt": 10218,
+    "cached": 10176,
+    "ratio": 0.996,
+    "el": 6.371,
+    "status": 200,
+    "fam": "zhipu"
+   },
+   "d8_otherq": {
+    "pt": 10221,
+    "cached": 10176,
+    "ratio": 0.996,
+    "el": 3.25,
+    "status": 200,
+    "fam": "zhipu"
+   },
+   "d20_q0": {
+    "pt": 20699,
+    "cached": 0,
+    "ratio": 0.0,
+    "el": 7.319,
+    "status": 200,
+    "fam": "zhipu"
+   },
+   "d20_q1": {
+    "pt": 20699,
+    "cached": 20672,
+    "ratio": 0.999,
+    "el": 11.801,
+    "status": 200,
+    "fam": "zhipu"
+   },
+   "mt_0": {
+    "pt": 9712,
+    "cached": 0,
+    "ratio": 0.0,
+    "el": 21.236,
+    "status": 200,
+    "fam": "zhipu"
+   },
+   "mt_1": {
+    "pt": 9786,
+    "cached": 9664,
+    "ratio": 0.988,
+    "el": 6.601,
+    "status": 200,
+    "fam": "zhipu"
+   },
+   "ttl60_probe": {
+    "pt": 6554,
+    "cached": 6528,
+    "ratio": 0.996,
+    "el": 4.606,
+    "status": 200,
+    "fam": "zhipu"
+   },
+   "mt_2": {
+    "pt": 9834,
+    "cached": 9728,
+    "ratio": 0.989,
+    "el": 3.963,
+    "status": 200,
+    "fam": "zhipu"
+   },
+   "ttl180_probe": {
+    "pt": 6542,
+    "cached": 6528,
+    "ratio": 0.998,
+    "el": 7.224,
+    "status": 200,
+    "fam": "zhipu"
+   },
+   "ttl300_probe": {
+    "pt": 6571,
+    "cached": 6528,
+    "ratio": 0.993,
+    "el": 5.986,
+    "status": 200,
+    "fam": "zhipu"
+   },
+   "ttl600_probe": {
+    "pt": 6547,
+    "cached": 0,
+    "ratio": 0.0,
+    "el": 7.981,
+    "status": 200,
+    "fam": "zhipu"
+   }
+  },
+  "cachehit": {
+   "burst_hits": "7/8",
+   "burst_ratio_mean": 0.874,
+   "gaps": {
+    "5": [
+     [
+      16.3,
+      true
+     ]
+    ],
+    "10": [
+     [
+      10.0,
+      true
+     ],
+     [
+      21.1,
+      true
+     ]
+    ],
+    "20": [
+     [
+      24.6,
+      true
+     ]
+    ],
+    "40": [
+     [
+      40.1,
+      false
+     ],
+     [
+      43.4,
+      true
+     ]
+    ],
+    "60": [
+     [
+      62.7,
+      true
+     ],
+     [
+      68.8,
+      true
+     ]
+    ],
+    "90": [
+     [
+      100.9,
+      true
+     ],
+     [
+      92.3,
+      true
+     ]
+    ],
+    "120": [
+     [
+      132.0,
+      true
+     ],
+     [
+      123.4,
+      true
+     ]
+    ],
+    "150": [
+     [
+      158.9,
+      true
+     ],
+     [
+      156.0,
+      true
+     ]
+    ],
+    "180": [
+     [
+      189.9,
+      true
+     ],
+     [
+      182.6,
+      true
+     ]
+    ],
+    "240": [
+     [
+      248.5,
+      true
+     ],
+     [
+      243.8,
+      true
+     ]
+    ],
+    "300": [
+     [
+      309.1,
+      true
+     ],
+     [
+      309.7,
+      true
+     ]
+    ],
+    "420": [
+     [
+      427.6,
+      true
+     ],
+     [
+      424.8,
+      false
+     ]
+    ]
+   },
+   "fams": {
+    "zhipu": 32
+   }
+  },
+  "speed": {
+   "n": 3,
+   "ok": 3,
+   "ttft": [
+    0.458,
+    0.532,
+    0.569
+   ],
+   "ttfc": [
+    48.122,
+    50.146,
+    53.801
+   ],
+   "tps": [
+    51.4,
+    51.0,
+    40.6
+   ],
+   "tps_p50": 51.0,
+   "tok_per_chunk": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "ct": [
+    3123,
+    3158,
+    2991
+   ],
+   "chars": [
+    4346,
+    4214,
+    4098
+   ],
+   "fams": {
+    "zhipu": 3
+   },
+   "errs": []
+  },
+  "ctx": {
+   "needle_20000": {
+    "status": 200,
+    "pt": 20994,
+    "recall": 3,
+    "ttft": 1.491,
+    "el": 4.723,
+    "rc": 582,
+    "err": "",
+    "text": "red=458233, green=387028, blue=302676"
+   },
+   "needle_60000": {
+    "status": 200,
+    "pt": 60680,
+    "recall": 3,
+    "ttft": 1.441,
+    "el": 2.647,
+    "rc": 542,
+    "err": "",
+    "text": "red=679229, green=813324, blue=715813"
+   },
+   "needle_130000": {
+    "status": 200,
+    "pt": 122411,
+    "recall": 3,
+    "ttft": 5.558,
+    "el": 8.442,
+    "rc": 525,
+    "err": "",
+    "text": "red=510449, green=577848, blue=719270"
+   },
+   "needle_200000": {
+    "status": 200,
+    "pt": 190831,
+    "recall": 3,
+    "ttft": 9.393,
+    "el": 11.837,
+    "rc": 479,
+    "err": "",
+    "text": "red=170323，green=094122，blue=359280"
+   },
+   "limit_520000": {
+    "status": 200,
+    "pt": 478007,
+    "recall": 3,
+    "ttft": null,
+    "el": 38.416,
+    "rc": 538,
+    "err": "",
+    "text": "red=132782, green=697846, blue=413375"
+   }
+  },
+  "lat": {
+   "conc": {
+    "n": 60,
+    "ok": 35,
+    "err_rate": 0.417,
+    "empty": 0,
+    "hung": 0,
+    "errs": [
+     [
+      "429:HTTP 429 {\"error\":{\"code\":\"1302\",\"message\":\"您的账户已达到速率限制，请您控制",
+      25
+     ]
+    ],
+    "ttft_p50": 0.68,
+    "ttft_p90": 1.01,
+    "ttft_p99": 1.7,
+    "ttfc_p50": 1.41,
+    "ttfc_p99": 2.65,
+    "total_p50": 1.47,
+    "total_p90": 1.96,
+    "total_p99": 2.67,
+    "total_max": 2.668,
+    "fams": {
+     "none": 25,
+     "zhipu": 35
+    }
+   },
+   "seq": {
+    "n": 60,
+    "ok": 60,
+    "err_rate": 0.0,
+    "empty": 0,
+    "hung": 0,
+    "errs": [],
+    "ttft_p50": 0.54,
+    "ttft_p90": 0.94,
+    "ttft_p99": 1.46,
+    "ttfc_p50": 1.06,
+    "ttfc_p99": 2.68,
+    "total_p50": 1.07,
+    "total_p90": 2.01,
+    "total_p99": 2.69,
+    "total_max": 3.116,
+    "fams": {
+     "zhipu": 60
+    }
+   },
+   "conc_waves": {
+    "0": {
+     "n": 30,
+     "ok": 5,
+     "err_rate": 0.833,
+     "empty": 0,
+     "hung": 0,
+     "errs": [
+      [
+       "429:HTTP 429 {\"error\":{\"code\":\"1302\",\"message\":\"您的账户已达到速率限制，请您控制",
+       25
+      ]
+     ],
+     "ttft_p50": 0.64,
+     "ttft_p90": 0.68,
+     "ttft_p99": 0.73,
+     "ttfc_p50": 0.87,
+     "ttfc_p99": 1.12,
+     "total_p50": 0.88,
+     "total_p90": 0.99,
+     "total_p99": 1.13,
+     "total_max": 1.129,
+     "fams": {
+      "none": 25,
+      "zhipu": 5
+     }
+    },
+    "1": {
+     "n": 30,
+     "ok": 30,
+     "err_rate": 0.0,
+     "empty": 0,
+     "hung": 0,
+     "errs": [],
+     "ttft_p50": 0.66,
+     "ttft_p90": 1.01,
+     "ttft_p99": 1.7,
+     "ttfc_p50": 1.57,
+     "ttfc_p99": 2.65,
+     "total_p50": 1.58,
+     "total_p90": 1.96,
+     "total_p99": 2.67,
+     "total_max": 2.668,
+     "fams": {
+      "zhipu": 30
+     }
+    }
+   }
+  },
+  "soak": {
+   "soak": {
+    "n": 180,
+    "ok": 180,
+    "err_rate": 0.0,
+    "empty": 0,
+    "hung": 0,
+    "errs": [],
+    "ttft_p50": 0.53,
+    "ttft_p90": 0.94,
+    "ttft_p99": 2.17,
+    "ttfc_p50": 1.0,
+    "ttfc_p99": 3.37,
+    "total_p50": 1.02,
+    "total_p90": 1.85,
+    "total_p99": 3.38,
+    "total_max": 3.761,
+    "fams": {
+     "zhipu": 180
+    }
+   }
+  },
+  "iq": {
+   "n": 54,
+   "correct": 47,
+   "tiers": {
+    "reason": "12/12",
+    "hard": "12/14",
+    "xhard": "23/28"
+   },
+   "correct_of_answered": "47/49",
+   "retried_items": [],
+   "glitches": 0,
+   "truncated": 5,
+   "rt_p50": 3002,
+   "el_p50": 50.31,
+   "el_max": 938.858,
+   "fams": {
+    "zhipu": 54
+   },
+   "items": {
+    "R3": {
+     "correct": [
+      true,
+      true
+     ],
+     "got": [
+      "6stu9wk",
+      "6stu9wk"
+     ],
+     "fin": [
+      "stop",
+      "stop"
+     ],
+     "rt": [
+      968,
+      895
+     ],
+     "el": [
+      9.553,
+      8.863
+     ],
+     "err": []
+    },
+    "R7": {
+     "correct": [
+      true,
+      true
+     ],
+     "got": [
+      "397",
+      "397"
+     ],
+     "fin": [
+      "stop",
+      "stop"
+     ],
+     "rt": [
+      1037,
+      1515
+     ],
+     "el": [
+      10.363,
+      11.737
+     ],
+     "err": []
+    },
+    "R9": {
+     "correct": [
+      true,
+      true
+     ],
+     "got": [
+      "10 ; [0, 2, 4] ; [3, 3, 3] ; [6, 5, 5] ;    25|ab |5.21 ; -4",
+      "10 ; [0, 2, 4] ; [3, 3, 3] ; [6, 5, 5] ;    25|ab |5.21 ; -4"
+     ],
+     "fin": [
+      "stop",
+      "stop"
+     ],
+     "rt": [
+      1409,
+      5983
+     ],
+     "el": [
+      13.878,
+      113.471
+     ],
+     "err": []
+    },
+    "R4": {
+     "correct": [
+      true,
+      true
+     ],
+     "got": [
+      "10",
+      "10"
+     ],
+     "fin": [
+      "stop",
+      "stop"
+     ],
+     "rt": [
+      3819,
+      2543
+     ],
+     "el": [
+      27.23,
+      18.638
+     ],
+     "err": []
+    },
+    "H1": {
+     "correct": [
+      true,
+      true
+     ],
+     "got": [
+      "3",
+      "3"
+     ],
+     "fin": [
+      "stop",
+      "stop"
+     ],
+     "rt": [
+      981,
+      518
+     ],
+     "el": [
+      11.704,
+      17.194
+     ],
+     "err": []
+    },
+    "H3": {
+     "correct": [
+      true,
+      true
+     ],
+     "got": [
+      "80",
+      "80"
+     ],
+     "fin": [
+      "stop",
+      "stop"
+     ],
+     "rt": [
+      448,
+      373
+     ],
+     "el": [
+      6.336,
+      15.089
+     ],
+     "err": []
+    },
+    "R10": {
+     "correct": [
+      true,
+      true
+     ],
+     "got": [
+      "[\"H\",\"Z\",\"J\",\"A\",\"C\",\"K\",\"F\",\"E\",\"D\",\"G\",\"B\"]",
+      "[\"H\",\"Z\",\"J\",\"A\",\"C\",\"K\",\"F\",\"E\",\"D\",\"G\",\"B\"]"
+     ],
+     "fin": [
+      "stop",
+      "stop"
+     ],
+     "rt": [
+      3002,
+      3547
+     ],
+     "el": [
+      33.287,
+      84.422
+     ],
+     "err": []
+    },
+    "H5": {
+     "correct": [
+      true,
+      true
+     ],
+     "got": [
+      "10080",
+      "10080"
+     ],
+     "fin": [
+      "stop",
+      "stop"
+     ],
+     "rt": [
+      1610,
+      2474
+     ],
+     "el": [
+      17.598,
+      71.051
+     ],
+     "err": []
+    },
+    "R2": {
+     "correct": [
+      true,
+      true
+     ],
+     "got": [
+      "1010101010101010",
+      "1010101010101010"
+     ],
+     "fin": [
+      "stop",
+      "stop"
+     ],
+     "rt": [
+      8370,
+      7276
+     ],
+     "el": [
+      77.605,
+      60.22
+     ],
+     "err": []
+    },
+    "H6": {
+     "correct": [
+      true,
+      true
+     ],
+     "got": [
+      "52",
+      "52"
+     ],
+     "fin": [
+      "stop",
+      "stop"
+     ],
+     "rt": [
+      8759,
+      21899
+     ],
+     "el": [
+      97.64,
+      562.469
+     ],
+     "err": []
+    },
+    "X1": {
+     "correct": [
+      false,
+      true
+     ],
+     "got": [
+      "{\"r0\":0,\"r1\":0,\"r2\":24,\"r3\":597}",
+      "{\"r0\":0,\"r1\":0,\"r2\":38,\"r3\":1347}"
+     ],
+     "fin": [
+      "stop",
+      "stop"
+     ],
+     "rt": [
+      515,
+      961
+     ],
+     "el": [
+      5.813,
+      20.615
+     ],
+     "err": []
+    },
+    "H4": {
+     "correct": [
+      true,
+      true
+     ],
+     "got": [
+      "924",
+      "924"
+     ],
+     "fin": [
+      "stop",
+      "stop"
+     ],
+     "rt": [
+      11760,
+      8481
+     ],
+     "el": [
+      140.12,
+      275.407
+     ],
+     "err": []
+    },
+    "X2": {
+     "correct": [
+      true,
+      true
+     ],
+     "got": [
+      "D,2",
+      "D,2"
+     ],
+     "fin": [
+      "stop",
+      "stop"
+     ],
+     "rt": [
+      2418,
+      1097
+     ],
+     "el": [
+      23.643,
+      27.585
+     ],
+     "err": []
+    },
+    "H2": {
+     "correct": [
+      true,
+      true
+     ],
+     "got": [
+      "307",
+      "307"
+     ],
+     "fin": [
+      "stop",
+      "stop"
+     ],
+     "rt": [
+      27294,
+      18987
+     ],
+     "el": [
+      262.067,
+      349.335
+     ],
+     "err": []
+    },
+    "X4": {
+     "correct": [
+      true,
+      false
+     ],
+     "got": [
+      "1391",
+      ""
+     ],
+     "fin": [
+      "stop",
+      "length"
+     ],
+     "rt": [
+      14698,
+      31995
+     ],
+     "el": [
+      111.337,
+      569.525
+     ],
+     "err": []
+    },
+    "X3": {
+     "correct": [
+      true,
+      true
+     ],
+     "got": [
+      "5111617/1679616",
+      "5111617/1679616"
+     ],
+     "fin": [
+      "stop",
+      "stop"
+     ],
+     "rt": [
+      20555,
+      21956
+     ],
+     "el": [
+      141.69,
+      313.945
+     ],
+     "err": []
+    },
+    "X6": {
+     "correct": [
+      true,
+      true
+     ],
+     "got": [
+      "0x6414",
+      "0x6414"
+     ],
+     "fin": [
+      "stop",
+      "stop"
+     ],
+     "rt": [
+      4224,
+      3272
+     ],
+     "el": [
+      74.024,
+      76.829
+     ],
+     "err": []
+    },
+    "X5": {
+     "correct": [
+      true,
+      true
+     ],
+     "got": [
+      "145,2",
+      "145,2"
+     ],
+     "fin": [
+      "stop",
+      "stop"
+     ],
+     "rt": [
+      7822,
+      4115
+     ],
+     "el": [
+      87.912,
+      49.697
+     ],
+     "err": []
+    },
+    "X9": {
+     "correct": [
+      true,
+      true
+     ],
+     "got": [
+      "13",
+      "13"
+     ],
+     "fin": [
+      "stop",
+      "stop"
+     ],
+     "rt": [
+      538,
+      772
+     ],
+     "el": [
+      13.794,
+      22.793
+     ],
+     "err": []
+    },
+    "H7": {
+     "correct": [
+      false,
+      false
+     ],
+     "got": [
+      "",
+      ""
+     ],
+     "fin": [
+      "length",
+      "length"
+     ],
+     "rt": [
+      31998,
+      32000
+     ],
+     "el": [
+      316.982,
+      709.206
+     ],
+     "err": []
+    },
+    "X11": {
+     "correct": [
+      true,
+      true
+     ],
+     "got": [
+      "[\"Ana\", \"Dev\", \"Hana\", \"Lou\"]",
+      "[\"Ana\", \"Dev\", \"Hana\", \"Lou\"]"
+     ],
+     "fin": [
+      "stop",
+      "stop"
+     ],
+     "rt": [
+      407,
+      380
+     ],
+     "el": [
+      11.378,
+      10.463
+     ],
+     "err": []
+    },
+    "X10": {
+     "correct": [
+      true,
+      true
+     ],
+     "got": [
+      "30",
+      "30"
+     ],
+     "fin": [
+      "stop",
+      "stop"
+     ],
+     "rt": [
+      1724,
+      1541
+     ],
+     "el": [
+      53.254,
+      37.007
+     ],
+     "err": []
+    },
+    "X12": {
+     "correct": [
+      false,
+      true
+     ],
+     "got": [
+      "J3366QNJ",
+      "J336677QNJ"
+     ],
+     "fin": [
+      "stop",
+      "stop"
+     ],
+     "rt": [
+      2000,
+      2513
+     ],
+     "el": [
+      50.312,
+      47.6
+     ],
+     "err": []
+    },
+    "X14": {
+     "correct": [
+      true,
+      true
+     ],
+     "got": [
+      "0x3E9D",
+      "0x3E9D"
+     ],
+     "fin": [
+      "stop",
+      "stop"
+     ],
+     "rt": [
+      565,
+      524
+     ],
+     "el": [
+      14.126,
+      13.571
+     ],
+     "err": []
+    },
+    "X7": {
+     "correct": [
+      true,
+      true
+     ],
+     "got": [
+      "1,26",
+      "1,26"
+     ],
+     "fin": [
+      "stop",
+      "stop"
+     ],
+     "rt": [
+      23814,
+      29561
+     ],
+     "el": [
+      708.895,
+      316.833
+     ],
+     "err": []
+    },
+    "X13": {
+     "correct": [
+      false,
+      true
+     ],
+     "got": [
+      "",
+      "[\"B\", \"E\", \"Z\", \"L\", \"H\", \"F\", \"N\", \"D\", \"K\", \"M\", \"G\", \"A\","
+     ],
+     "fin": [
+      "length",
+      "stop"
+     ],
+     "rt": [
+      31989,
+      10722
+     ],
+     "el": [
+      767.047,
+      284.749
+     ],
+     "err": []
+    },
+    "X8": {
+     "correct": [
+      false,
+      true
+     ],
+     "got": [
+      "",
+      "2331"
+     ],
+     "fin": [
+      "length",
+      "stop"
+     ],
+     "rt": [
+      31964,
+      14956
+     ],
+     "el": [
+      938.858,
+      174.974
+     ],
+     "err": []
+    }
+   }
+  },
+  "vision": {
+   "ok": "3/3",
+   "status": [
+    200,
+    200,
+    200
+   ],
+   "pt": [
+    61,
+    61,
+    61
+   ],
+   "text": [
+    "Red, blue, purple",
+    "Blue, orange, purple",
+    "Orange, purple, yellow"
+   ]
+  },
+  "billing": {
+   "/v1/dashboard/billing/subscription": "200 <!DOCTYPE html><html lang=\"zh-cn\"><head><meta charset=\"utf-8\"><meta name=\"author\" content=\"北京智谱华章科技股份有限公司\"><meta name=\"copyright\" content=\"大模型开放平台\"><meta name=\"robots\" content=\"all\"><meta name=\"render",
+   "/v1/dashboard/billing/usage": "200 <!DOCTYPE html><html lang=\"zh-cn\"><head><meta charset=\"utf-8\"><meta name=\"author\" content=\"北京智谱华章科技股份有限公司\"><meta name=\"copyright\" content=\"大模型开放平台\"><meta name=\"robots\" content=\"all\"><meta name=\"render",
+   "/api/usage/token": "200 {\"code\":500,\"msg\":\"404 NOT_FOUND\",\"success\":false}",
+   "/v1/usage": "200 <!DOCTYPE html><html lang=\"zh-cn\"><head><meta charset=\"utf-8\"><meta name=\"author\" content=\"北京智谱华章科技股份有限公司\"><meta name=\"copyright\" content=\"大模型开放平台\"><meta name=\"robots\" content=\"all\"><meta name=\"render",
+   "/api/user/self": "200 {\"code\":500,\"msg\":\"404 NOT_FOUND\",\"success\":false}"
+  }
+ },
+ "fingerprint": {
+  "id_families": [
+   "zhipu"
+  ],
+  "usage_keys": [
+   "completion_tokens",
+   "completion_tokens_details",
+   "completion_tokens_details.reasoning_tokens",
+   "prompt_tokens",
+   "prompt_tokens_details",
+   "prompt_tokens_details.cached_tokens",
+   "total_tokens"
+  ],
+  "ok_prompt_tokens": [
+   17
+  ],
+  "tok_delta": {
+   "zh": 1050,
+   "digits": 801,
+   "en": 301,
+   "code": 595,
+   "system": 7
+  },
+  "param_status": {
+   "baseline": 200,
+   "thinking_disabled": 400,
+   "thinking_enabled": 200,
+   "effort_none": 400,
+   "effort_low": 200,
+   "effort_high": 200,
+   "effort_max": 200,
+   "effort_invalid": 400,
+   "max_tokens_999999": 400,
+   "max_tokens_16": 200,
+   "max_completion_tokens_16": 200,
+   "temperature_5": 200,
+   "temperature_1.5": 200,
+   "stop_5": 200,
+   "logprobs": 200,
+   "n_2": 200,
+   "json_mode": 200,
+   "unknown_field": 200,
+   "tools": 200,
+   "tools_stream": 200
+  }
+ },
+ "drift": {
+  "items": [
+   "H5",
+   "R10",
+   "R2",
+   "R4",
+   "R9",
+   "X10",
+   "X2",
+   "X5",
+   "X6",
+   "X9"
+  ],
+  "max_drop": 2,
+  "why": "correct on every repeat in the frozen run and median < 150 s; a thinking-less or different model drops several of these"
+ },
+ "how_to_use": "先跑 `KEY_REF=<key> python3 glmsuite.py refcheck suite/reference/zhipu-official-glm53flash.json` 查漂移：SAME 复用智力/知识/分词/参数指纹；DRIFT 先重测。延迟/稳定性/缓存 TTL 只按同路线同日比较（北京服务器 /root/glmtest），不当常量复用。",
+ "what_it_is": {
+  "endpoint": "智谱开放平台 glm-5.3-flash：OpenAI 兼容 /api/paas/v4 + Anthropic 兼容 /api/anthropic。上下文 1M（09-25 实测 53.1 万 token 输入仍 200）。原生多模态（图片输入正常）。",
+  "price": "标准价 ¥0.8 输入 / ¥0.23 缓存命中 / ¥2.8 输出（每百万 token）；09-25 价格页另写限时五折 ¥0.4 / ¥0.115 / ¥1.4。",
+  "fingerprint": "id = 14 位时间戳 + 16 hex（顶层带 request_id）；usage 有 reasoning_tokens 和 cached_tokens；同步工具调用 id call_-<int64>，流式 call_+24hex；流式每 chunk 1 token、reasoning_content 在前；Anthropic 口 msg_+30 位、thinking 带 24 hex 签名、有 ping 事件、count_tokens 200。",
+  "params": "关思考 / effort none / 非法 effort / max_tokens 999999 → 400 code 1210；temperature 5 和 1.5 → 200；只认 max_tokens（max_completion_tokens 被忽略）；stop=['5'] 在计数题上返回空正文；JSON 模式返回裸 JSON；n=2 只回 1 条。",
+  "thinking": "默认完整思考（写代码题 14–20k 字符 / 4–5.6k token）；effort low = 0、high ≈ 36 字符、max ≈ 10k 字符。",
+  "cache": "隐式缓存，跨账号全局共享（中转写入官方能读到，反之亦然）；空闲 5–7 分钟内基本命中，10 分钟失效；命中不降首 token 延迟，只降价。",
+  "rate_limit": "本 key 30 并发第一轮 25/30 触发 1302「账户已达到速率限制」，隔 1.5 分钟第二轮 30/30 → 账户档位限制，不是服务故障。"
+ },
+ "caveats": [
+  "官方自己也会复述系统提示 'You are an AI assistant accessed via an API.'（偶尔还会编出后续内容），约七成回答「有系统指令」——这些不能当作中转注入证据。",
+  "知识题新旧混答（同一问题有时答 Francis/石破，有时答 Leo XIV/高市/Mamdani），自报截止日期 2023-10 / 2024-10 都出现过——不能当降级证据。",
+  "IQ（27 题×2，max_tokens 32000）有 5 次想满 32k 被截断（H7×2、X4、X8、X13）；不认 max_tokens 的中转会多想，所以比智力要连截断数一起看。"
+ ]
+}

@@ -1,0 +1,2471 @@
+{
+ "name": "ikuncode-dsv4flash",
+ "kind": "glm-openai",
+ "model": "deepseek-v4-flash",
+ "base": "https://api.ikuncode.cc/v1",
+ "anth": null,
+ "key_hint": "sk-JmB…3WLs",
+ "frozen_at": "2026-10-02 06:41 -0400",
+ "source": {
+  "run": "ds1002-ikunref",
+  "dir": "results/glmsuite/ds1002-ikunref",
+  "route": "Mac + Clash TUN (2026-10-02)"
+ },
+ "note": "2026-10-02 16:15–18:41 北京时间，Mac + Clash TUN，与 sudocode / 米醋 同窗口交错测",
+ "iq_bank": {
+  "path": "suite/iq.ref-20260924.json",
+  "md5": "ad1f46e9f80233a7264d9f01196c9993",
+  "max_tokens": 32000
+ },
+ "summary": {
+  "_model": "deepseek-v4-flash",
+  "fp": {
+   "fams": {
+    "uuid": 9
+   },
+   "status": {
+    "200": 9
+   },
+   "ok_prompt_tokens": [
+    88
+   ],
+   "usage_keys": [
+    "completion_tokens",
+    "completion_tokens_details",
+    "completion_tokens_details.reasoning_tokens",
+    "prompt_tokens",
+    "prompt_tokens_details",
+    "prompt_tokens_details.cached_tokens",
+    "total_tokens"
+   ],
+   "top_keys": [
+    "choices",
+    "created",
+    "id",
+    "model",
+    "object",
+    "usage"
+   ],
+   "stream_keys": [
+    "choices",
+    "created",
+    "id",
+    "model",
+    "object",
+    "usage"
+   ],
+   "reasoning_tokens_reported": true,
+   "cached_field": true,
+   "stream_usage": [
+    true,
+    true,
+    true,
+    true,
+    false
+   ],
+   "stream_chunks": [
+    15,
+    16,
+    15,
+    505,
+    14
+   ],
+   "stream_ids": [
+    [
+     "842f60ac-a6bd-484e-82b4-3e53aeffae76"
+    ],
+    [
+     "ed2caeb9-08d7-4c0e-bf39-2d0968da4476"
+    ],
+    [
+     "37d73bdd-0825-40a1-9ff5-f48598416c81"
+    ]
+   ],
+   "hdr": [
+    "cf-ray",
+    "server",
+    "x-oneapi-request-id",
+    "x-request-id",
+    "x-trace-id"
+   ],
+   "cf_colo": [
+    "HKG"
+   ],
+   "x_request_id_hops": [
+    1
+   ],
+   "sync_el_p50": 2.57,
+   "model_echo": {
+    "deepseek-v4-flash-0731": 9
+   },
+   "hdr_sample": {
+    "transfer-encoding": "chunked",
+    "server": "cloudflare",
+    "access-control-allow-headers": "Content-Type, Authorization, X-Request-ID",
+    "access-control-allow-methods": "GET, POST, PUT, DELETE, OPTIONS",
+    "access-control-allow-origin": "*",
+    "x-oneapi-request-id": "202610020815552434483948268d9d6vNWbJDwD",
+    "x-request-id": "cfb2446f-80dc-4ed2-94d4-4a1ef32a2eb8",
+    "x-trace-id": "cfb2446f80dc4ed294d44a1ef32a2eb8",
+    "cf-cache-status": "DYNAMIC",
+    "content-encoding": "br",
+    "cf-ray": "a44243114b4d09bc-HKG"
+   },
+   "models": [],
+   "tokenizer_endpoint": 404,
+   "bad_model": "503 HTTP 503 {\"error\":{\"code\":\"model_not_found\",\"message\":\"分组 deepseek-official 下模型 deepseek-v4-flash-nonexistent 无可用渠道（distributor） (request id: 202610020816377173"
+  },
+  "inject": {
+   "tok_base": [
+    88,
+    88
+   ],
+   "tok_delta": {
+    "zh": [
+     1020,
+     1020
+    ],
+    "digits": [
+     801,
+     801
+    ],
+    "en": [
+     293,
+     293
+    ],
+    "code": [
+     601,
+     601
+    ],
+    "system": [
+     6
+    ]
+   },
+   "sysq": [
+    "no",
+    "no",
+    "yes"
+   ],
+   "leak": [
+    "```NONE```",
+    "```text\nYou are an AI assistant accessed via an API.\n```"
+   ],
+   "identity": [
+    "DeepSeek developed me; my exact model name is DeepSeek-V3.",
+    "I was developed by DeepSeek, and my exact model name is DeepSeek-V3."
+   ],
+   "echo": [
+    "ECHO-7f3a https://example.com/a/b?q=1&r=2 | 中文「引号」测试 | emoji 🚀✅ | `rm -rf /tmp/x` | test@example.org | sk-test-00000000deadbeef",
+    "ECHO-7f3a https://example.com/a/b?q=1&r=2 | 中文「引号」测试 | emoji 🚀✅ | `rm -rf /tmp/x` | test@example.org | sk-test-00000000deadbeef"
+   ],
+   "sysobey": [
+    "La capitale du Japon est Tokyo.",
+    "La capitale du Japon est Tokyo."
+   ],
+   "echo_exact": [
+    true,
+    true
+   ],
+   "sysq_pt": [
+    113,
+    113,
+    113
+   ]
+  },
+  "leak": {
+   "leak": [
+    "```NONE\n```",
+    "```\nYou are an AI assistant. Help the user with their request.\n```",
+    "NONE",
+    "NONE",
+    "```\nYou are an AI assistant accessed via an API. Reason about the user's query thoroughly, but do not be verbose. Final responses should be concise and directly address the user's query.\n```",
+    "NONE"
+   ],
+   "leak_first": [
+    "NONE",
+    "You are an AI assistant accessed via an API.",
+    "NONE",
+    "You are an AI assistant accessed via an API.",
+    "You are Claude, made by Anthropic.",
+    ""
+   ],
+   "sysq": [
+    "no",
+    "yes",
+    "no",
+    "no",
+    "no",
+    "no"
+   ],
+   "sysq_yes": 1,
+   "beyond_default": 1
+  },
+  "params": {
+   "baseline": {
+    "status": 0,
+    "rc": null,
+    "rt": null,
+    "ct": null,
+    "fin": null,
+    "text": "",
+    "err": "ConnectError: [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1028)",
+    "tool_id": null,
+    "tool_args": null,
+    "n": null
+   },
+   "thinking_disabled": {
+    "status": 200,
+    "rc": 0,
+    "rt": 0,
+    "ct": 1,
+    "fin": "stop",
+    "text": "391",
+    "err": "",
+    "tool_id": null,
+    "tool_args": null,
+    "n": 1
+   },
+   "thinking_enabled": {
+    "status": 200,
+    "rc": 58,
+    "rt": 18,
+    "ct": 21,
+    "fin": "stop",
+    "text": "391",
+    "err": "",
+    "tool_id": null,
+    "tool_args": null,
+    "n": 1
+   },
+   "effort_none": {
+    "status": 200,
+    "rc": 0,
+    "rt": 0,
+    "ct": 1,
+    "fin": "stop",
+    "text": "391",
+    "err": "",
+    "tool_id": null,
+    "tool_args": null,
+    "n": 1
+   },
+   "effort_low": {
+    "status": 200,
+    "rc": 2129,
+    "rt": 531,
+    "ct": 852,
+    "fin": "stop",
+    "text": "Here's a clean implementation of `longest_palindrome` using the expand-around-ce",
+    "err": "",
+    "tool_id": null,
+    "tool_args": null,
+    "n": 1
+   },
+   "effort_high": {
+    "status": 200,
+    "rc": 487,
+    "rt": 99,
+    "ct": 242,
+    "fin": "stop",
+    "text": "```python\ndef longest_palindrome(s: str) -> str:\n    \"\"\"Return the longest palin",
+    "err": "",
+    "tool_id": null,
+    "tool_args": null,
+    "n": 1
+   },
+   "effort_max": {
+    "status": 200,
+    "rc": 1709,
+    "rt": 425,
+    "ct": 646,
+    "fin": "stop",
+    "text": "```python\ndef longest_palindrome(s):\n    \"\"\"Return the longest palindromic subst",
+    "err": "",
+    "tool_id": null,
+    "tool_args": null,
+    "n": 1
+   },
+   "effort_invalid": {
+    "status": 400,
+    "rc": null,
+    "rt": null,
+    "ct": null,
+    "fin": null,
+    "text": "",
+    "err": "HTTP 400 {\"error\":{\"message\":\"The request parameter reasoning_effort is invalid or missing. Please check the value of this parameter.\",\"type\":\"invalid_request_error\",\"param\":\"reasoning_effort\",\"code\":",
+    "tool_id": null,
+    "tool_args": null,
+    "n": null
+   },
+   "max_tokens_999999": {
+    "status": 200,
+    "rc": 53,
+    "rt": 17,
+    "ct": 19,
+    "fin": "stop",
+    "text": "391",
+    "err": "",
+    "tool_id": null,
+    "tool_args": null,
+    "n": 1
+   },
+   "max_tokens_16": {
+    "status": 200,
+    "rc": 36,
+    "rt": 16,
+    "ct": 16,
+    "fin": "length",
+    "text": "",
+    "err": "",
+    "tool_id": null,
+    "tool_args": null,
+    "n": 1
+   },
+   "max_completion_tokens_16": {
+    "status": 200,
+    "rc": 59,
+    "rt": 16,
+    "ct": 16,
+    "fin": "length",
+    "text": "",
+    "err": "",
+    "tool_id": null,
+    "tool_args": null,
+    "n": 1
+   },
+   "temperature_5": {
+    "status": 400,
+    "rc": null,
+    "rt": null,
+    "ct": null,
+    "fin": null,
+    "text": "",
+    "err": "HTTP 400 {\"error\":{\"message\":\"The request parameter temperature is invalid or missing. Please check the value of this parameter.\",\"type\":\"invalid_request_error\",\"param\":\"temperature\",\"code\":\"400002\"}}",
+    "tool_id": null,
+    "tool_args": null,
+    "n": null
+   },
+   "temperature_1.5": {
+    "status": 200,
+    "rc": 62,
+    "rt": 18,
+    "ct": 20,
+    "fin": "stop",
+    "text": "391",
+    "err": "",
+    "tool_id": null,
+    "tool_args": null,
+    "n": 1
+   },
+   "stop_5": {
+    "status": 200,
+    "rc": 288,
+    "rt": 130,
+    "ct": 143,
+    "fin": "stop",
+    "text": "1, 2, 3, 4, ",
+    "err": "",
+    "tool_id": null,
+    "tool_args": null,
+    "n": 1
+   },
+   "logprobs": {
+    "status": 200,
+    "rc": 38,
+    "rt": 13,
+    "ct": 15,
+    "fin": "stop",
+    "text": "391",
+    "err": "",
+    "tool_id": null,
+    "tool_args": null,
+    "n": 1
+   },
+   "n_2": {
+    "status": 200,
+    "rc": 62,
+    "rt": 16,
+    "ct": 18,
+    "fin": "stop",
+    "text": "391",
+    "err": "",
+    "tool_id": null,
+    "tool_args": null,
+    "n": 1
+   },
+   "json_mode": {
+    "status": 200,
+    "rc": 79,
+    "rt": 21,
+    "ct": 27,
+    "fin": "stop",
+    "text": "{\"answer\":391}",
+    "err": "",
+    "tool_id": null,
+    "tool_args": null,
+    "n": 1
+   },
+   "unknown_field": {
+    "status": 200,
+    "rc": 45,
+    "rt": 15,
+    "ct": 17,
+    "fin": "stop",
+    "text": "391",
+    "err": "",
+    "tool_id": null,
+    "tool_args": null,
+    "n": 1
+   },
+   "tools": {
+    "status": 200,
+    "rc": 79,
+    "rt": 19,
+    "ct": 64,
+    "fin": "tool_calls",
+    "text": "",
+    "err": "",
+    "tool_id": "call_hsd0qic7lzgpruoosp0vkfh2",
+    "tool_args": "{\"city\": \"Paris\"}",
+    "n": 1
+   },
+   "tools_stream": {
+    "status": 200,
+    "rc": 57,
+    "rt": 14,
+    "ct": 59,
+    "fin": "tool_calls",
+    "text": "",
+    "err": "",
+    "tool_id": "call_1hm06knwgk7bt6sgxhnikd1u",
+    "tool_args": null,
+    "n": null
+   }
+  },
+  "think": {
+   "default_rc": [
+    646,
+    1861,
+    1363
+   ],
+   "default_rt": [
+    141,
+    486,
+    340
+   ],
+   "default_ct": [
+    320,
+    710,
+    561
+   ],
+   "default_ttfc": [
+    6.647,
+    6.653,
+    6.011
+   ],
+   "default_el": [
+    10.989,
+    10.394,
+    7.842
+   ],
+   "effort": {
+    "effort_low": {
+     "status": 200,
+     "rc": 4220,
+     "rt": 1108,
+     "ct": 1367,
+     "el": 15.999
+    },
+    "effort_high": {
+     "status": 200,
+     "rc": 6121,
+     "rt": 1824,
+     "ct": 2031,
+     "el": 23.461
+    },
+    "effort_max": {
+     "status": 200,
+     "rc": 2195,
+     "rt": 516,
+     "ct": 710,
+     "el": 10.271
+    },
+    "thinking_enabled": {
+     "status": 200,
+     "rc": 1293,
+     "rt": 376,
+     "ct": 605,
+     "el": 8.341
+    },
+    "thinking_disabled": {
+     "status": 200,
+     "rc": 0,
+     "rt": 0,
+     "ct": 512,
+     "el": 7.0
+    },
+    "effort_none": {
+     "status": 200,
+     "rc": 0,
+     "rt": 0,
+     "ct": 518,
+     "el": 7.531
+    }
+   }
+  },
+  "know": {
+   "recency": [
+    "1. Pope Francis\n2. Shigeru Ishiba\n3. Eric Adams\n4. Claude 3.7 Sonnet\n5. GPT-4o\n6. GLM-4.5\n7. Han Kang, 2024",
+    "1. Pope Francis\n2. Shigeru Ishiba\n3. Eric Adams\n4. Claude 3.7 Sonnet\n5. GPT-4o\n6. GLM-4\n7. Han Kang, 2024",
+    ""
+   ],
+   "cutoff": [
+    "June 2024.",
+    "September 2021."
+   ]
+  },
+  "cache": {
+   "ttl900_w0": {
+    "pt": null,
+    "cached": null,
+    "ratio": null,
+    "el": 5.021,
+    "status": 0,
+    "fam": null
+   },
+   "ttl60_w0": {
+    "pt": 18288,
+    "cached": 0,
+    "ratio": 0.0,
+    "el": 9.725,
+    "status": 200,
+    "fam": "uuid"
+   },
+   "ttl180_w0": {
+    "pt": 18287,
+    "cached": 0,
+    "ratio": 0.0,
+    "el": 10.864,
+    "status": 200,
+    "fam": "uuid"
+   },
+   "d8_q0": {
+    "pt": 25841,
+    "cached": 0,
+    "ratio": 0.0,
+    "el": 11.467,
+    "status": 200,
+    "fam": "uuid"
+   },
+   "ttl600_w0": {
+    "pt": 18316,
+    "cached": 0,
+    "ratio": 0.0,
+    "el": 15.727,
+    "status": 200,
+    "fam": "uuid"
+   },
+   "ttl300_w0": {
+    "pt": 18312,
+    "cached": 0,
+    "ratio": 0.0,
+    "el": 16.312,
+    "status": 200,
+    "fam": "uuid"
+   },
+   "ttl900_w1": {
+    "pt": 18343,
+    "cached": 0,
+    "ratio": 0.0,
+    "el": 11.371,
+    "status": 200,
+    "fam": "uuid"
+   },
+   "d8_q1": {
+    "pt": 25841,
+    "cached": 25600,
+    "ratio": 0.991,
+    "el": 6.829,
+    "status": 200,
+    "fam": "uuid"
+   },
+   "ttl600_w1": {
+    "pt": 18316,
+    "cached": 18176,
+    "ratio": 0.992,
+    "el": 5.167,
+    "status": 200,
+    "fam": "uuid"
+   },
+   "ttl60_w1": {
+    "pt": 18288,
+    "cached": 0,
+    "ratio": 0.0,
+    "el": 11.187,
+    "status": 200,
+    "fam": "uuid"
+   },
+   "ttl180_w1": {
+    "pt": 23592,
+    "cached": 6144,
+    "ratio": 0.26,
+    "el": 10.345,
+    "status": 200,
+    "fam": "uuid"
+   },
+   "ttl300_w1": {
+    "pt": 18312,
+    "cached": 16384,
+    "ratio": 0.895,
+    "el": 5.707,
+    "status": 200,
+    "fam": "uuid"
+   },
+   "d8_q2": {
+    "pt": 25841,
+    "cached": 24576,
+    "ratio": 0.951,
+    "el": 4.923,
+    "status": 200,
+    "fam": "uuid"
+   },
+   "d8_otherq": {
+    "pt": 25846,
+    "cached": 25600,
+    "ratio": 0.99,
+    "el": 5.666,
+    "status": 200,
+    "fam": "uuid"
+   },
+   "d20_q0": {
+    "pt": 58428,
+    "cached": 0,
+    "ratio": 0.0,
+    "el": 7.397,
+    "status": 200,
+    "fam": "uuid"
+   },
+   "d20_q1": {
+    "pt": 58428,
+    "cached": 58112,
+    "ratio": 0.995,
+    "el": 9.322,
+    "status": 200,
+    "fam": "uuid"
+   },
+   "mt_0": {
+    "pt": 24783,
+    "cached": 0,
+    "ratio": 0.0,
+    "el": 9.53,
+    "status": 200,
+    "fam": "uuid"
+   },
+   "mt_1": {
+    "pt": 24834,
+    "cached": 24576,
+    "ratio": 0.99,
+    "el": 4.415,
+    "status": 200,
+    "fam": "uuid"
+   },
+   "mt_2": {
+    "pt": 24869,
+    "cached": 24576,
+    "ratio": 0.988,
+    "el": 5.215,
+    "status": 200,
+    "fam": "uuid"
+   },
+   "ttl60_probe": {
+    "pt": 18288,
+    "cached": 18176,
+    "ratio": 0.994,
+    "el": 7.71,
+    "status": 200,
+    "fam": "uuid"
+   },
+   "ttl180_probe": {
+    "pt": 23592,
+    "cached": 22528,
+    "ratio": 0.955,
+    "el": 14.661,
+    "status": 200,
+    "fam": "uuid"
+   },
+   "ttl300_probe": {
+    "pt": 18312,
+    "cached": 16384,
+    "ratio": 0.895,
+    "el": 17.05,
+    "status": 200,
+    "fam": "uuid"
+   },
+   "ttl600_probe": {
+    "pt": 18316,
+    "cached": 16384,
+    "ratio": 0.895,
+    "el": 8.182,
+    "status": 200,
+    "fam": "uuid"
+   },
+   "ttl900_probe": {
+    "pt": 18343,
+    "cached": 16384,
+    "ratio": 0.893,
+    "el": 14.167,
+    "status": 200,
+    "fam": "uuid"
+   }
+  },
+  "cachehit": {
+   "burst_hits": "13/14",
+   "burst_ratio_mean": 0.918,
+   "gaps": {
+    "5": [
+     [
+      10.7,
+      false
+     ],
+     [
+      11.8,
+      true
+     ]
+    ],
+    "10": [
+     [
+      19.4,
+      true
+     ],
+     [
+      16.3,
+      true
+     ]
+    ],
+    "20": [
+     [
+      27.6,
+      true
+     ],
+     [
+      39.1,
+      true
+     ]
+    ],
+    "40": [
+     [
+      45.8,
+      true
+     ],
+     [
+      54.0,
+      true
+     ]
+    ],
+    "60": [
+     [
+      66.1,
+      true
+     ],
+     [
+      69.2,
+      true
+     ]
+    ],
+    "90": [
+     [
+      101.1,
+      true
+     ],
+     [
+      102.4,
+      true
+     ]
+    ],
+    "120": [
+     [
+      126.7,
+      true
+     ],
+     [
+      127.4,
+      true
+     ]
+    ],
+    "150": [
+     [
+      160.9,
+      true
+     ],
+     [
+      176.1,
+      true
+     ]
+    ],
+    "180": [
+     [
+      193.7,
+      true
+     ],
+     [
+      188.7,
+      true
+     ]
+    ],
+    "240": [
+     [
+      253.6,
+      true
+     ],
+     [
+      248.5,
+      true
+     ]
+    ],
+    "300": [
+     [
+      309.9,
+      true
+     ],
+     [
+      328.5,
+      true
+     ]
+    ],
+    "420": [
+     [
+      428.3,
+      true
+     ],
+     [
+      451.5,
+      true
+     ]
+    ]
+   },
+   "fams": {
+    "uuid": 40
+   }
+  },
+  "speed": {
+   "n": 3,
+   "ok": 3,
+   "ttft": [
+    4.395,
+    5.011,
+    4.091
+   ],
+   "ttfc": [
+    5.166,
+    5.683,
+    7.796
+   ],
+   "tps": [
+    80.9,
+    88.7,
+    83.9
+   ],
+   "tps_p50": 83.9,
+   "tok_per_chunk": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "ct": [
+    862,
+    895,
+    1110
+   ],
+   "chars": [
+    3761,
+    3931,
+    3679
+   ],
+   "fams": {
+    "uuid": 3
+   },
+   "errs": []
+  },
+  "ctx": {
+   "needle_20000": {
+    "status": 200,
+    "pt": 23894,
+    "recall": 3,
+    "ttft": 8.668,
+    "el": 9.741,
+    "rc": 407,
+    "err": "",
+    "text": "red=458233, green=387028, blue=302676"
+   },
+   "needle_60000": {
+    "status": 200,
+    "pt": 69897,
+    "recall": 3,
+    "ttft": 11.924,
+    "el": 17.123,
+    "rc": 976,
+    "err": "",
+    "text": "red=679229, green=813324, blue=715813"
+   },
+   "needle_120000": {
+    "status": 200,
+    "pt": 130979,
+    "recall": 3,
+    "ttft": 16.215,
+    "el": 22.364,
+    "rc": 303,
+    "err": "",
+    "text": "red=081885, green=391629, blue=022233"
+   }
+  },
+  "lat": {
+   "conc": {
+    "n": 60,
+    "ok": 60,
+    "err_rate": 0.0,
+    "empty": 0,
+    "hung": 0,
+    "errs": [],
+    "ttft_p50": 5.0,
+    "ttft_p90": 6.82,
+    "ttft_p99": 8.88,
+    "ttfc_p50": 5.21,
+    "ttfc_p99": 9.13,
+    "total_p50": 5.27,
+    "total_p90": 7.84,
+    "total_p99": 9.22,
+    "total_max": 9.576,
+    "fams": {
+     "uuid": 60
+    }
+   },
+   "seq": {
+    "n": 60,
+    "ok": 60,
+    "err_rate": 0.0,
+    "empty": 0,
+    "hung": 0,
+    "errs": [],
+    "ttft_p50": 2.56,
+    "ttft_p90": 3.32,
+    "ttft_p99": 5.23,
+    "ttfc_p50": 2.74,
+    "ttfc_p99": 5.39,
+    "total_p50": 2.77,
+    "total_p90": 3.86,
+    "total_p99": 5.51,
+    "total_max": 5.986,
+    "fams": {
+     "uuid": 60
+    }
+   },
+   "conc_waves": {
+    "0": {
+     "n": 30,
+     "ok": 30,
+     "err_rate": 0.0,
+     "empty": 0,
+     "hung": 0,
+     "errs": [],
+     "ttft_p50": 6.49,
+     "ttft_p90": 7.84,
+     "ttft_p99": 8.96,
+     "ttfc_p50": 6.67,
+     "ttfc_p99": 9.57,
+     "total_p50": 6.67,
+     "total_p90": 8.87,
+     "total_p99": 9.58,
+     "total_max": 9.576,
+     "fams": {
+      "uuid": 30
+     }
+    },
+    "1": {
+     "n": 30,
+     "ok": 30,
+     "err_rate": 0.0,
+     "empty": 0,
+     "hung": 0,
+     "errs": [],
+     "ttft_p50": 4.62,
+     "ttft_p90": 4.97,
+     "ttft_p99": 6.49,
+     "ttfc_p50": 4.8,
+     "ttfc_p99": 6.71,
+     "total_p50": 4.8,
+     "total_p90": 5.17,
+     "total_p99": 6.73,
+     "total_max": 6.732,
+     "fams": {
+      "uuid": 30
+     }
+    }
+   }
+  },
+  "soak": {
+   "soak": {
+    "n": 180,
+    "ok": 171,
+    "err_rate": 0.05,
+    "empty": 0,
+    "hung": 0,
+    "errs": [
+     [
+      "0:ConnectError: [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurr",
+      9
+     ]
+    ],
+    "ttft_p50": 4.52,
+    "ttft_p90": 5.23,
+    "ttft_p99": 8.03,
+    "ttfc_p50": 4.71,
+    "ttfc_p99": 8.03,
+    "total_p50": 4.74,
+    "total_p90": 5.62,
+    "total_p99": 8.04,
+    "total_max": 9.114,
+    "fams": {
+     "uuid": 171,
+     "none": 9
+    }
+   }
+  },
+  "iq": {
+   "tag": "default",
+   "n": 54,
+   "correct": 49,
+   "tiers": {
+    "reason": "10/12",
+    "hard": "13/14",
+    "xhard": "26/28"
+   },
+   "correct_of_answered": "49/49",
+   "retried_items": [
+    [
+     "H7",
+     0,
+     2
+    ],
+    [
+     "R7",
+     1,
+     2
+    ],
+    [
+     "H4",
+     1,
+     2
+    ]
+   ],
+   "glitches": 0,
+   "truncated": 5,
+   "rt_p50": 4047,
+   "el_p50": 41.81,
+   "el_max": 508.281,
+   "fams": {
+    "uuid": 54
+   },
+   "items": {
+    "R7": {
+     "correct": [
+      true,
+      true
+     ],
+     "got": [
+      "397",
+      "397"
+     ],
+     "fin": [
+      "stop",
+      "stop"
+     ],
+     "rt": [
+      954,
+      1087
+     ],
+     "el": [
+      12.918,
+      14.045
+     ],
+     "err": []
+    },
+    "R3": {
+     "correct": [
+      true,
+      true
+     ],
+     "got": [
+      "6stu9wk",
+      "6stu9wk"
+     ],
+     "fin": [
+      "stop",
+      "stop"
+     ],
+     "rt": [
+      1507,
+      1683
+     ],
+     "el": [
+      19.268,
+      19.457
+     ],
+     "err": []
+    },
+    "R4": {
+     "correct": [
+      true,
+      true
+     ],
+     "got": [
+      "10",
+      "10"
+     ],
+     "fin": [
+      "stop",
+      "stop"
+     ],
+     "rt": [
+      3300,
+      2296
+     ],
+     "el": [
+      32.425,
+      24.339
+     ],
+     "err": []
+    },
+    "H1": {
+     "correct": [
+      true,
+      true
+     ],
+     "got": [
+      "3",
+      "3"
+     ],
+     "fin": [
+      "stop",
+      "stop"
+     ],
+     "rt": [
+      1114,
+      1069
+     ],
+     "el": [
+      13.972,
+      15.765
+     ],
+     "err": []
+    },
+    "R9": {
+     "correct": [
+      true,
+      true
+     ],
+     "got": [
+      "10 ; [0, 2, 4] ; [3, 3, 3] ; [6, 5, 5] ;    25|ab |5.21 ; -4",
+      "10 ; [0, 2, 4] ; [3, 3, 3] ; [6, 5, 5] ;    25|ab |5.21 ; -4"
+     ],
+     "fin": [
+      "stop",
+      "stop"
+     ],
+     "rt": [
+      6927,
+      4047
+     ],
+     "el": [
+      70.848,
+      43.832
+     ],
+     "err": []
+    },
+    "R2": {
+     "correct": [
+      true,
+      true
+     ],
+     "got": [
+      "1010101010101010",
+      "1010101010101010"
+     ],
+     "fin": [
+      "stop",
+      "stop"
+     ],
+     "rt": [
+      10147,
+      7867
+     ],
+     "el": [
+      86.308,
+      67.695
+     ],
+     "err": []
+    },
+    "H3": {
+     "correct": [
+      true,
+      true
+     ],
+     "got": [
+      "80",
+      "80"
+     ],
+     "fin": [
+      "stop",
+      "stop"
+     ],
+     "rt": [
+      1490,
+      492
+     ],
+     "el": [
+      26.468,
+      8.788
+     ],
+     "err": []
+    },
+    "H2": {
+     "correct": [
+      true,
+      true
+     ],
+     "got": [
+      "307",
+      "307"
+     ],
+     "fin": [
+      "stop",
+      "stop"
+     ],
+     "rt": [
+      7950,
+      4776
+     ],
+     "el": [
+      80.853,
+      50.682
+     ],
+     "err": []
+    },
+    "H5": {
+     "correct": [
+      true,
+      true
+     ],
+     "got": [
+      "10080",
+      "10080"
+     ],
+     "fin": [
+      "stop",
+      "stop"
+     ],
+     "rt": [
+      2177,
+      1519
+     ],
+     "el": [
+      28.266,
+      19.201
+     ],
+     "err": []
+    },
+    "H4": {
+     "correct": [
+      true,
+      true
+     ],
+     "got": [
+      "924",
+      "924"
+     ],
+     "fin": [
+      "stop",
+      "stop"
+     ],
+     "rt": [
+      7959,
+      15373
+     ],
+     "el": [
+      216.371,
+      171.355
+     ],
+     "err": []
+    },
+    "X1": {
+     "correct": [
+      true,
+      true
+     ],
+     "got": [
+      "{\"r0\":0,\"r1\":0,\"r2\":38,\"r3\":1347}",
+      "{\"r0\":0,\"r1\":0,\"r2\":38,\"r3\":1347}"
+     ],
+     "fin": [
+      "stop",
+      "stop"
+     ],
+     "rt": [
+      1646,
+      1595
+     ],
+     "el": [
+      28.594,
+      24.197
+     ],
+     "err": []
+    },
+    "X2": {
+     "correct": [
+      true,
+      true
+     ],
+     "got": [
+      "D,2",
+      "D,2"
+     ],
+     "fin": [
+      "stop",
+      "stop"
+     ],
+     "rt": [
+      2238,
+      3676
+     ],
+     "el": [
+      23.494,
+      35.784
+     ],
+     "err": []
+    },
+    "X3": {
+     "correct": [
+      true,
+      true
+     ],
+     "got": [
+      "5111617/1679616",
+      "5111617/1679616"
+     ],
+     "fin": [
+      "stop",
+      "stop"
+     ],
+     "rt": [
+      4563,
+      9360
+     ],
+     "el": [
+      49.876,
+      85.152
+     ],
+     "err": []
+    },
+    "X4": {
+     "correct": [
+      true,
+      true
+     ],
+     "got": [
+      "1391",
+      "1391"
+     ],
+     "fin": [
+      "stop",
+      "stop"
+     ],
+     "rt": [
+      1957,
+      4260
+     ],
+     "el": [
+      37.396,
+      46.472
+     ],
+     "err": []
+    },
+    "X5": {
+     "correct": [
+      true,
+      true
+     ],
+     "got": [
+      "145,2",
+      "145,2"
+     ],
+     "fin": [
+      "stop",
+      "stop"
+     ],
+     "rt": [
+      4011,
+      7947
+     ],
+     "el": [
+      46.821,
+      82.885
+     ],
+     "err": []
+    },
+    "R10": {
+     "correct": [
+      false,
+      false
+     ],
+     "got": [
+      "",
+      ""
+     ],
+     "fin": [
+      "length",
+      "length"
+     ],
+     "rt": [
+      32000,
+      32000
+     ],
+     "el": [
+      508.281,
+      369.328
+     ],
+     "err": []
+    },
+    "H6": {
+     "correct": [
+      true,
+      true
+     ],
+     "got": [
+      "52",
+      "52"
+     ],
+     "fin": [
+      "stop",
+      "stop"
+     ],
+     "rt": [
+      30783,
+      23259
+     ],
+     "el": [
+      409.038,
+      227.881
+     ],
+     "err": []
+    },
+    "H7": {
+     "correct": [
+      false,
+      true
+     ],
+     "got": [
+      "",
+      "21"
+     ],
+     "fin": [
+      "length",
+      "stop"
+     ],
+     "rt": [
+      32000,
+      29696
+     ],
+     "el": [
+      389.929,
+      358.363
+     ],
+     "err": []
+    },
+    "X9": {
+     "correct": [
+      true,
+      true
+     ],
+     "got": [
+      "13",
+      "13"
+     ],
+     "fin": [
+      "stop",
+      "stop"
+     ],
+     "rt": [
+      1161,
+      1213
+     ],
+     "el": [
+      19.297,
+      19.484
+     ],
+     "err": []
+    },
+    "X11": {
+     "correct": [
+      true,
+      true
+     ],
+     "got": [
+      "[\"Ana\", \"Dev\", \"Hana\", \"Lou\"]",
+      "[\"Ana\", \"Dev\", \"Hana\", \"Lou\"]"
+     ],
+     "fin": [
+      "stop",
+      "stop"
+     ],
+     "rt": [
+      479,
+      446
+     ],
+     "el": [
+      9.837,
+      10.163
+     ],
+     "err": []
+    },
+    "X10": {
+     "correct": [
+      true,
+      true
+     ],
+     "got": [
+      "30",
+      "30"
+     ],
+     "fin": [
+      "stop",
+      "stop"
+     ],
+     "rt": [
+      2413,
+      1338
+     ],
+     "el": [
+      28.48,
+      19.674
+     ],
+     "err": []
+    },
+    "X12": {
+     "correct": [
+      true,
+      true
+     ],
+     "got": [
+      "J336677QNJ",
+      "J336677QNJ"
+     ],
+     "fin": [
+      "stop",
+      "stop"
+     ],
+     "rt": [
+      4289,
+      9054
+     ],
+     "el": [
+      40.95,
+      73.545
+     ],
+     "err": []
+    },
+    "X14": {
+     "correct": [
+      true,
+      true
+     ],
+     "got": [
+      "0x3E9D",
+      "0x3E9D"
+     ],
+     "fin": [
+      "stop",
+      "stop"
+     ],
+     "rt": [
+      1190,
+      695
+     ],
+     "el": [
+      15.751,
+      11.308
+     ],
+     "err": []
+    },
+    "X7": {
+     "correct": [
+      true,
+      false
+     ],
+     "got": [
+      "1,26",
+      ""
+     ],
+     "fin": [
+      "stop",
+      "length"
+     ],
+     "rt": [
+      18276,
+      32000
+     ],
+     "el": [
+      203.057,
+      328.222
+     ],
+     "err": []
+    },
+    "X8": {
+     "correct": [
+      true,
+      true
+     ],
+     "got": [
+      "2331",
+      "2331"
+     ],
+     "fin": [
+      "stop",
+      "stop"
+     ],
+     "rt": [
+      21759,
+      20731
+     ],
+     "el": [
+      245.433,
+      221.112
+     ],
+     "err": []
+    },
+    "X13": {
+     "correct": [
+      true,
+      false
+     ],
+     "got": [
+      "[\"B\",\"E\",\"Z\",\"L\",\"H\",\"F\",\"N\",\"D\",\"K\",\"M\",\"G\",\"A\",\"J\",\"C\"]",
+      ""
+     ],
+     "fin": [
+      "stop",
+      "length"
+     ],
+     "rt": [
+      21880,
+      32000
+     ],
+     "el": [
+      254.38,
+      344.471
+     ],
+     "err": []
+    },
+    "X6": {
+     "correct": [
+      true,
+      true
+     ],
+     "got": [
+      "0x6414",
+      "0x6414"
+     ],
+     "fin": [
+      "stop",
+      "stop"
+     ],
+     "rt": [
+      5185,
+      4519
+     ],
+     "el": [
+      47.806,
+      41.811
+     ],
+     "err": []
+    }
+   }
+  },
+  "iq_nothink": {
+   "tag": "nothink",
+   "n": 54,
+   "correct": 30,
+   "tiers": {
+    "reason": "7/12",
+    "hard": "8/14",
+    "xhard": "15/28"
+   },
+   "correct_of_answered": "30/54",
+   "retried_items": [
+    [
+     "R4",
+     0,
+     2
+    ],
+    [
+     "R7",
+     0,
+     2
+    ],
+    [
+     "R2",
+     0,
+     2
+    ],
+    [
+     "R3",
+     0,
+     3
+    ],
+    [
+     "R9",
+     0,
+     2
+    ],
+    [
+     "H7",
+     0,
+     2
+    ]
+   ],
+   "glitches": 0,
+   "truncated": 0,
+   "rt_p50": 0,
+   "el_p50": 15.07,
+   "el_max": 111.997,
+   "fams": {
+    "uuid": 54
+   },
+   "items": {
+    "R4": {
+     "correct": [
+      true,
+      true
+     ],
+     "got": [
+      "10",
+      "10"
+     ],
+     "fin": [
+      "stop",
+      "stop"
+     ],
+     "rt": [
+      0,
+      0
+     ],
+     "el": [
+      13.07,
+      11.141
+     ],
+     "err": []
+    },
+    "R7": {
+     "correct": [
+      true,
+      true
+     ],
+     "got": [
+      "397",
+      "397"
+     ],
+     "fin": [
+      "stop",
+      "stop"
+     ],
+     "rt": [
+      0,
+      0
+     ],
+     "el": [
+      14.114,
+      9.652
+     ],
+     "err": []
+    },
+    "R2": {
+     "correct": [
+      false,
+      false
+     ],
+     "got": [
+      "1000011111111001",
+      "1011011011111111"
+     ],
+     "fin": [
+      "stop",
+      "stop"
+     ],
+     "rt": [
+      0,
+      0
+     ],
+     "el": [
+      20.416,
+      28.006
+     ],
+     "err": []
+    },
+    "R10": {
+     "correct": [
+      false,
+      false
+     ],
+     "got": [
+      "[\"H\",\"Z\",\"J\",\"K\",\"A\",\"E\",\"C\",\"F\",\"D\",\"G\",\"B\"]",
+      "[\"H\",\"Z\",\"J\",\"K\",\"A\",\"C\",\"E\",\"F\",\"D\",\"G\",\"B\"]"
+     ],
+     "fin": [
+      "stop",
+      "stop"
+     ],
+     "rt": [
+      0,
+      0
+     ],
+     "el": [
+      12.941,
+      16.281
+     ],
+     "err": []
+    },
+    "H1": {
+     "correct": [
+      true,
+      true
+     ],
+     "got": [
+      "3",
+      "3"
+     ],
+     "fin": [
+      "stop",
+      "stop"
+     ],
+     "rt": [
+      0,
+      0
+     ],
+     "el": [
+      11.64,
+      6.173
+     ],
+     "err": []
+    },
+    "R3": {
+     "correct": [
+      true,
+      false
+     ],
+     "got": [
+      "6stu9wk",
+      "6qfu9wk"
+     ],
+     "fin": [
+      "stop",
+      "stop"
+     ],
+     "rt": [
+      0,
+      0
+     ],
+     "el": [
+      8.984,
+      9.754
+     ],
+     "err": []
+    },
+    "R9": {
+     "correct": [
+      true,
+      true
+     ],
+     "got": [
+      "10 ; [0, 2, 4] ; [3, 3, 3] ; [6, 5, 5] ;    25|ab |5.21 ; -4",
+      "10 ; [0, 2, 4] ; [3, 3, 3] ; [6, 5, 5] ;    25|ab |5.21 ; -4"
+     ],
+     "fin": [
+      "stop",
+      "stop"
+     ],
+     "rt": [
+      0,
+      0
+     ],
+     "el": [
+      13.157,
+      14.217
+     ],
+     "err": []
+    },
+    "H3": {
+     "correct": [
+      true,
+      true
+     ],
+     "got": [
+      "80",
+      "80"
+     ],
+     "fin": [
+      "stop",
+      "stop"
+     ],
+     "rt": [
+      0,
+      0
+     ],
+     "el": [
+      9.195,
+      12.658
+     ],
+     "err": []
+    },
+    "H2": {
+     "correct": [
+      true,
+      true
+     ],
+     "got": [
+      "307",
+      "307"
+     ],
+     "fin": [
+      "stop",
+      "stop"
+     ],
+     "rt": [
+      0,
+      0
+     ],
+     "el": [
+      21.245,
+      16.169
+     ],
+     "err": []
+    },
+    "H4": {
+     "correct": [
+      false,
+      false
+     ],
+     "got": [
+      "1344",
+      "108"
+     ],
+     "fin": [
+      "stop",
+      "stop"
+     ],
+     "rt": [
+      0,
+      0
+     ],
+     "el": [
+      20.412,
+      24.536
+     ],
+     "err": []
+    },
+    "H5": {
+     "correct": [
+      true,
+      true
+     ],
+     "got": [
+      "10080",
+      "10080"
+     ],
+     "fin": [
+      "stop",
+      "stop"
+     ],
+     "rt": [
+      0,
+      0
+     ],
+     "el": [
+      20.372,
+      25.021
+     ],
+     "err": []
+    },
+    "X1": {
+     "correct": [
+      true,
+      false
+     ],
+     "got": [
+      "{\"r0\":0,\"r1\":0,\"r2\":38,\"r3\":1347}",
+      "{\"r0\":0,\"r1\":0,\"r2\":38,\"r3\":1342}"
+     ],
+     "fin": [
+      "stop",
+      "stop"
+     ],
+     "rt": [
+      0,
+      0
+     ],
+     "el": [
+      13.107,
+      14.772
+     ],
+     "err": []
+    },
+    "X2": {
+     "correct": [
+      false,
+      true
+     ],
+     "got": [
+      "C,3",
+      "D,2"
+     ],
+     "fin": [
+      "stop",
+      "stop"
+     ],
+     "rt": [
+      0,
+      0
+     ],
+     "el": [
+      11.785,
+      12.162
+     ],
+     "err": []
+    },
+    "H7": {
+     "correct": [
+      false,
+      false
+     ],
+     "got": [
+      "27",
+      "30"
+     ],
+     "fin": [
+      "stop",
+      "stop"
+     ],
+     "rt": [
+      0,
+      0
+     ],
+     "el": [
+      14.696,
+      22.334
+     ],
+     "err": []
+    },
+    "X3": {
+     "correct": [
+      false,
+      true
+     ],
+     "got": [
+      "\\(\\frac{5111617}{1679616}\\)",
+      "5111617/1679616"
+     ],
+     "fin": [
+      "stop",
+      "stop"
+     ],
+     "rt": [
+      0,
+      0
+     ],
+     "el": [
+      21.365,
+      24.109
+     ],
+     "err": []
+    },
+    "X4": {
+     "correct": [
+      false,
+      true
+     ],
+     "got": [
+      "899",
+      "1391"
+     ],
+     "fin": [
+      "stop",
+      "stop"
+     ],
+     "rt": [
+      0,
+      0
+     ],
+     "el": [
+      17.072,
+      18.659
+     ],
+     "err": []
+    },
+    "X5": {
+     "correct": [
+      true,
+      true
+     ],
+     "got": [
+      "145,2",
+      "145,2"
+     ],
+     "fin": [
+      "stop",
+      "stop"
+     ],
+     "rt": [
+      0,
+      0
+     ],
+     "el": [
+      17.97,
+      16.775
+     ],
+     "err": []
+    },
+    "H6": {
+     "correct": [
+      false,
+      false
+     ],
+     "got": [
+      "63",
+      "38"
+     ],
+     "fin": [
+      "stop",
+      "stop"
+     ],
+     "rt": [
+      0,
+      0
+     ],
+     "el": [
+      63.221,
+      31.373
+     ],
+     "err": []
+    },
+    "X6": {
+     "correct": [
+      false,
+      false
+     ],
+     "got": [
+      "0x6080",
+      "0x6410"
+     ],
+     "fin": [
+      "stop",
+      "stop"
+     ],
+     "rt": [
+      0,
+      0
+     ],
+     "el": [
+      19.619,
+      14.472
+     ],
+     "err": []
+    },
+    "X9": {
+     "correct": [
+      true,
+      true
+     ],
+     "got": [
+      "13",
+      "13"
+     ],
+     "fin": [
+      "stop",
+      "stop"
+     ],
+     "rt": [
+      0,
+      0
+     ],
+     "el": [
+      11.324,
+      15.066
+     ],
+     "err": []
+    },
+    "X10": {
+     "correct": [
+      true,
+      true
+     ],
+     "got": [
+      "30",
+      "30"
+     ],
+     "fin": [
+      "stop",
+      "stop"
+     ],
+     "rt": [
+      0,
+      0
+     ],
+     "el": [
+      11.328,
+      13.94
+     ],
+     "err": []
+    },
+    "X11": {
+     "correct": [
+      true,
+      true
+     ],
+     "got": [
+      "[\"Ana\", \"Dev\", \"Hana\", \"Lou\"]",
+      "[\"Ana\", \"Dev\", \"Hana\", \"Lou\"]"
+     ],
+     "fin": [
+      "stop",
+      "stop"
+     ],
+     "rt": [
+      0,
+      0
+     ],
+     "el": [
+      6.32,
+      7.828
+     ],
+     "err": []
+    },
+    "X7": {
+     "correct": [
+      false,
+      false
+     ],
+     "got": [
+      "1,30",
+      "3,288"
+     ],
+     "fin": [
+      "stop",
+      "stop"
+     ],
+     "rt": [
+      0,
+      0
+     ],
+     "el": [
+      38.456,
+      34.115
+     ],
+     "err": []
+    },
+    "X14": {
+     "correct": [
+      true,
+      true
+     ],
+     "got": [
+      "0x3E9D",
+      "0x3E9D"
+     ],
+     "fin": [
+      "stop",
+      "stop"
+     ],
+     "rt": [
+      0,
+      0
+     ],
+     "el": [
+      8.316,
+      8.298
+     ],
+     "err": []
+    },
+    "X12": {
+     "correct": [
+      false,
+      true
+     ],
+     "got": [
+      "KJ336677QQN",
+      "J336677QNJ"
+     ],
+     "fin": [
+      "stop",
+      "stop"
+     ],
+     "rt": [
+      0,
+      0
+     ],
+     "el": [
+      17.46,
+      23.537
+     ],
+     "err": []
+    },
+    "X13": {
+     "correct": [
+      false,
+      false
+     ],
+     "got": [
+      "[\"B\",\"E\",\"Z\",\"L\",\"H\",\"F\",\"N\",\"D\",\"K\",\"M\",\"A\",\"G\",\"J\",\"C\"]",
+      "[\"B\",\"E\",\"Z\",\"L\",\"N\",\"D\",\"H\",\"F\",\"K\",\"A\",\"M\",\"G\",\"J\",\"C\"]"
+     ],
+     "fin": [
+      "stop",
+      "stop"
+     ],
+     "rt": [
+      0,
+      0
+     ],
+     "el": [
+      25.48,
+      19.082
+     ],
+     "err": []
+    },
+    "X8": {
+     "correct": [
+      false,
+      false
+     ],
+     "got": [
+      "1611",
+      "1566"
+     ],
+     "fin": [
+      "stop",
+      "stop"
+     ],
+     "rt": [
+      0,
+      0
+     ],
+     "el": [
+      111.997,
+      56.126
+     ],
+     "err": []
+    }
+   }
+  },
+  "logs": {
+   "n": 680,
+   "quota": 293823,
+   "prompt": 181195,
+   "completion": 50737,
+   "cache": 5632,
+   "groups": {
+    "deepseek-official": 680
+   },
+   "channels": {
+    "316": 680
+   },
+   "ratios": {
+    "{\"cache_ratio\": 0, \"completion_ratio\": 0, \"group_ratio\": 0.95, \"model_price\": 0, \"model_ratio\": 0}": 680
+   }
+  }
+ },
+ "fingerprint": {
+  "id_families": [
+   "uuid"
+  ],
+  "usage_keys": [
+   "completion_tokens",
+   "completion_tokens_details",
+   "completion_tokens_details.reasoning_tokens",
+   "prompt_tokens",
+   "prompt_tokens_details",
+   "prompt_tokens_details.cached_tokens",
+   "total_tokens"
+  ],
+  "ok_prompt_tokens": [
+   88
+  ],
+  "tok_delta": {
+   "zh": 1020,
+   "digits": 801,
+   "en": 293,
+   "code": 601,
+   "system": 6
+  },
+  "param_status": {
+   "baseline": 0,
+   "thinking_disabled": 200,
+   "thinking_enabled": 200,
+   "effort_none": 200,
+   "effort_low": 200,
+   "effort_high": 200,
+   "effort_max": 200,
+   "effort_invalid": 400,
+   "max_tokens_999999": 200,
+   "max_tokens_16": 200,
+   "max_completion_tokens_16": 200,
+   "temperature_5": 400,
+   "temperature_1.5": 200,
+   "stop_5": 200,
+   "logprobs": 200,
+   "n_2": 200,
+   "json_mode": 200,
+   "unknown_field": 200,
+   "tools": 200,
+   "tools_stream": 200
+  }
+ },
+ "drift": {
+  "items": [
+   "H2",
+   "R2",
+   "R4",
+   "R9",
+   "X12",
+   "X2",
+   "X3",
+   "X4",
+   "X5",
+   "X6"
+  ],
+  "max_drop": 2,
+  "why": "correct on every repeat in the frozen run and median < 150 s; a thinking-less or different model drops several of these"
+ },
+ "how_to_use": "先跑 `KEY_REF=<key> python3 glmsuite.py refcheck suite/reference/ikuncode-dsv4flash.json` 查漂移：SAME 复用智力/知识/分词/参数指纹；DRIFT 先重测。延迟/稳定性/缓存 TTL 只按同路线同日比较（北京服务器 /root/glmtest），不当常量复用。",
+ "what_it_is": "ikuncode deepseek-official 分组的 deepseek-v4-flash（2026-10-02）：回显 deepseek-v4-flash-0731、uuid id、usage 带 reasoning_tokens/cached_tokens，88/9 模板 token = DeepSeek-V4-Flash 0731 老版本（非官方现名对应的 V4.1-Flash）；知识阶梯 K01 起全 UNKNOWN；与 09-22 的 router- 网关形态不同，上游已换。",
+ "caveats": [
+  "延迟/soak 是 Mac + Clash TUN 路线，约 5% 调用死于本机 SSL EOF，不当常量复用",
+  "计费是分时表达式：工作日北京 9-12、14-18 点 ×2；本次全程在高峰",
+  "开思考 IQ 5 次跑满 32k 截断（R10×2/H7/X7/X13），不是答错",
+  "关思考用 reasoning_effort:none（ikuncode 上生效）；其他站要先确认关思考参数是否真生效"
+ ],
+ "pricing": {
+  "group": "deepseek-official ×0.95",
+  "expr": "p*1 + c*4 + cr*0.02 (×2 peak)",
+  "per_million_cny_peak": {
+   "input": 1.9,
+   "output": 7.6,
+   "cache": 0.038
+  },
+  "per_million_cny_offpeak": {
+   "input": 0.95,
+   "output": 3.8,
+   "cache": 0.019
+  }
+ },
+ "knowledge_ladder": {
+  "nothink": "K00 3/3, K01-K09 0/27",
+  "think": "K02 2/2, K03 1/2, other 0"
+ }
+}

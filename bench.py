@@ -21,7 +21,7 @@ except Exception:
     ENC = None
 HERE = os.path.dirname(os.path.abspath(__file__))
 SUITE = os.path.join(HERE, "suite")
-UA = "relay-bench/1.0"
+UA = os.environ.get("RELAY_UA") or "relay-bench/1.0"
 
 def tok(s):
     if ENC is None: return max(1, len(s) // 4)

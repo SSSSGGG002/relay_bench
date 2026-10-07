@@ -1,0 +1,198 @@
+{
+  "seed": 20260909,
+  "items": [
+    {
+      "id": "R2",
+      "cat": "simulation",
+      "q": "An elementary cellular automaton with Wolfram rule 184 runs on a ring of 16 cells (cell 0's left neighbour is cell 15). Initial state (cell 0 to cell 15): 1000011010111001. Apply the rule synchronously for exactly 8 steps. Give the final state as a 16-character string of 0s and 1s.",
+      "ans": "1010101010101010",
+      "tier": "reason"
+    },
+    {
+      "id": "R3",
+      "cat": "string",
+      "q": "Start with the string: sgjdxghj9udf\nApply these operations in order:\n1. move the first two characters to the end\n2. delete every vowel (a,e,i,o,u in either case)\n3. keep only characters at even 0-based indices\n4. append the length of the current string as decimal digits\n5. apply ROT13 to letters (digits unchanged)\n6. swap each adjacent pair of characters (positions 0<->1, 2<->3, ...; an unpaired last char stays)\n7. reverse the string\nWhat is the final string?",
+      "ans": "6stu9wk",
+      "tier": "reason"
+    },
+    {
+      "id": "R4",
+      "cat": "simulation",
+      "q": "26 people numbered 1..26 stand in a circle. Starting the count at person 1, every 6-th person is eliminated (person 6 goes first), counting continues from the next person after each elimination. Which number is the last survivor?",
+      "ans": "10",
+      "tier": "reason"
+    },
+    {
+      "id": "R7",
+      "cat": "number",
+      "q": "Compute 13^1643 mod 1000 (the last three digits of 13^1643). Give the number without leading zeros.",
+      "ans": "397",
+      "tier": "reason"
+    },
+    {
+      "id": "R9",
+      "cat": "code",
+      "q": "What exactly does this Python 3 program print (single line)?\n\n```python\ndef f(x, acc=[]):\n    acc.append(x)\n    return sum(acc)\nr = [f(i) for i in range(1, 4+1)]\nfs = [lambda y, i=i: y*i for i in range(3)]\ng = [lambda y: y+i for i in range(3)]\na = [5]*3; a[0] += 1\ns = \"{:>5}|{:<3}|{:.2f}\".format(25, \"ab\", 5.207)\nprint(r[-1], [h(2) for h in fs], [h(1) for h in g], a, s, 7//-2, -7%3, 2**3**2 % 1000, sep=\" ; \")\n```",
+      "ans": "10 ; [0, 2, 4] ; [3, 3, 3] ; [6, 5, 5] ;    25|ab |5.21 ; -4 ; 2 ; 512",
+      "tier": "reason"
+    },
+    {
+      "id": "R10",
+      "cat": "event-loop",
+      "q": "In Node.js 22 (same semantics as a modern browser for this code), what is the exact order of console.log output? Answer as a JSON array of strings.\n\n```js\nconsole.log('H');\nsetTimeout(() => { console.log('G'); Promise.resolve().then(() => console.log('B')); }, 0);\nconst p = Promise.resolve().then(() => { console.log('J'); return { then(res) { console.log('K'); res(); } }; });\np.then(() => console.log('E'));\nqueueMicrotask(() => { console.log('A'); queueMicrotask(() => console.log('F')); });\n(async () => { await null; console.log('C'); await p; console.log('D'); })();\nconsole.log('Z');\n```",
+      "ans": "[\"H\", \"Z\", \"J\", \"A\", \"C\", \"K\", \"F\", \"E\", \"D\", \"G\", \"B\"]",
+      "kind": "json",
+      "tier": "reason"
+    },
+    {
+      "id": "H1",
+      "cat": "logic",
+      "q": "Four houses in a row numbered 1 (leftmost) to 4 (rightmost). Each house has a distinct color (red, blue, green, white), pet (dog, cat, fish, bird) and drink (tea, milk, juice, water).\nClues:\n- The green house's owner drinks water.\n- The person who drinks juice lives immediately to the left of the person with the bird.\n- The person who drinks tea lives immediately to the left of the person with the cat.\n- House 2 is green.\n- The dog owner lives next to the green house.\n- The person with the fish drinks tea.\n- The person who drinks water lives immediately to the left of the person with the dog.\n- House 1 is red.\n- The green house is immediately to the left of the white house.\nIn which house number is the dog?",
+      "ans": "3",
+      "tier": "hard"
+    },
+    {
+      "id": "H2",
+      "cat": "counting",
+      "q": "On a 5×5 chessboard (rows 1-5, columns 1-5) the cells [(1, 2), (2, 2), (2, 5), (3, 4), (4, 1)] (row, column) are blocked and cannot hold a piece. In how many ways can you place 3 identical rooks on unblocked cells so that no two share a row or a column?",
+      "ans": "307",
+      "tier": "hard"
+    },
+    {
+      "id": "H3",
+      "cat": "simulation",
+      "q": "A single clerk serves customers first-come-first-served. Arrival times (minutes): [16, 17, 26, 33, 38, 41, 46, 52, 54, 59]. Service times in the same order: [12, 11, 2, 2, 10, 3, 2, 4, 4, 10]. Service starts immediately if the clerk is free, otherwise the customer waits. What is the total waiting time (sum over all customers, in minutes) before service starts?",
+      "ans": "80",
+      "tier": "hard"
+    },
+    {
+      "id": "H4",
+      "cat": "counting",
+      "q": "Tasks A..H must each run once, one at a time. Constraints (X before Y): A before G; A before H; C before B; D before H; E before G; G before H. Additionally D and G must not be adjacent in the schedule. How many valid orderings exist?",
+      "ans": "924",
+      "tier": "hard"
+    },
+    {
+      "id": "H5",
+      "cat": "search",
+      "q": "Cryptarithm: UUHJ + LKDJ = UDDLD. Each letter stands for a distinct digit 0-9, no number has a leading zero, and the solution is unique. What number does UDDLD represent?",
+      "ans": "10080",
+      "tier": "hard"
+    },
+    {
+      "id": "H6",
+      "cat": "counting",
+      "q": "Undirected graph on vertices A..G with edges: AB, AD, AE, AF, BC, BD, BF, CE, CF, DF, DG, EF, EG, FG. How many Hamiltonian paths (visiting every vertex exactly once) start at vertex A? Count each sequence of vertices once.",
+      "ans": "52",
+      "tier": "hard"
+    },
+    {
+      "id": "H7",
+      "cat": "logic",
+      "q": "A bag holds 41 candies in three flavours and two shapes:\n\n              apple   peach   watermelon\n  circle        7       9         8\n  star          7       6         4\n\nYou draw candies one at a time without looking, and you do not put any back.\nYou cannot see or feel the flavour. You CAN feel the shape, so for every draw you decide whether to take a circle or a star; the flavour you then get is outside your control, so assume it is always the worst case for you.\n\nYou want to end up holding an apple candy and a peach candy whose shapes are different - that is, either (apple circle AND peach star), or (apple star AND peach circle). Watermelon is irrelevant.\n\nWhat is the smallest number of candies you must draw to be guaranteed of that?",
+      "ans": "21",
+      "tier": "hard"
+    },
+    {
+      "id": "X1",
+      "cat": "simulation",
+      "q": "Same register machine as before: registers r0..r3 start at 0; SET r,v; ADD r,v; ADDR r,s (r += register s); MUL r,v; MOD r,v; DEC r; JNZ r,L (jump to line L if r != 0); HALT. Lines are 1-indexed.\nProgram:\n1: SET r0, 6\n2: SET r3, 0\n3: SET r1, 4\n4: SET r2, 6\n5: MUL r2, 4\n6: MOD r2, 107\n7: ADDR r3, r2\n8: DEC r1\n9: JNZ r1, 5\n10: ADDR r3, r0\n11: DEC r0\n12: JNZ r0, 3\n13: MOD r3, 10000\n14: HALT\n\nRun it to completion (it contains a nested loop). Give the final registers as JSON {\"r0\":..,\"r1\":..,\"r2\":..,\"r3\":..}.",
+      "ans": "{\"r0\": 0, \"r1\": 0, \"r2\": 38, \"r3\": 1347}",
+      "kind": "json",
+      "tier": "xhard"
+    },
+    {
+      "id": "X2",
+      "cat": "simulation",
+      "q": "A deterministic automaton has states A,B,C,D (start state A) and input symbols x,y,z. Transition table (state: symbol->next):\nA: x->D, y->D, z->A\nB: x->B, y->A, z->C\nC: x->A, y->D, z->A\nD: x->B, y->D, z->D\nProcess the input string zzzzxxyzyyyyxyyzxzzyyyyzzxxzyyxxyzxz one symbol at a time. Report the final state and how many times the automaton entered state C during processing (count each transition into C, including staying in C). Answer as 'STATE,count'.",
+      "ans": "D,2",
+      "tier": "xhard"
+    },
+    {
+      "id": "X3",
+      "cat": "probability",
+      "q": "You repeatedly roll a fair 6-sided die (faces 1..6) and keep a running total, stopping as soon as the total is at least 9. What is the expected number of rolls? Give the exact value as a reduced fraction p/q (or an integer).",
+      "ans": "5111617/1679616",
+      "tier": "xhard"
+    },
+    {
+      "id": "X4",
+      "cat": "counting",
+      "q": "How many binary strings of length 20 contain exactly 12 ones and have no run of three or more identical consecutive bits (no '000' and no '111')?",
+      "ans": "1391",
+      "tier": "xhard"
+    },
+    {
+      "id": "X5",
+      "cat": "optimization",
+      "q": "0/1 knapsack. Items: item1: weight 4, value 12; item2: weight 12, value 47; item3: weight 12, value 15; item4: weight 4, value 23; item5: weight 11, value 46; item6: weight 14, value 38; item7: weight 13, value 41; item8: weight 11, value 52; item9: weight 13, value 47. Capacity 35 (total weight must be <= 35). What is the maximum total value, and how many distinct subsets of items achieve that maximum? Answer as 'value,count'.",
+      "ans": "145,2",
+      "tier": "xhard"
+    },
+    {
+      "id": "X6",
+      "cat": "bits",
+      "q": "Start with the 16-bit value 0x7637. Apply in order:\n1. add 0x1357 modulo 2^16\n2. reverse the order of all 16 bits\n3. rotate left by 3 within 16 bits\n4. rotate right by 5 within 16 bits\n5. swap the high and low bytes\n6. clear every bit whose position (0 = least significant) is a multiple of 3\nGive the final 16-bit value in hexadecimal (4 uppercase hex digits, e.g. 0x1A2B).",
+      "ans": "0x6414",
+      "tier": "xhard"
+    },
+    {
+      "id": "X7",
+      "cat": "optimization",
+      "q": "Seven jobs run one after another on a single machine starting at time 0, no idle time: J1: duration 4, deadline 15; J2: duration 5, deadline 28; J3: duration 4, deadline 26; J4: duration 2, deadline 30; J5: duration 9, deadline 9; J6: duration 7, deadline 18; J7: duration 4, deadline 8. A job is late if it finishes after its deadline. What is the minimum possible number of late jobs, and how many of the 7! orderings achieve that minimum? Answer as 'late,orderings'.",
+      "ans": "1,26",
+      "tier": "xhard"
+    },
+    {
+      "id": "X8",
+      "cat": "counting",
+      "q": "Tasks A..I must each run once, one at a time. Constraints (X before Y): D before A; D before B; D before C; D before E; E before G; F before A; F before C; F before E; F before G; F before H; H before A. Additionally E and F must not be adjacent, and C and E must not be adjacent. How many valid orderings exist?",
+      "ans": "2331",
+      "tier": "xhard"
+    },
+    {
+      "id": "X9",
+      "cat": "probability",
+      "q": "A token performs a simple random walk on the undirected graph with vertices A..F and edges AD, AF, BD, BE, CD: at each step it moves to a uniformly random neighbour. Starting at F, what is the expected number of steps until it first reaches C? Give the exact value as a reduced fraction p/q (or an integer).",
+      "ans": "13",
+      "tier": "xhard"
+    },
+    {
+      "id": "X10",
+      "cat": "counting",
+      "q": "On a 6x6 grid of cells (row, column) numbered 1..6 from the top-left, you move only right or down one cell at a time from (1,1) to (6,6). Cells [(3, 1), (5, 1), (5, 5), (6, 4)] are blocked and cannot be entered. How many such paths pass through cell (2, 3)?",
+      "ans": "30",
+      "tier": "xhard"
+    },
+    {
+      "id": "X11",
+      "cat": "sql",
+      "q": "Table employees(id, name, dept, salary) contains: (1, 'Ana', 'Sales', 90000), (2, 'Ben', 'Ops', 90000), (3, 'Cleo', 'Sales', 50000), (4, 'Dev', 'Eng', 90000), (5, 'Eli', 'Sales', 60000), (6, 'Fay', 'Sales', 100000), (7, 'Gus', 'Eng', 100000), (8, 'Hana', 'Ops', 50000), (9, 'Ivo', 'Eng', 50000), (10, 'Jun', 'Ops', 90000), (11, 'Kai', 'Sales', 60000), (12, 'Lou', 'Sales', 90000), (13, 'Mia', 'Sales', 60000), (14, 'Ned', 'Eng', 60000).\nQuery:\nSELECT name FROM (SELECT name, dept, DENSE_RANK() OVER (PARTITION BY dept ORDER BY salary DESC) AS rk FROM employees) WHERE rk = 2 ORDER BY name\n\nDENSE_RANK gives equal salaries the same rank with no gaps. Give the exact result as a JSON array of names, e.g. [\"Ana\", \"Ben\"].",
+      "ans": "[\"Ana\", \"Dev\", \"Hana\", \"Lou\"]",
+      "kind": "json",
+      "tier": "xhard"
+    },
+    {
+      "id": "X12",
+      "cat": "string",
+      "q": "Start with the string: v3nu6nqk7j53q22j\nApply these operations in order:\n1. sort the characters in ascending ASCII order\n2. swap each adjacent pair of characters (0<->1, 2<->3, ...; an unpaired last char stays)\n3. delete every vowel (a,e,i,o,u in either case)\n4. delete the middle character if the length is odd, otherwise delete the last character\n5. keep only characters at even 0-based indices\n6. replace every digit d with (9-d)\n7. reverse the string\n8. duplicate every character that is a digit\n9. move the first three characters to the end\n10. convert letters to uppercase\nWhat is the final string?",
+      "ans": "J336677QNJ",
+      "tier": "xhard"
+    },
+    {
+      "id": "X13",
+      "cat": "event-loop",
+      "q": "In Node.js 22, what is the exact order of console.log output? Answer as a JSON array of strings.\n\n```js\nconsole.log('B');\nsetTimeout(() => { console.log('J'); Promise.resolve().then(() => console.log('C')); }, 0);\nconst th = { then(res) { console.log('L'); res('N'); } };\nconst p = Promise.resolve(th);\np.then(v => { console.log(v); return new Promise(r => { console.log('D'); r(); }); }).then(() => console.log('A'));\n(async () => { console.log('E'); await p; console.log('K'); await null; console.log('G'); })();\nPromise.resolve().then(() => console.log('H')).finally(() => console.log('M'));\nqueueMicrotask(() => console.log('F'));\nconsole.log('Z');\n```",
+      "ans": "[\"B\", \"E\", \"Z\", \"L\", \"H\", \"F\", \"N\", \"D\", \"K\", \"M\", \"G\", \"A\", \"J\", \"C\"]",
+      "kind": "json",
+      "tier": "xhard"
+    },
+    {
+      "id": "X14",
+      "cat": "bits",
+      "q": "Compute the Fletcher-16 checksum of the byte sequence [181, 137, 229, 12, 14, 145, 116, 88] (decimal bytes, processed left to right): start with sum1 = 0 and sum2 = 0; for each byte b do sum1 = (sum1 + b) mod 255, then sum2 = (sum2 + sum1) mod 255. The checksum is (sum2 << 8) | sum1. Give it as a 4-digit uppercase hexadecimal number, e.g. 0x1A2B.",
+      "ans": "0x3E9D",
+      "tier": "xhard"
+    }
+  ]
+}

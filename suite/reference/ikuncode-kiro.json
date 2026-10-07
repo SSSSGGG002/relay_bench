@@ -1,0 +1,277 @@
+{
+ "name": "ikuncode-kiro",
+ "base": "https://api.ikuncode.cc",
+ "key_hint": "sk-SqQx…（Kiro 分组，8 个 Claude 模型）",
+ "frozen_at": "2026-09-24 (IQ/knowledge/cache/context) + 2026-09-25 (Beijing-route latency)",
+ "source": {
+  "report": "REPORT-ikuncode-vs-hyhawang-kiro-20260924.md",
+  "results": [
+   "results/ikun-kiro",
+   "results/ikun-kiro-soak",
+   "results/ikun-probes",
+   "results/ikun-drift-0925",
+   "results/bl-probes/server (ik-*)"
+  ]
+ },
+ "what_it_is": {
+  "backend": "单一 Kiro/Bedrock 号池，msg_<32hex>，Kiro 隐藏 prompt 6.1–6.5k 计为 cache_read",
+  "claude-opus-5": "真 Opus 4.6/5 档（知识到 2025-11，Leo XIV/高市），IQ 25/26",
+  "claude-sonnet-5": "Sonnet 4.5 冒名（开放式答方济各/石破），IQ 23/27",
+  "caveats": [
+   "stop_sequences/max_tokens 不生效",
+   "缓存数字是固定拆分（≈92% 恒报 cache_read），不是真命中",
+   "上游空回复会被替换成中文警告正文",
+   "sonnet-5 合成文本 ≥60k 空回复（自然文本 130k 正常）"
+  ]
+ },
+ "iq_bank": {
+  "path": "suite/iq.json",
+  "md5": "ad1f46e9f80233a7264d9f01196c9993",
+  "pinned_copy": "suite/iq.ref-20260924.json",
+  "max_tokens": 16000,
+  "mode": "default thinking, single attempt, relay glitches retried"
+ },
+ "fingerprint": {
+  "id_regex": "msg_[0-9a-f]{32}",
+  "usage_keys": [
+   "cache_creation_input_tokens",
+   "cache_read_input_tokens",
+   "input_tokens",
+   "output_tokens"
+  ],
+  "usage_ranges": {
+   "input_tokens": [
+    8,
+    12
+   ],
+   "cache_read_input_tokens": [
+    5800,
+    6800
+   ],
+   "cache_creation_input_tokens": [
+    250,
+    700
+   ]
+  }
+ },
+ "drift": {
+  "items": [
+   "R3",
+   "R10",
+   "H2",
+   "H4",
+   "H6",
+   "H7",
+   "X3",
+   "X4",
+   "X6",
+   "X7",
+   "X12",
+   "X13"
+  ],
+  "max_drop": 2,
+  "why": "这 12 题在 09-24 ikuncode opus-5 12/12、sonnet-5 11/12；buliangren Kiro 池与 B 池都是 0/12，区分度最高"
+ },
+ "models": {
+  "claude-opus-5": {
+   "iq": {
+    "score": "25/26",
+    "per_item": {
+     "R2": true,
+     "R3": true,
+     "R4": true,
+     "R7": true,
+     "R9": true,
+     "R10": true,
+     "H1": true,
+     "H2": true,
+     "H3": true,
+     "H4": true,
+     "H5": true,
+     "H6": true,
+     "H7": true,
+     "X1": null,
+     "X2": true,
+     "X3": true,
+     "X4": true,
+     "X5": true,
+     "X6": true,
+     "X7": true,
+     "X8": true,
+     "X9": true,
+     "X10": true,
+     "X11": true,
+     "X12": true,
+     "X13": true,
+     "X14": false
+    },
+    "note": "X1 relay glitch 不计"
+   },
+   "knowledge_probe": {
+    "q": "From memory only (no tools), give your single best guess even if unsure, one line: who is the current Pope, and who is the current Prime Minister of Japan?",
+    "must_contain": [
+     "Leo"
+    ],
+    "must_not": [
+     "Francis"
+    ]
+   },
+   "knowledge": "阶梯 6/6 到 2025-11；Leo XIV ✓；Krasznahorkai ✓",
+   "context_natural": {
+    "20k": "3/3 8.0s",
+    "60k": "3/3 7.0s",
+    "130k": "3/3 9.0s"
+   },
+   "context_synthetic_230k": "3/3 19.5s",
+   "latency": {
+    "2026-09-24 Mac(Clash) seq60": {
+     "p50": 4.65,
+     "p90": 9.04,
+     "p99": 23.42,
+     "max": 52.88,
+     "ok": "58/60"
+    },
+    "2026-09-24 Mac conc30x2": {
+     "p50": 9.88,
+     "p95": 38.09,
+     "p99": 38.29,
+     "ok": "34/60 (TLS 失败，路线相关)"
+    },
+    "2026-09-25 Beijing-direct seq60": {
+     "p50": 2.87,
+     "p90": 4.63,
+     "p95": 5.18,
+     "p99": 5.65,
+     "max": 9.3,
+     "ok": "60/60"
+    },
+    "2026-09-25 Beijing-direct conc30x2": {
+     "p50": 3.36,
+     "p95": 5.94,
+     "p99": 6.46,
+     "max": 7.32,
+     "ok": "60/60"
+    }
+   },
+   "soak_2026-09-24_Mac_10min": {
+    "calls": 41,
+    "errors": 0,
+    "p50": 5.99,
+    "p95": 22.85,
+    "max": 57.4
+   },
+   "throughput": "假流式：TTFT 15–18 s 后一次吐完"
+  },
+  "claude-sonnet-5": {
+   "iq": {
+    "score": "23/27",
+    "per_item": {
+     "R2": false,
+     "R3": true,
+     "R4": true,
+     "R7": true,
+     "R9": true,
+     "R10": true,
+     "H1": true,
+     "H2": true,
+     "H3": true,
+     "H4": true,
+     "H5": true,
+     "H6": true,
+     "H7": true,
+     "X1": false,
+     "X2": true,
+     "X3": true,
+     "X4": true,
+     "X5": true,
+     "X6": true,
+     "X7": false,
+     "X8": false,
+     "X9": true,
+     "X10": true,
+     "X11": true,
+     "X12": true,
+     "X13": true,
+     "X14": true
+    }
+   },
+   "knowledge": "阶梯 7/7 到 2025-11，但开放式答方济各/石破 → Sonnet 4.5",
+   "context_natural": {
+    "20k": "3/3 5.5s",
+    "60k": "3/3 6.0s",
+    "130k": "3/3 8.1s"
+   },
+   "context_synthetic": "≥60k 空回复",
+   "latency": {
+    "2026-09-24 Mac(Clash) seq60": {
+     "p50": 3.49,
+     "p90": 5.65,
+     "p99": 8.15,
+     "max": 13.83,
+     "ok": "60/60"
+    },
+    "2026-09-24 Mac conc30x2": {
+     "p50": 4.6,
+     "p95": 15.78,
+     "p99": 18.87,
+     "ok": "59/60"
+    },
+    "2026-09-25 Beijing-direct seq60": {
+     "p50": 2.93,
+     "p90": 4.78,
+     "p95": 7.81,
+     "p99": 10.09,
+     "max": 12.68,
+     "ok": "60/60"
+    },
+    "2026-09-25 Beijing-direct conc30x2": {
+     "p50": 3.43,
+     "p95": 4.68,
+     "p99": 5.18,
+     "max": 6.35,
+     "ok": "60/60"
+    }
+   },
+   "soak_2026-09-24_Mac_10min": {
+    "calls": 51,
+    "errors": 0,
+    "p50": 6.27,
+    "p95": 18.93,
+    "max": 38.12
+   },
+   "throughput": "假流式",
+   "knowledge_probe": {
+    "q": "From memory only (no tools), give your single best guess even if unsure, one line: who is the current Pope, and who is the current Prime Minister of Japan?",
+    "must_contain": [
+     "Leo"
+    ],
+    "must_not": [],
+    "note": "sonnet-5 (Sonnet 4.5) 在 09-24 开放式答过方济各、09-25 答 Leo XIV，不稳定，只记录不判定"
+   },
+   "soak_2026-09-25_Beijing_30min": {
+    "calls": 159,
+    "ok": 158,
+    "err_rate": 0.006,
+    "hung": 0,
+    "p50": 3.82,
+    "p90": 5.86,
+    "p95": 10.84,
+    "p99": 26.06,
+    "max": 29.83,
+    "errors": "1x peer closed connection"
+   }
+  }
+ },
+ "how_to_use": "新站对比前先跑 `RB_KEY=… python3 refcheck.py suite/reference/ikuncode-kiro.json --direct`：SAME 则直接复用这里的 IQ/知识/上下文；DRIFT 则重测。延迟/稳定性只存档不复用：新站必须和参考同路线（北京服务器 /root/bltest 的 lat.py / soak.py）当天测，或当天顺手给参考也测一遍（约 10 分钟）。",
+ "drift_history": [
+  {
+   "at": "2026-09-25 21:45 CST",
+   "route": "Mac proxy",
+   "opus-5": "11/12 (X6 = relay 空回复替换成中文警告，实际 11/11 作答全对)",
+   "sonnet-5": "9/12 (H6 ✓→✗, X6 ✓→✗; X7 两次都错)",
+   "fingerprint": "一致：input 10 + cache_read 6083–6401 + write 337–526",
+   "verdict": "SAME"
+  }
+ ],
+ "latency_note": "09-24 Mac(Clash) 路线的 30 并发 TLS 失败在 09-25 北京直连不复现（120/120）→ 是路线问题，不是站点常量；对比延迟一律用北京服务器同路线当天数据。"
+}

@@ -1,0 +1,964 @@
+{
+ "name": "ikuncode-glm53flash-20261002",
+ "kind": "glm-openai",
+ "model": "glm-5.3-flash",
+ "base": "https://api.ikuncode.cc/v1",
+ "anth": null,
+ "key_hint": "sk-W6y…NB5t",
+ "frozen_at": "2026-10-02 08:08 -0400",
+ "source": {
+  "run": "glm1002",
+  "dir": "results/glmsuite/glm1002",
+  "route": "Mac + Clash TUN (2026-10-02)"
+ },
+ "note": "2026-10-02 19:30–20:07 北京时间，Mac + Clash TUN，与米醋 glm-5.3-flash 同窗口交错测",
+ "iq_bank": {
+  "path": "suite/iq.ref-20260924.json",
+  "md5": "ad1f46e9f80233a7264d9f01196c9993",
+  "max_tokens": 32000
+ },
+ "summary": {
+  "_model": "glm-5.3-flash",
+  "fp": {
+   "fams": {
+    "other:gxn-xxxxxxxxxx-BxxMxxKxM": 1,
+    "other:xhxtxmpl_xxxxxxxxxxxxxxx": 4,
+    "other:gxn-xxxxxxxxxx-SpDKFxOQg": 1,
+    "other:gxn-xxxxxxxxxx-TsxxxmXkk": 1
+   },
+   "status": {
+    "200": 7
+   },
+   "ok_prompt_tokens": [
+    17
+   ],
+   "usage_keys": [
+    "completion_tokens",
+    "completion_tokens_details",
+    "completion_tokens_details.audio_tokens",
+    "completion_tokens_details.image_tokens",
+    "completion_tokens_details.reasoning_tokens",
+    "cost",
+    "cost_details",
+    "is_byok",
+    "prompt_tokens",
+    "prompt_tokens_details",
+    "prompt_tokens_details.audio_tokens",
+    "prompt_tokens_details.cache_write_tokens",
+    "prompt_tokens_details.cached_tokens",
+    "prompt_tokens_details.video_tokens",
+    "total_tokens"
+   ],
+   "top_keys": [
+    "choices",
+    "created",
+    "id",
+    "model",
+    "object",
+    "usage"
+   ],
+   "stream_keys": [
+    "choices",
+    "created",
+    "id",
+    "model",
+    "object",
+    "usage"
+   ],
+   "reasoning_tokens_reported": true,
+   "cached_field": true,
+   "stream_usage": [
+    true,
+    true,
+    true,
+    false
+   ],
+   "stream_chunks": [
+    6,
+    45,
+    28,
+    4
+   ],
+   "stream_ids": [
+    [
+     "chatcmpl_5c71988f0743438299a8505ef5b49cc9"
+    ],
+    [
+     "chatcmpl_7c13855ed1c4404f96ea82f1e9c3882d"
+    ],
+    [
+     "chatcmpl_76a2c92f876c4b0994e5382e5f4a1a7c"
+    ]
+   ],
+   "hdr": [
+    "cf-ray",
+    "server",
+    "x-new-api-version",
+    "x-oneapi-request-id",
+    "x-request-id"
+   ],
+   "cf_colo": [
+    "LAX"
+   ],
+   "x_request_id_hops": [
+    1
+   ],
+   "sync_el_p50": 1.78,
+   "model_echo": {
+    "glm-5.3-flash": 7
+   },
+   "hdr_sample": {
+    "transfer-encoding": "chunked",
+    "server": "cloudflare",
+    "cache-control": "no-store",
+    "x-gateway-reasoning-effort": "high",
+    "x-gateway-thinking-mode": "enabled",
+    "x-new-api-version": "v1.0.0-rc.41",
+    "x-oneapi-request-id": "202610021200595168465198268d9d60KSjBAq1",
+    "x-request-id": "req_259dec9fabe14bcd845c3285b2ddbcce",
+    "cf-cache-status": "DYNAMIC",
+    "content-encoding": "br",
+    "cf-ray": "a4438cc37f9cf7c1-LAX"
+   },
+   "models": [],
+   "tokenizer_endpoint": 404,
+   "bad_model": "503 HTTP 503 {\"error\":{\"code\":\"model_not_found\",\"message\":\"分组 glm 下模型 glm-5.3-flash-nonexistent 无可用渠道（distributor） (request id: 202610021201141963714008268d9d6DsSQp"
+  },
+  "inject": {
+   "tok_base": [
+    17,
+    17
+   ],
+   "tok_delta": {
+    "zh": [
+     1050,
+     1050
+    ],
+    "digits": [
+     801,
+     801
+    ],
+    "en": [
+     301,
+     301
+    ],
+    "code": [
+     595,
+     595
+    ],
+    "system": [
+     7
+    ]
+   },
+   "sysq": [
+    "No.",
+    "No\n\nThat said, worth noting: if such material *were* present by design, it wouldn't necessarily appear in my view either. What I've described reflects all conversational input available to me for gene",
+    "yes"
+   ],
+   "leak": [
+    "```text\nYou are an AI assistant accessed via an API.\n```",
+    "I'm sorry, but I can't provide that request.Requested content unavailable."
+   ],
+   "identity": [
+    "I am developed by Z.ai, and I am a GLM (General Language Model), part of the GLM-4.6 series.",
+    "I'm developed by Z.ai, and my model name is GLM (General Language Model). \n\nI'm continuously learning and improving through training. Is there something specific about my capabilities or Z.ai's work y"
+   ],
+   "echo": [
+    "ECHO-7f3a https://example.com/a/b?q=1&r=2 | 中文「引号」测试 | emoji 🚀✅ | `rm -rf /tmp/x` | test@example.org | sk-test-00000000deadbeef",
+    "ECHO-7f3a https://example.com/a/b?q=1&r=2 | 中文「引号」测试 | emoji 🚀✅ | `rm -rf /tmp/x` | test@example.org | sk-test-00000000deadbeef"
+   ],
+   "sysobey": [
+    "La capitale du Japon est Tokyo.",
+    "La capitale du Japon est Tokyo."
+   ],
+   "echo_exact": [
+    true,
+    true
+   ],
+   "sysq_pt": [
+    42,
+    42,
+    42
+   ]
+  },
+  "params": {
+   "baseline": {
+    "status": 200,
+    "rc": 807,
+    "rt": 204,
+    "ct": 208,
+    "fin": "stop",
+    "text": "391",
+    "err": "",
+    "tool_id": null,
+    "tool_args": null,
+    "n": 1
+   },
+   "thinking_disabled": {
+    "status": 200,
+    "rc": 113,
+    "rt": 44,
+    "ct": 48,
+    "fin": "stop",
+    "text": "391",
+    "err": "",
+    "tool_id": null,
+    "tool_args": null,
+    "n": 1
+   },
+   "thinking_enabled": {
+    "status": 200,
+    "rc": 120,
+    "rt": 49,
+    "ct": 52,
+    "fin": "stop",
+    "text": "391",
+    "err": "",
+    "tool_id": null,
+    "tool_args": null,
+    "n": 1
+   },
+   "effort_none": {
+    "status": 200,
+    "rc": 123,
+    "rt": 33,
+    "ct": 51,
+    "fin": "stop",
+    "text": "391",
+    "err": "",
+    "tool_id": null,
+    "tool_args": null,
+    "n": 1
+   },
+   "effort_low": {
+    "status": 200,
+    "rc": 88,
+    "rt": 14,
+    "ct": 561,
+    "fin": "stop",
+    "text": " Here's an implementation using the \"expand around center\" technique:\n\n```python",
+    "err": "",
+    "tool_id": null,
+    "tool_args": null,
+    "n": 1
+   },
+   "effort_high": {
+    "status": 200,
+    "rc": 13653,
+    "rt": 4000,
+    "ct": 4000,
+    "fin": "length",
+    "text": "",
+    "err": "",
+    "tool_id": null,
+    "tool_args": null,
+    "n": 1
+   },
+   "effort_max": {
+    "status": 200,
+    "rc": 11975,
+    "rt": 4000,
+    "ct": 4000,
+    "fin": "length",
+    "text": "",
+    "err": "",
+    "tool_id": null,
+    "tool_args": null,
+    "n": 1
+   },
+   "effort_invalid": {
+    "status": 200,
+    "rc": 11,
+    "rt": 7,
+    "ct": 11,
+    "fin": "stop",
+    "text": "391",
+    "err": "",
+    "tool_id": null,
+    "tool_args": null,
+    "n": 1
+   },
+   "max_tokens_999999": {
+    "status": 200,
+    "rc": 136,
+    "rt": 54,
+    "ct": 57,
+    "fin": "stop",
+    "text": "391",
+    "err": "",
+    "tool_id": null,
+    "tool_args": null,
+    "n": 1
+   },
+   "max_tokens_16": {
+    "status": 200,
+    "rc": 44,
+    "rt": 12,
+    "ct": 16,
+    "fin": "length",
+    "text": " 1,2",
+    "err": "",
+    "tool_id": null,
+    "tool_args": null,
+    "n": 1
+   },
+   "max_completion_tokens_16": {
+    "status": 200,
+    "rc": 60,
+    "rt": 16,
+    "ct": 16,
+    "fin": "length",
+    "text": "",
+    "err": "",
+    "tool_id": null,
+    "tool_args": null,
+    "n": 1
+   },
+   "temperature_5": {
+    "status": 400,
+    "rc": null,
+    "rt": null,
+    "ct": null,
+    "fin": null,
+    "text": "",
+    "err": "HTTP 400 {\"error\":{\"message\":\"Upstream: Failed to create stream: inference request failed: failed to generate stream from OpenRouter: failed to invoke model 'z-ai/glm-5.3-flash' with streaming: reques",
+    "tool_id": null,
+    "tool_args": null,
+    "n": null
+   },
+   "temperature_1.5": {
+    "status": 200,
+    "rc": 78,
+    "rt": 20,
+    "ct": 47,
+    "fin": "stop",
+    "text": "391",
+    "err": "",
+    "tool_id": null,
+    "tool_args": null,
+    "n": 1
+   },
+   "stop_5": {
+    "status": 200,
+    "rc": 88,
+    "rt": 20,
+    "ct": 30,
+    "fin": "stop",
+    "text": " 1,2,3,4,",
+    "err": "",
+    "tool_id": null,
+    "tool_args": null,
+    "n": 1
+   },
+   "logprobs": {
+    "status": 200,
+    "rc": 3,
+    "rt": 2,
+    "ct": 6,
+    "fin": "stop",
+    "text": "391",
+    "err": "",
+    "tool_id": null,
+    "tool_args": null,
+    "n": 1
+   },
+   "n_2": {
+    "status": 400,
+    "rc": null,
+    "rt": null,
+    "ct": null,
+    "fin": null,
+    "text": "",
+    "err": "HTTP 400 {\"error\":{\"message\":\"Only n=1 is supported\",\"type\":\"invalid_request_error\",\"param\":\"\",\"code\":null}}",
+    "tool_id": null,
+    "tool_args": null,
+    "n": null
+   },
+   "json_mode": {
+    "status": 200,
+    "rc": 157,
+    "rt": 61,
+    "ct": 69,
+    "fin": "stop",
+    "text": "{\"answer\": 391}",
+    "err": "",
+    "tool_id": null,
+    "tool_args": null,
+    "n": 1
+   },
+   "unknown_field": {
+    "status": 200,
+    "rc": 98,
+    "rt": 45,
+    "ct": 49,
+    "fin": "stop",
+    "text": "391",
+    "err": "",
+    "tool_id": null,
+    "tool_args": null,
+    "n": 1
+   },
+   "tools": {
+    "status": 200,
+    "rc": 154,
+    "rt": 39,
+    "ct": 46,
+    "fin": "tool_calls",
+    "text": "",
+    "err": "",
+    "tool_id": "chatcmpl-tool-a3be35d5ba621b4f",
+    "tool_args": "{\"city\": \"Paris\"}",
+    "n": 1
+   },
+   "tools_stream": {
+    "status": 200,
+    "rc": 0,
+    "rt": 0,
+    "ct": 12,
+    "fin": "tool_calls",
+    "text": "",
+    "err": "",
+    "tool_id": "chatcmpl-tool-bf9a35c07d4249ac",
+    "tool_args": null,
+    "n": null
+   }
+  },
+  "cache": {
+   "ttl300_w0": {
+    "pt": 6572,
+    "cached": 0,
+    "ratio": 0.0,
+    "el": 7.847,
+    "status": 200,
+    "fam": "other:gxn-xxxxxxxxxx-rQoKxqZQx"
+   },
+   "ttl180_w0": {
+    "pt": 6544,
+    "cached": 0,
+    "ratio": 0.0,
+    "el": 11.86,
+    "status": 200,
+    "fam": "other:gxn-xxxxxxxxxx-zwwlRSxjx"
+   },
+   "d8_q0": {
+    "pt": 10239,
+    "cached": 10137,
+    "ratio": 0.99,
+    "el": 14.372,
+    "status": 200,
+    "fam": "other:gxn-xxxxxxxxxx-gLZxSxuvT"
+   },
+   "ttl180_w1": {
+    "pt": 6544,
+    "cached": 0,
+    "ratio": 0.0,
+    "el": 7.185,
+    "status": 200,
+    "fam": "other:gxn-xxxxxxxxxx-SxPMsxDxt"
+   },
+   "d8_q1": {
+    "pt": 10219,
+    "cached": 0,
+    "ratio": 0.0,
+    "el": 4.507,
+    "status": 200,
+    "fam": "other:gxn-xxxxxxxxxx-xGqzxxqWx"
+   },
+   "ttl60_w0": {
+    "pt": 6555,
+    "cached": 0,
+    "ratio": 0.0,
+    "el": 22.35,
+    "status": 200,
+    "fam": "other:gxn-xxxxxxxxxx-ANWxxjhKL"
+   },
+   "ttl60_w1": {
+    "pt": 6555,
+    "cached": 0,
+    "ratio": 0.0,
+    "el": 10.056,
+    "status": 200,
+    "fam": "other:gxn-xxxxxxxxxx-xxjpMxzxm"
+   },
+   "d8_q2": {
+    "pt": 10239,
+    "cached": 10137,
+    "ratio": 0.99,
+    "el": 11.415,
+    "status": 200,
+    "fam": "other:gxn-xxxxxxxxxx-yljSygICX"
+   },
+   "d8_otherq": {
+    "pt": 10222,
+    "cached": 0,
+    "ratio": 0.0,
+    "el": 6.837,
+    "status": 200,
+    "fam": "other:gxn-xxxxxxxxxx-xkxDExhWx"
+   },
+   "d20_q0": {
+    "pt": 20701,
+    "cached": 0,
+    "ratio": 0.0,
+    "el": 16.727,
+    "status": 200,
+    "fam": "other:gxn-xxxxxxxxxx-lDprgxBQn"
+   },
+   "d20_q1": {
+    "pt": 20701,
+    "cached": 0,
+    "ratio": 0.0,
+    "el": 8.291,
+    "status": 200,
+    "fam": "other:gxn-xxxxxxxxxx-ZgBxmoSxy"
+   },
+   "ttl300_w1": {
+    "pt": 6590,
+    "cached": 6525,
+    "ratio": 0.99,
+    "el": 71.079,
+    "status": 200,
+    "fam": "other:gxn-xxxxxxxxxx-xNxuHimAX"
+   },
+   "ttl60_probe": {
+    "pt": 6555,
+    "cached": 2304,
+    "ratio": 0.351,
+    "el": 7.617,
+    "status": 200,
+    "fam": "other:gxn-xxxxxxxxxx-xPOmjxWBO"
+   },
+   "mt_0": {
+    "pt": 9794,
+    "cached": 9599,
+    "ratio": 0.98,
+    "el": 31.646,
+    "status": 200,
+    "fam": "other:gxn-xxxxxxxxxx-XrKJLxxDj"
+   },
+   "mt_1": {
+    "pt": 9811,
+    "cached": 0,
+    "ratio": 0.0,
+    "el": 2.606,
+    "status": 200,
+    "fam": "other:gxn-xxxxxxxxxx-xqIpxoQxu"
+   },
+   "mt_2": {
+    "pt": 9925,
+    "cached": 8437,
+    "ratio": 0.85,
+    "el": 38.927,
+    "status": 200,
+    "fam": "other:gxn-xxxxxxxxxx-FEExpuQxw"
+   },
+   "ttl180_probe": {
+    "pt": 6544,
+    "cached": 0,
+    "ratio": 0.0,
+    "el": 7.268,
+    "status": 200,
+    "fam": "other:gxn-xxxxxxxxxx-pGkyxxlxh"
+   },
+   "ttl300_probe": {
+    "pt": 6590,
+    "cached": 6261,
+    "ratio": 0.95,
+    "el": 23.014,
+    "status": 200,
+    "fam": "other:gxn-xxxxxxxxxx-lWBpWxGwx"
+   }
+  },
+  "cachehit": {
+   "burst_hits": "3/5",
+   "burst_ratio_mean": 0.568,
+   "gaps": {
+    "10": [
+     [
+      24.1,
+      false
+     ]
+    ],
+    "30": [
+     [
+      38.8,
+      false
+     ]
+    ],
+    "60": [
+     [
+      79.0,
+      true
+     ]
+    ],
+    "120": [
+     [
+      128.6,
+      false
+     ]
+    ],
+    "240": [
+     [
+      266.8,
+      false
+     ]
+    ]
+   },
+   "fams": {
+    "other:gxn-xxxxxxxxxx-xkxOxzICG": 1,
+    "other:gxn-xxxxxxxxxx-oiYDGxMQm": 1,
+    "other:gxn-xxxxxxxxxx-xkwqxxxxx": 1,
+    "other:gxn-xxxxxxxxxx-KJDKxUoGx": 1,
+    "other:gxn-xxxxxxxxxx-xytXkrJrU": 1,
+    "other:gxn-xxxxxxxxxx-nqBxvxWFw": 1,
+    "other:gxn-xxxxxxxxxx-UFxtxqjnB": 1,
+    "other:gxn-xxxxxxxxxx-TNAPxQxxx": 1,
+    "other:gxn-xxxxxxxxxx-nVUxxYxLo": 1,
+    "other:gxn-xxxxxxxxxx-NxKGxTxYx": 1,
+    "other:gxn-xxxxxxxxxx-MxxxixwPx": 1
+   }
+  },
+  "lat": {
+   "conc": {
+    "n": 30,
+    "ok": 30,
+    "err_rate": 0.0,
+    "empty": 0,
+    "hung": 0,
+    "errs": [],
+    "ttft_p50": 3.6,
+    "ttft_p90": 5.03,
+    "ttft_p99": 8.17,
+    "ttfc_p50": 3.76,
+    "ttfc_p99": 8.43,
+    "total_p50": 3.77,
+    "total_p90": 5.54,
+    "total_p99": 8.44,
+    "total_max": 8.438,
+    "fams": {
+     "other:xhxtxmpl_xxxxxxxxxxxxxxx": 30
+    }
+   },
+   "seq": {
+    "n": 60,
+    "ok": 60,
+    "err_rate": 0.0,
+    "empty": 0,
+    "hung": 0,
+    "errs": [],
+    "ttft_p50": 1.83,
+    "ttft_p90": 3.75,
+    "ttft_p99": 8.21,
+    "ttfc_p50": 1.98,
+    "ttfc_p99": 8.69,
+    "total_p50": 1.99,
+    "total_p90": 4.24,
+    "total_p99": 8.71,
+    "total_max": 8.866,
+    "fams": {
+     "other:xhxtxmpl_xxxxxxxxxxxxxxx": 60
+    }
+   },
+   "conc_waves": {
+    "0": {
+     "n": 30,
+     "ok": 30,
+     "err_rate": 0.0,
+     "empty": 0,
+     "hung": 0,
+     "errs": [],
+     "ttft_p50": 3.6,
+     "ttft_p90": 5.03,
+     "ttft_p99": 8.17,
+     "ttfc_p50": 3.76,
+     "ttfc_p99": 8.43,
+     "total_p50": 3.77,
+     "total_p90": 5.54,
+     "total_p99": 8.44,
+     "total_max": 8.438,
+     "fams": {
+      "other:xhxtxmpl_xxxxxxxxxxxxxxx": 30
+     }
+    }
+   }
+  },
+  "iq": {
+   "tag": "default",
+   "n": 9,
+   "correct": 7,
+   "tiers": {
+    "reason": "4/5",
+    "hard": "3/3"
+   },
+   "correct_of_answered": "7/8",
+   "retried_items": [
+    [
+     "R2",
+     0,
+     2
+    ]
+   ],
+   "glitches": 1,
+   "truncated": 0,
+   "rt_p50": 803,
+   "el_p50": 46.64,
+   "el_max": 182.721,
+   "fams": {
+    "other:xhxtxmpl_xxxxxxxxxxxxxxx": 9
+   },
+   "items": {
+    "R7": {
+     "correct": [
+      true
+     ],
+     "got": [
+      "397"
+     ],
+     "fin": [
+      "stop"
+     ],
+     "rt": [
+      2124
+     ],
+     "el": [
+      46.643
+     ],
+     "err": []
+    },
+    "R9": {
+     "correct": [
+      true
+     ],
+     "got": [
+      "10 ; [0, 2, 4] ; [3, 3, 3] ; [6, 5, 5] ;    25|ab |5.21 ; -4"
+     ],
+     "fin": [
+      "stop"
+     ],
+     "rt": [
+      3770
+     ],
+     "el": [
+      74.512
+     ],
+     "err": []
+    },
+    "R10": {
+     "correct": [
+      false
+     ],
+     "got": [
+      "[\"H\", \"Z\", \"J\", \"K\", \"A\", \"C\", \"E\", \"D\", \"F\", \"G\", \"B\"]"
+     ],
+     "fin": [
+      "stop"
+     ],
+     "rt": [
+      263
+     ],
+     "el": [
+      14.525
+     ],
+     "err": []
+    },
+    "H1": {
+     "correct": [
+      true
+     ],
+     "got": [
+      "3"
+     ],
+     "fin": [
+      "stop"
+     ],
+     "rt": [
+      803
+     ],
+     "el": [
+      16.773
+     ],
+     "err": []
+    },
+    "R4": {
+     "correct": [
+      true
+     ],
+     "got": [
+      "10"
+     ],
+     "fin": [
+      "stop"
+     ],
+     "rt": [
+      8830
+     ],
+     "el": [
+      168.389
+     ],
+     "err": []
+    },
+    "R3": {
+     "correct": [
+      false
+     ],
+     "got": [
+      "6stu9wkWe need answer solve. Need careful. Start \"sgjdxghj9u"
+     ],
+     "fin": [
+      null
+     ],
+     "rt": [
+      0
+     ],
+     "el": [
+      182.721
+     ],
+     "err": [
+      "stream error {\"error\": {\"type\": \"timeout_error\", \"message\": "
+     ]
+    },
+    "H3": {
+     "correct": [
+      true
+     ],
+     "got": [
+      "80"
+     ],
+     "fin": [
+      "stop"
+     ],
+     "rt": [
+      367
+     ],
+     "el": [
+      28.984
+     ],
+     "err": []
+    },
+    "H5": {
+     "correct": [
+      true
+     ],
+     "got": [
+      "10080"
+     ],
+     "fin": [
+      "stop"
+     ],
+     "rt": [
+      2301
+     ],
+     "el": [
+      51.136
+     ],
+     "err": []
+    },
+    "R2": {
+     "correct": [
+      true
+     ],
+     "got": [
+      "1010101010101010"
+     ],
+     "fin": [
+      "stop"
+     ],
+     "rt": [
+      5241
+     ],
+     "el": [
+      145.839
+     ],
+     "err": []
+    }
+   }
+  }
+ },
+ "fingerprint": {
+  "id_families": [
+   "other:gxn-xxxxxxxxxx-BxxMxxKxM",
+   "other:xhxtxmpl_xxxxxxxxxxxxxxx",
+   "other:gxn-xxxxxxxxxx-SpDKFxOQg",
+   "other:gxn-xxxxxxxxxx-TsxxxmXkk"
+  ],
+  "usage_keys": [
+   "completion_tokens",
+   "completion_tokens_details",
+   "completion_tokens_details.audio_tokens",
+   "completion_tokens_details.image_tokens",
+   "completion_tokens_details.reasoning_tokens",
+   "cost",
+   "cost_details",
+   "is_byok",
+   "prompt_tokens",
+   "prompt_tokens_details",
+   "prompt_tokens_details.audio_tokens",
+   "prompt_tokens_details.cache_write_tokens",
+   "prompt_tokens_details.cached_tokens",
+   "prompt_tokens_details.video_tokens",
+   "total_tokens"
+  ],
+  "ok_prompt_tokens": [
+   17
+  ],
+  "tok_delta": {
+   "zh": 1050,
+   "digits": 801,
+   "en": 301,
+   "code": 595,
+   "system": 7
+  },
+  "param_status": {
+   "baseline": 200,
+   "thinking_disabled": 200,
+   "thinking_enabled": 200,
+   "effort_none": 200,
+   "effort_low": 200,
+   "effort_high": 200,
+   "effort_max": 200,
+   "effort_invalid": 200,
+   "max_tokens_999999": 200,
+   "max_tokens_16": 200,
+   "max_completion_tokens_16": 200,
+   "temperature_5": 400,
+   "temperature_1.5": 200,
+   "stop_5": 200,
+   "logprobs": 200,
+   "n_2": 400,
+   "json_mode": 200,
+   "unknown_field": 200,
+   "tools": 200,
+   "tools_stream": 200
+  }
+ },
+ "drift": {
+  "items": [
+   "H5",
+   "R10",
+   "R4",
+   "R7",
+   "X10",
+   "X12",
+   "X2",
+   "X4",
+   "X5",
+   "X6"
+  ],
+  "max_drop": 2,
+  "why": "correct on every repeat in the frozen run and median < 150 s; a thinking-less or different model drops several of these"
+ },
+ "how_to_use": "先跑 `KEY_REF=<key> python3 glmsuite.py refcheck suite/reference/ikuncode-glm53flash-20261002.json` 查漂移：SAME 复用智力/知识/分词/参数指纹；DRIFT 先重测。延迟/稳定性/缓存 TTL 只按同路线同日比较（北京服务器 /root/glmtest），不当常量复用。",
+ "what_it_is": "ikuncode glm 分组 glm-5.3-flash（2026-10-02 重测）：接入层已换成 OpenRouter 风格网关（id gen-<ts>-<20位>、usage 带 cost/is_byok/cache_write_tokens、工具 id chatcmpl-tool-*），背后多个供应商轮换；分词增量与 09-26 冻结逐位一致（1050/801/301），模型仍是 GLM-5.3-Flash。",
+ "caveats": [
+  "thinking:disabled 和 max_tokens=999999 现在都 200（09-26 是 400），关思考仍被忽略",
+  "缓存跨供应商不共享：同一前缀重复发只有约 4 成命中（09-26 为 3 分钟内 100%）",
+  "智力只跑了 9 题（7/9），完整分数沿用 09-26 冻结的 51/54；refcheck 漂移题 9/10 通过",
+  "延迟是 Mac + Clash TUN 路线，只做同窗口横向比较"
+ ],
+ "iq_full_from": {
+  "ref": "suite/reference/ikuncode-glm53flash.json",
+  "frozen_at": "2026-09-25 13:58 -0400",
+  "correct": 51,
+  "n": 54
+ }
+}

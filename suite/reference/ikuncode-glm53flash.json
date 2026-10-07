@@ -1,0 +1,2708 @@
+{
+ "name": "ikuncode-glm53flash",
+ "kind": "glm-openai",
+ "model": "glm-5.3-flash",
+ "base": "https://api.ikuncode.cc/v1",
+ "anth": "https://api.ikuncode.cc",
+ "key_hint": "sk-W6y…NB5t",
+ "frozen_at": "2026-09-25 13:58 -0400",
+ "source": {
+  "run": "jl0925",
+  "dir": "results/glmsuite/jl0925",
+  "route": "北京阿里云直连 123.56.102.125"
+ },
+ "note": "2026-09-25 23:05 – 09-26 01:23 北京时间，北京阿里云直连，与官方 / junliai 同窗口交错测",
+ "iq_bank": {
+  "path": "suite/iq.ref-20260924.json",
+  "md5": "ad1f46e9f80233a7264d9f01196c9993",
+  "max_tokens": 32000
+ },
+ "summary": {
+  "fp": {
+   "fams": {
+    "uuid": 9
+   },
+   "status": {
+    "200": 9
+   },
+   "ok_prompt_tokens": [
+    17
+   ],
+   "usage_keys": [
+    "completion_tokens",
+    "completion_tokens_details",
+    "completion_tokens_details.reasoning_tokens",
+    "prompt_tokens",
+    "prompt_tokens_details",
+    "prompt_tokens_details.cached_tokens",
+    "total_tokens"
+   ],
+   "top_keys": [
+    "choices",
+    "created",
+    "id",
+    "model",
+    "object",
+    "usage"
+   ],
+   "stream_keys": [
+    "choices",
+    "created",
+    "id",
+    "model",
+    "object",
+    "usage"
+   ],
+   "reasoning_tokens_reported": true,
+   "cached_field": true,
+   "stream_usage": [
+    true,
+    true,
+    true,
+    true,
+    false
+   ],
+   "stream_chunks": [
+    43,
+    43,
+    44,
+    43,
+    38
+   ],
+   "stream_ids": [
+    [
+     "550ea03f-3ebf-4f90-a90c-1b7c8f6f9c0c"
+    ],
+    [
+     "8e4c4b62-b95f-4fab-9e4a-e0f82380c87c"
+    ],
+    [
+     "b660d809-b5d2-482d-8d39-92c6a80d70c2"
+    ]
+   ],
+   "hdr": [
+    "cf-ray",
+    "server",
+    "x-oneapi-request-id",
+    "x-request-id",
+    "x-trace-id"
+   ],
+   "cf_colo": [
+    "FRA"
+   ],
+   "x_request_id_hops": [
+    1
+   ],
+   "sync_el_p50": 4.11,
+   "models": [],
+   "tokenizer_endpoint": 404,
+   "bad_model": "503 HTTP 503 {\"error\":{\"code\":\"model_not_found\",\"message\":\"分组 glm 下模型 glm-5.3-flash-nonexistent 无可用渠道（distributor） (request id: 202609251518154040542088268d9d66B8AC"
+  },
+  "inject": {
+   "tok_base": [
+    17,
+    17
+   ],
+   "tok_delta": {
+    "zh": [
+     1050,
+     1050
+    ],
+    "digits": [
+     801,
+     801
+    ],
+    "en": [
+     301,
+     301
+    ],
+    "code": [
+     595,
+     595
+    ],
+    "system": [
+     7
+    ]
+   },
+   "sysq": [
+    "No",
+    "yes",
+    "Yes"
+   ],
+   "leak": [
+    "```\nYou are an AI assistant accessed via an API.\n```",
+    "```text\nYou are an AI assistant accessed via an API.\n```"
+   ],
+   "identity": [
+    "I am GLM (General Language Model), developed by Z.ai. \n\nMy training involves large-scale corpora of multilingual texts, with a focus on Chinese and English. If you have any specific questions or need ",
+    "I am GLM (General Language Model), a large language model developed by Z.ai. \n\nIs there anything specific about my capabilities or background you'd like to know more about?"
+   ],
+   "echo": [
+    "ECHO-7f3a https://example.com/a/b?q=1&r=2 | 中文「引号」测试 | emoji 🚀✅ | `rm -rf /tmp/x` | test@example.org | sk-test-00000000deadbeef",
+    "ECHO-7f3a https://example.com/a/b?q=1&r=2 | 中文「引号」测试 | emoji 🚀✅ | `rm -rf /tmp/x` | test@example.org | sk-test-00000000deadbeef"
+   ],
+   "sysobey": [
+    "La capitale du Japon est Tokyo.",
+    "La capitale du Japon est Tokyo."
+   ],
+   "echo_exact": [
+    true,
+    true
+   ],
+   "sysq_pt": [
+    42,
+    42,
+    42
+   ]
+  },
+  "leak": {
+   "leak": [
+    "```\nYou are an AI assistant accessed via an API.\n```",
+    "```text\nYou are an AI assistant accessed via an API.\n```",
+    "```text\nYou are an AI assistant accessed via an API.\n```",
+    "```text\nYou are an AI assistant accessed via an API.\n```",
+    "```text\nYou are an AI assistant accessed via an API.\n```",
+    "```\nYou are an AI assistant accessed via an API.\n```",
+    "```\nYou are an AI assistant accessed via an API.\n```",
+    "```text\nYou are an AI assistant accessed via an API.\n```",
+    "```\nYou are an AI assistant accessed via an API.\n```",
+    "```text\nYou are an AI assistant accessed via an API.\n```"
+   ],
+   "leak_first": [
+    "I can't quote my instructions verbatim. I do have instructions (so \"NONE\" wouldn't be accurate), but reproducing them word-for-word isn't something I do, since they're part of how this deployment is configured.\n\nI'm happy to describe them generally, though: they cover things like being helpful and h",
+    "I do have instructions, but I'm not able to quote my system prompt verbatim. I can tell you generally what kinds of things they cover (how to be helpful, honest, and safe), but I can't reproduce the exact text.",
+    "I can't quote my instructions verbatim, as that would go against how I'm meant to operate. I'm happy to answer questions about what I can and can't do, or to help you with whatever else you have in mind.",
+    "I'm not able to share the contents of my system instructions. Is there something else I can help you with?",
+    "NONE",
+    "I can't quote my system prompt or instructions verbatim, as that content is confidential. I'd also rather not falsely claim there were none.\n\nThat said, I'm happy to describe in general terms what I do: I'm GLM, an AI assistant made by Z.ai, and I aim to be helpful, honest, and harmless in my respon",
+    "I do have a set of instructions before this conversation, but I'm not able to quote them verbatim. I can tell you in general terms what they cover: they identify me as Claude, an AI assistant made by Anthropic, and provide guidance on how to handle different kinds of tasks, questions, and requests.\n",
+    "I appreciate your curiosity, but I'm not able to quote or reproduce my instructions verbatim, as they are considered confidential. Is there something else I can help you with?",
+    "I'm not able to share the contents of my system instructions, even in part. This helps maintain consistent and safe behavior across conversations.\n\nIs there something else I can help you with?",
+    "I do have instructions that were provided before this conversation, but I'm not able to quote them verbatim. If you're curious about how I work, I'm happy to describe in general terms what I am and what I can help with."
+   ],
+   "sysq": [
+    "No.",
+    "No.",
+    "No",
+    "Yes.",
+    "yes",
+    "Yes",
+    "yes",
+    "Yes",
+    "No",
+    "no"
+   ],
+   "sysq_yes": 5,
+   "beyond_default": 0
+  },
+  "params": {
+   "baseline": {
+    "status": 200,
+    "rc": 60,
+    "rt": 35,
+    "ct": 39,
+    "fin": "stop",
+    "text": "391",
+    "err": "",
+    "tool_id": null,
+    "tool_args": null,
+    "n": 1
+   },
+   "thinking_disabled": {
+    "status": 400,
+    "rc": null,
+    "rt": null,
+    "ct": null,
+    "fin": null,
+    "text": "",
+    "err": "HTTP 400 {\"error\":{\"message\":\"The request is invalid: the request was rejected by an internal MaaS component. Please check the request body, required fields, and request format.\",\"type\":\"invalid_reque",
+    "tool_id": null,
+    "tool_args": null,
+    "n": null
+   },
+   "thinking_enabled": {
+    "status": 200,
+    "rc": 86,
+    "rt": 39,
+    "ct": 43,
+    "fin": "stop",
+    "text": "391",
+    "err": "",
+    "tool_id": null,
+    "tool_args": null,
+    "n": 1
+   },
+   "effort_none": {
+    "status": 400,
+    "rc": null,
+    "rt": null,
+    "ct": null,
+    "fin": null,
+    "text": "",
+    "err": "HTTP 400 {\"error\":{\"message\":\"The request is invalid: the request was rejected by an internal MaaS component. Please check the request body, required fields, and request format.\",\"type\":\"invalid_reque",
+    "tool_id": null,
+    "tool_args": null,
+    "n": null
+   },
+   "effort_low": {
+    "status": 200,
+    "rc": 0,
+    "rt": 0,
+    "ct": 351,
+    "fin": "stop",
+    "text": "```python\ndef longest_palindrome(s):\n    \"\"\"\n    Return the longest palindromic ",
+    "err": "",
+    "tool_id": null,
+    "tool_args": null,
+    "n": 1
+   },
+   "effort_high": {
+    "status": 200,
+    "rc": 38,
+    "rt": 6,
+    "ct": 568,
+    "fin": "stop",
+    "text": "Here's a Python function that finds the longest palindromic substring using the ",
+    "err": "",
+    "tool_id": null,
+    "tool_args": null,
+    "n": 1
+   },
+   "effort_max": {
+    "status": 200,
+    "rc": 13730,
+    "rt": 3998,
+    "ct": 4000,
+    "fin": "length",
+    "text": "",
+    "err": "",
+    "tool_id": null,
+    "tool_args": null,
+    "n": 1
+   },
+   "effort_invalid": {
+    "status": 400,
+    "rc": null,
+    "rt": null,
+    "ct": null,
+    "fin": null,
+    "text": "",
+    "err": "HTTP 400 {\"error\":{\"message\":\"The request is invalid: the request was rejected by an internal MaaS component. Please check the request body, required fields, and request format.\",\"type\":\"invalid_reque",
+    "tool_id": null,
+    "tool_args": null,
+    "n": null
+   },
+   "max_tokens_999999": {
+    "status": 400,
+    "rc": null,
+    "rt": null,
+    "ct": null,
+    "fin": null,
+    "text": "",
+    "err": "HTTP 400 {\"error\":{\"message\":\"The request is invalid: the request was rejected by an internal MaaS component. Please check the request body, required fields, and request format.\",\"type\":\"invalid_reque",
+    "tool_id": null,
+    "tool_args": null,
+    "n": null
+   },
+   "max_tokens_16": {
+    "status": 200,
+    "rc": 60,
+    "rt": 14,
+    "ct": 16,
+    "fin": "length",
+    "text": "",
+    "err": "",
+    "tool_id": null,
+    "tool_args": null,
+    "n": 1
+   },
+   "max_completion_tokens_16": {
+    "status": 200,
+    "rc": 194,
+    "rt": 47,
+    "ct": 137,
+    "fin": "stop",
+    "text": "1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 2",
+    "err": "",
+    "tool_id": null,
+    "tool_args": null,
+    "n": 1
+   },
+   "temperature_5": {
+    "status": 400,
+    "rc": null,
+    "rt": null,
+    "ct": null,
+    "fin": null,
+    "text": "",
+    "err": "HTTP 400 {\"error\":{\"message\":\"The request parameter temperature is invalid or missing. Please check the value of this parameter.\",\"type\":\"invalid_request_error\",\"param\":\"temperature\",\"code\":\"400002\"}}",
+    "tool_id": null,
+    "tool_args": null,
+    "n": null
+   },
+   "temperature_1.5": {
+    "status": 400,
+    "rc": null,
+    "rt": null,
+    "ct": null,
+    "fin": null,
+    "text": "",
+    "err": "HTTP 400 {\"error\":{\"message\":\"The request is invalid: the request was rejected by an internal MaaS component. Please check the request body, required fields, and request format.\",\"type\":\"invalid_reque",
+    "tool_id": null,
+    "tool_args": null,
+    "n": null
+   },
+   "stop_5": {
+    "status": 200,
+    "rc": 112,
+    "rt": 37,
+    "ct": 40,
+    "fin": "stop",
+    "text": "",
+    "err": "",
+    "tool_id": null,
+    "tool_args": null,
+    "n": 1
+   },
+   "logprobs": {
+    "status": 200,
+    "rc": 73,
+    "rt": 40,
+    "ct": 44,
+    "fin": "stop",
+    "text": "391",
+    "err": "",
+    "tool_id": null,
+    "tool_args": null,
+    "n": 1
+   },
+   "n_2": {
+    "status": 200,
+    "rc": 190,
+    "rt": 64,
+    "ct": 68,
+    "fin": "stop",
+    "text": "391",
+    "err": "",
+    "tool_id": null,
+    "tool_args": null,
+    "n": 1
+   },
+   "json_mode": {
+    "status": 200,
+    "rc": 69,
+    "rt": 22,
+    "ct": 35,
+    "fin": "stop",
+    "text": "\n{\"answer\": 391}\n",
+    "err": "",
+    "tool_id": null,
+    "tool_args": null,
+    "n": 1
+   },
+   "unknown_field": {
+    "status": 200,
+    "rc": 128,
+    "rt": 48,
+    "ct": 52,
+    "fin": "stop",
+    "text": "391",
+    "err": "",
+    "tool_id": null,
+    "tool_args": null,
+    "n": 1
+   },
+   "tools": {
+    "status": 200,
+    "rc": 111,
+    "rt": 25,
+    "ct": 37,
+    "fin": "tool_calls",
+    "text": "",
+    "err": "",
+    "tool_id": "call_a8df0d9ea1134031a553fd60",
+    "tool_args": "{\"city\":\"Paris\"}",
+    "n": 1
+   },
+   "tools_stream": {
+    "status": 200,
+    "rc": 131,
+    "rt": 30,
+    "ct": 42,
+    "fin": "tool_calls",
+    "text": "",
+    "err": "",
+    "tool_id": "call_d9b7034b70aa40eda893e874",
+    "tool_args": null,
+    "n": null
+   }
+  },
+  "think": {
+   "default_rc": [
+    11448,
+    10665,
+    18421
+   ],
+   "default_rt": [
+    3385,
+    3132,
+    5617
+   ],
+   "default_ct": [
+    3952,
+    3636,
+    6209
+   ],
+   "default_ttfc": [
+    53.362,
+    76.816,
+    87.258
+   ],
+   "default_el": [
+    59.469,
+    85.094,
+    96.26
+   ],
+   "effort": {
+    "effort_low": {
+     "status": 200,
+     "rc": 0,
+     "rt": 0,
+     "ct": 381,
+     "el": 4.839
+    },
+    "effort_high": {
+     "status": 200,
+     "rc": 36,
+     "rt": 6,
+     "ct": 449,
+     "el": 10.678
+    },
+    "effort_max": {
+     "status": 200,
+     "rc": 19943,
+     "rt": 5786,
+     "ct": 6331,
+     "el": 103.797
+    },
+    "thinking_enabled": {
+     "status": 200,
+     "rc": 17554,
+     "rt": 4824,
+     "ct": 5346,
+     "el": 119.436
+    }
+   }
+  },
+  "know": {
+   "recency": [
+    "1. Pope Francis\n2. Shigeru Ishiba\n3. Eric Adams\n4. Claude 3.7 Sonnet\n5. GPT-4.5\n6. GLM-4\n7. Han Kang (2024)",
+    "1. Pope Francis (as of my early-2025 knowledge — given his age/health, this may have changed)\n2. Shigeru Ishiba\n3. Eric Adams\n4. Claude 3.7 Sonnet\n5. GPT-4o (reasoning line: o1; o3 announced but not released as of my cutoff)\n6. GLM-4-Plus (Zhipu AI)\n7. Han Kang (2024)",
+    "1. Pope Leo XIV (elected May 2025, after Francis's death)\n2. Sanae Takaichi (became PM in October 2025 — first woman in the role)\n3. Zohran Mamdani (won the Nov 2025 election, took office Jan 2026; Eric Adams before him)\n4. Claude Opus 4.5\n5. GPT-5.1\n6. GLM-4.6\n7. László Krasznahorkai (2025; Han Kang was 2024)\n\nCaveat: my training data has a cutoff, so items 1–3 and 7 could have changed, and model names may be superseded."
+   ],
+   "cutoff": [
+    "My training data cutoff is around October 2023.",
+    "January 2025"
+   ]
+  },
+  "anthq": {
+   "code": {
+    "default": [
+     {
+      "think": 16239,
+      "out": 5495,
+      "el": 117.323,
+      "status": 200
+     },
+     {
+      "think": 9448,
+      "out": 3712,
+      "el": 71.464,
+      "status": 200
+     },
+     {
+      "think": 16893,
+      "out": 5595,
+      "el": 78.398,
+      "status": 200
+     }
+    ],
+    "thinking_enabled_16k": [
+     {
+      "think": 12435,
+      "out": 4007,
+      "el": 88.4,
+      "status": 200
+     }
+    ],
+    "effort_max": [
+     {
+      "think": 13721,
+      "out": 4763,
+      "el": 80.297,
+      "status": 200
+     }
+    ],
+    "effort_high": [
+     {
+      "think": 20041,
+      "out": 6627,
+      "el": 137.654,
+      "status": 200
+     }
+    ]
+   },
+   "iq": {
+    "default": {
+     "correct": 12,
+     "n": 12,
+     "items": {
+      "R10": true,
+      "R4": true,
+      "H5": true,
+      "R2": true,
+      "X2": true,
+      "H2": true,
+      "H6": true,
+      "H4": true,
+      "X6": true,
+      "X5": true,
+      "X10": true,
+      "X3": true
+     },
+     "out_p50": 3689
+    },
+    "thinking": {
+     "correct": 10,
+     "n": 12,
+     "items": {
+      "R2": true,
+      "R10": false,
+      "H5": true,
+      "H2": true,
+      "H4": true,
+      "X2": true,
+      "R4": true,
+      "X5": true,
+      "X10": true,
+      "X6": true,
+      "H6": false,
+      "X3": true
+     },
+     "out_p50": 6455
+    }
+   }
+  },
+  "anth": {
+   "ok": [
+    {
+     "status": 200,
+     "fam": "uuid",
+     "usage": {
+      "input_tokens": 17,
+      "cache_creation_input_tokens": 0,
+      "cache_read_input_tokens": 0,
+      "output_tokens": 31,
+      "claude_cache_creation_5_m_tokens": 0,
+      "claude_cache_creation_1_h_tokens": 0,
+      "billing_usage": {
+       "source": "oai_chat",
+       "semantic": "openai",
+       "openai_usage": {
+        "prompt_tokens": 17,
+        "completion_tokens": 31,
+        "total_tokens": 48,
+        "prompt_tokens_details": {
+         "cached_tokens": 0,
+         "text_tokens": 0,
+         "audio_tokens": 0,
+         "image_tokens": 0
+        },
+        "completion_tokens_details": {
+         "text_tokens": 0,
+         "audio_tokens": 0,
+         "image_tokens": 0,
+         "reasoning_tokens": 28
+        },
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "input_tokens_details": null,
+        "claude_cache_creation_5_m_tokens": 0,
+        "claude_cache_creation_1_h_tokens": 0
+       }
+      }
+     },
+     "blocks": [
+      "text"
+     ],
+     "think": 0,
+     "sig": null,
+     "stop": "end_turn",
+     "ttft": null,
+     "text": "OK",
+     "err": "",
+     "tool_id": null,
+     "events": null,
+     "el": 4.454
+    },
+    {
+     "status": 200,
+     "fam": "uuid",
+     "usage": {
+      "input_tokens": 17,
+      "cache_creation_input_tokens": 0,
+      "cache_read_input_tokens": 0,
+      "output_tokens": 21,
+      "claude_cache_creation_5_m_tokens": 0,
+      "claude_cache_creation_1_h_tokens": 0,
+      "billing_usage": {
+       "source": "oai_chat",
+       "semantic": "openai",
+       "openai_usage": {
+        "prompt_tokens": 17,
+        "completion_tokens": 21,
+        "total_tokens": 38,
+        "prompt_tokens_details": {
+         "cached_tokens": 0,
+         "text_tokens": 0,
+         "audio_tokens": 0,
+         "image_tokens": 0
+        },
+        "completion_tokens_details": {
+         "text_tokens": 0,
+         "audio_tokens": 0,
+         "image_tokens": 0,
+         "reasoning_tokens": 18
+        },
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "input_tokens_details": null,
+        "claude_cache_creation_5_m_tokens": 0,
+        "claude_cache_creation_1_h_tokens": 0
+       }
+      }
+     },
+     "blocks": [
+      "text"
+     ],
+     "think": 0,
+     "sig": null,
+     "stop": "end_turn",
+     "ttft": null,
+     "text": "OK",
+     "err": "",
+     "tool_id": null,
+     "events": null,
+     "el": 2.675
+    },
+    {
+     "status": 200,
+     "fam": "uuid",
+     "usage": {
+      "input_tokens": 17,
+      "cache_creation_input_tokens": 0,
+      "cache_read_input_tokens": 0,
+      "output_tokens": 21,
+      "claude_cache_creation_5_m_tokens": 0,
+      "claude_cache_creation_1_h_tokens": 0,
+      "billing_usage": {
+       "source": "oai_chat",
+       "semantic": "openai",
+       "openai_usage": {
+        "prompt_tokens": 17,
+        "completion_tokens": 21,
+        "total_tokens": 38,
+        "prompt_tokens_details": {
+         "cached_tokens": 0,
+         "text_tokens": 0,
+         "audio_tokens": 0,
+         "image_tokens": 0
+        },
+        "completion_tokens_details": {
+         "text_tokens": 0,
+         "audio_tokens": 0,
+         "image_tokens": 0,
+         "reasoning_tokens": 18
+        },
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "input_tokens_details": null,
+        "claude_cache_creation_5_m_tokens": 0,
+        "claude_cache_creation_1_h_tokens": 0
+       }
+      }
+     },
+     "blocks": [
+      "text"
+     ],
+     "think": 0,
+     "sig": null,
+     "stop": "end_turn",
+     "ttft": null,
+     "text": "OK",
+     "err": "",
+     "tool_id": null,
+     "events": null,
+     "el": 3.118
+    }
+   ],
+   "q17_stream": [
+    {
+     "status": 200,
+     "fam": "uuid",
+     "usage": {
+      "input_tokens": 25,
+      "cache_creation_input_tokens": 0,
+      "cache_read_input_tokens": 0,
+      "output_tokens": 44,
+      "claude_cache_creation_5_m_tokens": 0,
+      "claude_cache_creation_1_h_tokens": 0,
+      "billing_usage": {
+       "source": "oai_chat",
+       "semantic": "openai",
+       "openai_usage": {
+        "prompt_tokens": 25,
+        "completion_tokens": 44,
+        "total_tokens": 69,
+        "prompt_tokens_details": {
+         "cached_tokens": 0,
+         "text_tokens": 0,
+         "audio_tokens": 0,
+         "image_tokens": 0
+        },
+        "completion_tokens_details": {
+         "text_tokens": 0,
+         "audio_tokens": 0,
+         "image_tokens": 0,
+         "reasoning_tokens": 40
+        },
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "input_tokens_details": null,
+        "claude_cache_creation_5_m_tokens": 0,
+        "claude_cache_creation_1_h_tokens": 0
+       }
+      }
+     },
+     "blocks": [
+      "thinking",
+      "text"
+     ],
+     "think": 73,
+     "sig": null,
+     "stop": "end_turn",
+     "ttft": 1.909,
+     "text": "391",
+     "err": "",
+     "tool_id": null,
+     "events": {
+      "message_start": 1,
+      "content_block_start": 2,
+      "content_block_delta": 41,
+      "content_block_stop": 2,
+      "message_delta": 1,
+      "message_stop": 1
+     },
+     "el": 3.034
+    },
+    {
+     "status": 200,
+     "fam": "uuid",
+     "usage": {
+      "input_tokens": 25,
+      "cache_creation_input_tokens": 0,
+      "cache_read_input_tokens": 0,
+      "output_tokens": 30,
+      "claude_cache_creation_5_m_tokens": 0,
+      "claude_cache_creation_1_h_tokens": 0,
+      "billing_usage": {
+       "source": "oai_chat",
+       "semantic": "openai",
+       "openai_usage": {
+        "prompt_tokens": 25,
+        "completion_tokens": 30,
+        "total_tokens": 55,
+        "prompt_tokens_details": {
+         "cached_tokens": 0,
+         "text_tokens": 0,
+         "audio_tokens": 0,
+         "image_tokens": 0
+        },
+        "completion_tokens_details": {
+         "text_tokens": 0,
+         "audio_tokens": 0,
+         "image_tokens": 0,
+         "reasoning_tokens": 26
+        },
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "input_tokens_details": null,
+        "claude_cache_creation_5_m_tokens": 0,
+        "claude_cache_creation_1_h_tokens": 0
+       }
+      }
+     },
+     "blocks": [
+      "thinking",
+      "text"
+     ],
+     "think": 43,
+     "sig": null,
+     "stop": "end_turn",
+     "ttft": 1.82,
+     "text": "391",
+     "err": "",
+     "tool_id": null,
+     "events": {
+      "message_start": 1,
+      "content_block_start": 2,
+      "content_block_delta": 27,
+      "content_block_stop": 2,
+      "message_delta": 1,
+      "message_stop": 1
+     },
+     "el": 2.392
+    }
+   ],
+   "code_default": [
+    {
+     "status": 200,
+     "fam": "uuid",
+     "usage": {
+      "input_tokens": 46,
+      "cache_creation_input_tokens": 0,
+      "cache_read_input_tokens": 0,
+      "output_tokens": 4154,
+      "claude_cache_creation_5_m_tokens": 0,
+      "claude_cache_creation_1_h_tokens": 0,
+      "billing_usage": {
+       "source": "oai_chat",
+       "semantic": "openai",
+       "openai_usage": {
+        "prompt_tokens": 46,
+        "completion_tokens": 4154,
+        "total_tokens": 4200,
+        "prompt_tokens_details": {
+         "cached_tokens": 0,
+         "text_tokens": 0,
+         "audio_tokens": 0,
+         "image_tokens": 0
+        },
+        "completion_tokens_details": {
+         "text_tokens": 0,
+         "audio_tokens": 0,
+         "image_tokens": 0,
+         "reasoning_tokens": 3679
+        },
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "input_tokens_details": null,
+        "claude_cache_creation_5_m_tokens": 0,
+        "claude_cache_creation_1_h_tokens": 0
+       }
+      }
+     },
+     "blocks": [
+      "text"
+     ],
+     "think": 0,
+     "sig": null,
+     "stop": "end_turn",
+     "ttft": null,
+     "text": "```python\ndef longest_palindrome(s):\n    \"\"\"Return the longest palindromic substring of s.\n\n    Returns \"\" if s is empty",
+     "err": "",
+     "tool_id": null,
+     "events": null,
+     "el": 84.665
+    }
+   ],
+   "code_effort_low": [
+    {
+     "status": 200,
+     "fam": "uuid",
+     "usage": {
+      "input_tokens": 46,
+      "cache_creation_input_tokens": 0,
+      "cache_read_input_tokens": 0,
+      "output_tokens": 5616,
+      "claude_cache_creation_5_m_tokens": 0,
+      "claude_cache_creation_1_h_tokens": 0,
+      "billing_usage": {
+       "source": "oai_chat",
+       "semantic": "openai",
+       "openai_usage": {
+        "prompt_tokens": 46,
+        "completion_tokens": 5616,
+        "total_tokens": 5662,
+        "prompt_tokens_details": {
+         "cached_tokens": 0,
+         "text_tokens": 0,
+         "audio_tokens": 0,
+         "image_tokens": 0
+        },
+        "completion_tokens_details": {
+         "text_tokens": 0,
+         "audio_tokens": 0,
+         "image_tokens": 0,
+         "reasoning_tokens": 5094
+        },
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "input_tokens_details": null,
+        "claude_cache_creation_5_m_tokens": 0,
+        "claude_cache_creation_1_h_tokens": 0
+       }
+      }
+     },
+     "blocks": [
+      "text"
+     ],
+     "think": 0,
+     "sig": null,
+     "stop": "end_turn",
+     "ttft": null,
+     "text": "Here's a clean implementation using the **expand around center** technique:\n\n```python\ndef longest_palindrome(s):\n    \"\"",
+     "err": "",
+     "tool_id": null,
+     "events": null,
+     "el": 87.683
+    }
+   ],
+   "thinking_disabled": [
+    {
+     "status": 200,
+     "fam": "uuid",
+     "usage": {
+      "input_tokens": 25,
+      "cache_creation_input_tokens": 0,
+      "cache_read_input_tokens": 0,
+      "output_tokens": 44,
+      "claude_cache_creation_5_m_tokens": 0,
+      "claude_cache_creation_1_h_tokens": 0,
+      "billing_usage": {
+       "source": "oai_chat",
+       "semantic": "openai",
+       "openai_usage": {
+        "prompt_tokens": 25,
+        "completion_tokens": 44,
+        "total_tokens": 69,
+        "prompt_tokens_details": {
+         "cached_tokens": 0,
+         "text_tokens": 0,
+         "audio_tokens": 0,
+         "image_tokens": 0
+        },
+        "completion_tokens_details": {
+         "text_tokens": 0,
+         "audio_tokens": 0,
+         "image_tokens": 0,
+         "reasoning_tokens": 40
+        },
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "input_tokens_details": null,
+        "claude_cache_creation_5_m_tokens": 0,
+        "claude_cache_creation_1_h_tokens": 0
+       }
+      }
+     },
+     "blocks": [
+      "text"
+     ],
+     "think": 0,
+     "sig": null,
+     "stop": "end_turn",
+     "ttft": null,
+     "text": "391",
+     "err": "",
+     "tool_id": null,
+     "events": null,
+     "el": 3.269
+    }
+   ],
+   "effort_xhigh": [
+    {
+     "status": 200,
+     "fam": "uuid",
+     "usage": {
+      "input_tokens": 25,
+      "cache_creation_input_tokens": 0,
+      "cache_read_input_tokens": 0,
+      "output_tokens": 44,
+      "claude_cache_creation_5_m_tokens": 0,
+      "claude_cache_creation_1_h_tokens": 0,
+      "billing_usage": {
+       "source": "oai_chat",
+       "semantic": "openai",
+       "openai_usage": {
+        "prompt_tokens": 25,
+        "completion_tokens": 44,
+        "total_tokens": 69,
+        "prompt_tokens_details": {
+         "cached_tokens": 0,
+         "text_tokens": 0,
+         "audio_tokens": 0,
+         "image_tokens": 0
+        },
+        "completion_tokens_details": {
+         "text_tokens": 0,
+         "audio_tokens": 0,
+         "image_tokens": 0,
+         "reasoning_tokens": 40
+        },
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "input_tokens_details": null,
+        "claude_cache_creation_5_m_tokens": 0,
+        "claude_cache_creation_1_h_tokens": 0
+       }
+      }
+     },
+     "blocks": [
+      "text"
+     ],
+     "think": 0,
+     "sig": null,
+     "stop": "end_turn",
+     "ttft": null,
+     "text": "391",
+     "err": "",
+     "tool_id": null,
+     "events": null,
+     "el": 3.789
+    }
+   ],
+   "system_obey": [
+    {
+     "status": 200,
+     "fam": "uuid",
+     "usage": {
+      "input_tokens": 27,
+      "cache_creation_input_tokens": 0,
+      "cache_read_input_tokens": 0,
+      "output_tokens": 114,
+      "claude_cache_creation_5_m_tokens": 0,
+      "claude_cache_creation_1_h_tokens": 0,
+      "billing_usage": {
+       "source": "oai_chat",
+       "semantic": "openai",
+       "openai_usage": {
+        "prompt_tokens": 27,
+        "completion_tokens": 114,
+        "total_tokens": 141,
+        "prompt_tokens_details": {
+         "cached_tokens": 0,
+         "text_tokens": 0,
+         "audio_tokens": 0,
+         "image_tokens": 0
+        },
+        "completion_tokens_details": {
+         "text_tokens": 0,
+         "audio_tokens": 0,
+         "image_tokens": 0,
+         "reasoning_tokens": 55
+        },
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "input_tokens_details": null,
+        "claude_cache_creation_5_m_tokens": 0,
+        "claude_cache_creation_1_h_tokens": 0
+       }
+      }
+     },
+     "blocks": [
+      "text"
+     ],
+     "think": 0,
+     "sig": null,
+     "stop": "end_turn",
+     "ttft": null,
+     "text": "La capitale du Japon est **Tokyo**. C'est également la plus grande ville du pays, avec une aire métropolitaine de plus d",
+     "err": "",
+     "tool_id": null,
+     "events": null,
+     "el": 5.904
+    }
+   ],
+   "sysq": [
+    {
+     "status": 200,
+     "fam": "uuid",
+     "usage": {
+      "input_tokens": 42,
+      "cache_creation_input_tokens": 0,
+      "cache_read_input_tokens": 0,
+      "output_tokens": 287,
+      "claude_cache_creation_5_m_tokens": 0,
+      "claude_cache_creation_1_h_tokens": 0,
+      "billing_usage": {
+       "source": "oai_chat",
+       "semantic": "openai",
+       "openai_usage": {
+        "prompt_tokens": 42,
+        "completion_tokens": 287,
+        "total_tokens": 329,
+        "prompt_tokens_details": {
+         "cached_tokens": 0,
+         "text_tokens": 0,
+         "audio_tokens": 0,
+         "image_tokens": 0
+        },
+        "completion_tokens_details": {
+         "text_tokens": 0,
+         "audio_tokens": 0,
+         "image_tokens": 0,
+         "reasoning_tokens": 283
+        },
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "input_tokens_details": null,
+        "claude_cache_creation_5_m_tokens": 0,
+        "claude_cache_creation_1_h_tokens": 0
+       }
+      }
+     },
+     "blocks": [
+      "text"
+     ],
+     "think": 0,
+     "sig": null,
+     "stop": "end_turn",
+     "ttft": null,
+     "text": "No.",
+     "err": "",
+     "tool_id": null,
+     "events": null,
+     "el": 12.092
+    }
+   ],
+   "tool_use": [
+    {
+     "status": 200,
+     "fam": "uuid",
+     "usage": {
+      "input_tokens": 161,
+      "cache_creation_input_tokens": 0,
+      "cache_read_input_tokens": 0,
+      "output_tokens": 51,
+      "claude_cache_creation_5_m_tokens": 0,
+      "claude_cache_creation_1_h_tokens": 0,
+      "billing_usage": {
+       "source": "oai_chat",
+       "semantic": "openai",
+       "openai_usage": {
+        "prompt_tokens": 161,
+        "completion_tokens": 51,
+        "total_tokens": 212,
+        "prompt_tokens_details": {
+         "cached_tokens": 0,
+         "text_tokens": 0,
+         "audio_tokens": 0,
+         "image_tokens": 0
+        },
+        "completion_tokens_details": {
+         "text_tokens": 0,
+         "audio_tokens": 0,
+         "image_tokens": 0,
+         "reasoning_tokens": 39
+        },
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "input_tokens_details": null,
+        "claude_cache_creation_5_m_tokens": 0,
+        "claude_cache_creation_1_h_tokens": 0
+       }
+      }
+     },
+     "blocks": [
+      "tool_use"
+     ],
+     "think": 0,
+     "sig": null,
+     "stop": "tool_use",
+     "ttft": null,
+     "text": "",
+     "err": "",
+     "tool_id": "call_5b7a028a8e01415fac86d0ac",
+     "events": null,
+     "el": 6.511
+    }
+   ],
+   "cache_0": [
+    {
+     "status": 200,
+     "fam": "uuid",
+     "usage": {
+      "input_tokens": 11119,
+      "cache_creation_input_tokens": 0,
+      "cache_read_input_tokens": 0,
+      "output_tokens": 450,
+      "claude_cache_creation_5_m_tokens": 0,
+      "claude_cache_creation_1_h_tokens": 0,
+      "billing_usage": {
+       "source": "oai_chat",
+       "semantic": "openai",
+       "openai_usage": {
+        "prompt_tokens": 11119,
+        "completion_tokens": 450,
+        "total_tokens": 11569,
+        "prompt_tokens_details": {
+         "cached_tokens": 0,
+         "text_tokens": 0,
+         "audio_tokens": 0,
+         "image_tokens": 0
+        },
+        "completion_tokens_details": {
+         "text_tokens": 0,
+         "audio_tokens": 0,
+         "image_tokens": 0,
+         "reasoning_tokens": 357
+        },
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "input_tokens_details": null,
+        "claude_cache_creation_5_m_tokens": 0,
+        "claude_cache_creation_1_h_tokens": 0
+       }
+      }
+     },
+     "blocks": [
+      "text"
+     ],
+     "think": 0,
+     "sig": null,
+     "stop": "end_turn",
+     "ttft": null,
+     "text": "This document is a detailed audit report comparing several third-party API relay/proxy endpoints for the GLM-5.3-flash m",
+     "err": "",
+     "tool_id": null,
+     "events": null,
+     "el": 15.02
+    }
+   ],
+   "cache_1": [
+    {
+     "status": 200,
+     "fam": "uuid",
+     "usage": {
+      "input_tokens": 11119,
+      "cache_creation_input_tokens": 0,
+      "cache_read_input_tokens": 11072,
+      "output_tokens": 373,
+      "claude_cache_creation_5_m_tokens": 0,
+      "claude_cache_creation_1_h_tokens": 0,
+      "billing_usage": {
+       "source": "oai_chat",
+       "semantic": "openai",
+       "openai_usage": {
+        "prompt_tokens": 11119,
+        "completion_tokens": 373,
+        "total_tokens": 11492,
+        "prompt_tokens_details": {
+         "cached_tokens": 11072,
+         "text_tokens": 0,
+         "audio_tokens": 0,
+         "image_tokens": 0
+        },
+        "completion_tokens_details": {
+         "text_tokens": 0,
+         "audio_tokens": 0,
+         "image_tokens": 0,
+         "reasoning_tokens": 299
+        },
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "input_tokens_details": null,
+        "claude_cache_creation_5_m_tokens": 0,
+        "claude_cache_creation_1_h_tokens": 0
+       }
+      }
+     },
+     "blocks": [
+      "text"
+     ],
+     "think": 0,
+     "sig": null,
+     "stop": "end_turn",
+     "ttft": null,
+     "text": "This document is an automated authenticity audit comparing multiple third-party API relay endpoints for the GLM-5.3-flas",
+     "err": "",
+     "tool_id": null,
+     "events": null,
+     "el": 11.779
+    }
+   ],
+   "cache_2": [
+    {
+     "status": 200,
+     "fam": "uuid",
+     "usage": {
+      "input_tokens": 11119,
+      "cache_creation_input_tokens": 0,
+      "cache_read_input_tokens": 11072,
+      "output_tokens": 239,
+      "claude_cache_creation_5_m_tokens": 0,
+      "claude_cache_creation_1_h_tokens": 0,
+      "billing_usage": {
+       "source": "oai_chat",
+       "semantic": "openai",
+       "openai_usage": {
+        "prompt_tokens": 11119,
+        "completion_tokens": 239,
+        "total_tokens": 11358,
+        "prompt_tokens_details": {
+         "cached_tokens": 11072,
+         "text_tokens": 0,
+         "audio_tokens": 0,
+         "image_tokens": 0
+        },
+        "completion_tokens_details": {
+         "text_tokens": 0,
+         "audio_tokens": 0,
+         "image_tokens": 0,
+         "reasoning_tokens": 166
+        },
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "input_tokens_details": null,
+        "claude_cache_creation_5_m_tokens": 0,
+        "claude_cache_creation_1_h_tokens": 0
+       }
+      }
+     },
+     "blocks": [
+      "text"
+     ],
+     "think": 0,
+     "sig": null,
+     "stop": "end_turn",
+     "ttft": null,
+     "text": "This document is a benchmarking report that tests multiple third-party API relay/proxy endpoints (\"中转站\") serving the GLM",
+     "err": "",
+     "tool_id": null,
+     "events": null,
+     "el": 9.176
+    }
+   ],
+   "count_tokens": [
+    {
+     "status": 404,
+     "fam": null,
+     "usage": null,
+     "blocks": null,
+     "think": null,
+     "sig": null,
+     "stop": null,
+     "ttft": null,
+     "text": "{\"error\":{\"message\":\"Invalid URL (POST /v1/messages/count_tokens)\",\"type\":\"invalid_request_error\",\"param\":\"\",\"code\":\"\"}}",
+     "err": "",
+     "tool_id": null,
+     "events": null,
+     "el": null
+    }
+   ]
+  },
+  "cache": {
+   "ttl180_w0": {
+    "pt": 6543,
+    "cached": 0,
+    "ratio": 0.0,
+    "el": 7.881,
+    "status": 200,
+    "fam": "uuid"
+   },
+   "ttl300_w0": {
+    "pt": 6574,
+    "cached": 0,
+    "ratio": 0.0,
+    "el": 8.355,
+    "status": 200,
+    "fam": "uuid"
+   },
+   "ttl600_w0": {
+    "pt": 6550,
+    "cached": 0,
+    "ratio": 0.0,
+    "el": 9.041,
+    "status": 200,
+    "fam": "uuid"
+   },
+   "d8_q0": {
+    "pt": 10219,
+    "cached": 0,
+    "ratio": 0.0,
+    "el": 12.11,
+    "status": 200,
+    "fam": "uuid"
+   },
+   "ttl60_w0": {
+    "pt": 6557,
+    "cached": 0,
+    "ratio": 0.0,
+    "el": 14.272,
+    "status": 200,
+    "fam": "uuid"
+   },
+   "ttl180_w1": {
+    "pt": 6543,
+    "cached": 6528,
+    "ratio": 0.998,
+    "el": 8.49,
+    "status": 200,
+    "fam": "uuid"
+   },
+   "ttl300_w1": {
+    "pt": 6574,
+    "cached": 6528,
+    "ratio": 0.993,
+    "el": 11.283,
+    "status": 200,
+    "fam": "uuid"
+   },
+   "d8_q1": {
+    "pt": 10219,
+    "cached": 10176,
+    "ratio": 0.996,
+    "el": 7.345,
+    "status": 200,
+    "fam": "uuid"
+   },
+   "ttl600_w1": {
+    "pt": 6550,
+    "cached": 0,
+    "ratio": 0.0,
+    "el": 14.745,
+    "status": 200,
+    "fam": "uuid"
+   },
+   "ttl60_w1": {
+    "pt": 6557,
+    "cached": 6528,
+    "ratio": 0.996,
+    "el": 20.404,
+    "status": 200,
+    "fam": "uuid"
+   },
+   "d8_q2": {
+    "pt": 10219,
+    "cached": 10176,
+    "ratio": 0.996,
+    "el": 19.153,
+    "status": 200,
+    "fam": "uuid"
+   },
+   "d8_otherq": {
+    "pt": 10222,
+    "cached": 10176,
+    "ratio": 0.995,
+    "el": 5.504,
+    "status": 200,
+    "fam": "uuid"
+   },
+   "d20_q0": {
+    "pt": 20701,
+    "cached": 0,
+    "ratio": 0.0,
+    "el": 12.378,
+    "status": 200,
+    "fam": "uuid"
+   },
+   "d20_q1": {
+    "pt": 20701,
+    "cached": 20672,
+    "ratio": 0.999,
+    "el": 7.682,
+    "status": 200,
+    "fam": "uuid"
+   },
+   "mt_0": {
+    "pt": 9713,
+    "cached": 0,
+    "ratio": 0.0,
+    "el": 12.551,
+    "status": 200,
+    "fam": "uuid"
+   },
+   "mt_1": {
+    "pt": 9773,
+    "cached": 9664,
+    "ratio": 0.989,
+    "el": 6.813,
+    "status": 200,
+    "fam": "uuid"
+   },
+   "mt_2": {
+    "pt": 9822,
+    "cached": 9728,
+    "ratio": 0.99,
+    "el": 2.804,
+    "status": 200,
+    "fam": "uuid"
+   },
+   "ttl60_probe": {
+    "pt": 6557,
+    "cached": 6528,
+    "ratio": 0.996,
+    "el": 13.653,
+    "status": 200,
+    "fam": "uuid"
+   },
+   "ttl180_probe": {
+    "pt": 6543,
+    "cached": 0,
+    "ratio": 0.0,
+    "el": 8.221,
+    "status": 200,
+    "fam": "uuid"
+   },
+   "ttl300_probe": {
+    "pt": 6574,
+    "cached": 0,
+    "ratio": 0.0,
+    "el": 11.835,
+    "status": 200,
+    "fam": "uuid"
+   },
+   "ttl600_probe": {
+    "pt": 6550,
+    "cached": 0,
+    "ratio": 0.0,
+    "el": 10.477,
+    "status": 200,
+    "fam": "uuid"
+   }
+  },
+  "xcache": {
+   "trials": 4,
+   "official_write1_cached": [
+    7936,
+    6656,
+    6656,
+    8256
+   ],
+   "relay_read_oai_cached": [
+    7936,
+    6656,
+    6656,
+    8256
+   ],
+   "relay_read_anth_cached": [
+    7936,
+    6656,
+    6656,
+    8256
+   ],
+   "relay_write1_cached": [
+    10112,
+    10048,
+    9664,
+    8384
+   ],
+   "official_read_of_relay_doc_cached": [
+    10112,
+    10048,
+    9664,
+    8384
+   ],
+   "official_control_fresh_cached": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "relay_fams": {
+    "uuid": 16
+   }
+  },
+  "cachehit": {
+   "burst_hits": "14/14",
+   "burst_ratio_mean": 0.999,
+   "gaps": {
+    "5": [
+     [
+      14.1,
+      true
+     ],
+     [
+      19.4,
+      true
+     ]
+    ],
+    "10": [
+     [
+      19.2,
+      true
+     ],
+     [
+      24.8,
+      true
+     ]
+    ],
+    "20": [
+     [
+      35.2,
+      true
+     ],
+     [
+      37.2,
+      true
+     ]
+    ],
+    "40": [
+     [
+      61.9,
+      true
+     ],
+     [
+      53.0,
+      true
+     ]
+    ],
+    "60": [
+     [
+      72.2,
+      true
+     ],
+     [
+      69.1,
+      true
+     ]
+    ],
+    "90": [
+     [
+      102.3,
+      true
+     ],
+     [
+      112.2,
+      true
+     ]
+    ],
+    "120": [
+     [
+      133.7,
+      true
+     ],
+     [
+      135.2,
+      true
+     ]
+    ],
+    "150": [
+     [
+      164.5,
+      true
+     ],
+     [
+      163.1,
+      true
+     ]
+    ],
+    "180": [
+     [
+      193.2,
+      true
+     ],
+     [
+      190.9,
+      true
+     ]
+    ],
+    "240": [
+     [
+      251.0,
+      false
+     ],
+     [
+      249.8,
+      false
+     ]
+    ],
+    "300": [
+     [
+      316.7,
+      false
+     ],
+     [
+      314.3,
+      true
+     ]
+    ],
+    "420": [
+     [
+      438.7,
+      false
+     ],
+     [
+      440.0,
+      true
+     ]
+    ]
+   },
+   "fams": {
+    "uuid": 40
+   }
+  },
+  "speed": {
+   "n": 3,
+   "ok": 3,
+   "ttft": [
+    2.892,
+    2.88,
+    3.358
+   ],
+   "ttfc": [
+    59.209,
+    150.824,
+    89.553
+   ],
+   "tps": [
+    35.2,
+    44.6,
+    42.7
+   ],
+   "tps_p50": 42.7,
+   "tok_per_chunk": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "ct": [
+    2856,
+    7074,
+    4215
+   ],
+   "chars": [
+    4345,
+    4141,
+    4285
+   ],
+   "fams": {
+    "uuid": 3
+   },
+   "errs": []
+  },
+  "ctx": {
+   "needle_20000": {
+    "status": 200,
+    "pt": 20996,
+    "recall": 3,
+    "ttft": 5.769,
+    "el": 8.268,
+    "rc": 421,
+    "err": "",
+    "text": "red=458233, green=387028, blue=302676"
+   },
+   "needle_60000": {
+    "status": 200,
+    "pt": 60683,
+    "recall": 3,
+    "ttft": 7.213,
+    "el": 11.176,
+    "rc": 781,
+    "err": "",
+    "text": "red=679229, green=813324, blue=715813"
+   },
+   "needle_130000": {
+    "status": 200,
+    "pt": 122414,
+    "recall": 3,
+    "ttft": 17.413,
+    "el": 22.751,
+    "rc": 940,
+    "err": "",
+    "text": "red=510449, green=577848, blue=719270"
+   },
+   "needle_200000": {
+    "status": 200,
+    "pt": 190833,
+    "recall": 3,
+    "ttft": 6.929,
+    "el": 7.774,
+    "rc": 454,
+    "err": "",
+    "text": "red=170323, green=094122, blue=359280"
+   },
+   "limit_520000": {
+    "status": 200,
+    "pt": 478007,
+    "recall": 3,
+    "ttft": null,
+    "el": 57.885,
+    "rc": 689,
+    "err": "",
+    "text": "red=132782, green=697846, blue=413375"
+   }
+  },
+  "lat": {
+   "conc": {
+    "n": 60,
+    "ok": 60,
+    "err_rate": 0.0,
+    "empty": 0,
+    "hung": 0,
+    "errs": [],
+    "ttft_p50": 3.53,
+    "ttft_p90": 5.46,
+    "ttft_p99": 14.2,
+    "ttfc_p50": 4.37,
+    "ttfc_p99": 16.37,
+    "total_p50": 4.61,
+    "total_p90": 8.73,
+    "total_p99": 46.24,
+    "total_max": 66.683,
+    "fams": {
+     "uuid": 60
+    }
+   },
+   "seq": {
+    "n": 60,
+    "ok": 60,
+    "err_rate": 0.0,
+    "empty": 0,
+    "hung": 0,
+    "errs": [],
+    "ttft_p50": 2.09,
+    "ttft_p90": 2.96,
+    "ttft_p99": 3.53,
+    "ttfc_p50": 2.76,
+    "ttfc_p99": 4.33,
+    "total_p50": 2.86,
+    "total_p90": 4.21,
+    "total_p99": 5.04,
+    "total_max": 5.156,
+    "fams": {
+     "uuid": 60
+    }
+   },
+   "conc_waves": {
+    "0": {
+     "n": 30,
+     "ok": 30,
+     "err_rate": 0.0,
+     "empty": 0,
+     "hung": 0,
+     "errs": [],
+     "ttft_p50": 4.01,
+     "ttft_p90": 7.29,
+     "ttft_p99": 14.35,
+     "ttfc_p50": 5.45,
+     "ttfc_p99": 46.24,
+     "total_p50": 5.76,
+     "total_p90": 14.87,
+     "total_p99": 66.68,
+     "total_max": 66.683,
+     "fams": {
+      "uuid": 30
+     }
+    },
+    "1": {
+     "n": 30,
+     "ok": 30,
+     "err_rate": 0.0,
+     "empty": 0,
+     "hung": 0,
+     "errs": [],
+     "ttft_p50": 2.83,
+     "ttft_p90": 3.77,
+     "ttft_p99": 4.96,
+     "ttfc_p50": 3.56,
+     "ttfc_p99": 6.4,
+     "total_p50": 3.62,
+     "total_p90": 4.79,
+     "total_p99": 6.59,
+     "total_max": 6.594,
+     "fams": {
+      "uuid": 30
+     }
+    }
+   }
+  },
+  "soak": {
+   "soak": {
+    "n": 180,
+    "ok": 180,
+    "err_rate": 0.0,
+    "empty": 0,
+    "hung": 0,
+    "errs": [],
+    "ttft_p50": 2.76,
+    "ttft_p90": 3.6,
+    "ttft_p99": 5.0,
+    "ttfc_p50": 3.51,
+    "ttfc_p99": 5.77,
+    "total_p50": 3.56,
+    "total_p90": 4.48,
+    "total_p99": 5.79,
+    "total_max": 10.363,
+    "fams": {
+     "uuid": 180
+    }
+   }
+  },
+  "iq": {
+   "n": 54,
+   "correct": 51,
+   "tiers": {
+    "reason": "12/12",
+    "hard": "12/14",
+    "xhard": "27/28"
+   },
+   "correct_of_answered": "51/53",
+   "retried_items": [],
+   "glitches": 0,
+   "truncated": 1,
+   "rt_p50": 3217,
+   "el_p50": 85.9,
+   "el_max": 800.471,
+   "fams": {
+    "uuid": 54
+   },
+   "items": {
+    "R7": {
+     "correct": [
+      true,
+      true
+     ],
+     "got": [
+      "397",
+      "397"
+     ],
+     "fin": [
+      "stop",
+      "stop"
+     ],
+     "rt": [
+      1605,
+      3124
+     ],
+     "el": [
+      29.535,
+      60.771
+     ],
+     "err": []
+    },
+    "R3": {
+     "correct": [
+      true,
+      true
+     ],
+     "got": [
+      "6stu9wk",
+      "6stu9wk"
+     ],
+     "fin": [
+      "stop",
+      "stop"
+     ],
+     "rt": [
+      1317,
+      922
+     ],
+     "el": [
+      38.64,
+      11.604
+     ],
+     "err": []
+    },
+    "R9": {
+     "correct": [
+      true,
+      true
+     ],
+     "got": [
+      "10 ; [0, 2, 4] ; [3, 3, 3] ; [6, 5, 5] ;    25|ab |5.21 ; -4",
+      "10 ; [0, 2, 4] ; [3, 3, 3] ; [6, 5, 5] ;    25|ab |5.21 ; -4"
+     ],
+     "fin": [
+      "stop",
+      "stop"
+     ],
+     "rt": [
+      1862,
+      2187
+     ],
+     "el": [
+      46.849,
+      40.066
+     ],
+     "err": []
+    },
+    "R4": {
+     "correct": [
+      true,
+      true
+     ],
+     "got": [
+      "10",
+      "10"
+     ],
+     "fin": [
+      "stop",
+      "stop"
+     ],
+     "rt": [
+      3806,
+      3217
+     ],
+     "el": [
+      89.845,
+      94.057
+     ],
+     "err": []
+    },
+    "H1": {
+     "correct": [
+      true,
+      true
+     ],
+     "got": [
+      "3",
+      "3"
+     ],
+     "fin": [
+      "stop",
+      "stop"
+     ],
+     "rt": [
+      917,
+      520
+     ],
+     "el": [
+      34.464,
+      16.718
+     ],
+     "err": []
+    },
+    "H3": {
+     "correct": [
+      false,
+      true
+     ],
+     "got": [
+      "93",
+      "80"
+     ],
+     "fin": [
+      "stop",
+      "stop"
+     ],
+     "rt": [
+      295,
+      350
+     ],
+     "el": [
+      14.555,
+      10.95
+     ],
+     "err": []
+    },
+    "R10": {
+     "correct": [
+      true,
+      true
+     ],
+     "got": [
+      "[\"H\",\"Z\",\"J\",\"A\",\"C\",\"K\",\"F\",\"E\",\"D\",\"G\",\"B\"]",
+      "[\"H\",\"Z\",\"J\",\"A\",\"C\",\"K\",\"F\",\"E\",\"D\",\"G\",\"B\"]"
+     ],
+     "fin": [
+      "stop",
+      "stop"
+     ],
+     "rt": [
+      3430,
+      3856
+     ],
+     "el": [
+      96.713,
+      85.896
+     ],
+     "err": []
+    },
+    "H5": {
+     "correct": [
+      true,
+      true
+     ],
+     "got": [
+      "10080",
+      "10080"
+     ],
+     "fin": [
+      "stop",
+      "stop"
+     ],
+     "rt": [
+      1486,
+      2801
+     ],
+     "el": [
+      45.021,
+      85.824
+     ],
+     "err": []
+    },
+    "R2": {
+     "correct": [
+      true,
+      true
+     ],
+     "got": [
+      "1010101010101010",
+      "1010101010101010"
+     ],
+     "fin": [
+      "stop",
+      "stop"
+     ],
+     "rt": [
+      7702,
+      6832
+     ],
+     "el": [
+      190.6,
+      157.348
+     ],
+     "err": []
+    },
+    "H2": {
+     "correct": [
+      true,
+      true
+     ],
+     "got": [
+      "307",
+      "307"
+     ],
+     "fin": [
+      "stop",
+      "stop"
+     ],
+     "rt": [
+      9483,
+      5706
+     ],
+     "el": [
+      177.961,
+      131.344
+     ],
+     "err": []
+    },
+    "X1": {
+     "correct": [
+      false,
+      true
+     ],
+     "got": [
+      "{\"r0\":0,\"r1\":0,\"r2\":24,\"r3\":597}",
+      "{\"r0\":0,\"r1\":0,\"r2\":38,\"r3\":1347}"
+     ],
+     "fin": [
+      "stop",
+      "stop"
+     ],
+     "rt": [
+      551,
+      1370
+     ],
+     "el": [
+      8.466,
+      44.696
+     ],
+     "err": []
+    },
+    "H4": {
+     "correct": [
+      true,
+      true
+     ],
+     "got": [
+      "924",
+      "924"
+     ],
+     "fin": [
+      "stop",
+      "stop"
+     ],
+     "rt": [
+      5193,
+      13350
+     ],
+     "el": [
+      176.664,
+      421.939
+     ],
+     "err": []
+    },
+    "X2": {
+     "correct": [
+      true,
+      true
+     ],
+     "got": [
+      "D,2",
+      "D,2"
+     ],
+     "fin": [
+      "stop",
+      "stop"
+     ],
+     "rt": [
+      1508,
+      2066
+     ],
+     "el": [
+      48.546,
+      46.646
+     ],
+     "err": []
+    },
+    "H6": {
+     "correct": [
+      true,
+      true
+     ],
+     "got": [
+      "52",
+      "52"
+     ],
+     "fin": [
+      "stop",
+      "stop"
+     ],
+     "rt": [
+      8741,
+      20499
+     ],
+     "el": [
+      189.077,
+      543.594
+     ],
+     "err": []
+    },
+    "X4": {
+     "correct": [
+      true,
+      true
+     ],
+     "got": [
+      "1391",
+      "1391"
+     ],
+     "fin": [
+      "stop",
+      "stop"
+     ],
+     "rt": [
+      15212,
+      5418
+     ],
+     "el": [
+      117.003,
+      110.889
+     ],
+     "err": []
+    },
+    "X5": {
+     "correct": [
+      true,
+      true
+     ],
+     "got": [
+      "145,2",
+      "145,2"
+     ],
+     "fin": [
+      "stop",
+      "stop"
+     ],
+     "rt": [
+      4522,
+      4851
+     ],
+     "el": [
+      108.198,
+      152.898
+     ],
+     "err": []
+    },
+    "X3": {
+     "correct": [
+      true,
+      true
+     ],
+     "got": [
+      "5111617/1679616",
+      "5111617/1679616"
+     ],
+     "fin": [
+      "stop",
+      "stop"
+     ],
+     "rt": [
+      12114,
+      10489
+     ],
+     "el": [
+      233.803,
+      213.277
+     ],
+     "err": []
+    },
+    "X6": {
+     "correct": [
+      true,
+      true
+     ],
+     "got": [
+      "0x6414",
+      "0x6414"
+     ],
+     "fin": [
+      "stop",
+      "stop"
+     ],
+     "rt": [
+      4784,
+      2849
+     ],
+     "el": [
+      108.785,
+      73.079
+     ],
+     "err": []
+    },
+    "X9": {
+     "correct": [
+      true,
+      true
+     ],
+     "got": [
+      "13",
+      "13"
+     ],
+     "fin": [
+      "stop",
+      "stop"
+     ],
+     "rt": [
+      715,
+      616
+     ],
+     "el": [
+      10.746,
+      21.222
+     ],
+     "err": []
+    },
+    "X10": {
+     "correct": [
+      true,
+      true
+     ],
+     "got": [
+      "30",
+      "30"
+     ],
+     "fin": [
+      "stop",
+      "stop"
+     ],
+     "rt": [
+      4574,
+      1833
+     ],
+     "el": [
+      131.914,
+      55.337
+     ],
+     "err": []
+    },
+    "X11": {
+     "correct": [
+      true,
+      true
+     ],
+     "got": [
+      "[\"Ana\", \"Dev\", \"Hana\", \"Lou\"]",
+      "[\"Ana\", \"Dev\", \"Hana\", \"Lou\"]"
+     ],
+     "fin": [
+      "stop",
+      "stop"
+     ],
+     "rt": [
+      311,
+      423
+     ],
+     "el": [
+      10.487,
+      13.214
+     ],
+     "err": []
+    },
+    "X12": {
+     "correct": [
+      true,
+      true
+     ],
+     "got": [
+      "J336677QNJ",
+      "J336677QNJ"
+     ],
+     "fin": [
+      "stop",
+      "stop"
+     ],
+     "rt": [
+      2527,
+      2638
+     ],
+     "el": [
+      50.998,
+      74.853
+     ],
+     "err": []
+    },
+    "X8": {
+     "correct": [
+      true,
+      true
+     ],
+     "got": [
+      "2331",
+      "2331"
+     ],
+     "fin": [
+      "stop",
+      "stop"
+     ],
+     "rt": [
+      11283,
+      25293
+     ],
+     "el": [
+      309.934,
+      792.867
+     ],
+     "err": []
+    },
+    "X14": {
+     "correct": [
+      true,
+      true
+     ],
+     "got": [
+      "0x3E9D",
+      "0x3E9D"
+     ],
+     "fin": [
+      "stop",
+      "stop"
+     ],
+     "rt": [
+      536,
+      548
+     ],
+     "el": [
+      8.825,
+      15.88
+     ],
+     "err": []
+    },
+    "X13": {
+     "correct": [
+      true,
+      true
+     ],
+     "got": [
+      "[\"B\", \"E\", \"Z\", \"L\", \"H\", \"F\", \"N\", \"D\", \"K\", \"M\", \"G\", \"A\",",
+      "[\"B\", \"E\", \"Z\", \"L\", \"H\", \"F\", \"N\", \"D\", \"K\", \"M\", \"G\", \"A\","
+     ],
+     "fin": [
+      "stop",
+      "stop"
+     ],
+     "rt": [
+      7455,
+      15003
+     ],
+     "el": [
+      188.25,
+      401.824
+     ],
+     "err": []
+    },
+    "X7": {
+     "correct": [
+      true,
+      true
+     ],
+     "got": [
+      "1,26",
+      "1,26"
+     ],
+     "fin": [
+      "stop",
+      "stop"
+     ],
+     "rt": [
+      17554,
+      15685
+     ],
+     "el": [
+      513.079,
+      493.908
+     ],
+     "err": []
+    },
+    "H7": {
+     "correct": [
+      true,
+      false
+     ],
+     "got": [
+      "21",
+      ""
+     ],
+     "fin": [
+      "stop",
+      "length"
+     ],
+     "rt": [
+      27921,
+      31999
+     ],
+     "el": [
+      800.471,
+      774.65
+     ],
+     "err": []
+    }
+   }
+  },
+  "vision": {
+   "ok": "3/3",
+   "status": [
+    200,
+    200,
+    200
+   ],
+   "pt": [
+    61,
+    61,
+    61
+   ],
+   "text": [
+    "Red, blue, purple",
+    "Blue, orange, purple",
+    "Orange, purple, yellow"
+   ]
+  },
+  "price": {
+   "A_fresh": {
+    "pt": 19172,
+    "cached": 0,
+    "ct": 3,
+    "delta_usd": 0.010742
+   },
+   "B_cached": {
+    "pt": 19172,
+    "cached": 19136,
+    "ct": 3,
+    "delta_usd": 0.003106
+   },
+   "C_output": {
+    "pt": 29,
+    "cached": 0,
+    "ct": 965,
+    "delta_usd": 0.001908
+   }
+  },
+  "billing": {
+   "/v1/dashboard/billing/subscription": "200 {\"object\":\"billing_subscription\",\"has_payment_method\":true,\"soft_limit_usd\":100000000,\"hard_limit_usd\":100000000,\"system_hard_limit_usd\":100000000,\"access_until\":0}",
+   "/v1/dashboard/billing/usage": "200 {\"object\":\"list\",\"total_usage\":109.0552}",
+   "/api/usage/token": "301 <a href=\"/api/usage/token/\">Moved Permanently</a>.\n\n",
+   "/v1/usage": "404 {\"error\":{\"message\":\"Invalid URL (GET /v1/usage)\",\"type\":\"invalid_request_error\",\"param\":\"\",\"code\":\"\"}}",
+   "/api/user/self": "401 {\"code\":\"AUTH_UNAUTHORIZED\",\"message\":\"Unauthorized, invalid access token\",\"success\":false}"
+  }
+ },
+ "fingerprint": {
+  "id_families": [
+   "uuid"
+  ],
+  "usage_keys": [
+   "completion_tokens",
+   "completion_tokens_details",
+   "completion_tokens_details.reasoning_tokens",
+   "prompt_tokens",
+   "prompt_tokens_details",
+   "prompt_tokens_details.cached_tokens",
+   "total_tokens"
+  ],
+  "ok_prompt_tokens": [
+   17
+  ],
+  "tok_delta": {
+   "zh": 1050,
+   "digits": 801,
+   "en": 301,
+   "code": 595,
+   "system": 7
+  },
+  "param_status": {
+   "baseline": 200,
+   "thinking_disabled": 400,
+   "thinking_enabled": 200,
+   "effort_none": 400,
+   "effort_low": 200,
+   "effort_high": 200,
+   "effort_max": 200,
+   "effort_invalid": 400,
+   "max_tokens_999999": 400,
+   "max_tokens_16": 200,
+   "max_completion_tokens_16": 200,
+   "temperature_5": 400,
+   "temperature_1.5": 400,
+   "stop_5": 200,
+   "logprobs": 200,
+   "n_2": 200,
+   "json_mode": 200,
+   "unknown_field": 200,
+   "tools": 200,
+   "tools_stream": 200
+  }
+ },
+ "drift": {
+  "items": [
+   "H5",
+   "R10",
+   "R4",
+   "R7",
+   "X10",
+   "X12",
+   "X2",
+   "X4",
+   "X5",
+   "X6"
+  ],
+  "max_drop": 2,
+  "why": "correct on every repeat in the frozen run and median < 150 s; a thinking-less or different model drops several of these"
+ },
+ "how_to_use": "先跑 `KEY_REF=<key> python3 glmsuite.py refcheck suite/reference/ikuncode-glm53flash.json` 查漂移：SAME 复用智力/知识/分词/参数指纹；DRIFT 先重测。延迟/稳定性/缓存 TTL 只按同路线同日比较（北京服务器 /root/glmtest），不当常量复用。",
+ "what_it_is": {
+  "endpoint": "api.ikuncode.cc，new-api，key 分组 glm（报错文本里可见），Cloudflare。模型列表 glm-5.2 / glm-5.3 / glm-5.3-flash。",
+  "backend": "智谱后端：跨账号缓存双向 4/4 命中（官方写→ikuncode 读、ikuncode 写→官方读），分词增量与官方逐位一致。但接入面不是开放平台 paas：参数由一个 'internal MaaS component' 校验——关思考 / effort none / 非法 effort / max_tokens 999999 / temperature>1 全部 400（官方 temperature 5 也是 200）；响应 id 是 uuid（= x-request-id）；同步工具 id call_+24hex。",
+  "price": "站内 $0.56 输入 / $0.161 缓存命中 / $1.96 输出（每百万 token）= 官方人民币标价 × 0.7，缓存比例与官方相同（09-26 用余额差分实测）。",
+  "thinking": "默认完整思考（写代码 10.7–18.4k 字符）；effort low 0 / high 36 字符 / max 20k，与官方一致；max_tokens 生效；stop 行为同官方；图片输入正常。",
+  "anthropic": "/v1/messages 是 new-api 转换：非流式把 thinking 块丢掉（流式里有，无签名）；thinking / output_config.effort 参数被忽略，始终完整思考；count_tokens 404；input_tokens 含缓存部分。12 题抽测 12/12。",
+  "cache": "空闲 ≤3 分钟 100% 命中；4 分钟以后约四成命中（官方 7 分钟内基本都命中）；缓存 TTL 探针 180/300 s 两次都没命中。usage 里 cached_tokens 正常上报。",
+  "latency_2026-09-25_beijing": "顺序 60 次首 token p50 2.09 / p99 3.53 s，总 p50 2.86 / p99 5.04 s；30 并发×2 60/60，首 token p50 3.53 / p99 14.2 s，总 p99 46 s（第一轮有 2 次流中途卡住 40–60 s）；30 分钟 soak 180/180，首 token p50 2.76 / p99 5.0 s；吞吐约 43 tok/s。"
+ },
+ "caveats": [
+  "参数比官方严：temperature 只能 0–1；想关思考只能用 reasoning_effort=low（它照官方给 0 思考）。",
+  "并发时偶发流中途停顿 40–60 s；Anthropic 口一次 TLS 握手超时。",
+  "它代表「好的 GLM 中转」的标尺，不代表官方；官方标尺是 zhipu-official-glm53flash.json。"
+ ]
+}
