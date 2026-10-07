@@ -13,11 +13,11 @@ site/
 
 # Generated reports (report.py / compare.py / ops.py / greedy.py / final.py
 # overwrite these in place, so they churn constantly)
-REPORT*.md
-COMPARE*.md
-OPS*.md
-GREEDY*.md
-FINAL*.md
+/REPORT*.md
+/COMPARE*.md
+/OPS*.md
+/GREEDY*.md
+/FINAL*.md
 
 # Ad-hoc backups
 backup-*/

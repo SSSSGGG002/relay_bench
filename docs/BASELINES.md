@@ -1,7 +1,7 @@
 # 测试基线与测试指标（整理于 2026-10-06）
 
 这份文档把 relay-bench 里所有**基线**（拿来对照的标尺）和**指标**（每项测什么、怎么判）集中列出来。
-怎么跑的细节见 [README](../README.md)，Fable 的题目原文见 [Fable测试题库-20260922.md](Fable测试题库-20260922.md)。
+怎么跑的细节见 [README](../README.md)，各站历史报告见 [reports/](../reports/README.md)，Fable 的题目原文见 [Fable测试题库-20260922.md](Fable测试题库-20260922.md)。
 
 ---
 

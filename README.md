@@ -2,6 +2,15 @@
 
 > 基线（官方金标准、冻结参考站、题库）和全部测试指标的汇总见 [docs/BASELINES.md](docs/BASELINES.md)。
 
+## 0. 给协作者：从哪里开始
+
+1. **测试标准**：[docs/BASELINES.md](docs/BASELINES.md)。写了每类模型（Claude / GLM / DeepSeek / GPT）该对照哪份基线、测哪些指标、各指标怎么判读、参考站的冻结数值。
+2. **冻结基线**：`suite/golden/`（官方知识金标准）和 `suite/reference/`（参考站 ikuncode、智谱官方、spatialai 等）。新站拿同一脚本、同一参数跑完，直接和这些 JSON 比。
+3. **历史报告**：[reports/](reports/README.md)，09-09 起各站的实测结论，按模型分类有索引。
+4. **环境**：`python3 -m venv .venv && .venv/bin/pip install -r requirements.txt`，之后都用 `.venv/bin/python` 跑。key 只通过 `RB_KEY` 环境变量或 `--key` 传，不要写进文件。
+5. **对比流程**（以 Claude 为例）：先 `refcheck.py suite/reference/<参考>.json` 确认参考站没变（SAME 才能复用冻结值），再对新站跑 `bench.py` / `injcache.py` / `costcheck.py --ref ...`。延迟和稳定性只能同一天、同一条路线对比，不要拿别人机器上的延迟当常量。
+6. 自己的测试输出在 `results/`、`logs/`，已被 `.gitignore` 排除；新报告脱敏后（key 只留前后几位、不写服务器 IP）放进 `reports/` 再提交。
+
 目标：用**造假者改不了的证据**判断一个 API 中转站（new-api / one-api 之类）背后到底是什么模型、请求有没有被改写、上下文有没有被截、缓存有没有生效、速度和稳定性如何。
 同时支持 Anthropic Messages 协议（`claude-*`）和 OpenAI Chat Completions 协议（`gpt-*` 等），一套命令跑完，`report.py` 出对比矩阵。
 
