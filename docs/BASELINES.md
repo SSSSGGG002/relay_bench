@@ -20,6 +20,7 @@
 | Claude（只测 opus-5-5 / opus-5 / sonnet-5） | `suite/golden/` 官方 + `suite/reference/ikuncode-kiro.json`；计费比 `ikuncode-ccrev-cost.json` | `bench.py` + `report.py`，参考站漂移用 `refcheck.py`，计费用 `costcheck.py --ref` | 09-25：新站报告必须有 ikuncode 对比节 |
 | GLM（glm-5.3-flash 等） | `zhipu-official-glm53flash.json` + `ikuncode-glm53flash*.json` | `glmsuite.py run/summarize/compare` | 09-25：GLM 一律对比官方 + ikuncode 冻结基线 |
 | DeepSeek（deepseek-v4-flash） | `ikuncode-dsv4flash.json` | `glmsuite.py`（`--model deepseek-v4-flash`） | 10-02：ds v4-flash 对比冻结的 ikuncode 基线 |
+| GPT（只测 gpt-5.6-sol / gpt-5.6-terra / gpt-6-astra） | `spatialai-gpt.json` | `gptcheck.py`（注入 / 参数 / 缓存 / TTL / 会话实扣 / 延迟 / soak，不测智力） | 10-07：GPT 基线用 spatialai，智力用户另有方法 |
 
 三条共同规则：
 
@@ -59,6 +60,7 @@
 | `ikuncode-glm53flash-20261002.json` | glm-5.3-flash | 10-02 | Mac + Clash TUN | ikuncode **漂移后**的快照：接入层换成 OpenRouter 风格网关、多供应商轮换。智力只跑 9 题，完整分沿用 09-25 的 51/54 |
 | `ikuncode-dsv4flash.json` | deepseek-v4-flash | 10-02 | Mac + Clash TUN | deepseek-official 分组，回显 deepseek-v4-flash-0731 |
 | `ikuncode-ccrev-cost.json` | claude-opus-5-5 / opus-5 / sonnet-5 | 10-07 | Mac 直连 | **计费基线**：cc逆向分组固定负载的实扣金额（costcheck v1），按站点公式诚实计费 |
+| `spatialai-gpt.json` | gpt-5.6-sol / gpt-5.6-terra / gpt-6-astra | 10-07 | Mac + Clash 代理 | **GPT 基线**：真 OpenAI Codex 号池；注入、缓存、TTL、会话实扣、p50/p99（gptcheck v1） |
 
 所有参考站的 IQ 题库都是 `suite/iq.ref-20260924.json`，md5 `ad1f46e9f80233a7264d9f01196c9993`（和当前 `suite/iq.json` 一样）。
 
@@ -203,7 +205,47 @@ RB_KEY=sk-... python3 costcheck.py --label <站>-<分组>-<日期> --base https:
     --models claude-opus-5-5,claude-opus-5,claude-sonnet-5 --ref suite/reference/ikuncode-ccrev-cost.json
 ```
 
-### 3.8 参考站核心数值速查
+### 3.8 GPT 渠道（gptcheck.py）—— 2026-10-07 新增
+
+GPT 中转多数是 Codex 订阅号池：每个请求会被塞进 4k 多 token 的 Codex 提示词。有的站在 chat/completions 上把它藏起来、不计费，在 /v1/responses 上照收。所以两个接口都要测。
+
+| 段 | 内容 | 看什么 |
+|---|---|---|
+| `inject` | OK × 3 走 chat，× 3 走 responses | chat 报告输入 vs responses 报告输入；responses 回显的 `instructions` 和 `usage.attribution.request_fields.instructions`；两个接口各自被扣了多少 |
+| `params` | temperature 5、max_tokens / max_completion_tokens 16、非法 / none effort、stop、logprobs、n=2；responses 发 prompt_cache_key / temperature / max_output_tokens / store 看回显 | 参数是否原样到达模型 |
+| `cache` | 约 12k token 文档连发 3 次 + 1 次新文档，chat 和 responses 各一轮 | OpenAI 前缀缓存是否真命中；新文档必须 0（注入部分除外） |
+| `ttl` | 每个间隔一份文档，写入后空闲 30 / 120 / 300 / 600 s 再读 | 缓存寿命；忽中忽不中 = 多账号轮询 |
+| `session` | chat 5 轮，system 是 12k 文档 | 真实使用下的缓存和实扣 |
+| `lat` | 流式 OK：顺序 60 + 30 并发 × 2 | 首 token 和总耗时的 p50 / p90 / p99、错误、429 |
+| `soak` | 每 10 秒一次，30 分钟 | 长窗口稳定性 |
+
+计费：sub2api 风格网关的 `GET /v1/usage` 会实时给出每个模型的累计 token、cost、actual_cost。每段前后各取一次差值，就是这一段实扣多少。没有这个接口的站，计费列留空，改用余额差分。
+
+**GPT 基线 spatialai.vip（2026-10-07，`suite/reference/spatialai-gpt.json`，Mac + Clash 代理）**：
+
+| | gpt-5.6-sol | gpt-5.6-terra | gpt-6-astra |
+|---|---|---|---|
+| 后端 | 真 OpenAI，Codex 号池 | 同左 | 同左（GPT-6 版 Codex 提示词） |
+| 每请求注入 | 4380 token | 4380 | 4114 |
+| 注入计费 | chat 不计（按 11 token 扣）；responses 照扣，3840 记缓存读 | 同左 | chat 不计；responses 前两次全价 |
+| chat 缓存（12k 文档 第 2/3 次） | 11008 / 11008（91%），新文档 0 | 同左 | 同左 |
+| responses 缓存 | 只命中注入的 3840，用户文档不命中（prompt_cache_key 被换成随机） | 同左 | 同左 |
+| TTL 30/120/300/600 s | 未中 / 中 / 未中 / 中 | 全中 | 全中 |
+| 参数 | 全部被改写，只有非法 effort 返回 400 | 同左 | 同左 |
+| 顺序首 token p50 / p99 | 1.47 / 28.8 s | 1.67 / 30.6 s | 1.99 / 9.3 s |
+| 30 并发首 token p50 / p99 | 5.05 / 51.6 s（1 次 429） | 8.7 / 28.6 s | 5.9 / 11.7 s |
+| 一套负载实扣（站内 $） | 0.2494 | 0.0886 | 0.4816 |
+
+实扣统一是名义价格的 0.29 倍。余额差分 $0.8196 等于各段 actual_cost 合计。soak 结果见参考文件里的 `summary.<模型>.soak`。
+
+```bash
+RB_KEY=sk-... python3 gptcheck.py run --label <站>-<日期> --base https://<站> --sections inject,params,cache,ttl,session [--proxy]
+for m in gpt-5.6-sol gpt-5.6-terra gpt-6-astra; do RB_KEY=sk-... python3 gptcheck.py run --label <站>-<日期> --base https://<站> --models $m --sections lat; done
+RB_KEY=sk-... python3 gptcheck.py run --label <站>-<日期> --base https://<站> --sections soak --soak-min 30
+python3 gptcheck.py report --label <站>-<日期>
+```
+
+### 3.9 参考站核心数值速查
 
 延迟单位秒，均为冻结时那一次的路线，**只用于同路线横向参考，不当常量**。
 
@@ -224,6 +266,7 @@ RB_KEY=sk-... python3 costcheck.py --label <站>-<分组>-<日期> --base https:
 - ikuncode GLM 已漂移：用 09-25 那份做 refcheck 会 DRIFT（关思考和 max_tokens 999999 现在都 200）。新站和 ikuncode GLM 比时，协议和缓存看 10-02 快照，完整智力分沿用 09-25。
 - 2026-10-02 的两份参考是 Mac + Clash TUN 路线，延迟和 soak 数字带本机 SSL EOF 噪声。
 - `lat.py` / `soak.py` 在北京服务器 `/root/bltest`，不在这个仓库里。
+- GPT 没有官方金标准（没有官方 OpenAI key），`spatialai-gpt.json` 是中转参考，不是官方标尺。
 
 ## 5. 新增或更新基线
 

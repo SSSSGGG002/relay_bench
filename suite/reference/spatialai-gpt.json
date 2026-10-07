@@ -1,0 +1,1029 @@
+{
+ "name": "spatialai-gpt",
+ "kind": "gpt-relay",
+ "workload": "gptcheck-v1",
+ "base": "https://spatialai.vip",
+ "key_hint": "sk-8c8…6214",
+ "measured_at": "2026-10-06 22:53 -0400",
+ "route": "Mac + Clash 代理（2026-10-07 北京时间）",
+ "source": "results/gptcheck/spatial-gpt-20261007",
+ "summary": {
+  "gpt-5.6-sol": {
+   "inject": {
+    "chat_prompt_tokens": [
+     11,
+     11,
+     11
+    ],
+    "responses_input_tokens": [
+     4391,
+     4391,
+     4391
+    ],
+    "responses_cached": [
+     3840,
+     3840,
+     3840
+    ],
+    "instructions_tokens": [
+     4380,
+     4380,
+     4380
+    ],
+    "instructions_len": [
+     21334,
+     21334,
+     21334
+    ],
+    "instructions_head": "You are Codex, a coding agent based on GPT-5. You and the user share one workspace, and your job is to collaborate with them until their goal is genuinely handl",
+    "sent_o200k": 5,
+    "id_chat": [
+     "resp_0c00b6d",
+     "resp_086841b",
+     "resp_0906949"
+    ],
+    "id_resp": [
+     "resp_0d429f8",
+     "resp_0a276ac",
+     "resp_013cd38"
+    ],
+    "billed": {
+     "requests": 6,
+     "input_tokens": 1686,
+     "cache_read_tokens": 11520,
+     "cache_creation_tokens": 0,
+     "output_tokens": 30,
+     "cost": 0.01509,
+     "actual_cost": 0.0043761
+    }
+   },
+   "params": {
+    "baseline": {
+     "status": 200,
+     "text": "391",
+     "ct": 5,
+     "err": "",
+     "echo": null,
+     "sent": null
+    },
+    "temperature_5": {
+     "status": 200,
+     "text": "391",
+     "ct": 5,
+     "err": "",
+     "echo": null,
+     "sent": null
+    },
+    "max_completion_tokens_16": {
+     "status": 200,
+     "text": "391",
+     "ct": 20,
+     "err": "",
+     "echo": null,
+     "sent": null
+    },
+    "max_tokens_16": {
+     "status": 200,
+     "text": "391",
+     "ct": 5,
+     "err": "",
+     "echo": null,
+     "sent": null
+    },
+    "effort_invalid": {
+     "status": 400,
+     "text": "",
+     "ct": null,
+     "err": "{\"error\":{\"message\":\"Invalid value: 'bogus'. Supported values are: 'none', 'minimal', 'low', 'medium', 'high', 'xhigh', ",
+     "echo": null,
+     "sent": null
+    },
+    "effort_none": {
+     "status": 200,
+     "text": "391",
+     "ct": 5,
+     "err": "",
+     "echo": null,
+     "sent": null
+    },
+    "stop_9": {
+     "status": 200,
+     "text": "391",
+     "ct": 5,
+     "err": "",
+     "echo": null,
+     "sent": null
+    },
+    "logprobs": {
+     "status": 200,
+     "text": "391",
+     "ct": 5,
+     "err": "",
+     "echo": null,
+     "sent": null
+    },
+    "n_2": {
+     "status": 200,
+     "text": "391",
+     "ct": 5,
+     "err": "",
+     "echo": null,
+     "sent": null
+    },
+    "responses_echo": {
+     "status": 200,
+     "text": "391",
+     "ct": null,
+     "err": "",
+     "echo": {
+      "temperature": 1.0,
+      "top_p": 0.98,
+      "max_output_tokens": null,
+      "prompt_cache_key": "cedfaab8a8b74bfd",
+      "store": false,
+      "reasoning": {
+       "context": "all_turns",
+       "effort": "medium",
+       "mode": "standard",
+       "summary": null
+      },
+      "service_tier": "default"
+     },
+     "sent": {
+      "prompt_cache_key": "gptcheck-4cda38d9",
+      "temperature": 0.3,
+      "max_output_tokens": 999999,
+      "store": true
+     }
+    }
+   },
+   "cache": {
+    "chat-rep1": {
+     "status": 200,
+     "input": 12037,
+     "cached": 0,
+     "sent": 12031,
+     "el": 7.446
+    },
+    "chat-rep2": {
+     "status": 200,
+     "input": 12037,
+     "cached": 11008,
+     "sent": 12031,
+     "el": 4.851
+    },
+    "chat-rep3": {
+     "status": 200,
+     "input": 12037,
+     "cached": 11008,
+     "sent": 12031,
+     "el": 4.4
+    },
+    "chat-fresh": {
+     "status": 200,
+     "input": 12038,
+     "cached": 0,
+     "sent": 12032,
+     "el": 4.594
+    },
+    "responses-rep1": {
+     "status": 200,
+     "input": 16418,
+     "cached": 3840,
+     "sent": 12032,
+     "el": 4.541
+    },
+    "responses-rep2": {
+     "status": 200,
+     "input": 16418,
+     "cached": 3840,
+     "sent": 12032,
+     "el": 3.712
+    },
+    "responses-rep3": {
+     "status": 200,
+     "input": 16418,
+     "cached": 3840,
+     "sent": 12032,
+     "el": 4.574
+    },
+    "responses-fresh": {
+     "status": 200,
+     "input": 16419,
+     "cached": 4224,
+     "sent": 12033,
+     "el": 4.654
+    },
+    "_billed": {
+     "requests": 8,
+     "input_tokens": 76062,
+     "cache_read_tokens": 37760,
+     "cache_creation_tokens": 0,
+     "output_tokens": 379,
+     "cost": 0.41056,
+     "actual_cost": 0.1190624
+    }
+   },
+   "ttl": {
+    "30": {
+     "input": 8032,
+     "cached": 0,
+     "status": 200
+    },
+    "120": {
+     "input": 8032,
+     "cached": 7808,
+     "status": 200
+    },
+    "300": {
+     "input": 8032,
+     "cached": 0,
+     "status": 200
+    },
+    "600": {
+     "input": 8032,
+     "cached": 7808,
+     "status": 200
+    }
+   },
+   "session": {
+    "turns": [
+     {
+      "input": 12043,
+      "cached": 0,
+      "out": 45,
+      "sent": 12033,
+      "el": 5.92
+     },
+     {
+      "input": 12105,
+      "cached": 0,
+      "out": 20,
+      "sent": 12085,
+      "el": 3.527
+     },
+     {
+      "input": 12145,
+      "cached": 11904,
+      "out": 32,
+      "sent": 12115,
+      "el": 2.252
+     },
+     {
+      "input": 12197,
+      "cached": 11904,
+      "out": 143,
+      "sent": 12157,
+      "el": 8.922
+     },
+     {
+      "input": 12282,
+      "cached": 12032,
+      "out": 27,
+      "sent": 12232,
+      "el": 2.359
+     }
+    ],
+    "billed": {
+     "requests": 5,
+     "input_tokens": 24932,
+     "cache_read_tokens": 35840,
+     "cache_creation_tokens": 0,
+     "output_tokens": 267,
+     "cost": 0.15059,
+     "actual_cost": 0.0436711
+    }
+   },
+   "lat": {
+    "conc": {
+     "n": 60,
+     "ok": 59,
+     "err_rate": 0.017,
+     "empty": 0,
+     "errs": {
+      "429:{\"error\":{\"code\":\"gateway_queue_full\",\"message\":\"Too many pe": 1
+     },
+     "ttft_p50": 5.05,
+     "ttft_p90": 7.13,
+     "ttft_p99": 51.59,
+     "el_p50": 5.16,
+     "el_p90": 7.25,
+     "el_p99": 51.677,
+     "el_max": 52.103,
+     "chunks_p50": 1
+    },
+    "seq": {
+     "n": 60,
+     "ok": 60,
+     "err_rate": 0.0,
+     "empty": 0,
+     "errs": {},
+     "ttft_p50": 1.471,
+     "ttft_p90": 2.749,
+     "ttft_p99": 28.83,
+     "el_p50": 1.559,
+     "el_p90": 2.751,
+     "el_p99": 29.423,
+     "el_max": 33.548,
+     "chunks_p50": 1
+    },
+    "_billed": {
+     "requests": 119,
+     "input_tokens": 1309,
+     "cache_read_tokens": 0,
+     "cache_creation_tokens": 0,
+     "output_tokens": 595,
+     "cost": 0.024395,
+     "actual_cost": 0.00707455
+    }
+   }
+  },
+  "gpt-5.6-terra": {
+   "inject": {
+    "chat_prompt_tokens": [
+     11,
+     11,
+     11
+    ],
+    "responses_input_tokens": [
+     4391,
+     4391,
+     4391
+    ],
+    "responses_cached": [
+     3840,
+     3840,
+     3840
+    ],
+    "instructions_tokens": [
+     4380,
+     4380,
+     4380
+    ],
+    "instructions_len": [
+     21334,
+     21334,
+     21334
+    ],
+    "instructions_head": "You are Codex, a coding agent based on GPT-5. You and the user share one workspace, and your job is to collaborate with them until their goal is genuinely handl",
+    "sent_o200k": 5,
+    "id_chat": [
+     "resp_000d9e7",
+     "resp_07cfab1",
+     "resp_004db50"
+    ],
+    "id_resp": [
+     "resp_02cf549",
+     "resp_0801172",
+     "resp_031ed19"
+    ],
+    "billed": {
+     "requests": 6,
+     "input_tokens": 1686,
+     "cache_read_tokens": 11520,
+     "cache_creation_tokens": 0,
+     "output_tokens": 30,
+     "cost": 0.006036,
+     "actual_cost": 0.00175044
+    }
+   },
+   "params": {
+    "baseline": {
+     "status": 200,
+     "text": "391",
+     "ct": 5,
+     "err": "",
+     "echo": null,
+     "sent": null
+    },
+    "temperature_5": {
+     "status": 200,
+     "text": "391",
+     "ct": 5,
+     "err": "",
+     "echo": null,
+     "sent": null
+    },
+    "max_completion_tokens_16": {
+     "status": 200,
+     "text": "391",
+     "ct": 5,
+     "err": "",
+     "echo": null,
+     "sent": null
+    },
+    "max_tokens_16": {
+     "status": 200,
+     "text": "391",
+     "ct": 5,
+     "err": "",
+     "echo": null,
+     "sent": null
+    },
+    "effort_invalid": {
+     "status": 400,
+     "text": "",
+     "ct": null,
+     "err": "{\"error\":{\"message\":\"Invalid value: 'bogus'. Supported values are: 'none', 'minimal', 'low', 'medium', 'high', 'xhigh', ",
+     "echo": null,
+     "sent": null
+    },
+    "effort_none": {
+     "status": 200,
+     "text": "391",
+     "ct": 5,
+     "err": "",
+     "echo": null,
+     "sent": null
+    },
+    "stop_9": {
+     "status": 200,
+     "text": "391",
+     "ct": 5,
+     "err": "",
+     "echo": null,
+     "sent": null
+    },
+    "logprobs": {
+     "status": 200,
+     "text": "391",
+     "ct": 5,
+     "err": "",
+     "echo": null,
+     "sent": null
+    },
+    "n_2": {
+     "status": 200,
+     "text": "391",
+     "ct": 20,
+     "err": "",
+     "echo": null,
+     "sent": null
+    },
+    "responses_echo": {
+     "status": 200,
+     "text": "391",
+     "ct": null,
+     "err": "",
+     "echo": {
+      "temperature": 1.0,
+      "top_p": 0.98,
+      "max_output_tokens": null,
+      "prompt_cache_key": "cedfaab8a8b74bfd",
+      "store": false,
+      "reasoning": {
+       "context": "all_turns",
+       "effort": "medium",
+       "mode": "standard",
+       "summary": null
+      },
+      "service_tier": "default"
+     },
+     "sent": {
+      "prompt_cache_key": "gptcheck-4cda38d9",
+      "temperature": 0.3,
+      "max_output_tokens": 999999,
+      "store": true
+     }
+    }
+   },
+   "cache": {
+    "chat-rep1": {
+     "status": 200,
+     "input": 12038,
+     "cached": 0,
+     "sent": 12032,
+     "el": 6.049
+    },
+    "chat-rep2": {
+     "status": 200,
+     "input": 12038,
+     "cached": 11008,
+     "sent": 12032,
+     "el": 3.857
+    },
+    "chat-rep3": {
+     "status": 200,
+     "input": 12038,
+     "cached": 11008,
+     "sent": 12032,
+     "el": 2.954
+    },
+    "chat-fresh": {
+     "status": 200,
+     "input": 12039,
+     "cached": 0,
+     "sent": 12033,
+     "el": 5.66
+    },
+    "responses-rep1": {
+     "status": 200,
+     "input": 16419,
+     "cached": 3840,
+     "sent": 12033,
+     "el": 4.518
+    },
+    "responses-rep2": {
+     "status": 200,
+     "input": 16419,
+     "cached": 3840,
+     "sent": 12033,
+     "el": 6.385
+    },
+    "responses-rep3": {
+     "status": 200,
+     "input": 16419,
+     "cached": 3840,
+     "sent": 12033,
+     "el": 4.27
+    },
+    "responses-fresh": {
+     "status": 200,
+     "input": 16420,
+     "cached": 3840,
+     "sent": 12034,
+     "el": 4.061
+    },
+    "_billed": {
+     "requests": 8,
+     "input_tokens": 76454,
+     "cache_read_tokens": 37376,
+     "cache_creation_tokens": 0,
+     "output_tokens": 372,
+     "cost": 0.1648472,
+     "actual_cost": 0.04780569
+    }
+   },
+   "ttl": {
+    "30": {
+     "input": 8033,
+     "cached": 6912,
+     "status": 200
+    },
+    "120": {
+     "input": 8033,
+     "cached": 6912,
+     "status": 200
+    },
+    "300": {
+     "input": 8033,
+     "cached": 6912,
+     "status": 200
+    },
+    "600": {
+     "input": 8033,
+     "cached": 6912,
+     "status": 200
+    }
+   },
+   "session": {
+    "turns": [
+     {
+      "input": 12044,
+      "cached": 0,
+      "out": 49,
+      "sent": 12034,
+      "el": 7.765
+     },
+     {
+      "input": 12110,
+      "cached": 11008,
+      "out": 20,
+      "sent": 12090,
+      "el": 2.769
+     },
+     {
+      "input": 12150,
+      "cached": 11008,
+      "out": 34,
+      "sent": 12120,
+      "el": 3.043
+     },
+     {
+      "input": 12204,
+      "cached": 12032,
+      "out": 200,
+      "sent": 12164,
+      "el": 9.454
+     },
+     {
+      "input": 12308,
+      "cached": 12032,
+      "out": 27,
+      "sent": 12258,
+      "el": 2.738
+     }
+    ],
+    "billed": {
+     "requests": 5,
+     "input_tokens": 14736,
+     "cache_read_tokens": 46080,
+     "cache_creation_tokens": 0,
+     "output_tokens": 330,
+     "cost": 0.042648,
+     "actual_cost": 0.01236792
+    }
+   },
+   "lat": {
+    "conc": {
+     "n": 60,
+     "ok": 60,
+     "err_rate": 0.0,
+     "empty": 0,
+     "errs": {},
+     "ttft_p50": 8.707,
+     "ttft_p90": 26.496,
+     "ttft_p99": 28.596,
+     "el_p50": 8.712,
+     "el_p90": 26.532,
+     "el_p99": 28.642,
+     "el_max": 29.519,
+     "chunks_p50": 1
+    },
+    "seq": {
+     "n": 60,
+     "ok": 60,
+     "err_rate": 0.0,
+     "empty": 0,
+     "errs": {},
+     "ttft_p50": 1.667,
+     "ttft_p90": 2.282,
+     "ttft_p99": 30.627,
+     "el_p50": 1.705,
+     "el_p90": 2.283,
+     "el_p99": 30.636,
+     "el_max": 31.522,
+     "chunks_p50": 1
+    },
+    "_billed": {
+     "requests": 120,
+     "input_tokens": 1320,
+     "cache_read_tokens": 0,
+     "cache_creation_tokens": 0,
+     "output_tokens": 600,
+     "cost": 0.00984,
+     "actual_cost": 0.0028536
+    }
+   }
+  },
+  "gpt-6-astra": {
+   "inject": {
+    "chat_prompt_tokens": [
+     11,
+     11,
+     11
+    ],
+    "responses_input_tokens": [
+     4125,
+     4125,
+     4125
+    ],
+    "responses_cached": [
+     0,
+     0,
+     4096
+    ],
+    "instructions_tokens": [
+     4114,
+     4114,
+     4114
+    ],
+    "instructions_len": [
+     21260,
+     21260,
+     21260
+    ],
+    "instructions_head": "You are Codex, an agent based on GPT-6. You and the user share one workspace, and your job is to collaborate with them until their intended goal is completely h",
+    "sent_o200k": 5,
+    "id_chat": [
+     "resp_065e95c",
+     "resp_0038e44",
+     "resp_0cd4803"
+    ],
+    "id_resp": [
+     "resp_07bd3b1",
+     "resp_02c3fa4",
+     "resp_0e84992"
+    ],
+    "billed": {
+     "requests": 6,
+     "input_tokens": 8312,
+     "cache_read_tokens": 4096,
+     "cache_creation_tokens": 0,
+     "output_tokens": 30,
+     "cost": 0.088716,
+     "actual_cost": 0.02572764
+    }
+   },
+   "params": {
+    "baseline": {
+     "status": 200,
+     "text": "391",
+     "ct": 5,
+     "err": "",
+     "echo": null,
+     "sent": null
+    },
+    "temperature_5": {
+     "status": 200,
+     "text": "391",
+     "ct": 5,
+     "err": "",
+     "echo": null,
+     "sent": null
+    },
+    "max_completion_tokens_16": {
+     "status": 200,
+     "text": "391",
+     "ct": 5,
+     "err": "",
+     "echo": null,
+     "sent": null
+    },
+    "max_tokens_16": {
+     "status": 200,
+     "text": "391",
+     "ct": 5,
+     "err": "",
+     "echo": null,
+     "sent": null
+    },
+    "effort_invalid": {
+     "status": 400,
+     "text": "",
+     "ct": null,
+     "err": "{\"error\":{\"message\":\"Invalid value: 'bogus'. Supported values are: 'none', 'minimal', 'low', 'medium', 'high', 'xhigh', ",
+     "echo": null,
+     "sent": null
+    },
+    "effort_none": {
+     "status": 200,
+     "text": "391",
+     "ct": 5,
+     "err": "",
+     "echo": null,
+     "sent": null
+    },
+    "stop_9": {
+     "status": 200,
+     "text": "391",
+     "ct": 20,
+     "err": "",
+     "echo": null,
+     "sent": null
+    },
+    "logprobs": {
+     "status": 200,
+     "text": "391",
+     "ct": 5,
+     "err": "",
+     "echo": null,
+     "sent": null
+    },
+    "n_2": {
+     "status": 200,
+     "text": "391",
+     "ct": 20,
+     "err": "",
+     "echo": null,
+     "sent": null
+    },
+    "responses_echo": {
+     "status": 200,
+     "text": "391",
+     "ct": null,
+     "err": "",
+     "echo": {
+      "temperature": 1.0,
+      "top_p": 0.98,
+      "max_output_tokens": null,
+      "prompt_cache_key": "cedfaab8a8b74bfd",
+      "store": false,
+      "reasoning": {
+       "context": "all_turns",
+       "effort": "medium",
+       "mode": "standard",
+       "summary": null
+      },
+      "service_tier": "default"
+     },
+     "sent": {
+      "prompt_cache_key": "gptcheck-4cda38d9",
+      "temperature": 0.3,
+      "max_output_tokens": 999999,
+      "store": true
+     }
+    }
+   },
+   "cache": {
+    "chat-rep1": {
+     "status": 200,
+     "input": 12036,
+     "cached": 0,
+     "sent": 12030,
+     "el": 7.571
+    },
+    "chat-rep2": {
+     "status": 200,
+     "input": 12036,
+     "cached": 11008,
+     "sent": 12030,
+     "el": 4.244
+    },
+    "chat-rep3": {
+     "status": 200,
+     "input": 12036,
+     "cached": 11008,
+     "sent": 12030,
+     "el": 4.899
+    },
+    "chat-fresh": {
+     "status": 200,
+     "input": 12037,
+     "cached": 0,
+     "sent": 12031,
+     "el": 3.877
+    },
+    "responses-rep1": {
+     "status": 200,
+     "input": 16151,
+     "cached": 3840,
+     "sent": 12031,
+     "el": 4.487
+    },
+    "responses-rep2": {
+     "status": 200,
+     "input": 16151,
+     "cached": 3840,
+     "sent": 12031,
+     "el": 4.667
+    },
+    "responses-rep3": {
+     "status": 200,
+     "input": 16151,
+     "cached": 3840,
+     "sent": 12031,
+     "el": 6.331
+    },
+    "responses-fresh": {
+     "status": 200,
+     "input": 16152,
+     "cached": 0,
+     "sent": 12032,
+     "el": 12.228
+    },
+    "_billed": {
+     "requests": 8,
+     "input_tokens": 79214,
+     "cache_read_tokens": 33536,
+     "cache_creation_tokens": 0,
+     "output_tokens": 338,
+     "cost": 0.842576,
+     "actual_cost": 0.24434704
+    }
+   },
+   "ttl": {
+    "30": {
+     "input": 8031,
+     "cached": 7936,
+     "status": 200
+    },
+    "120": {
+     "input": 8031,
+     "cached": 7936,
+     "status": 200
+    },
+    "300": {
+     "input": 8031,
+     "cached": 7936,
+     "status": 200
+    },
+    "600": {
+     "input": 8031,
+     "cached": 7936,
+     "status": 200
+    }
+   },
+   "session": {
+    "turns": [
+     {
+      "input": 12042,
+      "cached": 0,
+      "out": 55,
+      "sent": 12032,
+      "el": 5.98
+     },
+     {
+      "input": 12114,
+      "cached": 11008,
+      "out": 20,
+      "sent": 12094,
+      "el": 2.366
+     },
+     {
+      "input": 12154,
+      "cached": 0,
+      "out": 27,
+      "sent": 12124,
+      "el": 8.185
+     },
+     {
+      "input": 12201,
+      "cached": 11008,
+      "out": 139,
+      "sent": 12161,
+      "el": 5.574
+     },
+     {
+      "input": 12289,
+      "cached": 12032,
+      "out": 32,
+      "sent": 12239,
+      "el": 2.299
+     }
+    ],
+    "billed": {
+     "requests": 5,
+     "input_tokens": 26752,
+     "cache_read_tokens": 34048,
+     "cache_creation_tokens": 0,
+     "output_tokens": 273,
+     "cost": 0.315218,
+     "actual_cost": 0.09141322
+    }
+   },
+   "lat": {
+    "conc": {
+     "n": 60,
+     "ok": 60,
+     "err_rate": 0.0,
+     "empty": 0,
+     "errs": {},
+     "ttft_p50": 5.879,
+     "ttft_p90": 8.796,
+     "ttft_p99": 11.749,
+     "el_p50": 6.014,
+     "el_p90": 8.868,
+     "el_p99": 12.409,
+     "el_max": 13.319,
+     "chunks_p50": 1
+    },
+    "seq": {
+     "n": 60,
+     "ok": 60,
+     "err_rate": 0.0,
+     "empty": 0,
+     "errs": {},
+     "ttft_p50": 1.985,
+     "ttft_p90": 3.58,
+     "ttft_p99": 9.298,
+     "el_p50": 2.03,
+     "el_p90": 3.76,
+     "el_p99": 9.936,
+     "el_max": 15.951,
+     "chunks_p50": 1
+    },
+    "_billed": {
+     "requests": 120,
+     "input_tokens": 1320,
+     "cache_read_tokens": 0,
+     "cache_creation_tokens": 0,
+     "output_tokens": 600,
+     "cost": 0.0432,
+     "actual_cost": 0.012528
+    }
+   }
+  }
+ },
+ "site": "SpacetimeAI 网关（sub2api 风格，Caddy + Cloudflare），钱包余额 key；GET /v1/usage 实时给每模型累计 token / cost / actual_cost",
+ "billing": {
+  "rule": "actual_cost = cost × 0.29（三个模型、所有段一致）",
+  "check": "余额 19.0984 → 18.2788，差 0.8196 = 各段 actual_cost 合计，逐段对上",
+  "workload_cost_usd": {
+   "gpt-5.6-sol": 0.2494,
+   "gpt-5.6-terra": 0.0886,
+   "gpt-6-astra": 0.4816
+  },
+  "workload_note": "一套 = inject 6 + params 10 + cache 8 + ttl 8 + session 5 + lat 120 次调用；比价时乘自己的充值价"
+ },
+ "what_it_is": {
+  "backend": "真 OpenAI，Codex 订阅号池：/v1/responses 回显注入的 Codex CLI 提示词，带 usage.attribution 逐项计数、safety_identifier、prompt_cache_key 等官方字段",
+  "injection": "sol/terra 每请求注入 4380 token（'You are Codex, a coding agent based on GPT-5'），astra 4114 token（'an agent based on GPT-6'）。chat/completions 隐藏且不计费（报 11 token、按 11 扣）；responses 照扣：sol/terra 通常 3840 落在缓存读，astra 前两次全价",
+  "cache_chat": "chat 接口真前缀缓存：12k 文档第 2、3 次各命中 11008（91%），新文档 0；TTL terra/astra 30–600 s 全命中，sol 30 s 和 300 s 两次未命中（多账号轮询）；5 轮会话 sol/astra 各有一轮掉缓存",
+  "cache_responses": "responses 接口只缓存注入的 instructions（3840），用户文档不命中：中转把 prompt_cache_key 换成随机值，缓存路由失效。长上下文请走 chat",
+  "params": "几乎全部被改写：temperature 5 / max_tokens / max_completion_tokens / stop / logprobs / n=2 都 200 且不生效；只有非法 reasoning_effort 400；responses 回显 temperature→1.0、top_p→0.98、max_output_tokens→null、store→false、prompt_cache_key→随机、effort 默认 medium",
+  "ids": "chat/completions 的 id 是 resp_…（Responses 转换），usage 无 *_details"
+ },
+ "latency_2026_10_07_mac_clash": {
+  "gpt-5.6-sol": "顺序 60：首 token p50 1.47 / p99 28.8 s；30 并发×2：59/60（1 次 429 gateway_queue_full），p50 5.05 / p99 51.6 s",
+  "gpt-5.6-terra": "顺序 60：p50 1.67 / p99 30.6 s；30 并发×2：60/60，p50 8.7 / p90 26.5 / p99 28.6 s",
+  "gpt-6-astra": "顺序 60：p50 1.99 / p99 9.3 s；30 并发×2：60/60，p50 5.9 / p99 11.7 s（三个里最稳）"
+ },
+ "caveats": [
+  "路线 Mac + Clash 代理；Mac 直连该域名证书不匹配（DNS 污染），必须走代理。延迟只做同路线比较，要和别家比需同日同路线重测",
+  "sol/terra 的 p99 约 30 s 来自少数请求卡 28–33 s，不是普遍慢；p50 都在 2 s 内",
+  "未测智力（用户另有方法）",
+  "号池是 Codex 订阅，和猫肥同一种上游；注入是否计费只在 responses 接口发生"
+ ],
+ "how_to_use": "新 GPT 站：RB_KEY=... python3 gptcheck.py run --label <站>-<日期> --base <url> --sections inject,params,cache,ttl,session [--proxy]，再按模型逐个跑 --sections lat，最后单独 --sections soak；report 后和本文件逐项比（注入是否计费、chat/responses 缓存、TTL、p50/p99、一套负载实扣 $）"
+}
